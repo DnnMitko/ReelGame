@@ -6,14 +6,14 @@ int main(int argc, char* args[])
 
 	SDL_Event e;
 
-	while(!game.getQuit())
+	while(!game.GetQuit())
 	{
 		while(SDL_PollEvent(&e) != 0)
 		{
-			game.eventHandler(e);
+			game.EventHandler(e);
 		}
 
-		game.render();
+		game.Render();
 	}
 
 	return 0;

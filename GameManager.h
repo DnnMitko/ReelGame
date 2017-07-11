@@ -15,12 +15,12 @@ public:
 	GameManager();
 	~GameManager();
 public:
-	void eventHandler(SDL_Event&);
-	bool getQuit() const;
-	void render();
+	void EventHandler(SDL_Event&);
+	bool GetQuit() const;
+	void Render();
 private:
-	bool init();
-	void close();
+	bool Init();
+	void Close();
 private:
 	SDL_Window* m_Window;
 	SDL_Renderer* m_Renderer;

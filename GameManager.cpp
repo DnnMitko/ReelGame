@@ -4,16 +4,16 @@ GameManager::GameManager()
 {
 	m_Window = NULL;
 	m_Renderer = NULL;
-	if(!init())
+	if(!Init())
 		m_bQuit = true;
 }
 
 GameManager::~GameManager()
 {
-	close();
+	Close();
 }
 
-void GameManager::eventHandler(SDL_Event& e)
+void GameManager::EventHandler(SDL_Event& e)
 {
 	if( e.type == SDL_QUIT )
 	{
@@ -23,19 +23,19 @@ void GameManager::eventHandler(SDL_Event& e)
 	//else TODO
 }
 
-bool GameManager::getQuit() const
+bool GameManager::GetQuit() const
 {
 	return m_bQuit;
 }
 
-void GameManager::render()
+void GameManager::Render()
 {
 	//TODO
 
 	SDL_RenderPresent(m_Renderer);
 }
 
-bool GameManager::init()
+bool GameManager::Init()
 {
 	bool bSuccess = true;
 
@@ -49,7 +49,7 @@ bool GameManager::init()
 		if(!SDL_SetHint(SDL_HINT_RENDER_SCALE_QUALITY, "1"))
 			printf("Warning: Linear texture filtering not enabled!");
 
-		m_Window = SDL_CreateWindow("Sunny Beach Holiday", SDL_WINDOWPOS_UNDEFINED, SDL_WINDOWPOS_UNDEFINED, SCREEN_WIDTH, SCREEN_HEIGHT, SDL_WINDOW_SHOWN);
+		m_Window = SDL_CreateWindow("Sunny Beach Holiday", SDL_WINDOWPOS_UNDEFINED, SDL_WINDOWPOS_UNDEFINED, g_ScreenWidth, g_ScreenHeight, SDL_WINDOW_SHOWN);
 		if(m_Window == NULL)
 		{
 			printf("Couldn't create window! Error: %s\n", SDL_GetError());
@@ -90,7 +90,7 @@ bool GameManager::init()
 	return bSuccess;
 }
 
-void GameManager::close()
+void GameManager::Close()
 {
 	//TODO Destroy Game, BonusGame, Intro, Outro objects
 
