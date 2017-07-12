@@ -7,7 +7,7 @@ Intro::Intro(SDL_Renderer* newRenderer) : State()
 	m_TextureBackground = NULL;
 	m_TextureBackground = IMG_LoadTexture(m_Renderer, "images/TitleScreen.png");
 	if( m_TextureBackground == NULL )
-		std::cerr << "Problem to load TextureBackground! SDL Error: " << IMG_GetError() << std::endl;
+		std::cerr << "Failed to load TextureBackground! SDL Error: " << IMG_GetError() << std::endl;
 
 	//TODO make buttons make text
 }

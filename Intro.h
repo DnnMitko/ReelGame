@@ -5,7 +5,7 @@
 #include<SDL2/SDL_image.h>
 #include<iostream>
 #include"State.h"
-//TODO include Button
+#include"Button.h"
 
 class Intro : public State
 {
@@ -25,6 +25,12 @@ private:
 	unsigned int m_uiCredit;
 
 	SDL_Texture* m_TextureBackground;
+
+//	SDL_Texture* m_TextureButtonStartGame;
+//	SDL_Texture* m_TextureButtonResumeGame;
+//	SDL_Texture* m_TextureButonCashOut;
+//	SDL_Texture* m_TextureButtonInsertCredit;
+//	SDL_Texture* m_TextureButtonInfo;
 
 	//TODO add button textf..credit
 };
