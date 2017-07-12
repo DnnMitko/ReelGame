@@ -13,18 +13,19 @@
 class TextField : public Label
 {
 public:
-	// Constructors, destructor and operators
+
 	TextField();
 	virtual ~TextField();
 
 public:
-	// Public functions
-	void setField(int, int, int, int);
-private:
-	// Private functions
+
+	void SetField(int, int, int, int);
 
 private:
-	// Private variables
+
+
+private:
+
 	SDL_Rect rect;
 };
 

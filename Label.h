@@ -18,30 +18,28 @@ using namespace std;
 
 class Label
 {
+
 public:
-	// Constructors, destructor and operators
-	Label(int = 0, int = 0);
+
+	Label();
 	virtual ~Label();
 
 public:
-	// Public functions
-	virtual int getHeight();
-	virtual int getWidth();
 
-	// Generate texture from text and font
+	virtual int GetHeight();
+	virtual int GetWidth();
 	void Create(SDL_Renderer*, string &, TTF_Font*);
-
-	// Render texture on given coordinates
 	virtual void Render(SDL_Renderer*, int, int);
+	void Destroy();
 
 private:
-	// Private functions
 
 private:
-	// Private variables
+
 	int m_iHeight;
 	int m_iWidth;
-//	SDL_Texture* labelTexture;
+	SDL_Texture* m_texture;
+
 };
 
 #endif /* LABEL_H_ */

@@ -17,7 +17,7 @@ TextField::~TextField()
 
 }
 
-void TextField::setField(int x, int y, int height, int width)
+void TextField::SetField(int x, int y, int height, int width)
 {
 
 }
