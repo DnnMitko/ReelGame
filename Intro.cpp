@@ -1,54 +1,61 @@
-/*
- * Intro.cpp
- *
- *  Created on: Jul 11, 2017
- *      Author: polia
- */
-
 #include "Intro.h"
 
-Intro::Intro()
+Intro::Intro(SDL_Renderer* newRenderer) : State()
 {
-	// TODO Auto-generated constructor stub
+	SetRenderer(newRenderer);
 
+	m_TextureBackground = NULL;
+	m_TextureBackground = IMG_LoadTexture(m_Renderer, "images/TitleScreen.png");
+	if( m_TextureBackground == NULL )
+		std::cerr << "Problem to load TextureBackground! SDL Error: " << IMG_GetError() << std::endl;
+
+	//TODO make buttons make text
 }
 
 Intro::~Intro()
 {
-	// TODO Auto-generated destructor stub
+	Destroy();
 }
 
-bool Intro::isFlag() const
+void Intro::RenderSmart()
 {
-	return m_bFlag;
+	// TODO button1.renderSmart() , button2.renderSmart() ....text.rendersmart()
 }
 
-bool Intro::isSwitch() const
+void Intro::RenderForce()
 {
-	return m_bSwitch;
-}
+	SDL_RenderCopy(m_Renderer, m_TextureBackground, NULL, NULL);
 
-void Intro::setSwitch(bool bSwitch)
-{
-	m_bSwitch = bSwitch;
-}
-
-void Intro::Render()
-{
-}
-
-void Intro::RenderInit(SDL_Renderer* Renderer)
-{
-	TextureBackground = IMG_LoadTexture(Renderer,"TitleScreen");
-	if ( TextureBackground == NULL)
-		std::cerr << "Problem to load TextureBackground";
+	//TODO button1.RenderForce button2.RenderForce() ....  text.renderforse()
 }
 
 void Intro::EventHandle(SDL_Event& e)
 {
+	int x;
+	int y;
+	SDL_GetMouseState(&x, &y);
+	if(e.type == SDL_MOUSEBUTTONDOWN)
+	{
+		// TODO if (button1.IsIn(x, y) button1.press(); else if (button2.IsIn(x,y) ....
+	}
+	else if (e.type == SDL_MOUSEBUTTONUP)
+	{
+		// TODO if (button1.IsIn(x, y) && button1.isPressed() ) { button1.release(); button1.Deistvie() } else if button2..
+
+		ReleaseAllButton();
+	}
+
 }
 
-unsigned int Intro::getUiCredit() const
+void Intro::Destroy()
 {
-	return m_uiCredit;
+	SDL_DestroyTexture(m_TextureBackground);
+	m_TextureBackground = NULL;
+
+	//TODO destroy buttons
+}
+
+void Intro::ReleaseAllButton()
+{
+	//TODO button1.release(); ...
 }
