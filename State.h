@@ -7,19 +7,15 @@ class State
 {
 public:
 	State();
+	State(SDL_Renderer*);
 	virtual ~State();
 public:
 	bool GetSwitch() const;
 	void ResetSwitch();
 
-	void SetRenderer(SDL_Renderer*);
-
-	virtual void RenderSmart() = 0;
-	virtual void RenderForce() = 0;
+	virtual void Render(bool = true) = 0;
 
 	virtual void EventHandler(SDL_Event&) = 0;
-
-	virtual void Destroy() = 0;
 protected:
 	bool m_bSwitch;
 	SDL_Renderer* m_Renderer;

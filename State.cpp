@@ -2,8 +2,14 @@
 
 State::State()
 {
-	m_bSwitch = false;
 	m_Renderer = NULL;
+	m_bSwitch = false;
+}
+
+State::State(SDL_Renderer* newRenderer)
+{
+	m_Renderer = newRenderer;
+	m_bSwitch = false;
 }
 
 State::~State()
@@ -18,9 +24,4 @@ bool State::GetSwitch() const
 void State::ResetSwitch()
 {
 	m_bSwitch = false;
-}
-
-void State::SetRenderer(SDL_Renderer* newRenderer)
-{
-	m_Renderer = newRenderer;
 }
