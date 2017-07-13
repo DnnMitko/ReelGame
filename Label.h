@@ -20,7 +20,7 @@ public:
 	virtual void SetY(int);
 
 	virtual void RenderForce();
-	virtual void RenderSmart();
+	void RenderSmart();
 
 	virtual void SetText(std::string, TTF_Font*, SDL_Color);
 protected:

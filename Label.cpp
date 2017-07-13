@@ -71,7 +71,7 @@ void Label::SetText(std::string newText, TTF_Font* font, SDL_Color color)
 
 	m_bHasChanged = true;
 
-	SDL_Surface* tempSurface = TTF_RenderText_Solid(font, newText.c_str(), color);
+	SDL_Surface* tempSurface = TTF_RenderText_Blended(font, newText.c_str(), color);
 
 	m_TextRect.w = tempSurface->w;
 	m_TextRect.h = tempSurface->h;
@@ -80,7 +80,7 @@ void Label::SetText(std::string newText, TTF_Font* font, SDL_Color color)
 
 	if(m_TextureText == NULL)
 	{
-		std::cerr << "Unable to create texture from rendered text \"" << newText << ""\"! SDL Error: " <<  SDL_GetError() << "\n";
+		std::cerr << "Unable to create texture from rendered text \"" << newText << "\"! SDL Error: " <<  SDL_GetError() << "\n";
 
 		m_TextRect.w = 0;
 		m_TextRect.h = 0;
