@@ -12,7 +12,7 @@ public:
 	Button(SDL_Renderer*);
 	virtual ~Button();
 public:
-	void Render(bool = true);
+	void RenderForce();
 
 	void SetText(std::string, TTF_Font*, SDL_Color);
 

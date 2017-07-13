@@ -6,7 +6,7 @@
 const int g_ScreenWidth = 1280;
 const int g_ScreenHeight = 720;
 
-const char g_LabelFont[] = "fonts/Roboto-Medium.ttf";
+const char g_LabelFont[] = "fonts/Roboto-Bold.ttf";
 const int g_IntroFontSize = 40;
 
 const char g_ButtonNewGame[] = "Start new game";

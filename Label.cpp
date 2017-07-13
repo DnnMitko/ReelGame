@@ -48,22 +48,20 @@ void Label::SetY(int newY)
 	m_TextRect.y = newY;
 }
 
-void Label::Render(bool UpdateOnly)
+void Label::RenderForce()
 {
-	if(UpdateOnly)
-	{
-		if(m_bHasChanged)
-		{
-			m_bHasChanged = false;
-			Render(false);
-		}
-	}
-	else
-	{
-		if(m_Renderer == NULL || m_TextureText == NULL)
-				return;
+	if(m_Renderer == NULL || m_TextureText == NULL)
+		return;
 
-		SDL_RenderCopy(m_Renderer, m_TextureText, NULL, &m_TextRect);
+	SDL_RenderCopy(m_Renderer, m_TextureText, NULL, &m_TextRect);
+}
+
+void Label::RenderSmart()
+{
+	if(m_bHasChanged)
+	{
+		m_bHasChanged = false;
+		RenderForce();
 	}
 }
 

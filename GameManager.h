@@ -6,9 +6,8 @@
 #include <SDL2/SDL_ttf.h>
 #include <SDL2/SDL_mixer.h>
 #include <cstdio>
-#include "Constants.h"
-#include "Intro.h"
 
+#include "Constants.h"
 
 class GameManager
 {
@@ -27,8 +26,6 @@ private:
 	SDL_Renderer* m_Renderer;
 
 	bool m_bQuit;
-
-	Intro* m_Intro;
 
 	// TODO Add Game, BonusGame, Intro, Outro objects
 };
