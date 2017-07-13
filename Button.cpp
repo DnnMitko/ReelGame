@@ -32,29 +32,40 @@ Button::~Button()
 	m_TextureButton = NULL;
 }
 
-void Button::RenderForce()
+void Button::Render(bool UpdateOnly)
 {
-	if(m_Renderer == NULL || m_TextureText == NULL || m_TextureTextPressed == NULL || m_TextureButton == NULL)
-		return;
-
-	SDL_Rect tempRect;
-	tempRect.w = g_ButtonSpriteWidth;
-	tempRect.h = g_ButtonSpriteHeight / 2;
-	tempRect.x = 0;
-	if(m_bIsPressed)
-		tempRect.y = g_ButtonSpriteHeight / 2;
+	if(UpdateOnly)
+	{
+		if(m_bHasChanged)
+		{
+			m_bHasChanged = false;
+			Render(false);
+		}
+	}
 	else
-		tempRect.y = 0;
+	{
+		if(m_Renderer == NULL || m_TextureText == NULL || m_TextureTextPressed == NULL || m_TextureButton == NULL)
+			return;
 
-	SDL_RenderCopy(m_Renderer, m_TextureButton, &tempRect, &m_FieldRect);
+		SDL_Rect tempRect;
+		tempRect.w = g_ButtonSpriteWidth;
+		tempRect.h = g_ButtonSpriteHeight / 2;
+		tempRect.x = 0;
+		if(m_bIsPressed)
+			tempRect.y = g_ButtonSpriteHeight / 2;
+		else
+			tempRect.y = 0;
 
-	m_TextRect.x = m_FieldRect.x + (m_FieldRect.w - m_TextRect.w) / 2;
-	m_TextRect.y = m_FieldRect.y + (m_FieldRect.h - m_TextRect.h) / 2;
+		SDL_RenderCopy(m_Renderer, m_TextureButton, &tempRect, &m_FieldRect);
 
-	if(m_bIsPressed)
-		SDL_RenderCopy(m_Renderer, m_TextureTextPressed, NULL, &m_TextRect);
-	else
-		SDL_RenderCopy(m_Renderer, m_TextureText, NULL, &m_TextRect);
+		m_TextRect.x = m_FieldRect.x + (m_FieldRect.w - m_TextRect.w) / 2;
+		m_TextRect.y = m_FieldRect.y + (m_FieldRect.h - m_TextRect.h) / 2;
+
+		if(m_bIsPressed)
+			SDL_RenderCopy(m_Renderer, m_TextureTextPressed, NULL, &m_TextRect);
+		else
+			SDL_RenderCopy(m_Renderer, m_TextureText, NULL, &m_TextRect);
+	}
 }
 
 void Button::SetText(std::string newText, TTF_Font* font, SDL_Color color)
