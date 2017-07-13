@@ -1,10 +1,3 @@
-/*
- * TextField.h
- *
- *  Created on: Jul 10, 2017
- *      Author: Ivan
- */
-
 #ifndef TEXTFIELD_H_
 #define TEXTFIELD_H_
 
@@ -13,20 +6,23 @@
 class TextField : public Label
 {
 public:
-
 	TextField();
+	TextField(SDL_Renderer*);
 	virtual ~TextField();
-
 public:
+	int GetWidth() const;
+	int GetHeight() const;
 
-	void SetField(int, int, int, int);
+	void SetX(int);
+	void SetY(int);
 
-private:
+	virtual void RenderForce();
 
+	virtual void SetText(std::string, TTF_Font*, SDL_Color);
 
-private:
-
-	SDL_Rect rect;
+	void SetFieldSize(int, int);
+protected:
+	SDL_Rect m_FieldRect;
 };
 
 #endif /* TEXTFIELD_H_ */
