@@ -9,6 +9,7 @@
 class Label
 {
 public:
+	Label();
 	Label(SDL_Renderer*);
 	virtual ~Label();
 public:

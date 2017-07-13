@@ -1,5 +1,16 @@
 #include "Label.h"
 
+Label::Label()
+{
+	m_Renderer = NULL;
+
+	m_TextureText = NULL;
+
+	m_TextRect = {0, 0, 0, 0};
+
+	m_bHasChanged = false;
+}
+
 Label::Label(SDL_Renderer* newRenderer)
 {
 	m_Renderer = newRenderer;
@@ -39,7 +50,7 @@ void Label::SetY(int newY)
 
 void Label::RenderForce()
 {
-	if(m_TextureText == NULL)
+	if(m_Renderer == NULL || m_TextureText == NULL)
 		return;
 
 	SDL_RenderCopy(m_Renderer, m_TextureText, NULL, &m_TextRect);
