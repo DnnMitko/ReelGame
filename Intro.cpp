@@ -16,7 +16,7 @@ Intro::Intro(SDL_Renderer* newRenderer) : State()
 	m_InsertCredit = new Button(m_Renderer);
 	m_Info = new Button(m_Renderer);
 
-	m_Font = TTF_OpenFont(g_LabelFont,g_IntroFontSize);
+	m_Font = TTF_OpenFont(g_LabelFont, g_IntroFontSize);
 
 	SDL_Color BlackColor = {0x00, 0x00, 0x00, 0xFF};
 	m_StartGame->SetText(g_ButtonNewGame, m_Font, BlackColor);
@@ -36,7 +36,10 @@ Intro::Intro(SDL_Renderer* newRenderer) : State()
 	m_InsertCredit->SetX(x);
 	m_Info->SetX(x);
 
-	m_StartGame->SetY(300);
+	m_StartGame->SetY(g_IntroFirstButtonY);
+	m_ResumeGame->SetY(g_IntroFirstButtonY + g_IntroButtonHeight + 10);
+	m_InsertCredit->SetY(g_IntroFirstButtonY + 2* (g_IntroButtonHeight + 10));
+	m_Info->SetY(g_IntroFirstButtonY + 3* (g_IntroButtonHeight + 10));
 
 }
 
@@ -55,7 +58,9 @@ void Intro::RenderForce()
 	SDL_RenderCopy(m_Renderer, m_TextureBackground, NULL, NULL);
 
 	m_StartGame->RenderForce();
-	// m_ResumeGame->RenderForce();
+	m_ResumeGame->RenderForce();
+	m_InsertCredit->RenderForce();
+	m_Info->RenderForce();
 
 	//TODO button1.RenderForce button2.RenderForce() ....  text.renderforse()
 }
