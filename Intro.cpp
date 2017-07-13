@@ -50,11 +50,16 @@ Intro::~Intro()
 
 void Intro::RenderSmart()
 {
-	// TODO button1.renderSmart() , button2.renderSmart() ....text.rendersmart()
+	m_StartGame->RenderSmart();
+	m_ResumeGame->RenderSmart();
+	m_InsertCredit->RenderSmart();
+	m_Info->RenderSmart();
 }
 
 void Intro::RenderForce()
 {
+	m_uiCredit = 0;
+
 	SDL_RenderCopy(m_Renderer, m_TextureBackground, NULL, NULL);
 
 	m_StartGame->RenderForce();
@@ -62,22 +67,52 @@ void Intro::RenderForce()
 	m_InsertCredit->RenderForce();
 	m_Info->RenderForce();
 
-	//TODO button1.RenderForce button2.RenderForce() ....  text.renderforse()
 }
 
 void Intro::EventHandler(SDL_Event& e)
 {
 	int x;
 	int y;
-	SDL_GetMouseState(&x, &y);
+
 	if(e.type == SDL_MOUSEBUTTONDOWN)
 	{
-		// TODO if (button1.IsIn(x, y) button1.press(); else if (button2.IsIn(x,y) ....
+		SDL_GetMouseState(&x, &y);
+
+		if (m_StartGame->IsIn(x, y))
+			m_StartGame->Press();
+
+		else if (m_ResumeGame->IsIn(x, y))
+			m_ResumeGame->Press();
+
+		else if (m_InsertCredit->IsIn(x, y))
+			m_InsertCredit->Press();
+
+		else if (m_Info->IsIn(x, y))
+			m_Info->Press();
 	}
 	else if (e.type == SDL_MOUSEBUTTONUP)
 	{
+		SDL_GetMouseState(&x, &y);
 		// TODO if (button1.IsIn(x, y) && button1.isPressed() ) { button1.release(); button1.Deistvie() } else if button2..
 
+		if(m_StartGame->IsIn(x, y) && m_StartGame->IsPressed())
+		{
+			m_bSwitch = true;
+		}
+
+		else if(m_ResumeGame->IsIn(x, y) && m_ResumeGame->IsPressed())
+		{
+			m_bSwitch = true;
+		}
+
+		else if(m_InsertCredit->IsIn(x, y) && m_ResumeGame->IsPressed())
+		{
+			m_uiCredit += 50;
+		}
+		else if(m_Info->IsIn(x,y) && m_Info->IsPressed())
+		{
+			// TODO
+		}
 		ReleaseAllButton();
 	}
 
@@ -88,10 +123,17 @@ void Intro::Destroy()
 	SDL_DestroyTexture(m_TextureBackground);
 	m_TextureBackground = NULL;
 
-	//TODO destroy buttons
+	delete m_StartGame;
+	delete m_ResumeGame;
+	delete m_InsertCredit;
+	delete m_Info;
+
 }
 
 void Intro::ReleaseAllButton()
 {
-	//TODO button1.release(); ...
+	m_StartGame->Release();
+	m_ResumeGame->Release();
+	m_InsertCredit->Release();
+	m_Info->Release();
 }
