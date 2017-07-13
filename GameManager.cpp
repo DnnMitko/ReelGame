@@ -6,6 +6,11 @@ GameManager::GameManager()
 	m_Renderer = NULL;
 	if(!Init())
 		m_bQuit = true;
+	else
+		m_bQuit = false;
+
+	m_Intro = new Intro(m_Renderer);
+	m_Intro->RenderForce();
 }
 
 GameManager::~GameManager()
@@ -20,6 +25,8 @@ void GameManager::EventHandler(SDL_Event& e)
 		m_bQuit = true;
 		// TODO Recovery
 	}
+	else
+		m_Intro->EventHandler(e);
 	//else TODO
 }
 
@@ -31,6 +38,7 @@ bool GameManager::GetQuit() const
 void GameManager::Render()
 {
 	//TODO
+	m_Intro->RenderSmart();
 
 	SDL_RenderPresent(m_Renderer);
 }

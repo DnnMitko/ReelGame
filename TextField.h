@@ -16,7 +16,7 @@ public:
 	void SetX(int);
 	void SetY(int);
 
-	virtual void RenderForce();
+	virtual void Render(bool = true);
 
 	virtual void SetText(std::string, TTF_Font*, SDL_Color);
 
