@@ -1,10 +1,22 @@
 #include "Intro.h"
 
-Intro::Intro(SDL_Renderer* newRenderer) : State()
+Intro::Intro() : State()
 {
 	m_uiCredit = 0;
 
-	SetRenderer(newRenderer);
+	m_TextureBackground = NULL;
+
+	m_StartGame = NULL;
+	m_ResumeGame = NULL;
+	m_InsertCredit = NULL;
+	m_Info = NULL;
+
+	m_Font = NULL;
+}
+
+Intro::Intro(SDL_Renderer* newRenderer) : State(newRenderer)
+{
+	m_uiCredit = 0;
 
 	m_TextureBackground = NULL;
 	m_TextureBackground = IMG_LoadTexture(m_Renderer, "images/TitleScreen.png");
@@ -45,28 +57,28 @@ Intro::Intro(SDL_Renderer* newRenderer) : State()
 
 Intro::~Intro()
 {
-	Destroy();
+	SDL_DestroyTexture(m_TextureBackground);
+	m_TextureBackground = NULL;
+
+	delete m_StartGame;
+	delete m_ResumeGame;
+	delete m_InsertCredit;
+	delete m_Info;
 }
 
-void Intro::RenderSmart()
+void Intro::Render(bool UpdateOnly)
 {
-	m_StartGame->RenderSmart();
-	m_ResumeGame->RenderSmart();
-	m_InsertCredit->RenderSmart();
-	m_Info->RenderSmart();
-}
+	if(!UpdateOnly)
+	{
+		m_uiCredit = 0;
 
-void Intro::RenderForce()
-{
-	m_uiCredit = 0;
+		SDL_RenderCopy(m_Renderer, m_TextureBackground, NULL, NULL);
+	}
 
-	SDL_RenderCopy(m_Renderer, m_TextureBackground, NULL, NULL);
-
-	m_StartGame->RenderForce();
-	m_ResumeGame->RenderForce();
-	m_InsertCredit->RenderForce();
-	m_Info->RenderForce();
-
+	m_StartGame->Render(UpdateOnly);
+	m_ResumeGame->Render(UpdateOnly);
+	m_InsertCredit->Render(UpdateOnly);
+	m_Info->Render(UpdateOnly);
 }
 
 void Intro::EventHandler(SDL_Event& e)
@@ -115,18 +127,6 @@ void Intro::EventHandler(SDL_Event& e)
 		}
 		ReleaseAllButton();
 	}
-
-}
-
-void Intro::Destroy()
-{
-	SDL_DestroyTexture(m_TextureBackground);
-	m_TextureBackground = NULL;
-
-	delete m_StartGame;
-	delete m_ResumeGame;
-	delete m_InsertCredit;
-	delete m_Info;
 
 }
 

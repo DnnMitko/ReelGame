@@ -11,15 +11,13 @@
 class Intro : public State
 {
 public:
+	Intro();
 	Intro(SDL_Renderer*);
 	~Intro();
 public:
-	void RenderSmart();
-	void RenderForce();
+	void Render(bool = true);
 
 	void EventHandler(SDL_Event&);
-
-	void Destroy();
 private:
 	void ReleaseAllButton();
 private:
