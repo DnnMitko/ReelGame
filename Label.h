@@ -1,45 +1,35 @@
-/*
- * Label.h
- *
- *  Created on: Jul 10, 2017
- *      Author: Ivan
- */
-
 #ifndef LABEL_H_
 #define LABEL_H_
 
-#include <SDL.h>
-#include <SDL_image.h>
-#include <SDL_mixer.h>
-#include <SDL_ttf.h>
+#include <SDL2/SDL.h>
+#include <SDL2/SDL_ttf.h>
 #include <string>
-
-using namespace std;
+#include <iostream>
 
 class Label
 {
-
 public:
-
-	Label();
+	Label(SDL_Renderer*);
 	virtual ~Label();
-
 public:
+	virtual int GetWidth() const;
+	virtual int GetHeight() const;
 
-	virtual int GetHeight();
-	virtual int GetWidth();
-	void Create(SDL_Renderer*, string &, TTF_Font*);
-	virtual void Render(SDL_Renderer*, int, int);
-	void Destroy();
+	virtual void SetX(int);
+	virtual void SetY(int);
 
-private:
+	virtual void RenderForce();
+	virtual void RenderSmart();
 
-private:
+	void SetText(std::string, TTF_Font*, SDL_Color);
+protected:
+	SDL_Renderer* m_Renderer;
 
-	int m_iHeight;
-	int m_iWidth;
-	SDL_Texture* m_texture;
+	SDL_Rect m_TextRect;
 
+	SDL_Texture* m_TextureText;
+
+	bool m_bHasChanged;
 };
 
 #endif /* LABEL_H_ */

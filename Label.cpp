@@ -1,55 +1,104 @@
-/*
- * Label.cpp
- *
- *  Created on: Jul 10, 2017
- *      Author: Ivan
- */
-
 #include "Label.h"
 
-Label::Label()
+Label::Label(SDL_Renderer* newRenderer)
 {
-	m_texture = NULL;
-	m_iHeight = 0;
-	m_iWidth = 0;
+	m_Renderer = newRenderer;
+
+	m_TextureText = NULL;
+
+	m_TextRect = {0, 0, 0, 0};
+
+	m_bHasChanged = false;
 }
 
 Label::~Label()
 {
-	Destroy();
+	SDL_DestroyTexture(m_TextureText);
+	m_TextureText = NULL;
 }
 
-int Label::GetHeight()
+int Label::GetWidth() const
 {
-	return m_iHeight;
+	return m_TextRect.w;
 }
 
-int Label::GetWidth()
+int Label::GetHeight() const
 {
-	return m_iWidth;
+	return m_TextRect.h;
 }
 
-void Label::Create(SDL_Renderer* renderer, string& text, TTF_Font* font)
+void Label::SetX(int newX)
 {
-	// TODO code here
+	m_TextRect.x = newX;
 }
 
-void Label::Render(SDL_Renderer* renderer, int x, int y)
+void Label::SetY(int newY)
 {
-	SDL_Rect rect;
-	rect.x = x;
-	rect.y = y;
-	rect.w = m_iWidth;
-	rect.h = m_iHeight;
-
-	SDL_SetRenderDrawColor( renderer, 0xFF, 0xFF, 0xFF, 0xFF );
-	SDL_RenderCopy(renderer, m_texture, NULL, &rect);
+	m_TextRect.y = newY;
 }
 
-void Label::Destroy()
+void Label::RenderForce()
 {
-	SDL_DestroyTexture(m_texture);
-	m_texture = NULL;
-	m_iWidth = 0;
-	m_iHeight = 0;
+	if(m_TextureText == NULL)
+		return;
+
+	SDL_RenderCopy(m_Renderer, m_TextureText, NULL, &m_TextRect);
 }
+
+void Label::RenderSmart()
+{
+	if(m_bHasChanged)
+	{
+		m_bHasChanged = false;
+		RenderForce();
+	}
+}
+
+void Label::SetText(std::string newText, TTF_Font* font, SDL_Color color)
+{
+	SDL_DestroyTexture(m_TextureText);
+
+	m_bHasChanged = true;
+
+	SDL_Surface* tempSurface = TTF_RenderText_Solid( font, newText.c_str(), color );
+
+	m_TextRect.w = tempSurface->w;
+	m_TextRect.h = tempSurface->h;
+
+	m_TextureText = SDL_CreateTextureFromSurface( m_Renderer, tempSurface );
+
+	if( m_TextureText == NULL )
+	{
+		std::cerr << "Unable to create texture from rendered text \"" << newText << ""\"! SDL Error: " <<  SDL_GetError() << "\n";
+
+		m_TextRect.w = 0;
+		m_TextRect.h = 0;
+	}
+
+	SDL_FreeSurface( tempSurface );
+	tempSurface = NULL;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
