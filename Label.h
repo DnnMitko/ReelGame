@@ -22,7 +22,7 @@ public:
 	virtual void RenderForce();
 	virtual void RenderSmart();
 
-	void SetText(std::string, TTF_Font*, SDL_Color);
+	virtual void SetText(std::string, TTF_Font*, SDL_Color);
 protected:
 	SDL_Renderer* m_Renderer;
 
