@@ -6,6 +6,13 @@ GameManager::GameManager()
 	m_Renderer = NULL;
 	if(!Init())
 		m_bQuit = true;
+	else
+	{
+		m_bQuit = false;
+
+		m_Intro = new Intro(m_Renderer);
+		m_Intro->Render(false);
+	}
 }
 
 GameManager::~GameManager()
@@ -20,6 +27,8 @@ void GameManager::EventHandler(SDL_Event& e)
 		m_bQuit = true;
 		// TODO Recovery
 	}
+	else
+		m_Intro->EventHandler(e);
 	//else TODO
 }
 
@@ -31,6 +40,7 @@ bool GameManager::GetQuit() const
 void GameManager::Render()
 {
 	//TODO
+	m_Intro->Render();
 
 	SDL_RenderPresent(m_Renderer);
 }
@@ -93,6 +103,7 @@ bool GameManager::Init()
 void GameManager::Close()
 {
 	//TODO Destroy Game, BonusGame, Intro, Outro objects
+	delete m_Intro;
 
 	SDL_DestroyRenderer(m_Renderer);
 	SDL_DestroyWindow(m_Window);
