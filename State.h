@@ -20,7 +20,7 @@ public:
 	virtual void EventHandler(SDL_Event&) = 0;
 
 	virtual void Destroy() = 0;
-private:
+protected:
 	bool m_bSwitch;
 	SDL_Renderer* m_Renderer;
 };

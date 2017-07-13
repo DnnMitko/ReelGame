@@ -32,3 +32,8 @@ void Outro::RenderForce()
 
 	//TODO credit.renderForce-tova,shte narisuva kredita na dadena poziciq
 }
+
+void Outro::Destroy()
+{
+
+}

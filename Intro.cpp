@@ -2,6 +2,8 @@
 
 Intro::Intro(SDL_Renderer* newRenderer) : State()
 {
+	m_uiCredit = 0;
+
 	SetRenderer(newRenderer);
 
 	m_TextureBackground = NULL;
@@ -9,7 +11,33 @@ Intro::Intro(SDL_Renderer* newRenderer) : State()
 	if( m_TextureBackground == NULL )
 		std::cerr << "Failed to load TextureBackground! SDL Error: " << IMG_GetError() << std::endl;
 
-	//TODO make buttons make text
+	m_StartGame = new Button(m_Renderer);
+	m_ResumeGame = new Button(m_Renderer);
+	m_InsertCredit = new Button(m_Renderer);
+	m_Info = new Button(m_Renderer);
+
+	m_Font = TTF_OpenFont(g_LabelFont,g_IntroFontSize);
+
+	SDL_Color BlackColor = {0x00, 0x00, 0x00, 0xFF};
+	m_StartGame->SetText(g_ButtonNewGame, m_Font, BlackColor);
+	m_ResumeGame->SetText(g_ButtonResumeGame, m_Font, BlackColor);
+	m_InsertCredit->SetText(g_ButtonInsertCredit, m_Font, BlackColor);
+	m_Info->SetText(g_ButtonInfo, m_Font, BlackColor);
+
+	m_StartGame->SetFieldSize(g_IntroButtonHeight, g_IntroButtonWidth);
+	m_ResumeGame->SetFieldSize(g_IntroButtonHeight, g_IntroButtonWidth);
+	m_InsertCredit->SetFieldSize(g_IntroButtonHeight, g_IntroButtonWidth);
+	m_Info->SetFieldSize(g_IntroButtonHeight, g_IntroButtonWidth);
+
+	int x = (g_ScreenWidth - g_IntroButtonWidth) / 2;
+
+	m_StartGame->SetX(x);
+	m_ResumeGame->SetX(x);
+	m_InsertCredit->SetX(x);
+	m_Info->SetX(x);
+
+	m_StartGame->SetY(300);
+
 }
 
 Intro::~Intro()
@@ -26,10 +54,13 @@ void Intro::RenderForce()
 {
 	SDL_RenderCopy(m_Renderer, m_TextureBackground, NULL, NULL);
 
+	m_StartGame->RenderForce();
+	// m_ResumeGame->RenderForce();
+
 	//TODO button1.RenderForce button2.RenderForce() ....  text.renderforse()
 }
 
-void Intro::EventHandle(SDL_Event& e)
+void Intro::EventHandler(SDL_Event& e)
 {
 	int x;
 	int y;
