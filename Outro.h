@@ -2,34 +2,35 @@
 #define OUTRO_H_
 
 #include <SDL2/SDL.h>
-#include <SDL2/SDL_image.h>
 #include <SDL2/SDL_ttf.h>
-#include <iostream>
-#include <ctime>
+#include <string>
+#include <sstream>
 #include "State.h"
-
+#include "Button.h"
+#include "Constants.h"
 
 class Outro : public State
 {
 public:
+	Outro();
 	Outro(SDL_Renderer*);
-	~Outro();
+	virtual ~Outro();
 public:
-	void RenderSmart(); // umen render(prerisuva samo promenenoto)
-	void RenderForce(); //vsichko,koeto ima v klasa se risuva
-
 	void EventHandler(SDL_Event&);
-
-	void Destroy();
-
-	void CashOut(unsigned int);
+	void Render(bool = true);
+	void SetCredits(unsigned int);
 private:
-	SDL_Texture* m_TextureBackground; //suhranqvame kartinkata,koqto sum izbral
-	SDL_Texture* m_TextureWin;// winovete big,super,mega
+	SDL_Texture* m_TextureBackground;
+	Label* m_LabelWinSign;
+	TextField* m_TextFieldMoney;
 
-	//TODO textfield
+	TTF_Font* m_FontMoney;
+	TTF_Font* m_FontWin;
 
-	SDL_Rect m_PositionBackground;
+	float m_fCashOutAmmount;
+
+	int m_iX;
+	int m_iY;
 };
 
 #endif /* OUTRO_H_ */
