@@ -5,7 +5,7 @@
 #include <cstdio>
 #include "Intro.h"
 #include "Outro.h"
-//#include "Game.h"
+#include "Game.h"
 #include "Win.h"
 
 SDL_Window* m_Window;
@@ -19,7 +19,10 @@ int main(int argc, char* args[])
 	if(!Init())
 		return 1;
 
-	Win* test = new Win(m_Renderer);
+	//Intro* test = new Intro(m_Renderer);
+	Game* test = new Game(m_Renderer);
+	//Win* test = new Win(m_Renderer);
+	//Outro* test = new Outro(m_Renderer);
 
 	SDL_Event e;
 	bool quit = false;
