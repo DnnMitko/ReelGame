@@ -31,6 +31,17 @@ const int g_OutroMoneyHeight = 100;
 const int g_OutroMoneyOffsetY = 115;
 const char g_OutroBackground[] = "images/OutroBackground.png";
 
+const int g_WinWidth = 640;
+const int g_WinHeight = 427;
+const int g_WinFontSizeCredits = 70;
+const int g_FontSizeWin = 150;
+const int g_WinSignLimits[2] = {100, 1000};
+const int g_WinOffsetY = -80;
+const int g_WinCreditsWidth = 550;
+const int g_WinCreditHeight = 100;
+const int g_WinCreditOffsetY = 115;
+const char g_WinBackground[] = "images/WinBackground.png";
+
 const char g_ButtonSprite[] = "images/ButtonSprite.png";
 const int g_ButtonSpriteWidth = 296;
 const int g_ButtonSpriteHeight = 174;
