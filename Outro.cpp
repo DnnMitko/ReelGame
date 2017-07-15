@@ -93,11 +93,11 @@ void Outro::SetCredits(unsigned int credits)
 	std::string strWin;
 
 	if(m_fCashOutAmmount < g_OutroWinSignLimits[0])
-		strWin = "Win";
+		strWin = g_OutroWinSign[0];
 	else if(m_fCashOutAmmount < g_OutroWinSignLimits[1])
-		strWin = "Super Win";
+		strWin = g_OutroWinSign[1];
 	else
-		strWin = "Mega Win";
+		strWin = g_OutroWinSign[2];
 
 	m_LabelWinSign->SetText(strWin, m_FontWin, SDL_Color{0xF0, 0xF0, 0x00, 0xFF});
 	m_LabelWinSign->SetX(m_iX + (g_OutroWidth - m_LabelWinSign->GetWidth()) / 2);

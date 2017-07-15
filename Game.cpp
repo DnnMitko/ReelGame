@@ -118,7 +118,7 @@ Game::Game(SDL_Renderer* newRenderer) : State(newRenderer)
 
 Game::~Game()
 {
-	delete m_TextureBackground;
+	SDL_DestroyTexture(m_TextureBackground);
 
 	delete m_ButtonPayTable;
 
@@ -145,8 +145,8 @@ Game::~Game()
 
 	delete m_ButtonPlay;
 
-	delete m_FontBig;
-	delete m_FontSmall;
+	TTF_CloseFont(m_FontBig);
+	TTF_CloseFont(m_FontSmall);
 
 	m_TextureBackground = NULL;
 

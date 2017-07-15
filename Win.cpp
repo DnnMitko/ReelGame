@@ -21,15 +21,18 @@ Win::Win(SDL_Renderer* newRenderer) : State(newRenderer)
 	m_iX = (g_ScreenWidth - g_WinWidth) / 2;
 	m_iY = (g_ScreenHeight - g_WinHeight) / 2;
 
+	m_FontCredits = TTF_OpenFont(g_LabelFont, g_WinFontSizeCredits);
+	m_FontWin = TTF_OpenFont(g_WinFont, g_FontSizeWin);
+
 	m_LabelWinSign = new Label(m_Renderer);
+	m_LabelWinSign->SetText("You won:", m_FontWin, SDL_Color{0xF0, 0xF0, 0x00, 0xFF});
+	m_LabelWinSign->SetX(m_iX + (g_WinWidth - m_LabelWinSign->GetWidth()) / 2);
+	m_LabelWinSign->SetY(m_iY + (g_WinHeight - m_LabelWinSign->GetHeight()) / 2 + g_WinOffsetY);
 
 	m_TextFieldCredits = new TextField(m_Renderer);
 	m_TextFieldCredits->SetFieldSize(g_WinCreditHeight, g_WinCreditsWidth);
 	m_TextFieldCredits->SetX(m_iX + (g_WinWidth - m_TextFieldCredits->GetWidth()) / 2);
 	m_TextFieldCredits->SetY(m_iY + (g_WinHeight - m_TextFieldCredits->GetHeight()) / 2 + g_WinCreditOffsetY);
-
-	m_FontCredits = TTF_OpenFont(g_LabelFont, g_WinFontSizeCredits);
-	m_FontWin = TTF_OpenFont(g_WinFont, g_FontSizeWin);
 
 	m_uiCredits = 0;
 }
@@ -85,10 +88,4 @@ void Win::SetCredits(unsigned int credits)
 	strCredits = ss.str();
 
 	m_TextFieldCredits->SetText(strCredits, m_FontCredits, SDL_Color{0xFF, 0xFF, 0xFF, 0xFF});
-
-	std::string strWin;
-
-	m_LabelWinSign->SetText(strWin, m_FontWin, SDL_Color{0xF0, 0xF0, 0x00, 0xFF});
-	m_LabelWinSign->SetX(m_iX + (g_WinWidth - m_LabelWinSign->GetWidth()) / 2);
-	m_LabelWinSign->SetY(m_iY + (g_WinHeight - m_LabelWinSign->GetHeight()) / 2 + g_WinOffsetY);
 }
