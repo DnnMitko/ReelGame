@@ -17,6 +17,11 @@ public:
 private:
 	unsigned int m_uiCurrentCredits;
 
+	SDL_Texture* m_TextureBackground;
+
+	TTF_Font* m_FontBig;
+	TTF_Font* m_FontSmall;
+
 	Button* m_ButtonPayTable;
 
 	Label* m_LabelBet;
@@ -29,7 +34,7 @@ private:
 	Button* m_ButtonLinesMinus;
 	Button* m_ButtonLinesPlus;
 
-	Button* m_ButtonMaxLines;
+	Button* m_ButtonMaxBet;
 
 	Label* m_LabelCurCredits;
 	TextField* m_TextFieldCurCredits;
