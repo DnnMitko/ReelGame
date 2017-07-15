@@ -98,11 +98,85 @@ Game::Game(SDL_Renderer* newRenderer) : State(newRenderer)
 	m_ButtonLinesPlus->SetFieldSize(30, 60);
 	m_ButtonLinesPlus->SetText("+", m_FontSmall, blackColor);
 
+	m_ButtonMaxBet = new Button(m_Renderer);
+	m_ButtonMaxBet->SetX(500);
+	m_ButtonMaxBet->SetY(g_ScreenHeight - 60);
+	m_ButtonMaxBet->SetFieldSize(60, 150);
+	m_ButtonMaxBet->SetText("Max Bet", m_FontBig, blackColor);
+
+	m_LabelCurCredits = new Label(m_Renderer);
+	m_LabelCurCredits->SetText("Credits", m_FontSmall, blackColor);
+	m_LabelCurCredits->SetX(670 + (120 - m_LabelCurCredits->GetWidth()) / 2);
+	m_LabelCurCredits->SetY(g_ScreenHeight - 30 - m_LabelCurCredits->GetHeight());
+
+	m_TextFieldCurCredits = new TextField(m_Renderer);
+	m_TextFieldCurCredits->SetX(670);
+	m_TextFieldCurCredits->SetY(g_ScreenHeight - 30);
+	m_TextFieldCurCredits->SetFieldSize(30, 120);
+	m_TextFieldCurCredits->SetText("0", m_FontSmall, {255,255,255,255});
 }
 
 Game::~Game()
 {
-	// TODO Auto-generated destructor stub
+	delete m_TextureBackground;
+
+	delete m_ButtonPayTable;
+
+	delete m_LabelBet;
+	delete m_TextFieldBet;
+	delete m_ButtonBetMinus;
+	delete m_ButtonBetPlus;
+
+	delete m_LabelLines;
+	delete m_TextFieldLines;
+	delete m_ButtonLinesMinus;
+	delete m_ButtonLinesPlus;
+
+	delete m_ButtonMaxBet;
+
+	delete m_LabelCurCredits;
+	delete m_TextFieldCurCredits;
+
+	delete m_LabelTotalBet;
+	delete m_TextFieldTotalBet;
+
+	delete m_LabelPaid;
+	delete m_TextFieldPaid;
+
+	delete m_ButtonPlay;
+
+	delete m_FontBig;
+	delete m_FontSmall;
+
+	m_TextureBackground = NULL;
+
+	m_ButtonPayTable = NULL;
+
+	m_LabelBet = NULL;
+	m_TextFieldBet = NULL;
+	m_ButtonBetMinus = NULL;
+	m_ButtonBetPlus = NULL;
+
+	m_LabelLines = NULL;
+	m_TextFieldLines = NULL;
+	m_ButtonLinesMinus = NULL;
+	m_ButtonLinesPlus = NULL;
+
+	m_ButtonMaxBet = NULL;
+
+	m_LabelCurCredits = NULL;
+	m_TextFieldCurCredits = NULL;
+
+	m_LabelTotalBet = NULL;
+	m_TextFieldTotalBet = NULL;
+
+	m_LabelPaid = NULL;
+	m_TextFieldPaid = NULL;
+
+	m_ButtonPlay = NULL;
+
+	m_FontBig = NULL;
+	m_FontSmall = NULL;
 }
 
 void Game::Render(bool UpdateOnly)
@@ -123,6 +197,11 @@ void Game::Render(bool UpdateOnly)
 	m_TextFieldLines->Render(UpdateOnly);
 	m_ButtonLinesMinus->Render(UpdateOnly);
 	m_ButtonLinesPlus->Render(UpdateOnly);
+
+	m_ButtonMaxBet->Render(UpdateOnly);
+
+	m_LabelCurCredits->Render(UpdateOnly);
+	m_TextFieldCurCredits->Render(UpdateOnly);
 }
 
 void Game::EventHandler(SDL_Event& e)
