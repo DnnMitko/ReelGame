@@ -3,7 +3,9 @@
 #include <SDL2/SDL_ttf.h>
 #include <SDL2/SDL_mixer.h>
 #include <cstdio>
+#include "Intro.h"
 #include "Outro.h"
+//#include "Game.h"
 #include "Win.h"
 
 SDL_Window* m_Window;
@@ -17,7 +19,7 @@ int main(int argc, char* args[])
 	if(!Init())
 		return 1;
 
-	Outro* test = new Outro(m_Renderer);
+	Win* test = new Win(m_Renderer);
 
 	SDL_Event e;
 	bool quit = false;
