@@ -16,7 +16,6 @@ public:
 	~Intro();
 public:
 	void Render(bool = true);
-
 	void EventHandler(SDL_Event&);
 private:
 	void ReleaseAllButton();

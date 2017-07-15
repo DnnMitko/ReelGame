@@ -29,6 +29,8 @@ Intro::Intro(SDL_Renderer* newRenderer) : State(newRenderer)
 	m_Info = new Button(m_Renderer);
 
 	m_Font = TTF_OpenFont(g_LabelFont, g_IntroFontSize);
+	if( m_Font == NULL )
+		std::cerr << "Failed to load Label Font! SDL Error: " << IMG_GetError() << std::endl;
 
 	SDL_Color BlackColor = {0x00, 0x00, 0x00, 0xFF};
 	m_StartGame->SetText(g_ButtonNewGame, m_Font, BlackColor);
@@ -59,6 +61,9 @@ Intro::~Intro()
 {
 	SDL_DestroyTexture(m_TextureBackground);
 	m_TextureBackground = NULL;
+
+	TTF_CloseFont(m_Font);
+	m_Font = NULL;
 
 	delete m_StartGame;
 	delete m_ResumeGame;
