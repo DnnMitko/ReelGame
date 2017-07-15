@@ -31,7 +31,12 @@ Outro::Outro(SDL_Renderer* newRenderer) : State(newRenderer)
 	m_TextFieldMoney->SetY(m_iY + (g_OutroHeight - m_TextFieldMoney->GetHeight()) / 2 + g_OutroMoneyOffsetY);
 
 	m_FontMoney = TTF_OpenFont(g_LabelFont, g_OutroFontSizeMoney);
+	if(m_FontMoney == NULL)
+			std::cerr << "Failed to load Label Font! SDL Error: " << TTF_GetError() << std::endl;
+
 	m_FontWin = TTF_OpenFont(g_WinFont, g_OutroFontSizeWin);
+	if(m_FontWin == NULL)
+			std::cerr << "Failed to load Win Font! SDL Error: " << TTF_GetError() << std::endl;
 
 	m_fCashOutAmmount = 0;
 }
@@ -78,9 +83,9 @@ void Outro::Render(bool UpdateOnly)
 	m_TextFieldMoney->Render(UpdateOnly);
 }
 
-void Outro::SetCredits(unsigned int credits)
+void Outro::SetCredits(unsigned int newCredits)
 {
-	m_fCashOutAmmount = credits * g_Denominator;
+	m_fCashOutAmmount = newCredits * g_Denominator;
 
 	std::string strMoney;
 	std::stringstream ss;

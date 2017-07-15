@@ -7,7 +7,9 @@ Win::Win() : State()
 	m_TextFieldCredits = NULL;
 	m_FontCredits = NULL;
 	m_FontWin = NULL;
+
 	m_uiCredits = 0;
+
 	m_iX = 0;
 	m_iY = 0;
 }
@@ -22,12 +24,17 @@ Win::Win(SDL_Renderer* newRenderer) : State(newRenderer)
 	m_iY = (g_ScreenHeight - g_WinHeight) / 2;
 
 	m_FontCredits = TTF_OpenFont(g_LabelFont, g_WinFontSizeCredits);
-	m_FontWin = TTF_OpenFont(g_WinFont, g_FontSizeWin);
+	if(m_FontCredits == NULL)
+			std::cerr << "Failed to load Label Font! SDL Error: " << TTF_GetError() << std::endl;
+
+	m_FontWin = TTF_OpenFont(g_WinFont, g_WinFontSizeSign);
+	if(m_FontCredits == NULL)
+			std::cerr << "Failed to load Win Font! SDL Error: " << TTF_GetError() << std::endl;
 
 	m_LabelWinSign = new Label(m_Renderer);
-	m_LabelWinSign->SetText("You won:", m_FontWin, SDL_Color{0xF0, 0xF0, 0x00, 0xFF});
+	m_LabelWinSign->SetText(g_WinSign, m_FontWin, SDL_Color{0xF0, 0xF0, 0x00, 0xFF});
 	m_LabelWinSign->SetX(m_iX + (g_WinWidth - m_LabelWinSign->GetWidth()) / 2);
-	m_LabelWinSign->SetY(m_iY + (g_WinHeight - m_LabelWinSign->GetHeight()) / 2 + g_WinOffsetY);
+	m_LabelWinSign->SetY(m_iY + (g_WinHeight - m_LabelWinSign->GetHeight()) / 2 + g_WinSignOffsetY);
 
 	m_TextFieldCredits = new TextField(m_Renderer);
 	m_TextFieldCredits->SetFieldSize(g_WinCreditHeight, g_WinCreditsWidth);
@@ -79,11 +86,12 @@ void Win::Render(bool UpdateOnly)
 	m_TextFieldCredits->Render(UpdateOnly);
 }
 
-void Win::SetCredits(unsigned int credits)
+void Win::SetCredits(unsigned int newCredits)
 {
 	std::string strCredits;
 	std::stringstream ss;
 
+	m_uiCredits = newCredits;
 	ss <<  m_uiCredits;
 	strCredits = ss.str();
 
