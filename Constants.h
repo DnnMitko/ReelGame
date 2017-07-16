@@ -1,6 +1,6 @@
 #ifndef CONSTANTS_H_
 #define CONSTANTS_H_
-
+#include <string>
 
 
 const int g_ScreenWidth = 1280;
@@ -19,19 +19,6 @@ const int g_IntroButtonHeight = 70;
 const int g_IntroFontSize = 40;
 const int g_IntroFirstButtonY = 300;
 
-const int g_GameMenuHeight = g_ScreenHeight - 80;
-const int g_GameOffsetX = 50;
-const int g_GameMarginX = 20;
-const int g_GamePayTableWidth = 180;
-const int g_GamePayTableHeight = 60;
-const int g_GameMaxBetWidth = 150;
-const int g_GameMaxBetHeight = 60;
-const int g_GamePlayHeight = 60;
-const int g_GamePlayWidth = 120;
-const int g_GameFieldWidth = 120;
-const int g_GameFieldHeight = 30;
-
-
 const float g_Denominator = 0.01;
 const int g_OutroWidth = 700;
 const int g_OutroHeight = 360;
@@ -48,13 +35,22 @@ const char g_OutroBackground[] = "images/OutroBackground.png";
 const int g_WinWidth = 640;
 const int g_WinHeight = 427;
 const int g_WinFontSizeCredits = 70;
-const int g_WinFontSizeSign = 150;
-const int g_WinSignOffsetY = -80;
-const char g_WinSign[] = "You won:";
+const int g_FontSizeWin = 150;
+const int g_WinOffsetY = -80;
 const int g_WinCreditsWidth = 550;
 const int g_WinCreditHeight = 100;
 const int g_WinCreditOffsetY = 115;
 const char g_WinBackground[] = "images/WinBackground.png";
+
+const int g_BonusWidth = 680;
+const int g_BonusHeight = 398;
+const int g_BonusFontSizeCredits = 55;
+const int g_BonusFontSizeWin = 80;
+const int g_BonusOffsetY = -120;
+const int g_BonusCreditsWidth = 550;
+const int g_BonusCreditHeight = 80;
+const int g_BonusCreditOffsetY = 115;
+const char g_BonusGameBackground[] = "images/BonusGameBackground.png";
 
 const char g_ButtonSprite[] = "images/ButtonSprite.png";
 const int g_ButtonSpriteWidth = 296;
