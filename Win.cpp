@@ -88,6 +88,7 @@ void Win::Render(bool UpdateOnly)
 
 void Win::SetCredits(unsigned int newCredits)
 {
+	m_uiCredits = credits;
 	std::string strCredits;
 	std::stringstream ss;
 
