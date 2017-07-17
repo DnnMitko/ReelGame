@@ -7,8 +7,8 @@
 const int g_ScreenWidth = 1280;
 const int g_ScreenHeight = 720;
 
-const char g_LabelFont[] = "fonts/Roboto-Medium.ttf";
-const char g_WinFont[] = "fonts/Digitalt.ttf";
+const char g_FontLabel[] = "fonts/Roboto-Medium.ttf";
+const char g_FontTitle[] = "fonts/Digitalt.ttf";
 
 const char g_IntroButtonNewGame[] = "Start new game";
 const char g_IntroButtonResumeGame[] = "Resume game";
@@ -52,8 +52,8 @@ const int g_GameBetIncriment = 25;
 const int g_GameMaxBetAmmount = 500;
 const int g_GameMaxLines = 15;
 
-const int g_BonusWidth = 680;
-const int g_BonusHeight = 398;
+const int g_BonusWidth = 598;
+const int g_BonusHeight = 334;
 const int g_BonusFontSizeCredits = 55;
 const int g_BonusFontSizeWin = 80;
 const int g_BonusOffsetY = -120;

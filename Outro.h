@@ -27,7 +27,7 @@ private:
 	TextField* m_TextFieldMoney;
 
 	TTF_Font* m_FontMoney;
-	TTF_Font* m_FontWin;
+	TTF_Font* m_FontTitle;
 
 	float m_fCashOutAmmount;
 

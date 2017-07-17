@@ -14,16 +14,16 @@ Win::Win(SDL_Renderer* newRenderer) : State(newRenderer)
 	m_iX = (g_ScreenWidth - g_WinWidth) / 2;
 	m_iY = (g_ScreenHeight - g_WinHeight) / 2;
 
-	m_FontCredits = TTF_OpenFont(g_LabelFont, g_WinFontSizeCredits);
+	m_FontCredits = TTF_OpenFont(g_FontLabel, g_WinFontSizeCredits);
 	if(m_FontCredits == NULL)
 			std::cerr << "Failed to load Label Font! SDL Error: " << TTF_GetError() << std::endl;
 
-	m_FontWin = TTF_OpenFont(g_WinFont, g_WinFontSizeSign);
+	m_FontTitle = TTF_OpenFont(g_FontTitle, g_WinFontSizeSign);
 	if(m_FontCredits == NULL)
 			std::cerr << "Failed to load Win Font! SDL Error: " << TTF_GetError() << std::endl;
 
 	m_LabelWinSign = new Label(m_Renderer);
-	m_LabelWinSign->SetText(g_WinSign, m_FontWin, SDL_Color{0xF0, 0xF0, 0x00, 0xFF});
+	m_LabelWinSign->SetText(g_WinSign, m_FontTitle, SDL_Color{0xF0, 0xF0, 0x00, 0xFF});
 	m_LabelWinSign->SetX(m_iX + (g_WinWidth - m_LabelWinSign->GetWidth()) / 2);
 	m_LabelWinSign->SetY(m_iY + (g_WinHeight - m_LabelWinSign->GetHeight()) / 2 + g_WinSignOffsetY);
 
@@ -45,7 +45,7 @@ Win::~Win()
 	delete m_TextFieldCredits;
 
 	TTF_CloseFont(m_FontCredits);
-	TTF_CloseFont(m_FontWin);
+	TTF_CloseFont(m_FontTitle);
 
 	NullAll();
 }
@@ -57,7 +57,7 @@ void Win::EventHandler(SDL_Event& e)
 
 void Win::Render(bool UpdateOnly)
 {
-	if(!m_Renderer || !m_TextureBackground || !m_FontCredits || !m_FontWin)
+	if(!m_Renderer || !m_TextureBackground || !m_FontCredits || !m_FontTitle)
 		return;
 
 	if(!UpdateOnly)
@@ -103,7 +103,7 @@ void Win::NullAll()
 	m_LabelWinSign = NULL;
 	m_TextFieldCredits = NULL;
 	m_FontCredits = NULL;
-	m_FontWin = NULL;
+	m_FontTitle = NULL;
 
 	m_uiCredits = 0;
 

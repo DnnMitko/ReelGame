@@ -27,7 +27,7 @@ private:
 	TextField* m_TextFieldCredits;
 
 	TTF_Font* m_FontCredits;
-	TTF_Font* m_FontWin;
+	TTF_Font* m_FontTitle;
 
 	unsigned int m_uiCredits;
 

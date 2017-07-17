@@ -2,14 +2,7 @@
 
 BonusGame::BonusGame() : State()
 {
-	m_TextureBackground = NULL;
-	m_LabelWinSign = NULL;
-	m_TextFieldCredits = NULL;
-	m_FontCredits = NULL;
-	m_FontWin = NULL;
-	m_uiCredits = 0;
-	m_iX = 0;
-	m_iY = 0;
+	NullAll();
 }
 
 BonusGame::BonusGame(SDL_Renderer* newRenderer) : State(newRenderer)
@@ -21,18 +14,24 @@ BonusGame::BonusGame(SDL_Renderer* newRenderer) : State(newRenderer)
 	m_iX = (g_ScreenWidth - g_BonusWidth) / 2;
 	m_iY = (g_ScreenHeight - g_BonusHeight) / 2;
 
-	m_FontCredits = TTF_OpenFont(g_LabelFont, g_BonusFontSizeCredits);
-	m_FontWin = TTF_OpenFont(g_WinFont, g_BonusFontSizeWin);
+	m_FontCredits = TTF_OpenFont(g_FontLabel, g_BonusFontSizeCredits);
+	if(m_FontCredits == NULL)
+		std::cerr << "Failed to load Label Font! SDL Error: " << TTF_GetError() << std::endl;
 
-	m_LabelWinSign = new Label(m_Renderer);
-	m_LabelWinSign->SetText("Bonus game", m_FontWin, SDL_Color{0xF0, 0xF0, 0x00, 0xFF});
-	m_LabelWinSign->SetX(m_iX + (g_BonusWidth - m_LabelWinSign->GetWidth()) / 2);
-	m_LabelWinSign->SetY(m_iY + (g_BonusHeight - m_LabelWinSign->GetHeight()) / 2 + g_BonusOffsetY);
+	m_FontTitle = TTF_OpenFont(g_FontTitle, g_BonusFontSizeWin);
+	if(m_FontTitle == NULL)
+		std::cerr << "Failed to load Title Font! SDL Error: " << TTF_GetError() << std::endl;
+
+	m_LabelTitleSign = new Label(m_Renderer);
+	m_LabelTitleSign->SetText("Bonus game", m_FontTitle, SDL_Color{0xF0, 0xF0, 0x00, 0xFF});
+	m_LabelTitleSign->SetX(m_iX + (g_BonusWidth - m_LabelTitleSign->GetWidth()) / 2);
+	m_LabelTitleSign->SetY(m_iY + (g_BonusHeight - m_LabelTitleSign->GetHeight()) / 2 + g_BonusOffsetY);
 
 	m_TextFieldCredits = new TextField(m_Renderer);
 	m_TextFieldCredits->SetFieldSize(g_BonusCreditHeight, g_BonusCreditsWidth);
 	m_TextFieldCredits->SetX(m_iX + (g_BonusWidth - m_TextFieldCredits->GetWidth()) / 2);
 	m_TextFieldCredits->SetY(m_iY + (g_BonusHeight - m_TextFieldCredits->GetHeight()) / 2 + g_BonusCreditOffsetY);
+	m_TextFieldCredits->SetText("Choose your treasure!", m_FontCredits, SDL_Color{0xFF, 0xFF, 0xFF, 0xFF});
 
 	m_uiCredits = 0;
 }
@@ -40,15 +39,14 @@ BonusGame::BonusGame(SDL_Renderer* newRenderer) : State(newRenderer)
 BonusGame::~BonusGame()
 {
 	SDL_DestroyTexture(m_TextureBackground);
-	delete m_LabelWinSign;
+
+	delete m_LabelTitleSign;
 	delete m_TextFieldCredits;
+
 	TTF_CloseFont(m_FontCredits);
-	TTF_CloseFont(m_FontWin);
-	m_TextureBackground = NULL;
-	m_LabelWinSign = NULL;
-	m_TextFieldCredits = NULL;
-	m_FontCredits = NULL;
-	m_FontWin = NULL;
+	TTF_CloseFont(m_FontTitle);
+
+	NullAll();
 }
 
 void BonusGame::EventHandler(SDL_Event& e)
@@ -60,7 +58,7 @@ void BonusGame::Render(bool UpdateOnly)
 {
 	if(!UpdateOnly)
 	{
-		if(m_Renderer == NULL || m_TextureBackground == NULL || m_FontCredits == NULL || m_FontWin == NULL)
+		if(m_Renderer == NULL || m_TextureBackground == NULL || m_FontCredits == NULL || m_FontTitle == NULL)
 			return;
 
 		SDL_Rect tempRect;
@@ -70,23 +68,36 @@ void BonusGame::Render(bool UpdateOnly)
 		tempRect.y = m_iY;
 
 		SDL_RenderCopy(m_Renderer, m_TextureBackground, NULL, &tempRect);
-
-		SDL_SetRenderDrawColor(m_Renderer, 0xFF, 0xFF, 0xFF, 0xFF);
-		SDL_RenderDrawRect(m_Renderer, &tempRect);
 	}
 
-	m_LabelWinSign->Render(UpdateOnly);
+	m_LabelTitleSign->Render(UpdateOnly);
 	m_TextFieldCredits->Render(UpdateOnly);
 }
 
 void BonusGame::SetCredits(unsigned int credits)
-{
-	m_uiCredits = credits;
+{//TODO
+	/*m_uiCredits = credits;
 	std::string strCredits;
 	std::stringstream ss;
 
 	ss << "YOU WON: " << m_uiCredits;
 	strCredits = ss.str();
 
-	m_TextFieldCredits->SetText(strCredits, m_FontCredits, SDL_Color{0xFF, 0xFF, 0xFF, 0xFF});
+	m_TextFieldCredits->SetText(strCredits, m_FontCredits, SDL_Color{0xFF, 0xFF, 0xFF, 0xFF});*/
+}
+
+void BonusGame::NullAll()
+{
+	m_TextureBackground = NULL;
+
+	m_LabelTitleSign = NULL;
+	m_TextFieldCredits = NULL;
+
+	m_FontCredits = NULL;
+	m_FontTitle = NULL;
+
+	m_uiCredits = 0;
+
+	m_iX = 0;
+	m_iY = 0;
 }

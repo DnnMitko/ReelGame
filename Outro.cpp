@@ -21,12 +21,12 @@ Outro::Outro(SDL_Renderer* newRenderer) : State(newRenderer)
 	m_TextFieldMoney->SetX(m_iX + (g_OutroWidth - m_TextFieldMoney->GetWidth()) / 2);
 	m_TextFieldMoney->SetY(m_iY + (g_OutroHeight - m_TextFieldMoney->GetHeight()) / 2 + g_OutroMoneyOffsetY);
 
-	m_FontMoney = TTF_OpenFont(g_LabelFont, g_OutroFontSizeMoney);
+	m_FontMoney = TTF_OpenFont(g_FontLabel, g_OutroFontSizeMoney);
 	if(m_FontMoney == NULL)
 			std::cerr << "Failed to load Label Font! SDL Error: " << TTF_GetError() << std::endl;
 
-	m_FontWin = TTF_OpenFont(g_WinFont, g_OutroFontSizeWin);
-	if(m_FontWin == NULL)
+	m_FontTitle = TTF_OpenFont(g_FontTitle, g_OutroFontSizeWin);
+	if(m_FontTitle == NULL)
 			std::cerr << "Failed to load Win Font! SDL Error: " << TTF_GetError() << std::endl;
 
 	m_fCashOutAmmount = 0;
@@ -42,7 +42,7 @@ Outro::~Outro()
 	delete m_TextFieldMoney;
 
 	TTF_CloseFont(m_FontMoney);
-	TTF_CloseFont(m_FontWin);
+	TTF_CloseFont(m_FontTitle);
 
 	NullAll();
 }
@@ -53,7 +53,7 @@ void Outro::EventHandler(SDL_Event& e)
 
 void Outro::Render(bool UpdateOnly)
 {
-	if(!m_Renderer || !m_TextureBackground || !m_FontMoney || !m_FontWin)
+	if(!m_Renderer || !m_TextureBackground || !m_FontMoney || !m_FontTitle)
 		return;
 
 	if(!UpdateOnly)
@@ -102,7 +102,7 @@ void Outro::SetCredits(unsigned int newCredits)
 	else
 		strWin = g_OutroWinSign[2];
 
-	m_LabelWinSign->SetText(strWin, m_FontWin, SDL_Color{0xF0, 0xF0, 0x00, 0xFF});
+	m_LabelWinSign->SetText(strWin, m_FontTitle, SDL_Color{0xF0, 0xF0, 0x00, 0xFF});
 	m_LabelWinSign->SetX(m_iX + (g_OutroWidth - m_LabelWinSign->GetWidth()) / 2);
 	m_LabelWinSign->SetY(m_iY + (g_OutroHeight - m_LabelWinSign->GetHeight()) / 2 + g_OutroWinOffsetY);
 }
@@ -114,7 +114,7 @@ void Outro::NullAll()
 	m_TextFieldMoney = NULL;
 
 	m_FontMoney = NULL;
-	m_FontWin = NULL;
+	m_FontTitle = NULL;
 
 	m_fCashOutAmmount = 0;
 

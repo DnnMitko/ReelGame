@@ -14,7 +14,7 @@ Intro::Intro(SDL_Renderer* newRenderer) : State(newRenderer)
 	if( m_TextureBackground == NULL )
 		std::cerr << "Failed to load TextureBackground! SDL Error: " << IMG_GetError() << std::endl;
 
-	m_Font = TTF_OpenFont(g_LabelFont, g_IntroFontSize);
+	m_Font = TTF_OpenFont(g_FontLabel, g_IntroFontSize);
 	if( m_Font == NULL )
 		std::cerr << "Failed to load Label Font! SDL Error: " << IMG_GetError() << std::endl;
 
