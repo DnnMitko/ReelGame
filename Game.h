@@ -1,6 +1,8 @@
 #ifndef GAME_H_
 #define GAME_H_
 
+#include <string>
+#include <sstream>
 #include "State.h"
 #include "Button.h"
 
@@ -14,8 +16,33 @@ public:
 	void Render(bool = true);
 	void EventHandler(SDL_Event&);
 	void SetCredits(unsigned int);
+	unsigned int GetCredits() const;
+	unsigned int GetTotalBet() const;
 private:
-	unsigned int m_uiCurrentCredits;
+	void NullAll();
+
+	void InitPayTable(int);
+	void InitBet(int);
+	void InitLines(int);
+	void InitMaxBet(int);
+	void InitCurCredits(int);
+	void InitTotalBet(int);
+	void InitPaid(int);
+	void InitPlay(int);
+
+	void UpdateBet();
+	void UpdateLines();
+	void UpdateCurCredits();
+	void UpdateTotalBet();
+	void UpdatePaid();
+
+	void ReleaseAll();
+private:
+	unsigned int m_uiCurCredits;
+	unsigned int m_uiBet;
+	unsigned int m_uiLines;
+	unsigned int m_uiTotalBet;
+	unsigned int m_uiPaid;
 
 	SDL_Texture* m_TextureBackground;
 

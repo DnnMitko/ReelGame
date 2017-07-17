@@ -21,8 +21,12 @@ const int g_IntroFontSize = 40;
 const int g_IntroFirstButtonY = 300;
 
 const int g_GameMenuHeight = g_ScreenHeight - 80;
+const char g_GameBackground[] = "images/GameBackground.png";
 const int g_GameOffsetX = 50;
 const int g_GameMarginX = 20;
+const char g_GameFont[] = "fonts/Roboto-Medium.ttf";
+const int g_GameFontSizeBig = 30;
+const int g_GameFontSizeSmall = 20;
 const int g_GamePayTableWidth = 180;
 const int g_GamePayTableHeight = 60;
 const int g_GameMaxBetWidth = 150;
@@ -31,6 +35,9 @@ const int g_GamePlayHeight = 60;
 const int g_GamePlayWidth = 120;
 const int g_GameFieldWidth = 120;
 const int g_GameFieldHeight = 30;
+const int g_GameBetIncriment = 25;
+const int g_GameMaxBetAmmount = 500;
+const int g_GameMaxLines = 15;
 
 const int g_BonusWidth = 680;
 const int g_BonusHeight = 398;
