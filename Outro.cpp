@@ -53,11 +53,11 @@ void Outro::EventHandler(SDL_Event& e)
 
 void Outro::Render(bool UpdateOnly)
 {
+	if(!m_Renderer || !m_TextureBackground || !m_FontMoney || !m_FontWin)
+		return;
+
 	if(!UpdateOnly)
 	{
-		if(m_Renderer == NULL || m_TextureBackground == NULL || m_FontMoney == NULL || m_FontWin == NULL)
-			return;
-
 		SDL_Rect tempRect;
 		tempRect.h = g_OutroHeight;
 		tempRect.w = g_OutroWidth;

@@ -45,9 +45,13 @@ Intro::~Intro()
 
 void Intro::Render(bool UpdateOnly)
 {
+	if(!m_Renderer || !m_TextureBackground || !m_Font)
+		return;
+
 	if(!UpdateOnly)
 	{
 		m_uiCredit = 0;
+		UpdateCredits();
 
 		SDL_RenderCopy(m_Renderer, m_TextureBackground, NULL, NULL);
 	}

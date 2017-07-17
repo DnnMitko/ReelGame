@@ -18,6 +18,12 @@ public:
 	void SetCredits(unsigned int);
 	unsigned int GetCredits() const;
 	unsigned int GetTotalBet() const;
+	unsigned int GetPaid() const;
+	bool GetWin() const;
+	bool GetBonus() const;
+	void ResetWin();
+	void ResetBonus();
+	void Clear();
 private:
 	void NullAll();
 
@@ -39,6 +45,9 @@ private:
 
 	void ReleaseAll();
 private:
+	bool m_bWin;
+	bool m_bBonus;
+
 	unsigned int m_uiCurCredits;
 	unsigned int m_uiBet;
 	unsigned int m_uiLines;

@@ -57,11 +57,11 @@ void Win::EventHandler(SDL_Event& e)
 
 void Win::Render(bool UpdateOnly)
 {
+	if(!m_Renderer || !m_TextureBackground || !m_FontCredits || !m_FontWin)
+		return;
+
 	if(!UpdateOnly)
 	{
-		if(m_Renderer == NULL || m_TextureBackground == NULL || m_FontCredits == NULL || m_FontWin == NULL)
-			return;
-
 		SDL_Rect tempRect;
 		tempRect.h = g_WinHeight;
 		tempRect.w = g_WinWidth;

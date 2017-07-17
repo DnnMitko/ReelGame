@@ -5,13 +5,20 @@
 #include <SDL2/SDL_image.h>
 #include <SDL2/SDL_ttf.h>
 #include <SDL2/SDL_mixer.h>
-#include <cstdio>
+#include <iostream>
 #include "Constants.h"
+#include "Button.h"
 #include "Intro.h"
+#include "Outro.h"
+#include "Win.h"
+#include "Game.h"
+#include "BonusGame.h"
 
 
 class GameManager
 {
+enum States{ INTRO, GAME, WIN, BONUSGAME, OUTRO };
+
 public:
 	GameManager();
 	~GameManager();
@@ -20,17 +27,21 @@ public:
 	bool GetQuit() const;
 	void Render();
 private:
-	bool Init();
-	void Close();
+	bool InitSDL();
+	void Create();
 private:
 	SDL_Window* m_Window;
 	SDL_Renderer* m_Renderer;
 
 	bool m_bQuit;
 
-	Intro* m_Intro;
+	States m_CurrentState;
 
-	// TODO Add Game, BonusGame, Intro, Outro objects
+	Intro* m_Intro;
+	Game* m_Game;
+	Win* m_Win;
+	BonusGame* m_BonusGame;
+	Outro* m_Outro;
 };
 
 #endif /* GAMEMANAGER_H_ */

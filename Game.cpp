@@ -92,6 +92,9 @@ Game::~Game()
 
 void Game::Render(bool UpdateOnly)
 {
+	if(!m_Renderer || !m_TextureBackground || !m_FontBig || !m_FontSmall)
+		return;
+
 	if(!UpdateOnly)
 	{
 		SDL_RenderCopy(m_Renderer, m_TextureBackground, NULL, NULL);
@@ -160,7 +163,8 @@ void Game::EventHandler(SDL_Event& e)
 
 		if(m_ButtonPayTable->IsIn(x, y) && m_ButtonPayTable->IsPressed())
 		{
-			//TODO
+			m_bSwitch = true;
+			m_bBonus = true;
 		}
 		else if(m_ButtonBetMinus->IsIn(x, y) && m_ButtonBetMinus->IsPressed())
 		{
@@ -222,10 +226,13 @@ void Game::EventHandler(SDL_Event& e)
 		else if(m_ButtonPlay->IsIn(x, y) && m_ButtonPlay->IsPressed())
 		{
 			//TODO
+			m_bWin = true;
+			m_bSwitch = true;
 		}
 		else if(m_ButtonCashOut->IsIn(x, y) && m_ButtonCashOut->IsPressed())
 		{
 			//TODO
+			m_bSwitch = true;
 		}
 
 		ReleaseAll();
@@ -248,8 +255,51 @@ unsigned int Game::GetTotalBet() const
 	return m_uiTotalBet;
 }
 
+unsigned int Game::GetPaid() const
+{
+	return m_uiPaid;
+}
+
+bool Game::GetWin() const
+{
+	return m_bWin;
+}
+
+bool Game::GetBonus() const
+{
+	return m_bBonus;
+}
+
+void Game::ResetWin()
+{
+	m_bWin = false;
+}
+
+void Game::ResetBonus()
+{
+	m_bBonus = false;
+}
+
+void Game::Clear()
+{
+	m_uiBet = 0;
+	UpdateBet();
+
+	m_uiLines = 1;
+	UpdateLines();
+
+	m_uiTotalBet = 0;
+	UpdateTotalBet();
+
+	m_uiPaid = 0;
+	UpdatePaid();
+}
+
 void Game::NullAll()
 {
+	m_bWin = false;
+	m_bBonus = false;
+
 	m_uiCurCredits = 0;
 	m_uiBet = 0;
 	m_uiLines = 1;
