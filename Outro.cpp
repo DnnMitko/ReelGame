@@ -2,16 +2,7 @@
 
 Outro::Outro() : State()
 {
-	m_TextureBackground = NULL;
-	m_LabelWinSign = NULL;
-	m_TextFieldMoney = NULL;
-	m_FontMoney = NULL;
-	m_FontWin = NULL;
-
-	m_fCashOutAmmount = 0;
-
-	m_iX = 0;
-	m_iY = 0;
+	NullAll();
 }
 
 Outro::Outro(SDL_Renderer* newRenderer) : State(newRenderer)
@@ -39,21 +30,21 @@ Outro::Outro(SDL_Renderer* newRenderer) : State(newRenderer)
 			std::cerr << "Failed to load Win Font! SDL Error: " << TTF_GetError() << std::endl;
 
 	m_fCashOutAmmount = 0;
+
+	m_uiTimer = 0;
 }
 
 Outro::~Outro()
 {
 	SDL_DestroyTexture(m_TextureBackground);
+
 	delete m_LabelWinSign;
 	delete m_TextFieldMoney;
+
 	TTF_CloseFont(m_FontMoney);
 	TTF_CloseFont(m_FontWin);
 
-	m_TextureBackground = NULL;
-	m_LabelWinSign = NULL;
-	m_TextFieldMoney = NULL;
-	m_FontMoney = NULL;
-	m_FontWin = NULL;
+	NullAll();
 }
 
 void Outro::EventHandler(SDL_Event& e)
@@ -77,6 +68,13 @@ void Outro::Render(bool UpdateOnly)
 
 		SDL_SetRenderDrawColor(m_Renderer, 0xFF, 0xFF, 0xFF, 0xFF);
 		SDL_RenderDrawRect(m_Renderer, &tempRect);
+
+		m_uiTimer = SDL_GetTicks();
+	}
+	else
+	{
+		if(SDL_GetTicks() - m_uiTimer >= g_OutroDelay)
+			m_bSwitch = true;
 	}
 
 	m_LabelWinSign->Render(UpdateOnly);
@@ -109,6 +107,22 @@ void Outro::SetCredits(unsigned int newCredits)
 	m_LabelWinSign->SetY(m_iY + (g_OutroHeight - m_LabelWinSign->GetHeight()) / 2 + g_OutroWinOffsetY);
 }
 
+void Outro::NullAll()
+{
+	m_TextureBackground = NULL;
+	m_LabelWinSign = NULL;
+	m_TextFieldMoney = NULL;
+
+	m_FontMoney = NULL;
+	m_FontWin = NULL;
+
+	m_fCashOutAmmount = 0;
+
+	m_uiTimer = 0;
+
+	m_iX = 0;
+	m_iY = 0;
+}
 
 
 

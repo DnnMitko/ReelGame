@@ -20,6 +20,8 @@ public:
 	void Render(bool = true);
 	void SetCredits(unsigned int);
 private:
+	void NullAll();
+private:
 	SDL_Texture* m_TextureBackground;
 	Label* m_LabelWinSign;
 	TextField* m_TextFieldCredits;
@@ -28,6 +30,8 @@ private:
 	TTF_Font* m_FontWin;
 
 	unsigned int m_uiCredits;
+
+	Uint32 m_uiTimer;
 
 	int m_iX;
 	int m_iY;

@@ -43,6 +43,7 @@ const int g_BonusCreditOffsetY = 115;
 const char g_BonusGameBackground[] = "images/BonusGameBackground.png";
 
 const float g_Denominator = 0.01;
+const int g_OutroDelay = 10000;
 const int g_OutroWidth = 700;
 const int g_OutroHeight = 360;
 const int g_OutroFontSizeMoney = 70;
@@ -57,6 +58,7 @@ const char g_OutroBackground[] = "images/OutroBackground.png";
 
 const int g_WinWidth = 640;
 const int g_WinHeight = 427;
+const int g_WinDelay = 1500;
 const int g_WinFontSizeCredits = 70;
 const int g_WinFontSizeSign = 150;
 const int g_WinSignOffsetY = -80;

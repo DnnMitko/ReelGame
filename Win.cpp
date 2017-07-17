@@ -2,16 +2,7 @@
 
 Win::Win() : State()
 {
-	m_TextureBackground = NULL;
-	m_LabelWinSign = NULL;
-	m_TextFieldCredits = NULL;
-	m_FontCredits = NULL;
-	m_FontWin = NULL;
-
-	m_uiCredits = 0;
-
-	m_iX = 0;
-	m_iY = 0;
+	NullAll();
 }
 
 Win::Win(SDL_Renderer* newRenderer) : State(newRenderer)
@@ -42,20 +33,21 @@ Win::Win(SDL_Renderer* newRenderer) : State(newRenderer)
 	m_TextFieldCredits->SetY(m_iY + (g_WinHeight - m_TextFieldCredits->GetHeight()) / 2 + g_WinCreditOffsetY);
 
 	m_uiCredits = 0;
+
+	m_uiTimer = 0;
 }
 
 Win::~Win()
 {
 	SDL_DestroyTexture(m_TextureBackground);
+
 	delete m_LabelWinSign;
 	delete m_TextFieldCredits;
+
 	TTF_CloseFont(m_FontCredits);
 	TTF_CloseFont(m_FontWin);
-	m_TextureBackground = NULL;
-	m_LabelWinSign = NULL;
-	m_TextFieldCredits = NULL;
-	m_FontCredits = NULL;
-	m_FontWin = NULL;
+
+	NullAll();
 }
 
 void Win::EventHandler(SDL_Event& e)
@@ -80,6 +72,13 @@ void Win::Render(bool UpdateOnly)
 
 		SDL_SetRenderDrawColor(m_Renderer, 0xFF, 0xFF, 0xFF, 0xFF);
 		SDL_RenderDrawRect(m_Renderer, &tempRect);
+
+		m_uiTimer = SDL_GetTicks();
+	}
+	else
+	{
+		if(SDL_GetTicks() - m_uiTimer >= g_WinDelay)
+			m_bSwitch = true;
 	}
 
 	m_LabelWinSign->Render(UpdateOnly);
@@ -96,4 +95,20 @@ void Win::SetCredits(unsigned int newCredits)
 	strCredits = ss.str();
 
 	m_TextFieldCredits->SetText(strCredits, m_FontCredits, SDL_Color{0xFF, 0xFF, 0xFF, 0xFF});
+}
+
+void Win::NullAll()
+{
+	m_TextureBackground = NULL;
+	m_LabelWinSign = NULL;
+	m_TextFieldCredits = NULL;
+	m_FontCredits = NULL;
+	m_FontWin = NULL;
+
+	m_uiCredits = 0;
+
+	m_uiTimer = 0;
+
+	m_iX = 0;
+	m_iY = 0;
 }
