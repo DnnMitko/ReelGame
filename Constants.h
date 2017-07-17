@@ -25,6 +25,14 @@ const int g_IntroCreditIncrement = 25;
 
 const int g_GameMenuHeight = g_ScreenHeight - 80;
 const char g_GameBackground[] = "images/GameBackground.png";
+const char g_GameLabelBet[] = "Bet";
+const char g_GameLabelLines[] = "Lines";
+const char g_GameButtonMaxBet[] = "Max Bet";
+const char g_GameLabelCredits[] = "Credits";
+const char g_GameLabelTotalBet[] = "Total Bet";
+const char g_GameLabelPaid[] = "Paid";
+const char g_GameButtonPlay[] = "Play";
+const char g_GameButtonCashOut[] = "Cash Out";
 const int g_GameOffsetX = 5;
 const int g_GameMarginX = 20;
 const char g_GameFont[] = "fonts/Roboto-Medium.ttf";
