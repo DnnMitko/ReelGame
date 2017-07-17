@@ -151,6 +151,7 @@ void GameManager::Render()
 			m_BonusGame->ResetSwitch();
 
 			m_CurrentState = GAME;
+			// TODO add loot
 			m_Game->Render(false);
 		}
 		else
