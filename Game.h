@@ -29,6 +29,7 @@ private:
 	void InitTotalBet(int);
 	void InitPaid(int);
 	void InitPlay(int);
+	void InitCashOut(int);
 
 	void UpdateBet();
 	void UpdateLines();
@@ -73,6 +74,8 @@ private:
 	TextField* m_TextFieldPaid;
 
 	Button* m_ButtonPlay;
+
+	Button* m_ButtonCashOut;
 };
 
 #endif /* GAME_H_ */

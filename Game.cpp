@@ -48,6 +48,9 @@ Game::Game(SDL_Renderer* newRenderer) : State(newRenderer)
 
 	curX += g_GameFieldWidth + g_GameMarginX;
 	InitPlay(curX);
+
+	curX += g_GamePlayWidth + g_GameMarginX;
+	InitCashOut(curX);
 }
 
 Game::~Game()
@@ -78,6 +81,8 @@ Game::~Game()
 	delete m_TextFieldPaid;
 
 	delete m_ButtonPlay;
+
+	delete m_ButtonCashOut;
 
 	TTF_CloseFont(m_FontBig);
 	TTF_CloseFont(m_FontSmall);
@@ -116,6 +121,8 @@ void Game::Render(bool UpdateOnly)
 	m_TextFieldPaid->Render(UpdateOnly);
 
 	m_ButtonPlay->Render(UpdateOnly);
+
+	m_ButtonCashOut->Render(UpdateOnly);
 }
 
 void Game::EventHandler(SDL_Event& e)
@@ -143,6 +150,9 @@ void Game::EventHandler(SDL_Event& e)
 
 		else if(m_ButtonPlay->IsIn(x, y))
 			m_ButtonPlay->Press();
+
+		else if(m_ButtonCashOut->IsIn(x, y))
+			m_ButtonCashOut->Press();
 	}
 	else if (e.type == SDL_MOUSEBUTTONUP)
 	{
@@ -213,6 +223,10 @@ void Game::EventHandler(SDL_Event& e)
 		{
 			//TODO
 		}
+		else if(m_ButtonCashOut->IsIn(x, y) && m_ButtonCashOut->IsPressed())
+		{
+			//TODO
+		}
 
 		ReleaseAll();
 	}
@@ -268,6 +282,8 @@ void Game::NullAll()
 	m_TextFieldPaid = NULL;
 
 	m_ButtonPlay = NULL;
+
+	m_ButtonCashOut = NULL;
 
 	m_FontBig = NULL;
 	m_FontSmall = NULL;
@@ -394,6 +410,15 @@ void Game::InitPlay(int curX)
 	m_ButtonPlay->SetText("Play", m_FontBig, SDL_Color{0x00, 0x00, 0x00, 0xFF});
 }
 
+void Game::InitCashOut(int curX)
+{
+	m_ButtonCashOut = new Button(m_Renderer);
+	m_ButtonCashOut->SetX(curX);
+	m_ButtonCashOut->SetY(g_GameMenuHeight);
+	m_ButtonCashOut->SetFieldSize(g_GameCashOutHeight, g_GameCashOutWidth);
+	m_ButtonCashOut->SetText("Cash Out", m_FontBig, SDL_Color{0x00, 0x00, 0x00, 0xFF});
+}
+
 void Game::UpdateBet()
 {
 	std::stringstream ss;
@@ -464,6 +489,8 @@ void Game::ReleaseAll()
 	m_ButtonMaxBet->Release();
 
 	m_ButtonPlay->Release();
+
+	m_ButtonCashOut->Release();
 }
 
 
