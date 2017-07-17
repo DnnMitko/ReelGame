@@ -10,15 +10,18 @@ const int g_ScreenHeight = 720;
 const char g_LabelFont[] = "fonts/Roboto-Medium.ttf";
 const char g_WinFont[] = "fonts/Digitalt.ttf";
 
-const char g_ButtonNewGame[] = "Start new game";
-const char g_ButtonResumeGame[] = "Resume game";
-const char g_ButtonInsertCredit[] = "Insert credit";
-const char g_ButtonInfo[] = "Info";
-
+const char g_IntroButtonNewGame[] = "Start new game";
+const char g_IntroButtonResumeGame[] = "Resume game";
+const char g_IntroButtonInsertCredit[] = "Insert credit";
+const char g_IntroButtonInfo[] = "Info";
+const char g_IntroLabelCredits[] = "Credits";
 const int g_IntroButtonWidth = 300;
 const int g_IntroButtonHeight = 70;
+const int g_IntroCreditsWidth = 280;
+const int g_IntroCreditsHeight = 50;
 const int g_IntroFontSize = 40;
 const int g_IntroFirstButtonY = 300;
+const int g_IntroCreditIncrement = 25;
 
 const int g_GameMenuHeight = g_ScreenHeight - 80;
 const char g_GameBackground[] = "images/GameBackground.png";
