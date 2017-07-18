@@ -9,69 +9,18 @@ BonusGame::BonusGame(SDL_Renderer* newRenderer) : State(newRenderer)
 {
 	m_uiCredits = 0;
 
-	m_TextureBackgroundGame = IMG_LoadTexture(m_Renderer, g_BonusGameBackground);
-	if (m_TextureBackgroundGame == NULL)
-		std::cerr << "Failed to load TextureBackground! SDL Error: " << IMG_GetError() << std::endl;
-
-	m_TextureBackgroundInit = IMG_LoadTexture(m_Renderer, g_BonusGameBackgroundInit);
-	if (m_TextureBackgroundInit == NULL)
-		std::cerr << "Failed to load TextureBackgroundInit! SDL Error: " << IMG_GetError() << std::endl;
-
 	m_iX = (g_ScreenWidth - g_BonusWidth) / 2;
 	m_iY = (g_ScreenHeight - g_BonusHeight) / 2;
-
-	m_FontCredits = TTF_OpenFont(g_FontLabel, g_BonusFontSizeCredits);
-	if(m_FontCredits == NULL)
-		std::cerr << "Failed to load Label Font! SDL Error: " << TTF_GetError() << std::endl;
-
-	m_FontTitle = TTF_OpenFont(g_FontTitle, g_BonusFontSizeWin);
-	if(m_FontTitle == NULL)
-		std::cerr << "Failed to load Title Font! SDL Error: " << TTF_GetError() << std::endl;
-
-	m_LabelCurWin = new Label(m_Renderer);
-	m_LabelCurWin->SetText(g_BonusTempWinMessage, m_FontCredits, SDL_Color{0xF0, 0xF0, 0x00, 0xFF});
-	m_LabelCurWin->SetX(m_iX + g_BonusTempWinOffsetX + (g_BonusTempWinFieldWidth - m_LabelCurWin->GetWidth()) / 2);
-	m_LabelCurWin->SetY(m_iY + g_BonusHeight + g_BonusTempWinOffsetY - m_LabelCurWin->GetHeight());
-
-	m_TextFieldCurWin = new TextField(m_Renderer);
-	m_TextFieldCurWin->SetX(m_iX + g_BonusTempWinOffsetX);
-	m_TextFieldCurWin->SetY(m_iY + g_BonusHeight + g_BonusTempWinOffsetY);
-	m_TextFieldCurWin->SetFieldSize(g_BonusTempWinFieldHeight, g_BonusTempWinFieldWidth);
-	UpdateCurWin();
-
-	m_ButtonStart = new Button(m_Renderer);
-	m_ButtonStart->SetX(m_iX + g_BonusWidth + g_BonusStartOffsetX);
-	m_ButtonStart->SetY(m_iY + g_BonusHeight + g_BonusStartOffsetY);
-	m_ButtonStart->SetFieldSize(g_BonusStartHeight, g_BonusStartWidth);
-	m_ButtonStart->SetText("Start", m_FontCredits, SDL_Color{0x00, 0x00, 0x00, 0xFF});
-
-	m_LabelTitleSign = new Label(m_Renderer);
-	m_LabelTitleSign->SetText(g_BonusTitle, m_FontTitle, SDL_Color{0xF0, 0xF0, 0x00, 0xFF});
-	m_LabelTitleSign->SetX(m_iX + (g_BonusWidth - m_LabelTitleSign->GetWidth()) / 2);
-	m_LabelTitleSign->SetY(m_iY + (g_BonusHeight - m_LabelTitleSign->GetHeight()) / 2 + g_BonusTitleOffsetY);
-
-	m_TextFieldCredits = new TextField(m_Renderer);
-	m_TextFieldCredits->SetFieldSize(g_BonusCreditHeight, g_BonusCreditsWidth);
-	m_TextFieldCredits->SetX(m_iX + (g_BonusWidth - m_TextFieldCredits->GetWidth()) / 2);
-	m_TextFieldCredits->SetY(m_iY + (g_BonusHeight - m_TextFieldCredits->GetHeight()) / 2 + g_BonusCreditOffsetY);
-	m_TextFieldCredits->SetText(g_BonusSubTitle, m_FontCredits, SDL_Color{0xFF, 0xFF, 0xFF, 0xFF});
-
-	m_Chest1 = new Chest(m_Renderer);
-	m_Chest1->SetX(m_iX + g_BonusChest1OffsetX);
-	m_Chest1->SetY(m_iY + g_BonusChestOffsetY);
-
-	m_Chest2 = new Chest(m_Renderer);
-	m_Chest2->SetX(m_iX + g_BonusChest2OffsetX);
-	m_Chest2->SetY(m_iY + g_BonusChestOffsetY);
-
-	m_Chest3 = new Chest(m_Renderer);
-	m_Chest3->SetX(m_iX + g_BonusChest3OffsetX);
-	m_Chest3->SetY(m_iY + g_BonusChestOffsetY);
 
 	m_uiTimer = 0;
 
 	m_bHasChosen = false;
 	m_bHasStarted = false;
+
+	InitFonts();
+	InitTitleScreen();
+	InitGame();
+	InitChests();
 }
 
 BonusGame::~BonusGame()
@@ -111,38 +60,20 @@ void BonusGame::EventHandler(SDL_Event& e)
 			if(m_Chest1->IsIn(x, y))
 			{
 				m_Chest1->Open();
-				m_bHasChosen = true;
 
-				int iWinnings = (rand() % (g_BonusUpperLimit - g_BonusLowerLimit + 1) + g_BonusLowerLimit) * 1000;
-				UpdateChestWin(iWinnings);
-
-				m_uiCredits += iWinnings;
-
-				m_uiTimer = SDL_GetTicks();
+				GenPrize();
 			}
 			else if(m_Chest2->IsIn(x, y))
 			{
 				m_Chest2->Open();
-				m_bHasChosen = true;
 
-				int iWinnings = (rand() % (g_BonusUpperLimit - g_BonusLowerLimit + 1) + g_BonusLowerLimit) * 1000;
-				UpdateChestWin(iWinnings);
-
-				m_uiCredits += iWinnings;
-
-				m_uiTimer = SDL_GetTicks();
+				GenPrize();
 			}
 			else if(m_Chest3->IsIn(x, y))
 			{
 				m_Chest3->Open();
-				m_bHasChosen = true;
 
-				int iWinnings = (rand() % (g_BonusUpperLimit - g_BonusLowerLimit + 1) + g_BonusLowerLimit) * 1000;
-				UpdateChestWin(iWinnings);
-
-				m_uiCredits += iWinnings;
-
-				m_uiTimer = SDL_GetTicks();
+				GenPrize();
 			}
 		}
 	}
@@ -250,6 +181,73 @@ void BonusGame::NullAll()
 	m_iY = 0;
 }
 
+void BonusGame::InitTitleScreen()
+{
+	m_TextureBackgroundInit = IMG_LoadTexture(m_Renderer, g_BonusGameBackgroundInit);
+	if (m_TextureBackgroundInit == NULL)
+		std::cerr << "Failed to load TextureBackgroundInit! SDL Error: " << IMG_GetError() << std::endl;
+
+	m_LabelCurWin = new Label(m_Renderer);
+	m_LabelCurWin->SetText(g_BonusTempWinMessage, m_FontCredits, SDL_Color{0xF0, 0xF0, 0x00, 0xFF});
+	m_LabelCurWin->SetX(m_iX + g_BonusTempWinOffsetX + (g_BonusTempWinFieldWidth - m_LabelCurWin->GetWidth()) / 2);
+	m_LabelCurWin->SetY(m_iY + g_BonusHeight + g_BonusTempWinOffsetY - m_LabelCurWin->GetHeight());
+
+	m_TextFieldCurWin = new TextField(m_Renderer);
+	m_TextFieldCurWin->SetX(m_iX + g_BonusTempWinOffsetX);
+	m_TextFieldCurWin->SetY(m_iY + g_BonusHeight + g_BonusTempWinOffsetY);
+	m_TextFieldCurWin->SetFieldSize(g_BonusTempWinFieldHeight, g_BonusTempWinFieldWidth);
+	UpdateCurWin();
+
+	m_ButtonStart = new Button(m_Renderer);
+	m_ButtonStart->SetX(m_iX + g_BonusWidth + g_BonusStartOffsetX);
+	m_ButtonStart->SetY(m_iY + g_BonusHeight + g_BonusStartOffsetY);
+	m_ButtonStart->SetFieldSize(g_BonusStartHeight, g_BonusStartWidth);
+	m_ButtonStart->SetText("Start", m_FontCredits, SDL_Color{0x00, 0x00, 0x00, 0xFF});
+
+	m_LabelTitleSign = new Label(m_Renderer);
+	m_LabelTitleSign->SetText(g_BonusTitle, m_FontTitle, SDL_Color{0xF0, 0xF0, 0x00, 0xFF});
+	m_LabelTitleSign->SetX(m_iX + (g_BonusWidth - m_LabelTitleSign->GetWidth()) / 2);
+	m_LabelTitleSign->SetY(m_iY + (g_BonusHeight - m_LabelTitleSign->GetHeight()) / 2 + g_BonusTitleOffsetY);
+}
+
+void BonusGame::InitFonts()
+{
+	m_FontCredits = TTF_OpenFont(g_FontLabel, g_BonusFontSizeCredits);
+	if(m_FontCredits == NULL)
+		std::cerr << "Failed to load Label Font! SDL Error: " << TTF_GetError() << std::endl;
+
+	m_FontTitle = TTF_OpenFont(g_FontTitle, g_BonusFontSizeWin);
+	if(m_FontTitle == NULL)
+		std::cerr << "Failed to load Title Font! SDL Error: " << TTF_GetError() << std::endl;
+}
+
+void BonusGame::InitGame()
+{
+	m_TextureBackgroundGame = IMG_LoadTexture(m_Renderer, g_BonusGameBackground);
+	if (m_TextureBackgroundGame == NULL)
+		std::cerr << "Failed to load TextureBackground! SDL Error: " << IMG_GetError() << std::endl;
+
+	m_TextFieldCredits = new TextField(m_Renderer);
+	m_TextFieldCredits->SetFieldSize(g_BonusCreditHeight, g_BonusCreditsWidth);
+	m_TextFieldCredits->SetX(m_iX + (g_BonusWidth - m_TextFieldCredits->GetWidth()) / 2);
+	m_TextFieldCredits->SetY(m_iY + (g_BonusHeight - m_TextFieldCredits->GetHeight()) / 2 + g_BonusCreditOffsetY);
+	m_TextFieldCredits->SetText(g_BonusSubTitle, m_FontCredits, SDL_Color{0xFF, 0xFF, 0xFF, 0xFF});
+}
+void BonusGame::InitChests()
+{
+	m_Chest1 = new Chest(m_Renderer);
+	m_Chest1->SetX(m_iX + g_BonusChest1OffsetX);
+	m_Chest1->SetY(m_iY + g_BonusChestOffsetY);
+
+	m_Chest2 = new Chest(m_Renderer);
+	m_Chest2->SetX(m_iX + g_BonusChest2OffsetX);
+	m_Chest2->SetY(m_iY + g_BonusChestOffsetY);
+
+	m_Chest3 = new Chest(m_Renderer);
+	m_Chest3->SetX(m_iX + g_BonusChest3OffsetX);
+	m_Chest3->SetY(m_iY + g_BonusChestOffsetY);
+}
+
 void BonusGame::UpdateChestWin(int iWinnings)
 {
 	std::string strCredits;
@@ -270,6 +268,18 @@ void BonusGame::UpdateCurWin()
 	strCredits = ss.str();
 
 	m_TextFieldCurWin->SetText(strCredits, m_FontCredits, SDL_Color{0xFF, 0xFF, 0xFF, 0xFF});
+}
+
+void BonusGame::GenPrize()
+{
+	m_bHasChosen = true;
+
+	int iWinnings = (rand() % (g_BonusUpperLimit - g_BonusLowerLimit + 1) + g_BonusLowerLimit) * 1000;
+	UpdateChestWin(iWinnings);
+
+	m_uiCredits += iWinnings;
+
+	m_uiTimer = SDL_GetTicks();
 }
 
 void BonusGame::ResetGame()

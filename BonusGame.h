@@ -26,8 +26,15 @@ public:
 private:
 	void NullAll();
 
+	void InitTitleScreen();
+	void InitFonts();
+	void InitGame();
+	void InitChests();
+
 	void UpdateChestWin(int);
 	void UpdateCurWin();
+
+	void GenPrize();
 private:
 	SDL_Texture* m_TextureBackgroundGame;
 	SDL_Texture* m_TextureBackgroundInit;
