@@ -114,8 +114,10 @@ void BonusGame::EventHandler(SDL_Event& e)
 				m_Chest1->Open();
 				m_bHasChosen = true;
 
-				m_uiCredits += (rand() % (g_BonusUpperLimit - g_BonusLowerLimit + 1) + g_BonusLowerLimit) * 1000;
-				UpdateCredits();
+				int iWinnings = (rand() % (g_BonusUpperLimit - g_BonusLowerLimit + 1) + g_BonusLowerLimit) * 1000;
+				UpdateWinnings(iWinnings);
+
+				m_uiCredits += iWinnings;
 
 				m_uiTimer = SDL_GetTicks();
 			}
@@ -124,8 +126,10 @@ void BonusGame::EventHandler(SDL_Event& e)
 				m_Chest2->Open();
 				m_bHasChosen = true;
 
-				m_uiCredits += (rand() % (g_BonusUpperLimit - g_BonusLowerLimit + 1) + g_BonusLowerLimit) * 1000;
-				UpdateCredits();
+				int iWinnings = (rand() % (g_BonusUpperLimit - g_BonusLowerLimit + 1) + g_BonusLowerLimit) * 1000;
+				UpdateWinnings(iWinnings);
+
+				m_uiCredits += iWinnings;
 
 				m_uiTimer = SDL_GetTicks();
 			}
@@ -134,8 +138,10 @@ void BonusGame::EventHandler(SDL_Event& e)
 				m_Chest3->Open();
 				m_bHasChosen = true;
 
-				m_uiCredits += (rand() % (g_BonusUpperLimit - g_BonusLowerLimit + 1) + g_BonusLowerLimit) * 1000;
-				UpdateCredits();
+				int iWinnings = (rand() % (g_BonusUpperLimit - g_BonusLowerLimit + 1) + g_BonusLowerLimit) * 1000;
+				UpdateWinnings(iWinnings);
+
+				m_uiCredits += iWinnings;
 
 				m_uiTimer = SDL_GetTicks();
 			}
@@ -245,12 +251,12 @@ void BonusGame::NullAll()
 	m_iY = 0;
 }
 
-void BonusGame::UpdateCredits()
+void BonusGame::UpdateWinnings(int iWinnings)
 {
 	std::string strCredits;
 	std::stringstream ss;
 
-	ss << g_BonusWinMessage << m_uiCredits;
+	ss << g_BonusWinMessage << iWinnings;
 	strCredits = ss.str();
 
 	m_TextFieldCredits->SetText(strCredits, m_FontCredits, SDL_Color{0xFF, 0xFF, 0xFF, 0xFF});

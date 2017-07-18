@@ -26,7 +26,7 @@ public:
 private:
 	void NullAll();
 
-	void UpdateCredits();
+	void UpdateWinnings(int);
 	void UpdateCurWin();
 private:
 	SDL_Texture* m_TextureBackgroundGame;
