@@ -2,6 +2,7 @@
 #define BUTTON_H_
 
 #include <SDL2/SDL_image.h>
+#include <SDL2/SDL_mixer.h>
 #include "TextField.h"
 #include "Constants.h"
 
@@ -27,6 +28,8 @@ private:
 	SDL_Texture* m_TextureTextPressed;
 
 	static SDL_Texture* m_TextureButton;
+
+	static Mix_Chunk* m_SfxClick;
 };
 
 #endif /* BUTTON_H_ */

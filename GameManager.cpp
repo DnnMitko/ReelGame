@@ -115,7 +115,7 @@ bool GameManager::InitSDL()
 {
 	bool bSuccess = true;
 
-	if(SDL_Init(SDL_INIT_VIDEO) < 0)
+	if(SDL_Init(SDL_INIT_VIDEO | SDL_INIT_AUDIO) < 0)
 	{
 		std::cerr << "Couldn't initialize SDL! Error: " << SDL_GetError() << "\n";
 		bSuccess = false;
@@ -154,7 +154,7 @@ bool GameManager::InitSDL()
 					bSuccess = false;
 				}
 
-				if( Mix_OpenAudio( 44100, MIX_DEFAULT_FORMAT, 2, 2048 ) < 0 )
+				if( Mix_OpenAudio(44100, MIX_DEFAULT_FORMAT, 2, 2048) < 0)
 				{
 					std::cerr << "SDL_mixer could not initialize! SDL_mixer Error: " << Mix_GetError() << "\n";
 					bSuccess = false;

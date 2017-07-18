@@ -18,6 +18,7 @@ public:
 public:
 	void EventHandler(SDL_Event&);
 	void Render(bool = true);
+
 	void SetCredits(unsigned int);
 private:
 	void NullAll();

@@ -1,6 +1,7 @@
 #include "Button.h"
 
 SDL_Texture* Button::m_TextureButton = NULL;
+Mix_Chunk* Button::m_SfxClick = NULL;
 
 Button::Button() : TextField()
 {
@@ -15,11 +16,20 @@ Button::Button(SDL_Renderer* newRenderer) : TextField(newRenderer)
 
 	m_bIsPressed = false;
 
-	if(m_TextureButton == NULL)
+	if(!m_TextureButton)
 	{
 		m_TextureButton = IMG_LoadTexture(m_Renderer, g_ButtonSprite);
+
 		if(m_TextureButton == NULL)
 			std::cerr << "Failed to load TextureBackground! SDL Error: " << IMG_GetError() << std::endl;
+	}
+	//TODO add constants
+	if(!m_SfxClick)
+	{
+		m_SfxClick = Mix_LoadWAV("sounds/ButtonClick.wav");
+
+		if(!m_SfxClick)
+			std::cerr << "Failed to load button sound effect! SDL_mixer Error: " << Mix_GetError() << "\n";
 	}
 }
 
@@ -30,6 +40,9 @@ Button::~Button()
 
 	SDL_DestroyTexture(m_TextureButton);
 	m_TextureButton = NULL;
+
+	Mix_FreeChunk(m_SfxClick);
+	m_SfxClick = NULL;
 }
 
 void Button::Render(bool UpdateOnly)
@@ -101,6 +114,8 @@ void Button::Press()
 {
 	m_bIsPressed = true;
 	m_bHasChanged =  true;
+
+	Mix_PlayChannel(-1, m_SfxClick, 0);
 }
 
 void Button::Release()
