@@ -31,6 +31,12 @@ public:
 private:
 	bool InitSDL();
 	void Create();
+
+	void RenderIntro();
+	void RenderGame();
+	void RenderWin();
+	void RenderBonusGame();
+	void RenderOutro();
 private:
 	SDL_Window* m_Window;
 	SDL_Renderer* m_Renderer;

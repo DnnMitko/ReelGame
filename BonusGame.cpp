@@ -28,22 +28,21 @@ BonusGame::BonusGame(SDL_Renderer* newRenderer) : State(newRenderer)
 	if(m_FontTitle == NULL)
 		std::cerr << "Failed to load Title Font! SDL Error: " << TTF_GetError() << std::endl;
 
-	//TODO add constants
 	m_LabelCurWin = new Label(m_Renderer);
-	m_LabelCurWin->SetText("So far, you won:", m_FontCredits, SDL_Color{0xF0, 0xF0, 0x00, 0xFF});
-	m_LabelCurWin->SetX(m_iX + 60 + (300 - m_LabelCurWin->GetWidth()) / 2);
-	m_LabelCurWin->SetY(m_iY + g_BonusHeight - 120 - m_LabelCurWin->GetHeight());
+	m_LabelCurWin->SetText(g_BonusTempWinMessage, m_FontCredits, SDL_Color{0xF0, 0xF0, 0x00, 0xFF});
+	m_LabelCurWin->SetX(m_iX + g_BonusTempWinOffsetX + (g_BonusTempWinFieldWidth - m_LabelCurWin->GetWidth()) / 2);
+	m_LabelCurWin->SetY(m_iY + g_BonusHeight + g_BonusTempWinOffsetY - m_LabelCurWin->GetHeight());
 
 	m_TextFieldCurWin = new TextField(m_Renderer);
-	m_TextFieldCurWin->SetX(m_iX + 60);
-	m_TextFieldCurWin->SetY(m_iY + g_BonusHeight - 120);
-	m_TextFieldCurWin->SetFieldSize(60, 300);
+	m_TextFieldCurWin->SetX(m_iX + g_BonusTempWinOffsetX);
+	m_TextFieldCurWin->SetY(m_iY + g_BonusHeight + g_BonusTempWinOffsetY);
+	m_TextFieldCurWin->SetFieldSize(g_BonusTempWinFieldHeight, g_BonusTempWinFieldWidth);
 	UpdateCurWin();
 
 	m_ButtonStart = new Button(m_Renderer);
-	m_ButtonStart->SetX(m_iX + g_BonusWidth - 180);
-	m_ButtonStart->SetY(m_iY + g_BonusHeight - 100);
-	m_ButtonStart->SetFieldSize(70, 160);
+	m_ButtonStart->SetX(m_iX + g_BonusWidth + g_BonusStartOffsetX);
+	m_ButtonStart->SetY(m_iY + g_BonusHeight + g_BonusStartOffsetY);
+	m_ButtonStart->SetFieldSize(g_BonusStartHeight, g_BonusStartWidth);
 	m_ButtonStart->SetText("Start", m_FontCredits, SDL_Color{0x00, 0x00, 0x00, 0xFF});
 
 	m_LabelTitleSign = new Label(m_Renderer);
@@ -115,7 +114,7 @@ void BonusGame::EventHandler(SDL_Event& e)
 				m_bHasChosen = true;
 
 				int iWinnings = (rand() % (g_BonusUpperLimit - g_BonusLowerLimit + 1) + g_BonusLowerLimit) * 1000;
-				UpdateWinnings(iWinnings);
+				UpdateChestWin(iWinnings);
 
 				m_uiCredits += iWinnings;
 
@@ -127,7 +126,7 @@ void BonusGame::EventHandler(SDL_Event& e)
 				m_bHasChosen = true;
 
 				int iWinnings = (rand() % (g_BonusUpperLimit - g_BonusLowerLimit + 1) + g_BonusLowerLimit) * 1000;
-				UpdateWinnings(iWinnings);
+				UpdateChestWin(iWinnings);
 
 				m_uiCredits += iWinnings;
 
@@ -139,7 +138,7 @@ void BonusGame::EventHandler(SDL_Event& e)
 				m_bHasChosen = true;
 
 				int iWinnings = (rand() % (g_BonusUpperLimit - g_BonusLowerLimit + 1) + g_BonusLowerLimit) * 1000;
-				UpdateWinnings(iWinnings);
+				UpdateChestWin(iWinnings);
 
 				m_uiCredits += iWinnings;
 
@@ -251,7 +250,7 @@ void BonusGame::NullAll()
 	m_iY = 0;
 }
 
-void BonusGame::UpdateWinnings(int iWinnings)
+void BonusGame::UpdateChestWin(int iWinnings)
 {
 	std::string strCredits;
 	std::stringstream ss;

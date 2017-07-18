@@ -58,15 +58,19 @@ void GameManager::EventHandler(SDL_Event& e)
 		case INTRO:
 			m_Intro->EventHandler(e);
 			break;
+
 		case GAME:
 			m_Game->EventHandler(e);
 			break;
+
 		case WIN:
 			m_Win->EventHandler(e);
 			break;
+
 		case BONUSGAME:
 			m_BonusGame->EventHandler(e);
 			break;
+
 		case OUTRO:
 			m_Outro->EventHandler(e);
 			break;
@@ -84,95 +88,23 @@ void GameManager::Render()
 	switch(m_CurrentState)
 	{
 	case INTRO:
-		if(m_Intro->GetSwitch())
-		{
-			m_Intro->ResetSwitch();
-
-			m_Game->SetCredits(m_Intro->GetCredits());
-
-			m_CurrentState = GAME;
-			m_Game->Clear();
-			m_Game->Render(false);
-		}
-		else
-			m_Intro->Render();
+		RenderIntro();
 		break;
 
 	case GAME:
-		if(m_Game->GetSwitch())
-		{
-			m_Game->ResetSwitch();
-
-			if(m_Game->GetWin())
-			{
-				m_Game->ResetWin();
-
-				m_Win->SetCredits(m_Game->GetPaid());
-
-				m_Game->Render();
-				m_CurrentState = WIN;
-				m_Win->Render(false);
-			}
-			else if(m_Game->GetBonus())
-			{
-				m_Game->ResetBonus();
-
-				m_BonusGame->SetCredits(m_Game->GetTotalBet());
-
-				m_Game->Render();
-				m_CurrentState = BONUSGAME;
-				m_BonusGame->Render(false);
-			}
-			else
-			{
-				m_Outro->SetCredits(m_Game->GetCredits());
-
-				m_Game->Render();
-				m_CurrentState = OUTRO;
-				m_Outro->Render(false);
-			}
-		}
-		else
-			m_Game->Render();
+		RenderGame();
 		break;
 
 	case WIN:
-		if(m_Win->GetSwitch())
-		{
-			m_Win->ResetSwitch();
-
-			m_CurrentState = GAME;
-			m_Game->Render(false);
-		}
-		else
-			m_Win->Render();
+		RenderWin();
 		break;
 
 	case BONUSGAME:
-		if(m_BonusGame->GetSwitch())
-		{
-			m_BonusGame->ResetSwitch();
-
-			m_BonusGame->ResetGame();
-
-			m_CurrentState = GAME;
-			m_Game->CalcWinning(m_BonusGame->GetCredits());
-			m_Game->Render(false);
-		}
-		else
-			m_BonusGame->Render();
+		RenderBonusGame();
 		break;
 
 	case OUTRO:
-		if(m_Outro->GetSwitch())
-		{
-			m_Outro->ResetSwitch();
-
-			m_CurrentState = INTRO;
-			m_Intro->Render(false);
-		}
-		else
-			m_Outro->Render();
+		RenderOutro();
 		break;
 	}
 
@@ -242,6 +174,124 @@ void GameManager::Create()
 	m_BonusGame = new BonusGame(m_Renderer);
 	m_Outro = new Outro(m_Renderer);
 }
+
+void GameManager::RenderIntro()
+{
+	if(m_Intro->GetSwitch())
+	{
+		m_Intro->ResetSwitch();
+
+		if(m_Intro->GetCredits() > 0)
+		{
+			m_Game->SetCredits(m_Intro->GetCredits());
+
+			m_CurrentState = GAME;
+			m_Game->Clear();
+			m_Game->Render(false);
+		}
+	}
+	else
+		m_Intro->Render();
+}
+
+void GameManager::RenderGame()
+{
+	if(m_Game->GetSwitch())
+	{
+		m_Game->ResetSwitch();
+
+		if(m_Game->GetWin())
+		{
+			m_Game->ResetWin();
+
+			m_Win->SetCredits(m_Game->GetPaid());
+
+			m_Game->Render();
+			m_CurrentState = WIN;
+			m_Win->Render(false);
+		}
+		else if(m_Game->GetBonus())
+		{
+			m_Game->ResetBonus();
+
+			m_BonusGame->SetCredits(m_Game->GetTotalBet());
+
+			m_Game->Render();
+			m_CurrentState = BONUSGAME;
+			m_BonusGame->Render(false);
+		}
+		else
+		{
+			m_Outro->SetCredits(m_Game->GetCredits());
+
+			m_Game->Render();
+			m_CurrentState = OUTRO;
+			m_Outro->Render(false);
+		}
+	}
+	else
+		m_Game->Render();
+}
+
+void GameManager::RenderWin()
+{
+	if(m_Win->GetSwitch())
+	{
+		m_Win->ResetSwitch();
+
+		m_CurrentState = GAME;
+		m_Game->Render(false);
+	}
+	else
+		m_Win->Render();
+}
+
+void GameManager::RenderBonusGame()
+{
+	if(m_BonusGame->GetSwitch())
+	{
+		m_BonusGame->ResetSwitch();
+
+		m_BonusGame->ResetGame();
+
+		m_CurrentState = GAME;
+		m_Game->CalcWinning(m_BonusGame->GetCredits());
+		m_Game->Render(false);
+	}
+	else
+		m_BonusGame->Render();
+}
+
+void GameManager::RenderOutro()
+{
+	if(m_Outro->GetSwitch())
+	{
+		m_Outro->ResetSwitch();
+
+		m_CurrentState = INTRO;
+		m_Intro->Render(false);
+	}
+	else
+		m_Outro->Render();
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
