@@ -260,6 +260,25 @@ unsigned int Game::GetPaid() const
 	return m_uiPaid;
 }
 
+void Game::CalcWinning(unsigned int Paid)
+{
+	m_uiPaid = Paid;
+	UpdatePaid();
+
+	m_uiCurCredits -= m_uiTotalBet;
+
+	if(m_uiPaid == 0)
+	{
+		UpdateCurCredits();
+		Clear();
+	}
+	else
+	{
+		m_uiCurCredits += m_uiPaid;
+		UpdateCurCredits();
+	}
+}
+
 bool Game::GetWin() const
 {
 	return m_bWin;

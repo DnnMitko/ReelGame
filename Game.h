@@ -19,6 +19,7 @@ public:
 	unsigned int GetCredits() const;
 	unsigned int GetTotalBet() const;
 	unsigned int GetPaid() const;
+	void CalcWinning(unsigned int);
 	bool GetWin() const;
 	bool GetBonus() const;
 	void ResetWin();
