@@ -5,6 +5,7 @@
 #include <sstream>
 #include "State.h"
 #include "Button.h"
+#include "GamePanel.h"
 
 class Game : public State
 {
@@ -15,77 +16,27 @@ public:
 public:
 	void Render(bool = true);
 	void EventHandler(SDL_Event&);
+
 	void SetCredits(unsigned int);
 	unsigned int GetCredits() const;
+
 	unsigned int GetTotalBet() const;
+
 	unsigned int GetPaid() const;
+
 	void CalcWinning(unsigned int);
+
 	bool GetWin() const;
-	bool GetBonus() const;
 	void ResetWin();
+
+	bool GetBonus() const;
 	void ResetBonus();
+
 	void Clear();
 private:
-	void NullAll();
-
-	void InitPayTable(int);
-	void InitBet(int);
-	void InitLines(int);
-	void InitMaxBet(int);
-	void InitCurCredits(int);
-	void InitTotalBet(int);
-	void InitPaid(int);
-	void InitPlay(int);
-	void InitCashOut(int);
-
-	void UpdateBet();
-	void UpdateLines();
-	void UpdateCurCredits();
-	void UpdateTotalBet();
-	void UpdatePaid();
-
-	void ReleaseAll();
-private:
-	bool m_bWin;
-	bool m_bBonus;
-
-	unsigned int m_uiCurCredits;
-	unsigned int m_uiBet;
-	unsigned int m_uiLines;
-	unsigned int m_uiTotalBet;
-	unsigned int m_uiPaid;
-
 	SDL_Texture* m_TextureBackground;
 
-	TTF_Font* m_FontBig;
-	TTF_Font* m_FontSmall;
-
-	Button* m_ButtonPayTable;
-
-	Label* m_LabelBet;
-	TextField* m_TextFieldBet;
-	Button* m_ButtonBetMinus;
-	Button* m_ButtonBetPlus;
-
-	Label* m_LabelLines;
-	TextField* m_TextFieldLines;
-	Button* m_ButtonLinesMinus;
-	Button* m_ButtonLinesPlus;
-
-	Button* m_ButtonMaxBet;
-
-	Label* m_LabelCurCredits;
-	TextField* m_TextFieldCurCredits;
-
-	Label* m_LabelTotalBet;
-	TextField* m_TextFieldTotalBet;
-
-	Label* m_LabelPaid;
-	TextField* m_TextFieldPaid;
-
-	Button* m_ButtonPlay;
-
-	Button* m_ButtonCashOut;
+	GamePanel* m_Panel;
 };
 
 #endif /* GAME_H_ */
