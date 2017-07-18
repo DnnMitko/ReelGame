@@ -54,12 +54,24 @@ const int g_GameMaxLines = 15;
 
 const int g_BonusWidth = 598;
 const int g_BonusHeight = 334;
+const char g_BonusTitle[] = "Bonus Game";
+const char g_BonusSubTitle[] = "Choose your treasure!";
 const int g_BonusFontSizeCredits = 55;
 const int g_BonusFontSizeWin = 80;
-const int g_BonusOffsetY = -120;
+const int g_BonusTitleOffsetY = -120;
 const int g_BonusCreditsWidth = 550;
 const int g_BonusCreditHeight = 80;
 const int g_BonusCreditOffsetY = 115;
+const int g_BonusChest1OffsetX = 45;
+const int g_BonusChest2OffsetX = 242;
+const int g_BonusChest3OffsetX = 439;
+const int g_BonusChestOffsetY = 94;
+const int g_BonusChestWidth = 114;
+const int g_BonusChestHeight = 119;
+const int g_BonusLowerLimit = 2;
+const int g_BonusUpperLimit = 30;
+const int g_BonusDelay = 3000;
+const char g_BonusWinMessage[] = "YOU WON: ";
 const char g_BonusGameBackground[] = "images/BonusGameBackground.png";
 
 const float g_Denominator = 0.01;

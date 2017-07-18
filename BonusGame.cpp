@@ -23,27 +23,27 @@ BonusGame::BonusGame(SDL_Renderer* newRenderer) : State(newRenderer)
 		std::cerr << "Failed to load Title Font! SDL Error: " << TTF_GetError() << std::endl;
 
 	m_LabelTitleSign = new Label(m_Renderer);
-	m_LabelTitleSign->SetText("Bonus game", m_FontTitle, SDL_Color{0xF0, 0xF0, 0x00, 0xFF});
+	m_LabelTitleSign->SetText(g_BonusTitle, m_FontTitle, SDL_Color{0xF0, 0xF0, 0x00, 0xFF});
 	m_LabelTitleSign->SetX(m_iX + (g_BonusWidth - m_LabelTitleSign->GetWidth()) / 2);
-	m_LabelTitleSign->SetY(m_iY + (g_BonusHeight - m_LabelTitleSign->GetHeight()) / 2 + g_BonusOffsetY);
+	m_LabelTitleSign->SetY(m_iY + (g_BonusHeight - m_LabelTitleSign->GetHeight()) / 2 + g_BonusTitleOffsetY);
 
 	m_TextFieldCredits = new TextField(m_Renderer);
 	m_TextFieldCredits->SetFieldSize(g_BonusCreditHeight, g_BonusCreditsWidth);
 	m_TextFieldCredits->SetX(m_iX + (g_BonusWidth - m_TextFieldCredits->GetWidth()) / 2);
 	m_TextFieldCredits->SetY(m_iY + (g_BonusHeight - m_TextFieldCredits->GetHeight()) / 2 + g_BonusCreditOffsetY);
-	m_TextFieldCredits->SetText("Choose your treasure!", m_FontCredits, SDL_Color{0xFF, 0xFF, 0xFF, 0xFF});
+	m_TextFieldCredits->SetText(g_BonusSubTitle, m_FontCredits, SDL_Color{0xFF, 0xFF, 0xFF, 0xFF});
 
 	m_Chest1 = new Chest(m_Renderer);
-	m_Chest1->SetX(45 + m_iX);
-	m_Chest1->SetY(94 + m_iY);
+	m_Chest1->SetX(m_iX + g_BonusChest1OffsetX);
+	m_Chest1->SetY(m_iY + g_BonusChestOffsetY);
 
 	m_Chest2 = new Chest(m_Renderer);
-	m_Chest2->SetX(242 + m_iX);
-	m_Chest2->SetY(94 + m_iY);
+	m_Chest2->SetX(m_iX + g_BonusChest2OffsetX);
+	m_Chest2->SetY(m_iY + g_BonusChestOffsetY);
 
 	m_Chest3 = new Chest(m_Renderer);
-	m_Chest3->SetX(439 + m_iX);
-	m_Chest3->SetY(94 + m_iY);
+	m_Chest3->SetX(m_iX + g_BonusChest3OffsetX);
+	m_Chest3->SetY(m_iY + g_BonusChestOffsetY);
 
 	m_uiCredits = 0;
 
@@ -81,7 +81,7 @@ void BonusGame::EventHandler(SDL_Event& e)
 			m_Chest1->Open();
 			m_bHasChosen = true;
 
-			m_uiCredits += rand() % 28001 + 2000;
+			m_uiCredits += (rand() % (g_BonusUpperLimit - g_BonusLowerLimit + 1) + g_BonusLowerLimit) * 1000;
 			UpdateCredits();
 
 			m_uiTimer = SDL_GetTicks();
@@ -91,7 +91,7 @@ void BonusGame::EventHandler(SDL_Event& e)
 			m_Chest2->Open();
 			m_bHasChosen = true;
 
-			m_uiCredits += rand() % 28001 + 2000;
+			m_uiCredits += (rand() % (g_BonusUpperLimit - g_BonusLowerLimit + 1) + g_BonusLowerLimit) * 1000;
 			UpdateCredits();
 
 			m_uiTimer = SDL_GetTicks();
@@ -101,7 +101,7 @@ void BonusGame::EventHandler(SDL_Event& e)
 			m_Chest3->Open();
 			m_bHasChosen = true;
 
-			m_uiCredits += rand() % 28001 + 2000;
+			m_uiCredits += (rand() % (g_BonusUpperLimit - g_BonusLowerLimit + 1) + g_BonusLowerLimit) * 1000;
 			UpdateCredits();
 
 			m_uiTimer = SDL_GetTicks();
@@ -135,7 +135,7 @@ void BonusGame::Render(bool UpdateOnly)
 
 	if(m_bHasChosen)
 	{
-		if(SDL_GetTicks() - m_uiTimer >= 3000)
+		if(SDL_GetTicks() - m_uiTimer >= g_BonusDelay)
 			m_bSwitch = true;
 	}
 }
@@ -179,7 +179,7 @@ void BonusGame::UpdateCredits()
 	std::string strCredits;
 	std::stringstream ss;
 
-	ss << "YOU WON: " << m_uiCredits;
+	ss << g_BonusWinMessage << m_uiCredits;
 	strCredits = ss.str();
 
 	m_TextFieldCredits->SetText(strCredits, m_FontCredits, SDL_Color{0xFF, 0xFF, 0xFF, 0xFF});
@@ -193,7 +193,7 @@ void BonusGame::ResetGame()
 
 	m_bHasChosen = false;
 
-	m_TextFieldCredits->SetText("Choose your treasure!", m_FontCredits, SDL_Color{0xFF, 0xFF, 0xFF, 0xFF});
+	m_TextFieldCredits->SetText(g_BonusSubTitle, m_FontCredits, SDL_Color{0xFF, 0xFF, 0xFF, 0xFF});
 }
 
 

@@ -37,8 +37,8 @@ Chest::Chest(SDL_Renderer* newRenderer)
 
 	m_FieldRect.x = 0;
 	m_FieldRect.y = 0;
-	m_FieldRect.w = 114;
-	m_FieldRect.h = 119;
+	m_FieldRect.w = g_BonusChestWidth;
+	m_FieldRect.h = g_BonusChestHeight;
 
 	m_bHasChanged = true;
 	m_bIsOpened = false;
