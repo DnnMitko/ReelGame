@@ -20,8 +20,10 @@ public:
 public:
 	void EventHandler(SDL_Event&);
 	void Render(bool = true);
+
 	void SetCredits(unsigned int);
 	unsigned int GetCredits() const;
+
 	void ResetGame();
 private:
 	void NullAll();
