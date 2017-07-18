@@ -2,6 +2,8 @@
 
 GameManager::GameManager()
 {
+	srand(time(NULL));
+
 	m_Window = NULL;
 	m_Renderer = NULL;
 	if(!InitSDL())
@@ -105,9 +107,9 @@ void GameManager::Render()
 			{
 				m_Game->ResetWin();
 
-				// TODO m_Win->SetCredits(m_Game->GetPaid());
-				m_Win->SetCredits(8765);
+				m_Win->SetCredits(m_Game->GetPaid());
 
+				m_Game->Render();
 				m_CurrentState = WIN;
 				m_Win->Render(false);
 			}
@@ -115,9 +117,9 @@ void GameManager::Render()
 			{
 				m_Game->ResetBonus();
 
-				// TODO m_BonusGame->SetCredits(m_Game->GetTotalBet());
-				m_BonusGame->SetCredits(666);
+				m_BonusGame->SetCredits(m_Game->GetTotalBet());
 
+				m_Game->Render();
 				m_CurrentState = BONUSGAME;
 				m_BonusGame->Render(false);
 			}
@@ -125,6 +127,7 @@ void GameManager::Render()
 			{
 				m_Outro->SetCredits(m_Game->GetCredits());
 
+				m_Game->Render();
 				m_CurrentState = OUTRO;
 				m_Outro->Render(false);
 			}
@@ -150,8 +153,10 @@ void GameManager::Render()
 		{
 			m_BonusGame->ResetSwitch();
 
+			m_BonusGame->ResetGame();
+
 			m_CurrentState = GAME;
-			// TODO add loot
+			m_Game->CalcWinning(m_BonusGame->GetCredits());
 			m_Game->Render(false);
 		}
 		else

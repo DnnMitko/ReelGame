@@ -6,6 +6,8 @@
 #include <SDL2/SDL_ttf.h>
 #include <SDL2/SDL_mixer.h>
 #include <iostream>
+#include <cstdlib>
+#include <ctime>
 #include "Constants.h"
 #include "Button.h"
 #include "Intro.h"
