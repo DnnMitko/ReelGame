@@ -73,6 +73,7 @@ const int g_BonusUpperLimit = 30;
 const int g_BonusDelay = 3000;
 const char g_BonusWinMessage[] = "YOU WON: ";
 const char g_BonusGameBackground[] = "images/BonusGameBackground.png";
+const char g_BonusGameBackgroundInit[] = "images/BonusGameBackgroundInit.png";
 
 const float g_Denominator = 0.01;
 const int g_OutroDelay = 10000;

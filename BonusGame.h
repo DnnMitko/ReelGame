@@ -27,8 +27,10 @@ private:
 	void NullAll();
 
 	void UpdateCredits();
+	void UpdateCurWin();
 private:
-	SDL_Texture* m_TextureBackground;
+	SDL_Texture* m_TextureBackgroundGame;
+	SDL_Texture* m_TextureBackgroundInit;
 
 	Label* m_LabelTitleSign;
 	TextField* m_TextFieldCredits;
@@ -44,7 +46,12 @@ private:
 
 	Uint32 m_uiTimer;
 
+	Label* m_LabelCurWin;
+	TextField* m_TextFieldCurWin;
+	Button* m_ButtonStart;
+
 	bool m_bHasChosen;
+	bool m_bHasStarted;
 
 	int m_iX;
 	int m_iY;

@@ -7,9 +7,15 @@ BonusGame::BonusGame() : State()
 
 BonusGame::BonusGame(SDL_Renderer* newRenderer) : State(newRenderer)
 {
-	m_TextureBackground = IMG_LoadTexture(m_Renderer, g_BonusGameBackground);
-	if (m_TextureBackground == NULL)
+	m_uiCredits = 0;
+
+	m_TextureBackgroundGame = IMG_LoadTexture(m_Renderer, g_BonusGameBackground);
+	if (m_TextureBackgroundGame == NULL)
 		std::cerr << "Failed to load TextureBackground! SDL Error: " << IMG_GetError() << std::endl;
+
+	m_TextureBackgroundInit = IMG_LoadTexture(m_Renderer, g_BonusGameBackgroundInit);
+	if (m_TextureBackgroundInit == NULL)
+		std::cerr << "Failed to load TextureBackgroundInit! SDL Error: " << IMG_GetError() << std::endl;
 
 	m_iX = (g_ScreenWidth - g_BonusWidth) / 2;
 	m_iY = (g_ScreenHeight - g_BonusHeight) / 2;
@@ -21,6 +27,24 @@ BonusGame::BonusGame(SDL_Renderer* newRenderer) : State(newRenderer)
 	m_FontTitle = TTF_OpenFont(g_FontTitle, g_BonusFontSizeWin);
 	if(m_FontTitle == NULL)
 		std::cerr << "Failed to load Title Font! SDL Error: " << TTF_GetError() << std::endl;
+
+	//TODO add constants
+	m_LabelCurWin = new Label(m_Renderer);
+	m_LabelCurWin->SetText("So far, you won:", m_FontCredits, SDL_Color{0xF0, 0xF0, 0x00, 0xFF});
+	m_LabelCurWin->SetX(m_iX + 60 + (300 - m_LabelCurWin->GetWidth()) / 2);
+	m_LabelCurWin->SetY(m_iY + g_BonusHeight - 120 - m_LabelCurWin->GetHeight());
+
+	m_TextFieldCurWin = new TextField(m_Renderer);
+	m_TextFieldCurWin->SetX(m_iX + 60);
+	m_TextFieldCurWin->SetY(m_iY + g_BonusHeight - 120);
+	m_TextFieldCurWin->SetFieldSize(60, 300);
+	UpdateCurWin();
+
+	m_ButtonStart = new Button(m_Renderer);
+	m_ButtonStart->SetX(m_iX + g_BonusWidth - 180);
+	m_ButtonStart->SetY(m_iY + g_BonusHeight - 100);
+	m_ButtonStart->SetFieldSize(70, 160);
+	m_ButtonStart->SetText("Start", m_FontCredits, SDL_Color{0x00, 0x00, 0x00, 0xFF});
 
 	m_LabelTitleSign = new Label(m_Renderer);
 	m_LabelTitleSign->SetText(g_BonusTitle, m_FontTitle, SDL_Color{0xF0, 0xF0, 0x00, 0xFF});
@@ -45,19 +69,21 @@ BonusGame::BonusGame(SDL_Renderer* newRenderer) : State(newRenderer)
 	m_Chest3->SetX(m_iX + g_BonusChest3OffsetX);
 	m_Chest3->SetY(m_iY + g_BonusChestOffsetY);
 
-	m_uiCredits = 0;
-
 	m_uiTimer = 0;
 
 	m_bHasChosen = false;
+	m_bHasStarted = false;
 }
 
 BonusGame::~BonusGame()
 {
-	SDL_DestroyTexture(m_TextureBackground);
+	SDL_DestroyTexture(m_TextureBackgroundGame);
+	SDL_DestroyTexture(m_TextureBackgroundInit);
 
 	delete m_LabelTitleSign;
 	delete m_TextFieldCredits;
+
+	delete m_ButtonStart;
 
 	delete m_Chest1;
 	delete m_Chest2;
@@ -76,42 +102,66 @@ void BonusGame::EventHandler(SDL_Event& e)
 		int x, y;
 		SDL_GetMouseState(&x, &y);
 
-		if(m_Chest1->IsIn(x, y))
+		if(!m_bHasStarted)
 		{
-			m_Chest1->Open();
-			m_bHasChosen = true;
-
-			m_uiCredits += (rand() % (g_BonusUpperLimit - g_BonusLowerLimit + 1) + g_BonusLowerLimit) * 1000;
-			UpdateCredits();
-
-			m_uiTimer = SDL_GetTicks();
+			if(m_ButtonStart->IsIn(x, y))
+				m_ButtonStart->Press();
 		}
-		else if(m_Chest2->IsIn(x, y))
+		else
 		{
-			m_Chest2->Open();
-			m_bHasChosen = true;
+			if(m_Chest1->IsIn(x, y))
+			{
+				m_Chest1->Open();
+				m_bHasChosen = true;
 
-			m_uiCredits += (rand() % (g_BonusUpperLimit - g_BonusLowerLimit + 1) + g_BonusLowerLimit) * 1000;
-			UpdateCredits();
+				m_uiCredits += (rand() % (g_BonusUpperLimit - g_BonusLowerLimit + 1) + g_BonusLowerLimit) * 1000;
+				UpdateCredits();
 
-			m_uiTimer = SDL_GetTicks();
+				m_uiTimer = SDL_GetTicks();
+			}
+			else if(m_Chest2->IsIn(x, y))
+			{
+				m_Chest2->Open();
+				m_bHasChosen = true;
+
+				m_uiCredits += (rand() % (g_BonusUpperLimit - g_BonusLowerLimit + 1) + g_BonusLowerLimit) * 1000;
+				UpdateCredits();
+
+				m_uiTimer = SDL_GetTicks();
+			}
+			else if(m_Chest3->IsIn(x, y))
+			{
+				m_Chest3->Open();
+				m_bHasChosen = true;
+
+				m_uiCredits += (rand() % (g_BonusUpperLimit - g_BonusLowerLimit + 1) + g_BonusLowerLimit) * 1000;
+				UpdateCredits();
+
+				m_uiTimer = SDL_GetTicks();
+			}
 		}
-		else if(m_Chest3->IsIn(x, y))
+	}
+	else if(e.type == SDL_MOUSEBUTTONUP)
+	{
+		if(!m_bHasStarted)
 		{
-			m_Chest3->Open();
-			m_bHasChosen = true;
+			int x, y;
+			SDL_GetMouseState(&x, &y);
 
-			m_uiCredits += (rand() % (g_BonusUpperLimit - g_BonusLowerLimit + 1) + g_BonusLowerLimit) * 1000;
-			UpdateCredits();
+			if(m_ButtonStart->IsIn(x, y) && m_ButtonStart->IsPressed())
+			{
+				m_bHasStarted = true;
+				Render(false);
+			}
 
-			m_uiTimer = SDL_GetTicks();
+			m_ButtonStart->Release();
 		}
 	}
 }
 
 void BonusGame::Render(bool UpdateOnly)
 {
-	if(m_Renderer == NULL || m_TextureBackground == NULL || m_FontCredits == NULL || m_FontTitle == NULL)
+	if(!m_Renderer || !m_TextureBackgroundGame || !m_TextureBackgroundInit || !m_FontCredits || !m_FontTitle)
 		return;
 
 	if(!UpdateOnly)
@@ -122,16 +172,30 @@ void BonusGame::Render(bool UpdateOnly)
 		tempRect.x = m_iX;
 		tempRect.y = m_iY;
 
-		SDL_RenderCopy(m_Renderer, m_TextureBackground, NULL, &tempRect);
+		if(m_bHasStarted)
+			SDL_RenderCopy(m_Renderer, m_TextureBackgroundGame, NULL, &tempRect);
+		else
+			SDL_RenderCopy(m_Renderer, m_TextureBackgroundInit, NULL, &tempRect);
 	}
 
-	m_LabelTitleSign->Render(UpdateOnly);
+	if(!m_bHasStarted)
+	{
+		m_LabelTitleSign->Render(UpdateOnly);
 
-	m_Chest1->Render(UpdateOnly);
-	m_Chest2->Render(UpdateOnly);
-	m_Chest3->Render(UpdateOnly);
+		m_LabelCurWin->Render(UpdateOnly);
+		m_TextFieldCurWin->Render(UpdateOnly);
+		m_ButtonStart->Render(UpdateOnly);
+	}
+	else
+	{
+		m_LabelTitleSign->Render(UpdateOnly);
 
-	m_TextFieldCredits->Render(UpdateOnly);
+		m_Chest1->Render(UpdateOnly);
+		m_Chest2->Render(UpdateOnly);
+		m_Chest3->Render(UpdateOnly);
+
+		m_TextFieldCredits->Render(UpdateOnly);
+	}
 
 	if(m_bHasChosen)
 	{
@@ -143,6 +207,7 @@ void BonusGame::Render(bool UpdateOnly)
 void BonusGame::SetCredits(unsigned int credits)
 {
 	m_uiCredits = 10 * credits;
+	UpdateCurWin();
 }
 
 unsigned int BonusGame::GetCredits() const
@@ -152,7 +217,8 @@ unsigned int BonusGame::GetCredits() const
 
 void BonusGame::NullAll()
 {
-	m_TextureBackground = NULL;
+	m_TextureBackgroundGame = NULL;
+	m_TextureBackgroundInit = NULL;
 
 	m_LabelTitleSign = NULL;
 	m_TextFieldCredits = NULL;
@@ -168,7 +234,12 @@ void BonusGame::NullAll()
 
 	m_uiTimer = 0;
 
+	m_LabelCurWin = NULL;
+	m_TextFieldCurWin = NULL;
+	m_ButtonStart = NULL;
+
 	m_bHasChosen = false;
+	m_bHasStarted = false;
 
 	m_iX = 0;
 	m_iY = 0;
@@ -185,6 +256,17 @@ void BonusGame::UpdateCredits()
 	m_TextFieldCredits->SetText(strCredits, m_FontCredits, SDL_Color{0xFF, 0xFF, 0xFF, 0xFF});
 }
 
+void BonusGame::UpdateCurWin()
+{
+	std::string strCredits;
+	std::stringstream ss;
+
+	ss << m_uiCredits;
+	strCredits = ss.str();
+
+	m_TextFieldCurWin->SetText(strCredits, m_FontCredits, SDL_Color{0xFF, 0xFF, 0xFF, 0xFF});
+}
+
 void BonusGame::ResetGame()
 {
 	m_Chest1->Close();
@@ -192,6 +274,7 @@ void BonusGame::ResetGame()
 	m_Chest3->Close();
 
 	m_bHasChosen = false;
+	m_bHasStarted = false;
 
 	m_TextFieldCredits->SetText(g_BonusSubTitle, m_FontCredits, SDL_Color{0xFF, 0xFF, 0xFF, 0xFF});
 }
