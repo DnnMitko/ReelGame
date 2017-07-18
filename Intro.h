@@ -28,6 +28,7 @@ private:
 	void InitResumeGame();
 	void InitInsertCredit();
 	void InitInfo();
+	void InitVolume();
 
 	void InitCredits();
 	void UpdateCredits();
@@ -40,8 +41,12 @@ private:
 	Button* m_ResumeGame;
 	Button* m_InsertCredit;
 	Button* m_Info;
+	Button* m_VolumePlus;
+	Button* m_VolumeMinus;
 
 	TTF_Font* m_Font;
+
+	Label* m_LabelVolume;
 
 	Label* m_LabelCredits;
 	TextField* m_TextFieldCredits;
