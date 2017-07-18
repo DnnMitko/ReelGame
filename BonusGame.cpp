@@ -60,18 +60,21 @@ void BonusGame::EventHandler(SDL_Event& e)
 			if(m_Chest1->IsIn(x, y))
 			{
 				m_Chest1->Open();
+				m_bHasChosen = true;
 
 				GenPrize();
 			}
 			else if(m_Chest2->IsIn(x, y))
 			{
 				m_Chest2->Open();
+				m_bHasChosen = true;
 
 				GenPrize();
 			}
 			else if(m_Chest3->IsIn(x, y))
 			{
 				m_Chest3->Open();
+				m_bHasChosen = true;
 
 				GenPrize();
 			}
@@ -272,8 +275,6 @@ void BonusGame::UpdateCurWin()
 
 void BonusGame::GenPrize()
 {
-	m_bHasChosen = true;
-
 	int iWinnings = (rand() % (g_BonusUpperLimit - g_BonusLowerLimit + 1) + g_BonusLowerLimit) * 1000;
 	UpdateChestWin(iWinnings);
 
