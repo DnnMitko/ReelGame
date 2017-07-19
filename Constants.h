@@ -80,6 +80,15 @@ const int g_BonusDelay = 3000;
 const char g_BonusWinMessage[] = "YOU WON: ";
 const char g_BonusGameBackground[] = "images/BonusGameBackground.png";
 const char g_BonusGameBackgroundInit[] = "images/BonusGameBackgroundInit.png";
+const char g_BonusTempWinMessage[] = "You win:";
+const int g_BonusTempWinOffsetX = 60;
+const int g_BonusTempWinOffsetY = -140;
+const int g_BonusTempWinFieldWidth = 300;
+const int g_BonusTempWinFieldHeight = 60;
+const int g_BonusStartOffsetX = -200;
+const int g_BonusStartOffsetY = -140;
+const int g_BonusStartWidth = 150;
+const int g_BonusStartHeight = 60;
 
 const float g_Denominator = 0.01;
 const int g_OutroDelay = 10000;
