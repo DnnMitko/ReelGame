@@ -86,9 +86,9 @@ const int g_BonusTempWinOffsetY = -120;
 const int g_BonusTempWinFieldWidth = 300;
 const int g_BonusTempWinFieldHeight = 60;
 const int g_BonusStartOffsetX = -180;
-const int g_BonusStartOffsetY = -100;
+const int g_BonusStartOffsetY = -120;
 const int g_BonusStartWidth = 160;
-const int g_BonusStartHeight = 70;
+const int g_BonusStartHeight = 90;
 
 const float g_Denominator = 0.01;
 const int g_OutroDelay = 10000;
