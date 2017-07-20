@@ -121,6 +121,12 @@ void BonusGame::Render(bool UpdateOnly)
 	else
 		SDL_RenderCopy(m_Renderer, m_TextureBackgroundInit, NULL, &tempRect);
 
+	if(m_bHasChosen)
+	{
+		if(SDL_GetTicks() - m_uiTimer >= g_BonusDelay)
+			m_bTransitionOut = true;
+	}
+
 	if(m_bTransitionIn)
 		TransitionIn();
 
@@ -144,12 +150,6 @@ void BonusGame::Render(bool UpdateOnly)
 		m_Chest3->Render(false);
 
 		m_TextFieldCredits->Render(false);
-	}
-
-	if(m_bHasChosen)
-	{
-		if(SDL_GetTicks() - m_uiTimer >= g_BonusDelay)
-			m_bTransitionOut = true;
 	}
 }
 
