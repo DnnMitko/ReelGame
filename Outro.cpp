@@ -162,7 +162,7 @@ void Outro::TransitionIn()
 }
 void Outro::TransitionOut()
 {
-	if(m_iY + g_WinHeight <= 0)
+	if(m_iY + g_OutroHeight <= 0)
 	{
 		m_bTransitionOut = false;
 		m_bSwitch = true;
@@ -171,8 +171,8 @@ void Outro::TransitionOut()
 	{
 		m_iY -= g_TransitionStep;
 
-		m_LabelWinSign->SetY(m_iY + (g_WinHeight - m_LabelWinSign->GetHeight()) / 2 + g_WinSignOffsetY);
-		m_TextFieldMoney->SetY(m_iY + (g_OutroHeight - m_TextFieldMoney->GetHeight()) / 2 + g_WinCreditOffsetY);
+		m_LabelWinSign->SetY(m_iY + (g_OutroHeight - m_LabelWinSign->GetHeight()) / 2 + g_OutroWinOffsetY);
+		m_TextFieldMoney->SetY(m_iY + (g_OutroHeight - m_TextFieldMoney->GetHeight()) / 2 + g_OutroMoneyOffsetY);
 	}
 }
 
