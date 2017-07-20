@@ -80,7 +80,7 @@ void BonusGame::EventHandler(SDL_Event& e)
 			}
 		}
 	}
-	else if(e.type == SDL_MOUSEBUTTONUP)
+	else if(e.type == SDL_MOUSEBUTTONUP && !m_bTransitionIn && !m_bTransitionOut)
 	{
 		if(!m_bHasStarted)
 		{
@@ -90,6 +90,13 @@ void BonusGame::EventHandler(SDL_Event& e)
 			if(m_ButtonStart->IsIn(x, y) && m_ButtonStart->IsPressed())
 			{
 				m_bHasStarted = true;
+
+				m_LabelTitleSign->SetY(m_iY + (g_BonusHeight - m_LabelTitleSign->GetHeight()) / 2 + g_BonusTitleOffsetY);
+				m_Chest1->SetY(m_iY + g_BonusChestOffsetY);
+				m_Chest2->SetY(m_iY + g_BonusChestOffsetY);
+				m_Chest3->SetY(m_iY + g_BonusChestOffsetY);
+				m_TextFieldCredits->SetY(m_iY + (g_BonusHeight - m_TextFieldCredits->GetHeight()) / 2 + g_BonusCreditOffsetY);
+
 				Render(false);
 			}
 
