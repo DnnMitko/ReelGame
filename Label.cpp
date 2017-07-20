@@ -41,15 +41,22 @@ int Label::GetHeight() const
 void Label::SetX(int newX)
 {
 	m_TextRect.x = newX;
+
+	m_bHasChanged = true;
 }
 
 void Label::SetY(int newY)
 {
 	m_TextRect.y = newY;
+
+	m_bHasChanged = true;
 }
 
 void Label::Render(bool UpdateOnly)
 {
+	if(m_Renderer == NULL || m_TextureText == NULL)
+		return;
+
 	if(UpdateOnly)
 	{
 		if(m_bHasChanged)
@@ -60,8 +67,7 @@ void Label::Render(bool UpdateOnly)
 	}
 	else
 	{
-		if(m_Renderer == NULL || m_TextureText == NULL)
-			return;
+		m_bHasChanged = false;
 
 		SDL_RenderCopy(m_Renderer, m_TextureText, NULL, &m_TextRect);
 	}

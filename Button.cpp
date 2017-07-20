@@ -23,10 +23,9 @@ Button::Button(SDL_Renderer* newRenderer) : TextField(newRenderer)
 		if(m_TextureButton == NULL)
 			std::cerr << "Failed to load TextureBackground! SDL Error: " << IMG_GetError() << std::endl;
 	}
-	//TODO add constants
 	if(!m_SfxClick)
 	{
-		m_SfxClick = Mix_LoadWAV("sounds/ButtonClick.wav");
+		m_SfxClick = Mix_LoadWAV(g_ButtonSound);
 
 		if(!m_SfxClick)
 			std::cerr << "Failed to load button sound effect! SDL_mixer Error: " << Mix_GetError() << "\n";
@@ -47,6 +46,9 @@ Button::~Button()
 
 void Button::Render(bool UpdateOnly)
 {
+	if(m_Renderer == NULL || m_TextureText == NULL || m_TextureTextPressed == NULL || m_TextureButton == NULL)
+		return;
+
 	if(UpdateOnly)
 	{
 		if(m_bHasChanged)
@@ -57,8 +59,7 @@ void Button::Render(bool UpdateOnly)
 	}
 	else
 	{
-		if(m_Renderer == NULL || m_TextureText == NULL || m_TextureTextPressed == NULL || m_TextureButton == NULL)
-			return;
+		m_bHasChanged = false;
 
 		SDL_Rect tempRect;
 		tempRect.w = g_ButtonSpriteWidth;
