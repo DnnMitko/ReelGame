@@ -32,14 +32,19 @@ private:
 
 	void InitCredits();
 	void UpdateCredits();
+
+	void ClickButtonVolume();
+
 private:
-	unsigned int m_uiCredit;
+	int m_uiCredit;
+	int m_uiCounterVolume;
 
 	SDL_Texture* m_TextureBackground;
 
 	Button* m_StartGame;
 	Button* m_ResumeGame;
-	Button* m_InsertCredit;
+	Button* m_InsertCreditPlus;
+	Button* m_InsertCreditMinus;
 	Button* m_Info;
 	Button* m_VolumePlus;
 	Button* m_VolumeMinus;
@@ -47,6 +52,7 @@ private:
 	TTF_Font* m_Font;
 
 	Label* m_LabelVolume;
+	Label* m_LabelCredit;
 
 	Label* m_LabelCredits;
 	TextField* m_TextFieldCredits;
