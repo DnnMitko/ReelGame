@@ -186,12 +186,14 @@ void GameManager::RenderIntro()
 			m_Game->SetCredits(m_Intro->GetCredits());
 
 			m_CurrentState = GAME;
+
 			m_Game->Clear();
+			m_Game->PrepTransitionIn();
 			m_Game->Render(false);
 		}
 	}
 	else
-		m_Intro->Render();
+		m_Intro->Render(true);
 }
 
 void GameManager::RenderGame()
@@ -206,31 +208,42 @@ void GameManager::RenderGame()
 
 			m_Win->SetCredits(m_Game->GetPaid());
 
-			m_Game->Render();
+			m_Game->Render(true);
+
 			m_CurrentState = WIN;
+
+			m_Win->PrepTransitionIn();
 			m_Win->Render(false);
 		}
 		else if(m_Game->GetBonus())
 		{
 			m_Game->ResetBonus();
 
+			m_BonusGame->ResetGame();
+
 			m_BonusGame->SetCredits(m_Game->GetTotalBet());
 
-			m_Game->Render();
+			m_Game->Render(true);
+
 			m_CurrentState = BONUSGAME;
+
+			m_BonusGame->PrepTransitionIn();
 			m_BonusGame->Render(false);
 		}
 		else
 		{
 			m_Outro->SetCredits(m_Game->GetCredits());
 
-			m_Game->Render();
+			m_Game->Render(true);
+
 			m_CurrentState = OUTRO;
+
+			m_Outro->PrepTransitionIn();
 			m_Outro->Render(false);
 		}
 	}
 	else
-		m_Game->Render();
+		m_Game->Render(true);
 }
 
 void GameManager::RenderWin()
@@ -243,7 +256,10 @@ void GameManager::RenderWin()
 		m_Game->Render(false);
 	}
 	else
-		m_Win->Render();
+	{
+		m_Game->Render(false);
+		m_Win->Render(true);
+	}
 }
 
 void GameManager::RenderBonusGame()
@@ -252,14 +268,15 @@ void GameManager::RenderBonusGame()
 	{
 		m_BonusGame->ResetSwitch();
 
-		m_BonusGame->ResetGame();
-
 		m_CurrentState = GAME;
 		m_Game->CalcWinning(m_BonusGame->GetCredits());
 		m_Game->Render(false);
 	}
 	else
-		m_BonusGame->Render();
+	{
+		m_Game->Render(false);
+		m_BonusGame->Render(true);
+	}
 }
 
 void GameManager::RenderOutro()
@@ -272,7 +289,10 @@ void GameManager::RenderOutro()
 		m_Intro->Render(false);
 	}
 	else
-		m_Outro->Render();
+	{
+		m_Game->Render(false);
+		m_Outro->Render(true);
+	}
 }
 
 
