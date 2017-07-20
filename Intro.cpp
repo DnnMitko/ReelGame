@@ -1,5 +1,7 @@
 #include "Intro.h"
 
+Mix_Chunk* Intro::m_BackgroundSound = NULL;
+
 Intro::Intro() : State()
 {
 	NullAll();
@@ -19,6 +21,14 @@ Intro::Intro(SDL_Renderer* newRenderer) : State(newRenderer)
 	if( m_Font == NULL )
 		std::cerr << "Failed to load Label Font! SDL Error: " << IMG_GetError() << std::endl;
 
+	if(!m_BackgroundSound)
+	{
+		m_BackgroundSound = Mix_LoadWAV(g_BackgroundSound);
+
+		if(!m_BackgroundSound)
+			std::cerr << "Failed to load button sound effect! SDL_mixer Error: " << Mix_GetError() << "\n";
+	}
+
 	InitStartGame();
 	InitResumeGame();
 	InitInsertCredit();
@@ -32,6 +42,8 @@ Intro::~Intro()
 	SDL_DestroyTexture(m_TextureBackground);
 
 	TTF_CloseFont(m_Font);
+
+	Mix_FreeChunk(m_BackgroundSound);
 
 	delete m_StartGame;
 	delete m_ResumeGame;
@@ -72,6 +84,9 @@ void Intro::Render(bool UpdateOnly)
 	m_LabelCredit->Render(UpdateOnly);
 	m_LabelCredits->Render(UpdateOnly);
 	m_TextFieldCredits->Render(UpdateOnly);
+
+	Mix_PlayChannel(-1, m_BackgroundSound, 1);
+
 }
 
 void Intro::EventHandler(SDL_Event& e)
@@ -100,6 +115,7 @@ void Intro::EventHandler(SDL_Event& e)
 	}
 	else if (e.type == SDL_MOUSEBUTTONUP)
 	{
+		m_uiCounterVolume = 0;
 		SDL_GetMouseState(&x, &y);
 
 		if(m_StartGame->IsIn(x, y) && m_StartGame->IsPressed())
@@ -132,7 +148,6 @@ void Intro::EventHandler(SDL_Event& e)
 		else if (m_VolumePlus->IsIn(x, y) && m_VolumePlus->IsPressed())
 		{
 			//TODO
-
 		}
 		else if (m_VolumeMinus->IsIn(x, y) && m_VolumeMinus->IsPressed())
 		{

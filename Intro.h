@@ -4,6 +4,7 @@
 #include <SDL2/SDL.h>
 #include <SDL2/SDL_image.h>
 #include <SDL2/SDL_ttf.h>
+#include <SDL2/SDL_mixer.h>
 #include <iostream>
 #include <sstream>
 #include "State.h"
@@ -35,8 +36,6 @@ private:
 	void InitCredits();
 	void UpdateCredits();
 
-	void ClickButtonVolume();
-
 private:
 	int m_uiCredit;
 	int m_uiCounterVolume;
@@ -58,6 +57,8 @@ private:
 
 	Label* m_LabelCredits;
 	TextField* m_TextFieldCredits;
+
+	static Mix_Chunk* m_BackgroundSound;
 };
 
 #endif /* INTRO_H_ */

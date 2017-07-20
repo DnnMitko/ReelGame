@@ -12,6 +12,7 @@ const char g_FontTitle[] = "fonts/Digitalt.ttf";
 
 const int g_TransitionStep = 20;
 
+const char g_BackgroundSound[] =  "sounds/BackgroundSound.wav";
 const char g_IntroButtonNewGame[] = "Start new game";
 const char g_IntroButtonResumeGame[] = "Resume game";
 const char g_IntroButtonInsertCredit[] = "Credit";
