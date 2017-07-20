@@ -200,19 +200,25 @@ void GamePanel::EventHandler(SDL_Event& e, bool& bSwitch)
 		}
 		else if(m_ButtonMaxBet->IsIn(x, y) && m_ButtonMaxBet->IsPressed())
 		{
-			m_uiLines = g_GameMaxLines;
-			UpdateLines();
-
-			for(int testBet = g_GameMaxBetAmmount; testBet >= 0; testBet -= g_GameBetIncriment)
+			for(unsigned int testLines = g_GameMaxLines; testLines >= 0; testLines -= 1)
 			{
-				if(testBet * m_uiLines <= m_uiCurCredits)
+				for(unsigned int testBet = g_GameMaxBetAmmount; testBet >= 0; testBet -= g_GameBetIncriment)
 				{
-					m_uiBet = testBet;
-					UpdateBet();
+					if(testBet * testLines <= m_uiCurCredits)
+					{
+						m_uiLines = testLines;
+						UpdateLines();
 
-					UpdateTotalBet();
-					break;
+						m_uiBet = testBet;
+						UpdateBet();
+
+						UpdateTotalBet();
+						break;
+					}
 				}
+
+				if(m_uiTotalBet != 0)
+					break;
 			}
 		}
 		else if(m_ButtonPlay->IsIn(x, y) && m_ButtonPlay->IsPressed())
