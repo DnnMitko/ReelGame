@@ -1,7 +1,5 @@
 #include "Intro.h"
 
-Mix_Chunk* Intro::m_BackgroundSound = NULL;
-
 Intro::Intro() : State()
 {
 	NullAll();
@@ -21,13 +19,11 @@ Intro::Intro(SDL_Renderer* newRenderer) : State(newRenderer)
 	if( m_Font == NULL )
 		std::cerr << "Failed to load Label Font! SDL Error: " << IMG_GetError() << std::endl;
 
+	m_BackgroundSound = Mix_LoadMUS(g_BackgroundSound);
 	if(!m_BackgroundSound)
-	{
-		m_BackgroundSound = Mix_LoadWAV(g_BackgroundSound);
-
-		if(!m_BackgroundSound)
-			std::cerr << "Failed to load button sound effect! SDL_mixer Error: " << Mix_GetError() << "\n";
-	}
+		std::cerr << "Failed to load Background music! SDL_mixer Error: " << Mix_GetError() << "\n";
+	else
+		Mix_PlayMusic(m_BackgroundSound, -1);
 
 	InitStartGame();
 	InitResumeGame();
@@ -43,17 +39,21 @@ Intro::~Intro()
 
 	TTF_CloseFont(m_Font);
 
-	Mix_FreeChunk(m_BackgroundSound);
+	Mix_FreeMusic(m_BackgroundSound);
 
 	delete m_StartGame;
 	delete m_ResumeGame;
+
+	delete m_LabelCredit;
 	delete m_InsertCreditMinus;
 	delete m_InsertCreditPlus;
+
 	delete m_Info;
+
+	delete m_LabelVolume;
 	delete m_VolumePlus;
 	delete m_VolumeMinus;
 
-	delete m_LabelVolume;
 	delete m_LabelCredits;
 	delete m_TextFieldCredits;
 
@@ -75,18 +75,19 @@ void Intro::Render(bool UpdateOnly)
 
 	m_StartGame->Render(UpdateOnly);
 	m_ResumeGame->Render(UpdateOnly);
+
+	m_LabelCredit->Render(UpdateOnly);
 	m_InsertCreditMinus->Render(UpdateOnly);
 	m_InsertCreditPlus->Render(UpdateOnly);
+
 	m_Info->Render(UpdateOnly);
+
+	m_LabelVolume->Render(UpdateOnly);
 	m_VolumePlus->Render(UpdateOnly);
 	m_VolumeMinus->Render(UpdateOnly);
-	m_LabelVolume->Render(UpdateOnly);
-	m_LabelCredit->Render(UpdateOnly);
+
 	m_LabelCredits->Render(UpdateOnly);
 	m_TextFieldCredits->Render(UpdateOnly);
-
-	Mix_PlayChannel(-1, m_BackgroundSound, 1);
-
 }
 
 void Intro::EventHandler(SDL_Event& e)
@@ -184,19 +185,25 @@ void Intro::NullAll()
 
 	m_TextureBackground = NULL;
 
+	m_Font = NULL;
+
 	m_StartGame = NULL;
 	m_ResumeGame = NULL;
+
+	m_LabelCredit = NULL;
 	m_InsertCreditPlus = NULL;
 	m_InsertCreditMinus = NULL;
+
 	m_Info = NULL;
+
+	m_LabelVolume = NULL;
 	m_VolumePlus = NULL;
 	m_VolumeMinus = NULL;
 
-	m_Font = NULL;
-
-	m_LabelVolume = NULL;
 	m_LabelCredits = NULL;
 	m_TextFieldCredits = NULL;
+
+	m_BackgroundSound = NULL;
 }
 
 void Intro::InitStartGame()

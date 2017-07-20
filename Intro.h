@@ -42,23 +42,25 @@ private:
 
 	SDL_Texture* m_TextureBackground;
 
-	Button* m_StartGame;
-	Button* m_ResumeGame;
-	Button* m_InsertCreditPlus;
-	Button* m_InsertCreditMinus;
-	Button* m_Info;
-	Button* m_VolumePlus;
-	Button* m_VolumeMinus;
-
 	TTF_Font* m_Font;
 
-	Label* m_LabelVolume;
+	Button* m_StartGame;
+	Button* m_ResumeGame;
+
 	Label* m_LabelCredit;
+	Button* m_InsertCreditPlus;
+	Button* m_InsertCreditMinus;
+
+	Button* m_Info;
+
+	Label* m_LabelVolume;
+	Button* m_VolumePlus;
+	Button* m_VolumeMinus;
 
 	Label* m_LabelCredits;
 	TextField* m_TextFieldCredits;
 
-	static Mix_Chunk* m_BackgroundSound;
+	Mix_Music* m_BackgroundSound;
 };
 
 #endif /* INTRO_H_ */
