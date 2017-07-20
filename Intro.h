@@ -18,6 +18,8 @@ public:
 public:
 	void Render(bool = true);
 	void EventHandler(SDL_Event&);
+	void PrepTransitionIn();
+
 	unsigned int GetCredits() const;
 private:
 	void ReleaseAll();

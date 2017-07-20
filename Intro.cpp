@@ -117,10 +117,13 @@ void Intro::EventHandler(SDL_Event& e)
 			m_uiCredit += g_IntroCreditIncrement;
 			UpdateCredits();
 		}
-		else if(m_InsertCreditMinus->IsIn(x,y) && m_InsertCreditMinus->IsPressed() && m_uiCredit > 0)
+		else if(m_InsertCreditMinus->IsIn(x,y) && m_InsertCreditMinus->IsPressed())
 		{
-			m_uiCredit -= g_IntroCreditIncrement;
-			UpdateCredits();
+			if(m_uiCredit > 0)
+			{
+				m_uiCredit -= g_IntroCreditIncrement;
+				UpdateCredits();
+			}
 		}
 		else if(m_Info->IsIn(x,y) && m_Info->IsPressed())
 		{
@@ -137,6 +140,11 @@ void Intro::EventHandler(SDL_Event& e)
 		}
 		ReleaseAll();
 	}
+}
+
+void Intro::PrepTransitionIn()
+{
+	//TODO
 }
 
 unsigned int Intro::GetCredits() const
