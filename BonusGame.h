@@ -19,7 +19,8 @@ public:
 	virtual ~BonusGame();
 public:
 	void EventHandler(SDL_Event&);
-	void Render(bool = true);
+	void Render(bool);
+	void PrepTransitionIn();
 
 	void SetCredits(unsigned int);
 	unsigned int GetCredits() const;
@@ -27,6 +28,9 @@ public:
 	void ResetGame();
 private:
 	void NullAll();
+
+	void TransitionIn();
+	void TransitionOut();
 
 	void InitTitleScreen();
 	void InitFonts();

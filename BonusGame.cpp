@@ -45,7 +45,7 @@ BonusGame::~BonusGame()
 
 void BonusGame::EventHandler(SDL_Event& e)
 {
-	if(e.type == SDL_MOUSEBUTTONDOWN && !m_bHasChosen)
+	if(e.type == SDL_MOUSEBUTTONDOWN && !m_bHasChosen && !m_bTransitionIn && !m_bTransitionOut)
 	{
 		int x, y;
 		SDL_GetMouseState(&x, &y);
@@ -103,44 +103,59 @@ void BonusGame::Render(bool UpdateOnly)
 	if(!m_Renderer || !m_TextureBackgroundGame || !m_TextureBackgroundInit || !m_FontCredits || !m_FontTitle)
 		return;
 
-	if(!UpdateOnly)
-	{
-		SDL_Rect tempRect;
-		tempRect.h = g_BonusHeight;
-		tempRect.w = g_BonusWidth;
-		tempRect.x = m_iX;
-		tempRect.y = m_iY;
+	SDL_Rect tempRect;
+	tempRect.h = g_BonusHeight;
+	tempRect.w = g_BonusWidth;
+	tempRect.x = m_iX;
+	tempRect.y = m_iY;
 
-		if(m_bHasStarted)
-			SDL_RenderCopy(m_Renderer, m_TextureBackgroundGame, NULL, &tempRect);
-		else
-			SDL_RenderCopy(m_Renderer, m_TextureBackgroundInit, NULL, &tempRect);
-	}
+	if(m_bHasStarted)
+		SDL_RenderCopy(m_Renderer, m_TextureBackgroundGame, NULL, &tempRect);
+	else
+		SDL_RenderCopy(m_Renderer, m_TextureBackgroundInit, NULL, &tempRect);
+
+	if(m_bTransitionIn)
+		TransitionIn();
+
+	else if(m_bTransitionOut)
+		TransitionOut();
 
 	if(!m_bHasStarted)
 	{
-		m_LabelTitleSign->Render(UpdateOnly);
+		m_LabelTitleSign->Render(false);
 
-		m_LabelCurWin->Render(UpdateOnly);
-		m_TextFieldCurWin->Render(UpdateOnly);
-		m_ButtonStart->Render(UpdateOnly);
+		m_LabelCurWin->Render(false);
+		m_TextFieldCurWin->Render(false);
+		m_ButtonStart->Render(false);
 	}
 	else
 	{
-		m_LabelTitleSign->Render(UpdateOnly);
+		m_LabelTitleSign->Render(false);
 
-		m_Chest1->Render(UpdateOnly);
-		m_Chest2->Render(UpdateOnly);
-		m_Chest3->Render(UpdateOnly);
+		m_Chest1->Render(false);
+		m_Chest2->Render(false);
+		m_Chest3->Render(false);
 
-		m_TextFieldCredits->Render(UpdateOnly);
+		m_TextFieldCredits->Render(false);
 	}
 
 	if(m_bHasChosen)
 	{
 		if(SDL_GetTicks() - m_uiTimer >= g_BonusDelay)
-			m_bSwitch = true;
+			m_bTransitionOut = true;
 	}
+}
+
+void BonusGame::PrepTransitionIn()
+{
+	m_bTransitionIn = true;
+
+	m_iY = g_BonusHeightTransition;
+
+	m_LabelTitleSign->SetY(m_iY + (g_BonusHeight - m_LabelTitleSign->GetHeight()) / 2 + g_BonusTitleOffsetY);
+	m_LabelCurWin->SetY(m_iY + g_BonusHeight + g_BonusTempWinOffsetY - m_LabelCurWin->GetHeight());
+	m_TextFieldCurWin->SetY(m_iY + g_BonusHeight + g_BonusTempWinOffsetY);
+	m_ButtonStart->SetY(m_iY + g_BonusHeight + g_BonusStartOffsetY);
 }
 
 void BonusGame::SetCredits(unsigned int credits)
@@ -184,11 +199,52 @@ void BonusGame::NullAll()
 	m_iY = 0;
 }
 
+void BonusGame::TransitionIn()
+{
+	if(m_iY == (g_ScreenHeight - g_BonusHeight) / 2)
+	{
+		m_bTransitionIn = false;
+	}
+	else
+	{
+		m_iY += g_TransitionStep;
+
+		m_LabelTitleSign->SetY(m_iY + (g_BonusHeight - m_LabelTitleSign->GetHeight()) / 2 + g_BonusTitleOffsetY);
+		m_LabelCurWin->SetY(m_iY + g_BonusHeight + g_BonusTempWinOffsetY - m_LabelCurWin->GetHeight());
+		m_TextFieldCurWin->SetY(m_iY + g_BonusHeight + g_BonusTempWinOffsetY);
+		m_ButtonStart->SetY(m_iY + g_BonusHeight + g_BonusStartOffsetY);
+	}
+}
+
+void BonusGame::TransitionOut()
+{
+	if(m_iY + g_BonusHeight <= 0)
+	{
+		m_bTransitionOut = false;
+		m_bSwitch = true;
+	}
+	else
+	{
+		m_iY -= g_TransitionStep;
+
+		m_LabelTitleSign->SetY(m_iY + (g_BonusHeight - m_LabelTitleSign->GetHeight()) / 2 + g_BonusTitleOffsetY);
+		m_Chest1->SetY(m_iY + g_BonusChestOffsetY);
+		m_Chest2->SetY(m_iY + g_BonusChestOffsetY);
+		m_Chest3->SetY(m_iY + g_BonusChestOffsetY);
+		m_TextFieldCredits->SetY(m_iY + (g_BonusHeight - m_TextFieldCredits->GetHeight()) / 2 + g_BonusCreditOffsetY);
+	}
+}
+
 void BonusGame::InitTitleScreen()
 {
 	m_TextureBackgroundInit = IMG_LoadTexture(m_Renderer, g_BonusGameBackgroundInit);
 	if (m_TextureBackgroundInit == NULL)
 		std::cerr << "Failed to load TextureBackgroundInit! SDL Error: " << IMG_GetError() << std::endl;
+
+	m_LabelTitleSign = new Label(m_Renderer);
+	m_LabelTitleSign->SetText(g_BonusTitle, m_FontTitle, SDL_Color{0xF0, 0xF0, 0x00, 0xFF});
+	m_LabelTitleSign->SetX(m_iX + (g_BonusWidth - m_LabelTitleSign->GetWidth()) / 2);
+	m_LabelTitleSign->SetY(m_iY + (g_BonusHeight - m_LabelTitleSign->GetHeight()) / 2 + g_BonusTitleOffsetY);
 
 	m_LabelCurWin = new Label(m_Renderer);
 	m_LabelCurWin->SetText(g_BonusTempWinMessage, m_FontCredits, SDL_Color{0xF0, 0xF0, 0x00, 0xFF});
@@ -206,11 +262,6 @@ void BonusGame::InitTitleScreen()
 	m_ButtonStart->SetY(m_iY + g_BonusHeight + g_BonusStartOffsetY);
 	m_ButtonStart->SetFieldSize(g_BonusStartHeight, g_BonusStartWidth);
 	m_ButtonStart->SetText("Start", m_FontCredits, SDL_Color{0x00, 0x00, 0x00, 0xFF});
-
-	m_LabelTitleSign = new Label(m_Renderer);
-	m_LabelTitleSign->SetText(g_BonusTitle, m_FontTitle, SDL_Color{0xF0, 0xF0, 0x00, 0xFF});
-	m_LabelTitleSign->SetX(m_iX + (g_BonusWidth - m_LabelTitleSign->GetWidth()) / 2);
-	m_LabelTitleSign->SetY(m_iY + (g_BonusHeight - m_LabelTitleSign->GetHeight()) / 2 + g_BonusTitleOffsetY);
 }
 
 void BonusGame::InitFonts()

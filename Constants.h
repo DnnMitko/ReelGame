@@ -64,6 +64,7 @@ const int g_GameMaxLines = 15;
 
 const int g_BonusWidth = 598;
 const int g_BonusHeight = 334;
+const int g_BonusHeightTransition = -347;
 const char g_BonusTitle[] = "Bonus Game";
 const char g_BonusSubTitle[] = "Choose your treasure!";
 const int g_BonusFontSizeCredits = 55;
