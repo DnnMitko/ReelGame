@@ -27,15 +27,22 @@ int TextField::GetHeight() const
 void TextField::SetX(int newX)
 {
 	m_FieldRect.x = newX;
+
+	m_bHasChanged = true;
 }
 
 void TextField::SetY(int newY)
 {
 	m_FieldRect.y = newY;
+
+	m_bHasChanged = true;
 }
 
 void TextField::Render(bool UpdateOnly)
 {
+	if(m_Renderer == NULL || m_TextureText == NULL)
+		return;
+
 	if(UpdateOnly)
 	{
 		if(m_bHasChanged)
@@ -46,8 +53,7 @@ void TextField::Render(bool UpdateOnly)
 	}
 	else
 	{
-		if(m_Renderer == NULL || m_TextureText == NULL)
-			return;
+		m_bHasChanged = false;
 
 		SDL_SetRenderDrawColor(m_Renderer, 0x00, 0x00, 0x00, 0xFF);
 		SDL_RenderFillRect(m_Renderer, &m_FieldRect);
@@ -71,4 +77,6 @@ void TextField::SetFieldSize(int newH, int newW)
 {
 	m_FieldRect.h = newH;
 	m_FieldRect.w = newW;
+
+	m_bHasChanged = true;
 }

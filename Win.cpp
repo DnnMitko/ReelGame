@@ -52,7 +52,17 @@ Win::~Win()
 
 void Win::EventHandler(SDL_Event& e)
 {
+	if(e.type == SDL_MOUSEBUTTONDOWN && !m_bTransitionIn && !m_bTransitionOut)
+	{
+		int x, y;
+		SDL_GetMouseState(&x, &y);
 
+		if(x >= m_iX && x <= (m_iX + g_WinWidth))
+			if(y >= m_iY && y <= (m_iY + g_WinHeight))
+			{
+				m_bTransitionOut = true;
+			}
+	}
 }
 
 void Win::Render(bool UpdateOnly)
@@ -60,29 +70,38 @@ void Win::Render(bool UpdateOnly)
 	if(!m_Renderer || !m_TextureBackground || !m_FontCredits || !m_FontTitle)
 		return;
 
-	if(!UpdateOnly)
-	{
-		SDL_Rect tempRect;
-		tempRect.h = g_WinHeight;
-		tempRect.w = g_WinWidth;
-		tempRect.x = m_iX;
-		tempRect.y = m_iY;
+	SDL_Rect tempRect;
+	tempRect.h = g_WinHeight;
+	tempRect.w = g_WinWidth;
+	tempRect.x = m_iX;
+	tempRect.y = m_iY;
 
-		SDL_RenderCopy(m_Renderer, m_TextureBackground, NULL, &tempRect);
+	SDL_RenderCopy(m_Renderer, m_TextureBackground, NULL, &tempRect);
 
-		SDL_SetRenderDrawColor(m_Renderer, 0xFF, 0xFF, 0xFF, 0xFF);
-		SDL_RenderDrawRect(m_Renderer, &tempRect);
+	SDL_SetRenderDrawColor(m_Renderer, 0xFF, 0xFF, 0xFF, 0xFF);
+	SDL_RenderDrawRect(m_Renderer, &tempRect);
 
-		m_uiTimer = SDL_GetTicks();
-	}
-	else
-	{
-		if(SDL_GetTicks() - m_uiTimer >= g_WinDelay)
-			m_bSwitch = true;
-	}
+	if(m_bTransitionIn)
+		TransitionIn();
 
-	m_LabelWinSign->Render(UpdateOnly);
-	m_TextFieldCredits->Render(UpdateOnly);
+	else if(m_bTransitionOut)
+		TransitionOut();
+
+	else if(SDL_GetTicks() - m_uiTimer >= g_WinDelay)
+		m_bTransitionOut = true;
+
+	m_LabelWinSign->Render(false);
+	m_TextFieldCredits->Render(false);
+}
+
+void Win::PrepTransitionIn()
+{
+	m_bTransitionIn = true;
+
+	m_iY = g_WinHeightTransition;
+
+	m_LabelWinSign->SetY(m_iY + (g_WinHeight - m_LabelWinSign->GetHeight()) / 2 + g_WinSignOffsetY);
+	m_TextFieldCredits->SetY(m_iY + (g_WinHeight - m_TextFieldCredits->GetHeight()) / 2 + g_WinCreditOffsetY);
 }
 
 void Win::SetCredits(unsigned int newCredits)
@@ -111,4 +130,36 @@ void Win::NullAll()
 
 	m_iX = 0;
 	m_iY = 0;
+}
+
+void Win::TransitionIn()
+{
+	if(m_iY == (g_ScreenHeight - g_WinHeight) / 2)
+	{
+		m_bTransitionIn = false;
+
+		m_uiTimer = SDL_GetTicks();
+	}
+	else
+	{
+		m_iY += g_TransitionStep;
+
+		m_LabelWinSign->SetY(m_iY + (g_WinHeight - m_LabelWinSign->GetHeight()) / 2 + g_WinSignOffsetY);
+		m_TextFieldCredits->SetY(m_iY + (g_WinHeight - m_TextFieldCredits->GetHeight()) / 2 + g_WinCreditOffsetY);
+	}
+}
+void Win::TransitionOut()
+{
+	if(m_iY + g_WinHeight <= 0)
+	{
+		m_bTransitionOut = false;
+		m_bSwitch = true;
+	}
+	else
+	{
+		m_iY -= g_TransitionStep;
+
+		m_LabelWinSign->SetY(m_iY + (g_WinHeight - m_LabelWinSign->GetHeight()) / 2 + g_WinSignOffsetY);
+		m_TextFieldCredits->SetY(m_iY + (g_WinHeight - m_TextFieldCredits->GetHeight()) / 2 + g_WinCreditOffsetY);
+	}
 }

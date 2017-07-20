@@ -13,12 +13,17 @@ public:
 	bool GetSwitch() const;
 	void ResetSwitch();
 
-	virtual void Render(bool = true) = 0;
+	virtual void PrepTransitionIn() = 0;
+
+	virtual void Render(bool) = 0;
 
 	virtual void EventHandler(SDL_Event&) = 0;
 protected:
-	bool m_bSwitch;
 	SDL_Renderer* m_Renderer;
+
+	bool m_bSwitch;
+	bool m_bTransitionIn;
+	bool m_bTransitionOut;
 };
 
 #endif /* STATE_H_ */
