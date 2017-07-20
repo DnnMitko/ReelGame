@@ -10,6 +10,8 @@ const int g_ScreenHeight = 720;
 const char g_FontLabel[] = "fonts/Roboto-Medium.ttf";
 const char g_FontTitle[] = "fonts/Digitalt.ttf";
 
+const int g_TransitionStep = 20;
+
 const char g_IntroButtonNewGame[] = "Start new game";
 const char g_IntroButtonResumeGame[] = "Resume game";
 const char g_IntroButtonInsertCredit[] = "Credit";
@@ -96,6 +98,7 @@ const float g_Denominator = 0.01;
 const int g_OutroDelay = 10000;
 const int g_OutroWidth = 700;
 const int g_OutroHeight = 360;
+const int g_OutroHeightTransition = -360;
 const int g_OutroFontSizeMoney = 70;
 const int g_OutroFontSizeWin = 150;
 const int g_OutroWinSignLimits[2] = {100, 1000};
@@ -108,7 +111,8 @@ const char g_OutroBackground[] = "images/OutroBackground.png";
 
 const int g_WinWidth = 640;
 const int g_WinHeight = 427;
-const int g_WinDelay = 1500;
+const int g_WinHeightTransition = -434;
+const int g_WinDelay = 3000;
 const int g_WinFontSizeCredits = 70;
 const int g_WinFontSizeSign = 150;
 const int g_WinSignOffsetY = -80;
@@ -121,6 +125,7 @@ const char g_WinBackground[] = "images/WinBackground.png";
 const char g_ButtonSprite[] = "images/ButtonSprite.png";
 const int g_ButtonSpriteWidth = 296;
 const int g_ButtonSpriteHeight = 174;
+const char g_ButtonSound[] = "sounds/ButtonClick.wav";
 
 
 #endif /* CONSTANTS_H_ */

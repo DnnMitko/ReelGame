@@ -18,10 +18,14 @@ public:
 public:
 	void EventHandler(SDL_Event&);
 	void Render(bool = true);
+	void PrepTransitionIn();
 
 	void SetCredits(unsigned int);
 private:
 	void NullAll();
+
+	void TransitionIn();
+	void TransitionOut();
 private:
 	SDL_Texture* m_TextureBackground;
 	Label* m_LabelWinSign;
