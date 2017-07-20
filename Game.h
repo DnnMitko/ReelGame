@@ -16,6 +16,7 @@ public:
 public:
 	void Render(bool = true);
 	void EventHandler(SDL_Event&);
+	void PrepTransitionIn();
 
 	void SetCredits(unsigned int);
 	unsigned int GetCredits() const;

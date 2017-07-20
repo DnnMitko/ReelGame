@@ -42,6 +42,11 @@ void Game::EventHandler(SDL_Event& e)
 	m_Panel->EventHandler(e, m_bSwitch);
 }
 
+void Game::PrepTransitionIn()
+{
+	//TODO
+}
+
 void Game::SetCredits(unsigned int newCredits)
 {
 	m_Panel->SetCredits(newCredits);
