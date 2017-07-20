@@ -1,6 +1,6 @@
 #ifndef LINES_H_
 #define LINES_H_
-
+#include "Constants.h"
 #include<string>
 
 class Lines

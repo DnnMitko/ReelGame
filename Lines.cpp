@@ -56,7 +56,7 @@ void Lines::Calculate()
 	int iMaxLine = -1;
 	char cMax = '0';
 
-	for ( int i = 0 ; i < 15 ; i ++)
+	for ( int i = 0 ; i < g_LinesMax ; i ++)
 	{
 		if (m_strLine[i][0] == m_strLine[i][1] && m_strLine[i][1] == m_strLine[i][2])
 
@@ -68,50 +68,50 @@ void Lines::Calculate()
 						switch(m_strLine[i][0])
 						{
 						case '1' :
-							m_fTotalWin += 3.2;
-							if (fMax < 3.2)
+							m_fTotalWin += g_LinesFigure1x5;
+							if (fMax < g_LinesFigure1x5)
 							{
-								fMax = 3.2;
+								fMax = g_LinesFigure1x5;
 								iMaxLine = i;
 								cMax = '1';
 							}
 							break;
 
 						case '2' :
-							m_fTotalWin += 3.4;
-							if  (fMax < 3.4)
+							m_fTotalWin += g_LinesFigure2x5;
+							if  (fMax < g_LinesFigure2x5)
 							{
-								fMax = 3.4;
+								fMax = g_LinesFigure2x5;
 								iMaxLine = i;
 								cMax = '2';
 							}
 							break;
 
 						case '3' :
-							m_fTotalWin += 3.5;
-							if (fMax < 3.5)
+							m_fTotalWin += g_LinesFigure3x5;
+							if (fMax < g_LinesFigure3x5)
 							{
-								fMax = 3.5;
+								fMax = g_LinesFigure3x5;
 								iMaxLine = i;
 								cMax = '3';
 							}
 							break;
 
 						case '4' :
-							m_fTotalWin += 3.8;
-							if ( fMax < 3.8)
+							m_fTotalWin += g_LinesFigure4x5;
+							if ( fMax < g_LinesFigure4x5)
 							{
-								fMax = 3.8;
+								fMax = g_LinesFigure4x5;
 								iMaxLine = i;
 								cMax = '4';
 							}
 							break;
 
 						case '5' :
-							m_fTotalWin += 4.0;
-							if (fMax < 4.0)
+							m_fTotalWin += g_LinesFigure5x5;
+							if (fMax < g_LinesFigure4x5)
 							{
-								fMax = 4.0;
+								fMax = g_LinesFigure4x5;
 								iMaxLine = i;
 								cMax = '5';
 							}
@@ -123,50 +123,50 @@ void Lines::Calculate()
 						switch(m_strLine[i][0])
 						{
 						case '1' :
-							m_fTotalWin += 2.2;
-							if (fMax < 2.2)
+							m_fTotalWin += g_LinesFigure1x4;
+							if (fMax < g_LinesFigure1x4)
 							{
-								fMax = 2.2;
+								fMax = g_LinesFigure1x4;
 								iMaxLine = i;
 								cMax = '1';
 							}
 							break;
 
 						case '2' :
-							m_fTotalWin += 2.4;
-							if (fMax < 2.4)
+							m_fTotalWin += g_LinesFigure2x4;
+							if (fMax < g_LinesFigure2x4)
 							{
-								fMax = 2.2;
+								fMax = g_LinesFigure2x4;
 								iMaxLine = i;
 								cMax = '2';
 							}
 							break;
 
 						case '3' :
-							m_fTotalWin += 2.5;
-							if (fMax < 2.5)
+							m_fTotalWin += g_LinesFigure3x4;
+							if (fMax < g_LinesFigure3x4)
 							{
-								fMax = 2.5;
+								fMax = g_LinesFigure3x4;
 								iMaxLine = i;
 								cMax = '3';
 							}
 							break;
 
 						case '4' :
-							m_fTotalWin += 2.8;
-							if (fMax < 2.8)
+							m_fTotalWin += g_LinesFigure4x4;
+							if (fMax < g_LinesFigure4x4)
 							{
-								fMax = 2.8;
+								fMax = g_LinesFigure4x4;
 								iMaxLine = i;
 								cMax = '4';
 							}
 							break;
 
 						case '5' :
-							m_fTotalWin += 3.0;
-							if (fMax < 3.0)
+							m_fTotalWin += g_LinesFigure5x4;
+							if (fMax < g_LinesFigure5x4)
 							{
-								fMax = 3.0;
+								fMax = g_LinesFigure5x4;
 								iMaxLine = i;
 								cMax = '5';
 							}
@@ -179,50 +179,50 @@ void Lines::Calculate()
 					switch(m_strLine[i][0])
 					{
 					case '1' :
-						m_fTotalWin += 1.2;
-						if (fMax < 1.2)
+						m_fTotalWin += g_LinesFigure1x3;
+						if (fMax < g_LinesFigure1x3)
 						{
-							fMax = 1.2;
+							fMax = g_LinesFigure1x3;
 							iMaxLine = i;
 							cMax = '1';
 						}
 						break;
 
 					case '2' :
-						m_fTotalWin += 1.4;
-						if (fMax < 1.4)
+						m_fTotalWin += g_LinesFigure2x3;
+						if (fMax < g_LinesFigure2x3)
 						{
-							fMax = 1.4;
+							fMax = g_LinesFigure2x3;
 							iMaxLine = i;
 							cMax = '2';
 						}
 						break;
 
 					case '3' :
-						m_fTotalWin += 1.5;
-						if (fMax < 1.5)
+						m_fTotalWin += g_LinesFigure3x3;
+						if (fMax < g_LinesFigure3x3)
 						{
-							fMax = 1.5;
+							fMax = g_LinesFigure3x3;
 							iMaxLine = i;
 							cMax = '3';
 						}
 						break;
 
 					case '4' :
-						m_fTotalWin += 1.8;
-						if (fMax < 1.8)
+						m_fTotalWin += g_LinesFigure4x3;
+						if (fMax < g_LinesFigure4x3)
 						{
-							fMax = 1.8;
+							fMax = g_LinesFigure4x3;
 							iMaxLine = i;
 							cMax = '4';
 						}
 						break;
 
 					case '5' :
-						m_fTotalWin += 2.0;
-						if (fMax < 2.0)
+						m_fTotalWin += g_LinesFigure5x3;
+						if (fMax < g_LinesFigure5x3)
 						{
-							fMax = 2.0;
+							fMax = g_LinesFigure5x3;
 							iMaxLine = i;
 							cMax = '5';
 						}
@@ -237,50 +237,50 @@ void Lines::Calculate()
 					switch(m_strLine[i][1])
 					{
 					case '1' :
-						m_fTotalWin += 2.2;
-						if (fMax < 2.2)
+						m_fTotalWin += g_LinesFigure1x4;
+						if (fMax < g_LinesFigure1x4)
 						{
-							fMax = 2.2;
+							fMax = g_LinesFigure1x4;
 							iMaxLine = i;
 							cMax = '1';
 						}
 						break;
 
 					case '2' :
-						m_fTotalWin += 2.4;
-						if (fMax < 2.4)
+						m_fTotalWin += g_LinesFigure2x4;
+						if (fMax < g_LinesFigure2x4)
 						{
-							fMax = 2.4;
+							fMax = g_LinesFigure2x4;
 							iMaxLine = i;
 							cMax = '2';
 						}
 						break;
 
 					case '3' :
-						m_fTotalWin += 2.5;
-						if (fMax < 2.5)
+						m_fTotalWin += g_LinesFigure3x4;
+						if (fMax < g_LinesFigure3x4)
 						{
-							fMax = 2.5;
+							fMax = g_LinesFigure3x4;
 							iMaxLine = i;
 							cMax = '3';
 						}
 						break;
 
 					case '4' :
-						m_fTotalWin += 2.8;
-						if (fMax < 2.8)
+						m_fTotalWin += g_LinesFigure4x4;
+						if (fMax < g_LinesFigure4x4)
 						{
-							fMax = 2.8;
+							fMax = g_LinesFigure4x4;
 							iMaxLine = i;
 							cMax = '4';
 						}
 						break;
 
 					case '5' :
-						m_fTotalWin += 3.0;
-						if (fMax < 3.0)
+						m_fTotalWin += g_LinesFigure5x4;
+						if (fMax < g_LinesFigure5x4)
 						{
-							fMax = 3.0;
+							fMax = g_LinesFigure5x4;
 							iMaxLine = i;
 							cMax = '5';
 						}
@@ -292,50 +292,50 @@ void Lines::Calculate()
 					switch(m_strLine[i][1])
 					{
 					case '1' :
-						m_fTotalWin += 1.2;
-						if (fMax < 1.2)
+						m_fTotalWin += g_LinesFigure1x3;
+						if (fMax < g_LinesFigure1x3)
 						{
-							fMax = 1.2;
+							fMax = g_LinesFigure1x3;
 							iMaxLine = i;
 							cMax = '1';
 						}
 						break;
 
 					case '2' :
-						m_fTotalWin += 1.4;
-						if (fMax < 1.4)
+						m_fTotalWin += g_LinesFigure2x3;
+						if (fMax < g_LinesFigure2x3)
 						{
-							fMax = 1.4;
+							fMax = g_LinesFigure2x3;
 							iMaxLine = i;
 							cMax = '2';
 						}
 						break;
 
 					case '3' :
-						m_fTotalWin += 1.5;
-						if (fMax < 1.5)
+						m_fTotalWin += g_LinesFigure3x3;
+						if (fMax < g_LinesFigure3x3)
 						{
-							fMax = 1.5;
+							fMax = g_LinesFigure3x3;
 							iMaxLine = i;
 							cMax = '3';
 						}
 						break;
 
 					case '4' :
-						m_fTotalWin += 1.8;
-						if (fMax < 1.8)
+						m_fTotalWin += g_LinesFigure4x3;
+						if (fMax < g_LinesFigure4x3)
 						{
-							fMax = 1.8;
+							fMax = g_LinesFigure4x3;
 							iMaxLine = i;
 							cMax = '4';
 						}
 						break;
 
 					case '5' :
-						m_fTotalWin += 2.0;
-						if (fMax < 2.0)
+						m_fTotalWin += g_LinesFigure5x3;
+						if (fMax < g_LinesFigure5x3)
 						{
-							fMax = 2.0;
+							fMax = g_LinesFigure5x3;
 							iMaxLine = i;
 							cMax = '5';
 						}
@@ -348,50 +348,50 @@ void Lines::Calculate()
 				switch(m_strLine[i][2])
 				{
 				case '1' :
-					m_fTotalWin += 1.2;
-					if (fMax < 1.2)
+					m_fTotalWin += g_LinesFigure1x3;
+					if (fMax < g_LinesFigure1x3)
 					{
-						fMax = 1.2;
+						fMax = g_LinesFigure1x3;
 						iMaxLine = i;
 						cMax = '1';
 					}
 					break;
 
 				case '2' :
-					m_fTotalWin += 1.4;
-					if (fMax < 1.4)
+					m_fTotalWin += g_LinesFigure2x3;
+					if (fMax < g_LinesFigure2x3)
 					{
-						fMax = 1.4;
+						fMax = g_LinesFigure2x3;
 						iMaxLine = i;
 						cMax = '2';
 					}
 					break;
 
 				case '3' :
-					m_fTotalWin += 1.5;
-					if (fMax < 1.5)
+					m_fTotalWin += g_LinesFigure3x3;
+					if (fMax < g_LinesFigure3x3)
 					{
-						fMax = 1.5;
+						fMax = g_LinesFigure3x3;
 						iMaxLine = i;
 						cMax = '3';
 					}
 					break;
 
 				case '4' :
-					m_fTotalWin += 1.8;
-					if (fMax < 1.8)
+					m_fTotalWin += g_LinesFigure4x3;
+					if (fMax < g_LinesFigure4x3)
 					{
-						fMax = 1.8;
+						fMax = g_LinesFigure4x3;
 						iMaxLine = i;
 						cMax = '4';
 					}
 					break;
 
 				case '5' :
-					m_fTotalWin += 2.0;
-					if (fMax < 2.0)
+					m_fTotalWin += g_LinesFigure5x3;
+					if (fMax < g_LinesFigure5x3)
 					{
-						fMax = 2.0;
+						fMax = g_LinesFigure5x3;
 						iMaxLine = i;
 						cMax = '5';
 					}

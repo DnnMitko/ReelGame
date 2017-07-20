@@ -131,5 +131,44 @@ const int g_ButtonSpriteWidth = 296;
 const int g_ButtonSpriteHeight = 174;
 const char g_ButtonSound[] = "sounds/ButtonClick.wav";
 
+const float g_LinesFigure1x3 = 1.2;
+const float g_LinesFigure2x3 = 1.4;
+const float g_LinesFigure3x3 = 1.5;
+const float g_LinesFigure4x3 = 1.8;
+const float g_LinesFigure5x3 = 2.0;
+const float g_LinesFigure1x4 = 2.2;
+const float g_LinesFigure2x4 = 2.4;
+const float g_LinesFigure3x4 = 2.5;
+const float g_LinesFigure4x4 = 2.8;
+const float g_LinesFigure5x4 = 3.0;
+const float g_LinesFigure1x5 = 3.2;
+const float g_LinesFigure2x5 = 3.4;
+const float g_LinesFigure3x5 = 3.5;
+const float g_LinesFigure4x5 = 3.8;
+const float g_LinesFigure5x5 = 4.0;
+const int g_LinesMax = 15;
+
+const char g_Figure[] = "images/Figures.png";
+const int g_FigureWidth = 185;
+const int g_FigureHeight = 185;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 #endif /* CONSTANTS_H_ */
