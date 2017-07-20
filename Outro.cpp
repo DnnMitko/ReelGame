@@ -97,8 +97,8 @@ void Outro::PrepTransitionIn()
 
 	m_iY = g_OutroHeightTransition;
 
-	m_LabelWinSign->SetY(m_iY + (g_WinHeight - m_LabelWinSign->GetHeight()) / 2 + g_WinSignOffsetY);
-	m_TextFieldMoney->SetY(m_iY + (g_WinHeight - m_TextFieldMoney->GetHeight()) / 2 + g_WinCreditOffsetY);
+	m_LabelWinSign->SetY(m_iY + (g_WinHeight - m_LabelWinSign->GetHeight()) / 2 + g_OutroWinOffsetY);
+	m_TextFieldMoney->SetY(m_iY + (g_OutroHeight - m_TextFieldMoney->GetHeight()) / 2 + g_OutroMoneyOffsetY);
 }
 
 void Outro::SetCredits(unsigned int newCredits)
