@@ -34,6 +34,7 @@ const int g_IntroFontSize = 40;
 const int g_IntroFirstButtonY = 300;
 const int g_IntroCreditIncrement = 25;
 const int g_IntroVolumeStart = 64;
+const int g_IntroVolumeIncrement = 16;
 
 const int g_GameMenuHeight = g_ScreenHeight - 80;
 const char g_GameBackground[] = "images/GameBackground.png";

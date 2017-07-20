@@ -155,7 +155,7 @@ void Intro::EventHandler(SDL_Event& e)
 		{
 			if(m_iVolume < 128)
 			{
-				m_iVolume += 16;
+				m_iVolume += g_IntroVolumeIncrement;
 				Mix_Volume(-1, m_iVolume);
 				Mix_VolumeMusic(m_iVolume);
 			}
@@ -164,7 +164,7 @@ void Intro::EventHandler(SDL_Event& e)
 		{
 			if(m_iVolume > 0)
 			{
-				m_iVolume -= 16;
+				m_iVolume -= g_IntroVolumeIncrement;
 				Mix_Volume(-1, m_iVolume);
 				Mix_VolumeMusic(m_iVolume);
 			}
