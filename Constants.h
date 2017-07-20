@@ -15,7 +15,7 @@ const int g_TransitionStep = 20;
 const char g_BackgroundSound[] =  "sounds/BackgroundSound.mp3";
 const char g_IntroButtonNewGame[] = "Start new game";
 const char g_IntroButtonResumeGame[] = "Resume game";
-const char g_IntroButtonInsertCredit[] = "Credit";
+const char g_IntroLabelInsertCredit[] = "Credit";
 const char g_IntroButtonInfo[] = "Info";
 const char g_IntroLabelCredits[] = "Credits";
 const char g_IntroLabelVolume[] = "Volume";
@@ -33,6 +33,7 @@ const int g_IntroCreditsHeight = 50;
 const int g_IntroFontSize = 40;
 const int g_IntroFirstButtonY = 300;
 const int g_IntroCreditIncrement = 25;
+const int g_IntroVolumeStart = 64;
 
 const int g_GameMenuHeight = g_ScreenHeight - 80;
 const char g_GameBackground[] = "images/GameBackground.png";

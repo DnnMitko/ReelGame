@@ -61,6 +61,7 @@ private:
 	TextField* m_TextFieldCredits;
 
 	Mix_Music* m_BackgroundSound;
+	int m_iVolume;
 };
 
 #endif /* INTRO_H_ */

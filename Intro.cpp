@@ -23,7 +23,12 @@ Intro::Intro(SDL_Renderer* newRenderer) : State(newRenderer)
 	if(!m_BackgroundSound)
 		std::cerr << "Failed to load Background music! SDL_mixer Error: " << Mix_GetError() << "\n";
 	else
+	{
 		Mix_PlayMusic(m_BackgroundSound, -1);
+		m_iVolume = g_IntroVolumeStart;
+		Mix_Volume(-1, m_iVolume);
+		Mix_VolumeMusic(m_iVolume);
+	}
 
 	InitStartGame();
 	InitResumeGame();
@@ -148,12 +153,23 @@ void Intro::EventHandler(SDL_Event& e)
 		}
 		else if (m_VolumePlus->IsIn(x, y) && m_VolumePlus->IsPressed())
 		{
-			//TODO
+			if(m_iVolume < 128)
+			{
+				m_iVolume += 16;
+				Mix_Volume(-1, m_iVolume);
+				Mix_VolumeMusic(m_iVolume);
+			}
 		}
 		else if (m_VolumeMinus->IsIn(x, y) && m_VolumeMinus->IsPressed())
 		{
-			//TODO
+			if(m_iVolume > 0)
+			{
+				m_iVolume -= 16;
+				Mix_Volume(-1, m_iVolume);
+				Mix_VolumeMusic(m_iVolume);
+			}
 		}
+
 		ReleaseAll();
 	}
 }
@@ -204,6 +220,7 @@ void Intro::NullAll()
 	m_TextFieldCredits = NULL;
 
 	m_BackgroundSound = NULL;
+	m_iVolume = 0;
 }
 
 void Intro::InitStartGame()
@@ -239,7 +256,7 @@ void Intro::InitInsertCredit()
 	m_InsertCreditPlus->SetText(g_IntroButtonPlus, m_Font, SDL_Color{0x00, 0x00, 0x00, 0xFF});
 
 	m_LabelCredit = new Label(m_Renderer);
-	m_LabelCredit->SetText(g_IntroButtonInsertCredit, m_Font, SDL_Color{0x00, 0x00, 0x00, 0xFF});
+	m_LabelCredit->SetText(g_IntroLabelInsertCredit, m_Font, SDL_Color{0x00, 0x00, 0x00, 0xFF});
 	m_LabelCredit->SetX(g_IntroLabelCreditX);
 	m_LabelCredit->SetY(g_IntroLabelCreditY);
 }
