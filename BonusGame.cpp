@@ -91,12 +91,6 @@ void BonusGame::EventHandler(SDL_Event& e)
 			{
 				m_bHasStarted = true;
 
-				m_LabelTitleSign->SetY(m_iY + (g_BonusHeight - m_LabelTitleSign->GetHeight()) / 2 + g_BonusTitleOffsetY);
-				m_Chest1->SetY(m_iY + g_BonusChestOffsetY);
-				m_Chest2->SetY(m_iY + g_BonusChestOffsetY);
-				m_Chest3->SetY(m_iY + g_BonusChestOffsetY);
-				m_TextFieldCredits->SetY(m_iY + (g_BonusHeight - m_TextFieldCredits->GetHeight()) / 2 + g_BonusCreditOffsetY);
-
 				Render(false);
 			}
 
@@ -351,6 +345,13 @@ void BonusGame::ResetGame()
 	m_bHasStarted = false;
 
 	m_TextFieldCredits->SetText(g_BonusSubTitle, m_FontCredits, SDL_Color{0xFF, 0xFF, 0xFF, 0xFF});
+
+	m_iY = (g_ScreenHeight - g_BonusHeight) / 2;
+	m_LabelTitleSign->SetY(m_iY + (g_BonusHeight - m_LabelTitleSign->GetHeight()) / 2 + g_BonusTitleOffsetY);
+	m_Chest1->SetY(m_iY + g_BonusChestOffsetY);
+	m_Chest2->SetY(m_iY + g_BonusChestOffsetY);
+	m_Chest3->SetY(m_iY + g_BonusChestOffsetY);
+	m_TextFieldCredits->SetY(m_iY + (g_BonusHeight - m_TextFieldCredits->GetHeight()) / 2 + g_BonusCreditOffsetY);
 }
 
 
