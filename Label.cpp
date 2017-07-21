@@ -8,7 +8,7 @@ Label::Label()
 
 	m_TextRect = {0, 0, 0, 0};
 
-	m_bHasChanged = false;
+	m_bHasChanged = true;
 }
 
 Label::Label(SDL_Renderer* newRenderer)
@@ -19,7 +19,7 @@ Label::Label(SDL_Renderer* newRenderer)
 
 	m_TextRect = {0, 0, 0, 0};
 
-	m_bHasChanged = false;
+	m_bHasChanged = true;
 }
 
 Label::~Label()

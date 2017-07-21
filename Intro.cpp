@@ -9,6 +9,7 @@ Intro::Intro(SDL_Renderer* newRenderer) : State(newRenderer)
 {
 	m_uiCredit = 0;
 	m_uiCounterVolume = 0;
+	m_bShowInfo = false;
 
 	m_TextureBackground = NULL;
 	m_TextureBackground = IMG_LoadTexture(m_Renderer, "images/TitleScreen.png");
@@ -18,17 +19,6 @@ Intro::Intro(SDL_Renderer* newRenderer) : State(newRenderer)
 	m_Font = TTF_OpenFont(g_FontLabel, g_IntroFontSize);
 	if( m_Font == NULL )
 		std::cerr << "Failed to load Label Font! SDL Error: " << IMG_GetError() << std::endl;
-
-	m_BackgroundSound = Mix_LoadMUS(g_BackgroundSound);
-	if(!m_BackgroundSound)
-		std::cerr << "Failed to load Background music! SDL_mixer Error: " << Mix_GetError() << "\n";
-	else
-	{
-		Mix_PlayMusic(m_BackgroundSound, -1);
-		m_iVolume = g_IntroVolumeStart;
-		Mix_Volume(-1, m_iVolume);
-		Mix_VolumeMusic(m_iVolume);
-	}
 
 	InitStartGame();
 	InitResumeGame();
@@ -46,21 +36,23 @@ Intro::~Intro()
 
 	Mix_FreeMusic(m_BackgroundSound);
 
-	delete m_StartGame;
-	delete m_ResumeGame;
+	delete m_ButtonStart;
+	delete m_ButtonResume;
 
 	delete m_LabelCredit;
-	delete m_InsertCreditMinus;
-	delete m_InsertCreditPlus;
+	delete m_ButtonCreditMinus;
+	delete m_ButtonCreditPlus;
 
-	delete m_Info;
+	delete m_ButtonInfo;
 
 	delete m_LabelVolume;
-	delete m_VolumePlus;
-	delete m_VolumeMinus;
+	delete m_ButtonVolumePlus;
+	delete m_ButtonVolumeMinus;
 
 	delete m_LabelCredits;
 	delete m_TextFieldCredits;
+
+	delete m_Info;
 
 	NullAll();
 }
@@ -78,21 +70,24 @@ void Intro::Render(bool UpdateOnly)
 		SDL_RenderCopy(m_Renderer, m_TextureBackground, NULL, NULL);
 	}
 
-	m_StartGame->Render(UpdateOnly);
-	m_ResumeGame->Render(UpdateOnly);
+	m_ButtonStart->Render(UpdateOnly);
+	m_ButtonResume->Render(UpdateOnly);
 
 	m_LabelCredit->Render(UpdateOnly);
-	m_InsertCreditMinus->Render(UpdateOnly);
-	m_InsertCreditPlus->Render(UpdateOnly);
+	m_ButtonCreditMinus->Render(UpdateOnly);
+	m_ButtonCreditPlus->Render(UpdateOnly);
 
-	m_Info->Render(UpdateOnly);
+	m_ButtonInfo->Render(UpdateOnly);
 
 	m_LabelVolume->Render(UpdateOnly);
-	m_VolumePlus->Render(UpdateOnly);
-	m_VolumeMinus->Render(UpdateOnly);
+	m_ButtonVolumePlus->Render(UpdateOnly);
+	m_ButtonVolumeMinus->Render(UpdateOnly);
 
 	m_LabelCredits->Render(UpdateOnly);
 	m_TextFieldCredits->Render(UpdateOnly);
+
+	if(m_bShowInfo)
+		m_Info->Render();
 }
 
 void Intro::EventHandler(SDL_Event& e)
@@ -100,46 +95,59 @@ void Intro::EventHandler(SDL_Event& e)
 	int x;
 	int y;
 
-	if(e.type == SDL_MOUSEBUTTONDOWN)
+	if(m_bShowInfo)
+	{
+		m_Info->EventHandler(e);
+
+		if(m_Info->GetHide())
+		{
+			m_Info->Reset();
+
+			m_bShowInfo = false;
+
+			Render(false);
+		}
+	}
+	else if(e.type == SDL_MOUSEBUTTONDOWN)
 	{
 		SDL_GetMouseState(&x, &y);
 
-		if (m_StartGame->IsIn(x, y))
-			m_StartGame->Press();
-		else if (m_ResumeGame->IsIn(x, y))
-			m_ResumeGame->Press();
-		else if (m_InsertCreditPlus->IsIn(x, y))
-			m_InsertCreditPlus->Press();
-		else if (m_InsertCreditMinus->IsIn(x,y))
-			m_InsertCreditMinus->Press();
-		else if (m_Info->IsIn(x, y))
-			m_Info->Press();
-		else if (m_VolumePlus->IsIn(x, y))
-			m_VolumePlus->Press();
-		else if (m_VolumeMinus->IsIn(x,y))
-			m_VolumeMinus->Press();
+		if (m_ButtonStart->IsIn(x, y))
+			m_ButtonStart->Press();
+		else if (m_ButtonResume->IsIn(x, y))
+			m_ButtonResume->Press();
+		else if (m_ButtonCreditPlus->IsIn(x, y))
+			m_ButtonCreditPlus->Press();
+		else if (m_ButtonCreditMinus->IsIn(x,y))
+			m_ButtonCreditMinus->Press();
+		else if (m_ButtonInfo->IsIn(x, y))
+			m_ButtonInfo->Press();
+		else if (m_ButtonVolumePlus->IsIn(x, y))
+			m_ButtonVolumePlus->Press();
+		else if (m_ButtonVolumeMinus->IsIn(x,y))
+			m_ButtonVolumeMinus->Press();
 	}
 	else if (e.type == SDL_MOUSEBUTTONUP)
 	{
 		m_uiCounterVolume = 0;
 		SDL_GetMouseState(&x, &y);
 
-		if(m_StartGame->IsIn(x, y) && m_StartGame->IsPressed())
+		if(m_ButtonStart->IsIn(x, y) && m_ButtonStart->IsPressed())
 		{
 			m_bSwitch = true;
 		}
 
-		else if(m_ResumeGame->IsIn(x, y) && m_ResumeGame->IsPressed())
+		else if(m_ButtonResume->IsIn(x, y) && m_ButtonResume->IsPressed())
 		{
 			//TODO
 		}
 
-		else if(m_InsertCreditPlus->IsIn(x, y) && m_InsertCreditPlus->IsPressed())
+		else if(m_ButtonCreditPlus->IsIn(x, y) && m_ButtonCreditPlus->IsPressed())
 		{
 			m_uiCredit += g_IntroCreditIncrement;
 			UpdateCredits();
 		}
-		else if(m_InsertCreditMinus->IsIn(x,y) && m_InsertCreditMinus->IsPressed())
+		else if(m_ButtonCreditMinus->IsIn(x,y) && m_ButtonCreditMinus->IsPressed())
 		{
 			if(m_uiCredit > 0)
 			{
@@ -147,11 +155,11 @@ void Intro::EventHandler(SDL_Event& e)
 				UpdateCredits();
 			}
 		}
-		else if(m_Info->IsIn(x,y) && m_Info->IsPressed())
+		else if(m_ButtonInfo->IsIn(x,y) && m_ButtonInfo->IsPressed())
 		{
-			// TODO
+			m_bShowInfo = true;
 		}
-		else if (m_VolumePlus->IsIn(x, y) && m_VolumePlus->IsPressed())
+		else if (m_ButtonVolumePlus->IsIn(x, y) && m_ButtonVolumePlus->IsPressed())
 		{
 			if(m_iVolume < 128)
 			{
@@ -160,7 +168,7 @@ void Intro::EventHandler(SDL_Event& e)
 				Mix_VolumeMusic(m_iVolume);
 			}
 		}
-		else if (m_VolumeMinus->IsIn(x, y) && m_VolumeMinus->IsPressed())
+		else if (m_ButtonVolumeMinus->IsIn(x, y) && m_ButtonVolumeMinus->IsPressed())
 		{
 			if(m_iVolume > 0)
 			{
@@ -186,13 +194,13 @@ unsigned int Intro::GetCredits() const
 
 void Intro::ReleaseAll()
 {
-	m_StartGame->Release();
-	m_ResumeGame->Release();
-	m_InsertCreditPlus->Release();
-	m_InsertCreditMinus->Release();
-	m_Info->Release();
-	m_VolumePlus->Release();
-	m_VolumeMinus->Release();
+	m_ButtonStart->Release();
+	m_ButtonResume->Release();
+	m_ButtonCreditPlus->Release();
+	m_ButtonCreditMinus->Release();
+	m_ButtonInfo->Release();
+	m_ButtonVolumePlus->Release();
+	m_ButtonVolumeMinus->Release();
 }
 
 void Intro::NullAll()
@@ -203,57 +211,60 @@ void Intro::NullAll()
 
 	m_Font = NULL;
 
-	m_StartGame = NULL;
-	m_ResumeGame = NULL;
+	m_ButtonStart = NULL;
+	m_ButtonResume = NULL;
 
 	m_LabelCredit = NULL;
-	m_InsertCreditPlus = NULL;
-	m_InsertCreditMinus = NULL;
+	m_ButtonCreditPlus = NULL;
+	m_ButtonCreditMinus = NULL;
 
-	m_Info = NULL;
+	m_ButtonInfo = NULL;
 
 	m_LabelVolume = NULL;
-	m_VolumePlus = NULL;
-	m_VolumeMinus = NULL;
+	m_ButtonVolumePlus = NULL;
+	m_ButtonVolumeMinus = NULL;
 
 	m_LabelCredits = NULL;
 	m_TextFieldCredits = NULL;
 
 	m_BackgroundSound = NULL;
 	m_iVolume = 0;
+
+	m_Info = NULL;
+	m_bShowInfo = false;
 }
 
 void Intro::InitStartGame()
 {
-	m_StartGame = new Button(m_Renderer);
-	m_StartGame->SetX((g_ScreenWidth - g_IntroButtonWidth) / 2);
-	m_StartGame->SetY(g_IntroFirstButtonY);
-	m_StartGame->SetFieldSize(g_IntroButtonHeight, g_IntroButtonWidth);
-	m_StartGame->SetText(g_IntroButtonNewGame, m_Font, SDL_Color{0x00, 0x00, 0x00, 0xFF});
+	m_ButtonStart = new Button(m_Renderer);
+	m_ButtonStart->SetX((g_ScreenWidth - g_IntroButtonWidth) / 2);
+	m_ButtonStart->SetY(g_IntroFirstButtonY);
+	m_ButtonStart->SetFieldSize(g_IntroButtonHeight, g_IntroButtonWidth);
+	m_ButtonStart->SetText(g_IntroButtonNewGame, m_Font, SDL_Color{0x00, 0x00, 0x00, 0xFF});
 }
 
 void Intro::InitResumeGame()
 {
-	m_ResumeGame = new Button(m_Renderer);
-	m_ResumeGame->SetX((g_ScreenWidth - g_IntroButtonWidth) / 2);
-	m_ResumeGame->SetY(g_IntroFirstButtonY + g_IntroButtonHeight + 10);
-	m_ResumeGame->SetFieldSize(g_IntroButtonHeight, g_IntroButtonWidth);
-	m_ResumeGame->SetText(g_IntroButtonResumeGame, m_Font, SDL_Color{0x00, 0x00, 0x00, 0xFF});
+	m_ButtonResume = new Button(m_Renderer);
+	m_ButtonResume->SetX((g_ScreenWidth - g_IntroButtonWidth) / 2);
+	m_ButtonResume->SetY(g_IntroFirstButtonY + g_IntroButtonHeight + 10);
+	m_ButtonResume->SetFieldSize(g_IntroButtonHeight, g_IntroButtonWidth);
+	m_ButtonResume->SetText(g_IntroButtonResumeGame, m_Font, SDL_Color{0x00, 0x00, 0x00, 0xFF});
 }
 
 void Intro::InitInsertCredit()
 {
-	m_InsertCreditMinus = new Button(m_Renderer);
-	m_InsertCreditMinus->SetX((g_ScreenWidth - g_IntroButtonWidth) / 2);
-	m_InsertCreditMinus->SetY(g_IntroFirstButtonY + 2* (g_IntroButtonHeight + 10));
-	m_InsertCreditMinus->SetFieldSize(g_IntroButtonHeight, g_IntroButtonWidth / 4);
-	m_InsertCreditMinus->SetText(g_IntroButtonMinus, m_Font, SDL_Color{0x00, 0x00, 0x00, 0xFF});
+	m_ButtonCreditMinus = new Button(m_Renderer);
+	m_ButtonCreditMinus->SetX((g_ScreenWidth - g_IntroButtonWidth) / 2);
+	m_ButtonCreditMinus->SetY(g_IntroFirstButtonY + 2* (g_IntroButtonHeight + 10));
+	m_ButtonCreditMinus->SetFieldSize(g_IntroButtonHeight, g_IntroButtonWidth / 4);
+	m_ButtonCreditMinus->SetText(g_IntroButtonMinus, m_Font, SDL_Color{0x00, 0x00, 0x00, 0xFF});
 
-	m_InsertCreditPlus = new Button(m_Renderer);
-	m_InsertCreditPlus->SetX(g_IntroButtonVolumePlusX);
-	m_InsertCreditPlus->SetY(g_IntroFirstButtonY + 2* (g_IntroButtonHeight + 10));
-	m_InsertCreditPlus->SetFieldSize(g_IntroButtonHeight, g_IntroButtonWidth / 4);
-	m_InsertCreditPlus->SetText(g_IntroButtonPlus, m_Font, SDL_Color{0x00, 0x00, 0x00, 0xFF});
+	m_ButtonCreditPlus = new Button(m_Renderer);
+	m_ButtonCreditPlus->SetX(g_IntroButtonVolumePlusX);
+	m_ButtonCreditPlus->SetY(g_IntroFirstButtonY + 2* (g_IntroButtonHeight + 10));
+	m_ButtonCreditPlus->SetFieldSize(g_IntroButtonHeight, g_IntroButtonWidth / 4);
+	m_ButtonCreditPlus->SetText(g_IntroButtonPlus, m_Font, SDL_Color{0x00, 0x00, 0x00, 0xFF});
 
 	m_LabelCredit = new Label(m_Renderer);
 	m_LabelCredit->SetText(g_IntroLabelInsertCredit, m_Font, SDL_Color{0x00, 0x00, 0x00, 0xFF});
@@ -263,26 +274,39 @@ void Intro::InitInsertCredit()
 
 void Intro::InitInfo()
 {
-	m_Info = new Button(m_Renderer);
-	m_Info->SetX((g_ScreenWidth - g_IntroButtonWidth) / 2);
-	m_Info->SetY(g_IntroFirstButtonY + 3* (g_IntroButtonHeight + 10));
-	m_Info->SetFieldSize(g_IntroButtonHeight, g_IntroButtonWidth);
-	m_Info->SetText(g_IntroButtonInfo, m_Font, SDL_Color{0x00, 0x00, 0x00, 0xFF});
+	m_ButtonInfo = new Button(m_Renderer);
+	m_ButtonInfo->SetX((g_ScreenWidth - g_IntroButtonWidth) / 2);
+	m_ButtonInfo->SetY(g_IntroFirstButtonY + 3* (g_IntroButtonHeight + 10));
+	m_ButtonInfo->SetFieldSize(g_IntroButtonHeight, g_IntroButtonWidth);
+	m_ButtonInfo->SetText(g_IntroButtonInfo, m_Font, SDL_Color{0x00, 0x00, 0x00, 0xFF});
+
+	m_Info = new Info(m_Renderer);
 }
 
 void Intro::InitVolume()
 {
-	m_VolumePlus = new Button(m_Renderer);
-	m_VolumePlus->SetX(g_IntroButtonVolumePlusX);
-	m_VolumePlus->SetY(g_IntroFirstButtonY + 4* (g_IntroButtonHeight + 10));
-	m_VolumePlus->SetFieldSize(g_IntroButtonHeight, g_IntroButtonWidth / 4);
-	m_VolumePlus->SetText(g_IntroButtonPlus, m_Font, SDL_Color{0x00, 0x00, 0x00, 0xFF});
+	m_BackgroundSound = Mix_LoadMUS(g_BackgroundSound);
+	if(!m_BackgroundSound)
+		std::cerr << "Failed to load Background music! SDL_mixer Error: " << Mix_GetError() << "\n";
+	else
+	{
+		Mix_PlayMusic(m_BackgroundSound, -1);
+		m_iVolume = g_IntroVolumeStart;
+		Mix_Volume(-1, m_iVolume);
+		Mix_VolumeMusic(m_iVolume);
+	}
 
-	m_VolumeMinus = new Button(m_Renderer);
-	m_VolumeMinus->SetX((g_ScreenWidth - g_IntroButtonWidth) / 2);
-	m_VolumeMinus->SetY(g_IntroFirstButtonY + 4* (g_IntroButtonHeight + 10));
-	m_VolumeMinus->SetFieldSize(g_IntroButtonHeight, g_IntroButtonWidth / 4);
-	m_VolumeMinus->SetText(g_IntroButtonMinus, m_Font, SDL_Color{0x00, 0x00, 0x00, 0xFF});
+	m_ButtonVolumePlus = new Button(m_Renderer);
+	m_ButtonVolumePlus->SetX(g_IntroButtonVolumePlusX);
+	m_ButtonVolumePlus->SetY(g_IntroFirstButtonY + 4* (g_IntroButtonHeight + 10));
+	m_ButtonVolumePlus->SetFieldSize(g_IntroButtonHeight, g_IntroButtonWidth / 4);
+	m_ButtonVolumePlus->SetText(g_IntroButtonPlus, m_Font, SDL_Color{0x00, 0x00, 0x00, 0xFF});
+
+	m_ButtonVolumeMinus = new Button(m_Renderer);
+	m_ButtonVolumeMinus->SetX((g_ScreenWidth - g_IntroButtonWidth) / 2);
+	m_ButtonVolumeMinus->SetY(g_IntroFirstButtonY + 4* (g_IntroButtonHeight + 10));
+	m_ButtonVolumeMinus->SetFieldSize(g_IntroButtonHeight, g_IntroButtonWidth / 4);
+	m_ButtonVolumeMinus->SetText(g_IntroButtonMinus, m_Font, SDL_Color{0x00, 0x00, 0x00, 0xFF});
 
 	m_LabelVolume = new Label(m_Renderer);
 	m_LabelVolume->SetText(g_IntroLabelVolume, m_Font, SDL_Color{0x00, 0x00, 0x00, 0xFF});

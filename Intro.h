@@ -9,6 +9,7 @@
 #include <sstream>
 #include "State.h"
 #include "Button.h"
+#include "Info.h"
 
 class Intro : public State
 {
@@ -44,24 +45,27 @@ private:
 
 	TTF_Font* m_Font;
 
-	Button* m_StartGame;
-	Button* m_ResumeGame;
+	Button* m_ButtonStart;
+	Button* m_ButtonResume;
 
 	Label* m_LabelCredit;
-	Button* m_InsertCreditPlus;
-	Button* m_InsertCreditMinus;
+	Button* m_ButtonCreditPlus;
+	Button* m_ButtonCreditMinus;
 
-	Button* m_Info;
+	Button* m_ButtonInfo;
 
 	Label* m_LabelVolume;
-	Button* m_VolumePlus;
-	Button* m_VolumeMinus;
+	Button* m_ButtonVolumePlus;
+	Button* m_ButtonVolumeMinus;
 
 	Label* m_LabelCredits;
 	TextField* m_TextFieldCredits;
 
 	Mix_Music* m_BackgroundSound;
 	int m_iVolume;
+
+	Info* m_Info;
+	bool m_bShowInfo;
 };
 
 #endif /* INTRO_H_ */

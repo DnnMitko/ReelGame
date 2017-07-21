@@ -36,6 +36,20 @@ const int g_IntroCreditIncrement = 25;
 const int g_IntroVolumeStart = 64;
 const int g_IntroVolumeIncrement = 16;
 
+const char g_InfoScreen1[] = "images/info_1.png";
+const char g_InfoScreen2[] = "images/info_2.png";
+const int g_InfoWidth = 596;
+const int g_InfoHeight = 357;
+const int g_InfoFontSize = 30;
+const int g_InfoButtonWidth = 50;
+const int g_InfoButtonHeight = 40;
+const int g_InfoButtonNextOffsetX = -10;
+const int g_InfoButtonNextOffsetY = -10;
+const std::string g_InforButtonNext[2] = { ">>", "<<" };
+const int g_InfoButtonExitOffsetX = -10;
+const int g_InfoButtonExitOffsetY = 10;
+const char g_InfoButtonExit[] = "X";
+
 const int g_GameMenuHeight = g_ScreenHeight - 80;
 const char g_GameBackground[] = "images/GameBackground.png";
 const char g_GameLabelBet[] = "Bet";
