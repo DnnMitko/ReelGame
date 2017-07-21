@@ -109,9 +109,9 @@ void Lines::Calculate()
 
 						case '5' :
 							m_fTotalWin += g_LinesFigure5x5;
-							if (fMax < g_LinesFigure4x5)
+							if (fMax < g_LinesFigure5x5)
 							{
-								fMax = g_LinesFigure4x5;
+								fMax = g_LinesFigure5x5;
 								iMaxLine = i;
 								cMax = '5';
 							}
