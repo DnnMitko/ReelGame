@@ -21,12 +21,15 @@ BonusGame::BonusGame(SDL_Renderer* newRenderer) : State(newRenderer)
 	InitTitleScreen();
 	InitGame();
 	InitChests();
+	InitSound();
 }
 
 BonusGame::~BonusGame()
 {
 	SDL_DestroyTexture(m_TextureBackgroundGame);
 	SDL_DestroyTexture(m_TextureBackgroundInit);
+
+	Mix_FreeChunk(m_Sound);
 
 	delete m_LabelTitleSign;
 	delete m_TextFieldCredits;
@@ -175,6 +178,8 @@ void BonusGame::NullAll()
 	m_TextureBackgroundGame = NULL;
 	m_TextureBackgroundInit = NULL;
 
+	m_Sound = NULL;
+
 	m_LabelTitleSign = NULL;
 	m_TextFieldCredits = NULL;
 
@@ -205,6 +210,8 @@ void BonusGame::TransitionIn()
 	if(m_iY == (g_ScreenHeight - g_BonusHeight) / 2)
 	{
 		m_bTransitionIn = false;
+
+		Mix_PlayChannel(-1, m_Sound, 0);
 	}
 	else
 	{
@@ -301,6 +308,11 @@ void BonusGame::InitChests()
 	m_Chest3 = new Chest(m_Renderer);
 	m_Chest3->SetX(m_iX + g_BonusChest3OffsetX);
 	m_Chest3->SetY(m_iY + g_BonusChestOffsetY);
+}
+
+void BonusGame::InitSound()
+{
+	m_Sound = Mix_LoadWAV(g_BonusSound);
 }
 
 void BonusGame::UpdateChestWin(int iWinnings)

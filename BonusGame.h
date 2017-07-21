@@ -36,6 +36,7 @@ private:
 	void InitFonts();
 	void InitGame();
 	void InitChests();
+	void InitSound();
 
 	void UpdateChestWin(int);
 	void UpdateCurWin();
@@ -44,6 +45,8 @@ private:
 private:
 	SDL_Texture* m_TextureBackgroundGame;
 	SDL_Texture* m_TextureBackgroundInit;
+
+	Mix_Chunk* m_Sound;
 
 	Label* m_LabelTitleSign;
 	TextField* m_TextFieldCredits;
