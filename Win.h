@@ -34,6 +34,8 @@ private:
 	TTF_Font* m_FontCredits;
 	TTF_Font* m_FontTitle;
 
+	Mix_Chunk* m_Sound;
+
 	unsigned int m_uiCredits;
 
 	Uint32 m_uiTimer;

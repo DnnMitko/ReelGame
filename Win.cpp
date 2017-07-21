@@ -32,6 +32,8 @@ Win::Win(SDL_Renderer* newRenderer) : State(newRenderer)
 	m_TextFieldCredits->SetX(m_iX + (g_WinWidth - m_TextFieldCredits->GetWidth()) / 2);
 	m_TextFieldCredits->SetY(m_iY + (g_WinHeight - m_TextFieldCredits->GetHeight()) / 2 + g_WinCreditOffsetY);
 
+	m_Sound = Mix_LoadWAV(g_WinSound);
+
 	m_uiCredits = 0;
 
 	m_uiTimer = 0;
@@ -46,6 +48,8 @@ Win::~Win()
 
 	TTF_CloseFont(m_FontCredits);
 	TTF_CloseFont(m_FontTitle);
+
+	Mix_FreeChunk(m_Sound);
 
 	NullAll();
 }
@@ -124,6 +128,8 @@ void Win::NullAll()
 	m_FontCredits = NULL;
 	m_FontTitle = NULL;
 
+	m_Sound = NULL;
+
 	m_uiCredits = 0;
 
 	m_uiTimer = 0;
@@ -137,6 +143,8 @@ void Win::TransitionIn()
 	if(m_iY == (g_ScreenHeight - g_WinHeight) / 2)
 	{
 		m_bTransitionIn = false;
+
+		Mix_PlayChannel(-1, m_Sound, 0);
 
 		m_uiTimer = SDL_GetTicks();
 	}
