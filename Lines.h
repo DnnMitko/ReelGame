@@ -23,7 +23,7 @@ private:
 
 	void Calculate();
 
-	void GenAnimate(int, char);
+	void GenAnimate();
 
 	void Process3(int, int);
 	void Process4(int, int);

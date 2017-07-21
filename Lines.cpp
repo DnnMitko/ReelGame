@@ -30,6 +30,10 @@ Lines::~Lines()
 void Lines::SetResult(std::string result)
 {
 	m_strResult = result;
+	GenLines();
+
+	Calculate();
+	GenAnimate();
 }
 
 void Lines::GenLines()
@@ -86,13 +90,13 @@ bool Lines::HasSpecial()
 {
 	for ( int i = 0 ; i < 15 ; i ++)
 	{
-		if ( m_strResult[i] == '6')
+		if ( m_strResult[i] == g_FigureID_6)
 			return true;
 	}
 	return false;
 }
 
-void Lines::GenAnimate(int m_iMaxLine, char m_cMax)
+void Lines::GenAnimate()
 {
 	m_strAnimate = "000000000000000";
 
@@ -122,29 +126,29 @@ void Lines::Process3(int iLine, int iPos)
 {
 	switch(m_strLine[iLine][iPos])
 	{
-	case '1' :
+	case g_FigureID_1 :
 		m_fTotalWin += g_LinesFigure1x3;
-		CheckMax(g_LinesFigure1x3, '1', iLine);
+		CheckMax(g_LinesFigure1x3, g_FigureID_1, iLine);
 		break;
 
-	case '2' :
+	case g_FigureID_2 :
 		m_fTotalWin += g_LinesFigure2x3;
-		CheckMax(g_LinesFigure2x3, '2', iLine);
+		CheckMax(g_LinesFigure2x3, g_FigureID_2, iLine);
 		break;
 
-	case '3' :
+	case g_FigureID_3 :
 		m_fTotalWin += g_LinesFigure3x3;
-		CheckMax(g_LinesFigure3x3, '3', iLine);
+		CheckMax(g_LinesFigure3x3, g_FigureID_3, iLine);
 		break;
 
-	case '4' :
+	case g_FigureID_4 :
 		m_fTotalWin += g_LinesFigure4x3;
-		CheckMax(g_LinesFigure4x3, '4', iLine);
+		CheckMax(g_LinesFigure4x3, g_FigureID_4, iLine);
 		break;
 
-	case '5' :
+	case g_FigureID_5 :
 		m_fTotalWin += g_LinesFigure5x3;
-		CheckMax(g_LinesFigure5x3, '5', iLine);
+		CheckMax(g_LinesFigure5x3, g_FigureID_5, iLine);
 		break;
 	}
 }
@@ -153,29 +157,29 @@ void Lines::Process4(int iLine, int iPos)
 {
 	switch(m_strLine[iLine][iPos])
 	{
-	case '1' :
+	case g_FigureID_1 :
 		m_fTotalWin += g_LinesFigure1x4;
-		CheckMax(g_LinesFigure1x4, '1', iLine);
+		CheckMax(g_LinesFigure1x4, g_FigureID_1, iLine);
 		break;
 
-	case '2' :
+	case g_FigureID_2 :
 		m_fTotalWin += g_LinesFigure2x4;
-		CheckMax(g_LinesFigure2x4, '2', iLine);
+		CheckMax(g_LinesFigure2x4, g_FigureID_2, iLine);
 		break;
 
-	case '3' :
+	case g_FigureID_3 :
 		m_fTotalWin += g_LinesFigure3x4;
-		CheckMax(g_LinesFigure3x4, '3', iLine);
+		CheckMax(g_LinesFigure3x4, g_FigureID_3, iLine);
 		break;
 
-	case '4' :
+	case g_FigureID_4 :
 		m_fTotalWin += g_LinesFigure4x4;
-		CheckMax(g_LinesFigure4x4, '4', iLine);
+		CheckMax(g_LinesFigure4x4, g_FigureID_4, iLine);
 		break;
 
-	case '5' :
+	case g_FigureID_5 :
 		m_fTotalWin += g_LinesFigure5x4;
-		CheckMax(g_LinesFigure5x4, '5', iLine);
+		CheckMax(g_LinesFigure5x4, g_FigureID_5, iLine);
 		break;
 	}
 }
@@ -184,29 +188,29 @@ void Lines::Process5(int iLine)
 {
 	switch(m_strLine[iLine][0])
 	{
-	case '1' :
+	case g_FigureID_1 :
 		m_fTotalWin += g_LinesFigure1x5;
-		CheckMax(g_LinesFigure1x5, '1', iLine);
+		CheckMax(g_LinesFigure1x5, g_FigureID_1, iLine);
 		break;
 
-	case '2' :
+	case g_FigureID_2 :
 		m_fTotalWin += g_LinesFigure2x5;
-		CheckMax(g_LinesFigure2x5, '2', iLine);
+		CheckMax(g_LinesFigure2x5, g_FigureID_2, iLine);
 		break;
 
-	case '3' :
+	case g_FigureID_3 :
 		m_fTotalWin += g_LinesFigure3x5;
-		CheckMax(g_LinesFigure3x5, '3', iLine);
+		CheckMax(g_LinesFigure3x5, g_FigureID_3, iLine);
 		break;
 
-	case '4' :
+	case g_FigureID_4 :
 		m_fTotalWin += g_LinesFigure4x5;
-		CheckMax(g_LinesFigure4x5, '4', iLine);
+		CheckMax(g_LinesFigure4x5, g_FigureID_4, iLine);
 		break;
 
-	case '5' :
+	case g_FigureID_5 :
 		m_fTotalWin += g_LinesFigure5x5;
-		CheckMax(g_LinesFigure5x5, '5', iLine);
+		CheckMax(g_LinesFigure5x5, g_FigureID_5, iLine);
 		break;
 	}
 }

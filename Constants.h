@@ -165,8 +165,13 @@ const float g_LinesFigure5x5 = 4.0;
 const int g_LinesMax = 15;
 
 const char g_Figure[] = "images/Figures.png";
-const int g_FigureWidth = 185;
-const int g_FigureHeight = 185;
+const int g_FigureSize = 185;
+const char g_FigureID_1 = '1';
+const char g_FigureID_2 = '2';
+const char g_FigureID_3 = '3';
+const char g_FigureID_4 = '4';
+const char g_FigureID_5 = '5';
+const char g_FigureID_6 = '6';
 
 
 
