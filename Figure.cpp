@@ -76,7 +76,6 @@ void Figure::Render(bool UpdateOnly)
 		tempRect.h = g_FigureSize;
 		SDL_RenderCopy(m_Renderer, m_TextureFigures, &m_RectFigure, &tempRect);
 	}
-
 }
 
 void Figure::SetX(int NewX)
@@ -101,6 +100,7 @@ void Figure::Pause()
 {
 	m_RectFigure.y = 0;
 	m_bIsAnimated = false;
+	Render(false);
 }
 
 void Figure::Rand()
@@ -116,7 +116,7 @@ void Figure::Rand()
 		case '3' : m_cCurFigure = g_FigureID_4; break;
 		case '4' : m_cCurFigure = g_FigureID_5; break;
 	}
-
+	Render(false);
 }
 
 void Figure::MakeSpacial()
