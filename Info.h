@@ -11,7 +11,7 @@ public:
 	Info(SDL_Renderer*);
 	~Info();
 public:
-	void Render();
+	void Render(bool);
 	void EventHandler(SDL_Event&);
 
 	bool GetHide() const;
@@ -28,7 +28,7 @@ private:
 	Button* m_ButtonExit;
 
 	bool m_bShowFirst;
-
+	bool m_bHasChanged;
 	bool m_bHide;
 
 	int m_iX;

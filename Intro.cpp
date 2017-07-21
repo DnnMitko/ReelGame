@@ -87,7 +87,7 @@ void Intro::Render(bool UpdateOnly)
 	m_TextFieldCredits->Render(UpdateOnly);
 
 	if(m_bShowInfo)
-		m_Info->Render();
+		m_Info->Render(UpdateOnly);
 }
 
 void Intro::EventHandler(SDL_Event& e)
@@ -102,7 +102,6 @@ void Intro::EventHandler(SDL_Event& e)
 		if(m_Info->GetHide())
 		{
 			m_Info->Reset();
-
 			m_bShowInfo = false;
 
 			Render(false);
