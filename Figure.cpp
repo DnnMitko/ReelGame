@@ -123,6 +123,7 @@ void Figure::MakeSpacial()
 {
 	m_RectFigure.x = g_FigureSize * 5;
 	m_cCurFigure = g_FigureID_6;
+	Render(false);
 }
 
 void Figure::Clear()
