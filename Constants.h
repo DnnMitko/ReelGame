@@ -96,6 +96,7 @@ const int g_BonusStartOffsetX = -180;
 const int g_BonusStartOffsetY = -120;
 const int g_BonusStartWidth = 160;
 const int g_BonusStartHeight = 90;
+const char g_BonusSound[] = "sounds/Bonus.wav";
 
 const float g_Denominator = 0.01;
 const int g_OutroDelay = 10000;
@@ -111,6 +112,7 @@ const int g_OutroMoneyWidth = 550;
 const int g_OutroMoneyHeight = 100;
 const int g_OutroMoneyOffsetY = 115;
 const char g_OutroBackground[] = "images/OutroBackground.png";
+const char g_OutroSound[] = "sounds/Clap.wav";
 
 const int g_WinWidth = 640;
 const int g_WinHeight = 427;
@@ -124,6 +126,7 @@ const int g_WinCreditsWidth = 550;
 const int g_WinCreditHeight = 100;
 const int g_WinCreditOffsetY = 115;
 const char g_WinBackground[] = "images/WinBackground.png";
+const char g_WinSound[] = "sounds/Win.wav";
 
 const char g_ButtonSprite[] = "images/ButtonSprite.png";
 const int g_ButtonSpriteWidth = 296;
