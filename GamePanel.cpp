@@ -15,11 +15,11 @@ GamePanel::GamePanel(SDL_Renderer* newRenderer)
 	m_uiTotalBet = 0;
 	m_uiPaid = 0;
 
-	m_FontBig = TTF_OpenFont(g_GameFont, g_GameFontSizeBig);
+	m_FontBig = TTF_OpenFont(g_FontLabel, g_GameFontSizeBig);
 	if(m_FontBig == NULL)
 		std::cerr << "Failed to load Label Font! SDL Error: " << TTF_GetError() << std::endl;
 
-	m_FontSmall = TTF_OpenFont(g_GameFont, g_GameFontSizeSmall);
+	m_FontSmall = TTF_OpenFont(g_FontLabel, g_GameFontSizeSmall);
 	if(m_FontSmall == NULL)
 		std::cerr << "Failed to load Label Font! SDL Error: " << TTF_GetError() << std::endl;
 

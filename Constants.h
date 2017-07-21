@@ -48,7 +48,6 @@ const char g_GameButtonPlay[] = "Play";
 const char g_GameButtonCashOut[] = "Cash Out";
 const int g_GameOffsetX = 5;
 const int g_GameMarginX = 20;
-const char g_GameFont[] = "fonts/Roboto-Medium.ttf";
 const int g_GameFontSizeBig = 30;
 const int g_GameFontSizeSmall = 20;
 const int g_GamePayTableWidth = 150;
