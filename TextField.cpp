@@ -2,12 +2,18 @@
 
 TextField::TextField() : Label()
 {
-	m_FieldRect = {0, 0, 0, 0};
+	m_FieldRect.x = 0;
+	m_FieldRect.y = 0;
+	m_FieldRect.w = 0;
+	m_FieldRect.h = 0;
 }
 
 TextField::TextField(SDL_Renderer* newRenderer) : Label(newRenderer)
 {
-	m_FieldRect = {0, 0, 0, 0};
+	m_FieldRect.x = 0;
+	m_FieldRect.y = 0;
+	m_FieldRect.w = 0;
+	m_FieldRect.h = 0;
 }
 
 TextField::~TextField()

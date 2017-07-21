@@ -250,12 +250,12 @@ void BonusGame::InitTitleScreen()
 		std::cerr << "Failed to load TextureBackgroundInit! SDL Error: " << IMG_GetError() << std::endl;
 
 	m_LabelTitleSign = new Label(m_Renderer);
-	m_LabelTitleSign->SetText(g_BonusTitle, m_FontTitle, SDL_Color{0xF0, 0xF0, 0x00, 0xFF});
+	m_LabelTitleSign->SetText(g_BonusTitle, m_FontTitle, g_ColorYellow);
 	m_LabelTitleSign->SetX(m_iX + (g_BonusWidth - m_LabelTitleSign->GetWidth()) / 2);
 	m_LabelTitleSign->SetY(m_iY + (g_BonusHeight - m_LabelTitleSign->GetHeight()) / 2 + g_BonusTitleOffsetY);
 
 	m_LabelCurWin = new Label(m_Renderer);
-	m_LabelCurWin->SetText(g_BonusTempWinMessage, m_FontCredits, SDL_Color{0xF0, 0xF0, 0x00, 0xFF});
+	m_LabelCurWin->SetText(g_BonusTempWinMessage, m_FontCredits, g_ColorYellow);
 	m_LabelCurWin->SetX(m_iX + g_BonusTempWinOffsetX + (g_BonusTempWinFieldWidth - m_LabelCurWin->GetWidth()) / 2);
 	m_LabelCurWin->SetY(m_iY + g_BonusHeight + g_BonusTempWinOffsetY - m_LabelCurWin->GetHeight());
 
@@ -269,7 +269,7 @@ void BonusGame::InitTitleScreen()
 	m_ButtonStart->SetX(m_iX + g_BonusWidth + g_BonusStartOffsetX);
 	m_ButtonStart->SetY(m_iY + g_BonusHeight + g_BonusStartOffsetY);
 	m_ButtonStart->SetFieldSize(g_BonusStartHeight, g_BonusStartWidth);
-	m_ButtonStart->SetText("Start", m_FontCredits, SDL_Color{0x00, 0x00, 0x00, 0xFF});
+	m_ButtonStart->SetText("Start", m_FontCredits, g_ColorBlack);
 }
 
 void BonusGame::InitFonts()
@@ -293,7 +293,7 @@ void BonusGame::InitGame()
 	m_TextFieldCredits->SetFieldSize(g_BonusCreditHeight, g_BonusCreditsWidth);
 	m_TextFieldCredits->SetX(m_iX + (g_BonusWidth - m_TextFieldCredits->GetWidth()) / 2);
 	m_TextFieldCredits->SetY(m_iY + (g_BonusHeight - m_TextFieldCredits->GetHeight()) / 2 + g_BonusCreditOffsetY);
-	m_TextFieldCredits->SetText(g_BonusSubTitle, m_FontCredits, SDL_Color{0xFF, 0xFF, 0xFF, 0xFF});
+	m_TextFieldCredits->SetText(g_BonusSubTitle, m_FontCredits, g_ColorWhite);
 }
 void BonusGame::InitChests()
 {
@@ -323,7 +323,7 @@ void BonusGame::UpdateChestWin(int iWinnings)
 	ss << g_BonusWinMessage << iWinnings;
 	strCredits = ss.str();
 
-	m_TextFieldCredits->SetText(strCredits, m_FontCredits, SDL_Color{0xFF, 0xFF, 0xFF, 0xFF});
+	m_TextFieldCredits->SetText(strCredits, m_FontCredits, g_ColorWhite);
 }
 
 void BonusGame::UpdateCurWin()
@@ -334,7 +334,7 @@ void BonusGame::UpdateCurWin()
 	ss << m_uiCredits;
 	strCredits = ss.str();
 
-	m_TextFieldCurWin->SetText(strCredits, m_FontCredits, SDL_Color{0xFF, 0xFF, 0xFF, 0xFF});
+	m_TextFieldCurWin->SetText(strCredits, m_FontCredits, g_ColorWhite);
 }
 
 void BonusGame::GenPrize()
@@ -356,7 +356,7 @@ void BonusGame::ResetGame()
 	m_bHasChosen = false;
 	m_bHasStarted = false;
 
-	m_TextFieldCredits->SetText(g_BonusSubTitle, m_FontCredits, SDL_Color{0xFF, 0xFF, 0xFF, 0xFF});
+	m_TextFieldCredits->SetText(g_BonusSubTitle, m_FontCredits, g_ColorWhite);
 
 	m_iY = (g_ScreenHeight - g_BonusHeight) / 2;
 	m_LabelTitleSign->SetY(m_iY + (g_BonusHeight - m_LabelTitleSign->GetHeight()) / 2 + g_BonusTitleOffsetY);

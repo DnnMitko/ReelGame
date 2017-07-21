@@ -2,6 +2,7 @@
 #define CONSTANTS_H_
 
 #include <string>
+#include <SDL2/SDL.h>
 
 
 const int g_ScreenWidth = 1280;
@@ -9,6 +10,10 @@ const int g_ScreenHeight = 720;
 
 const char g_FontLabel[] = "fonts/Roboto-Medium.ttf";
 const char g_FontTitle[] = "fonts/Digitalt.ttf";
+
+const SDL_Color g_ColorBlack = {0x00, 0x00, 0x00, 0xFF};
+const SDL_Color g_ColorWhite = {0xFF, 0xFF, 0xFF, 0xFF};
+const SDL_Color g_ColorYellow = {0xF0, 0xF0, 0x00, 0xFF};
 
 const int g_TransitionStep = 20;
 

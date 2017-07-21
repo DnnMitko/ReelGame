@@ -45,13 +45,13 @@ Info::Info(SDL_Renderer* newRenderer)
 	m_ButtonNext->SetFieldSize(g_InfoButtonHeight, g_InfoButtonWidth);
 	m_ButtonNext->SetX(m_iX + g_InfoWidth - g_InfoButtonWidth + g_InfoButtonNextOffsetX);
 	m_ButtonNext->SetY(m_iY + g_InfoHeight - g_InfoButtonHeight + g_InfoButtonNextOffsetY);
-	m_ButtonNext->SetText(g_InforButtonNext[m_bShowFirst], m_Font, SDL_Color{0x00, 0x00, 0x00, 0xFF});
+	m_ButtonNext->SetText(g_InforButtonNext[m_bShowFirst], m_Font, g_ColorBlack);
 
 	m_ButtonExit = new Button(m_Rednerer);
 	m_ButtonExit->SetFieldSize(g_InfoButtonHeight, g_InfoButtonWidth);
 	m_ButtonExit->SetX(m_iX + g_InfoWidth - g_InfoButtonWidth + g_InfoButtonExitOffsetX);
 	m_ButtonExit->SetY(m_iY + g_InfoButtonExitOffsetY);
-	m_ButtonExit->SetText(g_InfoButtonExit, m_Font, SDL_Color{0x00, 0x00, 0x00, 0xFF});
+	m_ButtonExit->SetText(g_InfoButtonExit, m_Font, g_ColorBlack);
 }
 
 Info::~Info()
@@ -120,7 +120,7 @@ void Info::EventHandler(SDL_Event& e)
 		if(m_ButtonNext->IsIn(x, y) && m_ButtonNext->IsPressed())
 		{
 			m_bShowFirst = !m_bShowFirst;
-			m_ButtonNext->SetText(g_InforButtonNext[m_bShowFirst], m_Font, SDL_Color{0x00, 0x00, 0x00, 0xFF});
+			m_ButtonNext->SetText(g_InforButtonNext[m_bShowFirst], m_Font, g_ColorBlack);
 
 			m_bHasChanged = true;
 		}

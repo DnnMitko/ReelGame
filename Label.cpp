@@ -6,7 +6,10 @@ Label::Label()
 
 	m_TextureText = NULL;
 
-	m_TextRect = {0, 0, 0, 0};
+	m_TextRect.x = 0;
+	m_TextRect.y = 0;
+	m_TextRect.w = 0;
+	m_TextRect.h = 0;
 
 	m_bHasChanged = true;
 }
@@ -17,7 +20,10 @@ Label::Label(SDL_Renderer* newRenderer)
 
 	m_TextureText = NULL;
 
-	m_TextRect = {0, 0, 0, 0};
+	m_TextRect.x = 0;
+	m_TextRect.y = 0;
+	m_TextRect.w = 0;
+	m_TextRect.h = 0;
 
 	m_bHasChanged = true;
 }

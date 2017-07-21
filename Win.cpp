@@ -23,7 +23,7 @@ Win::Win(SDL_Renderer* newRenderer) : State(newRenderer)
 			std::cerr << "Failed to load Win Font! SDL Error: " << TTF_GetError() << std::endl;
 
 	m_LabelWinSign = new Label(m_Renderer);
-	m_LabelWinSign->SetText(g_WinSign, m_FontTitle, SDL_Color{0xF0, 0xF0, 0x00, 0xFF});
+	m_LabelWinSign->SetText(g_WinSign, m_FontTitle, g_ColorYellow);
 	m_LabelWinSign->SetX(m_iX + (g_WinWidth - m_LabelWinSign->GetWidth()) / 2);
 	m_LabelWinSign->SetY(m_iY + (g_WinHeight - m_LabelWinSign->GetHeight()) / 2 + g_WinSignOffsetY);
 
@@ -117,7 +117,7 @@ void Win::SetCredits(unsigned int newCredits)
 	ss <<  m_uiCredits;
 	strCredits = ss.str();
 
-	m_TextFieldCredits->SetText(strCredits, m_FontCredits, SDL_Color{0xFF, 0xFF, 0xFF, 0xFF});
+	m_TextFieldCredits->SetText(strCredits, m_FontCredits, g_ColorWhite);
 }
 
 void Win::NullAll()

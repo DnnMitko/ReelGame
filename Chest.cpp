@@ -7,7 +7,10 @@ Chest::Chest()
 {
 	m_Renderer = NULL;
 
-	m_FieldRect = {0, 0, 0, 0};
+	m_FieldRect.x = 0;
+	m_FieldRect.y = 0;
+	m_FieldRect.w = 0;
+	m_FieldRect.h = 0;
 
 	m_bHasChanged = true;
 	m_bIsOpened = false;

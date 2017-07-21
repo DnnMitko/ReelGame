@@ -149,7 +149,7 @@ void Outro::SetCredits(unsigned int newCredits)
 	strMoney = ss.str();
 
 	// Set that string to show on the textfield
-	m_TextFieldMoney->SetText(strMoney, m_FontLabel, SDL_Color{0xFF, 0xFF, 0xFF, 0xFF});
+	m_TextFieldMoney->SetText(strMoney, m_FontLabel, g_ColorWhite);
 
 	// String for the win message
 	std::string strWin;
@@ -163,7 +163,7 @@ void Outro::SetCredits(unsigned int newCredits)
 		strWin = g_OutroWinSign[2];
 
 	// Set the win message to the win sign and center it on screen
-	m_LabelWinSign->SetText(strWin, m_FontTitle, SDL_Color{0xF0, 0xF0, 0x00, 0xFF});
+	m_LabelWinSign->SetText(strWin, m_FontTitle, g_ColorYellow);
 	m_LabelWinSign->SetX(m_iX + (g_OutroWidth - m_LabelWinSign->GetWidth()) / 2);
 	m_LabelWinSign->SetY(m_iY + (g_OutroHeight - m_LabelWinSign->GetHeight()) / 2 + g_OutroWinOffsetY);
 }

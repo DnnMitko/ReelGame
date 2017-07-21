@@ -359,14 +359,14 @@ void GamePanel::InitPayTable(int curX)
 	m_ButtonPayTable = new Button(m_Renderer);
 	m_ButtonPayTable->SetX(curX);
 	m_ButtonPayTable->SetY(g_GameMenuHeight);
-	m_ButtonPayTable->SetText("Pay Table", m_FontBig, SDL_Color{0x00, 0x00, 0x00, 0xFF});
+	m_ButtonPayTable->SetText("Pay Table", m_FontBig, g_ColorBlack);
 	m_ButtonPayTable->SetFieldSize(g_GamePayTableHeight, g_GamePayTableWidth);
 }
 
 void GamePanel::InitBet(int curX)
 {
 	m_LabelBet = new Label(m_Renderer);
-	m_LabelBet->SetText(g_GameLabelBet, m_FontSmall, SDL_Color{0x00, 0x00, 0x00, 0xFF});
+	m_LabelBet->SetText(g_GameLabelBet, m_FontSmall, g_ColorBlack);
 	m_LabelBet->SetX(curX + (g_GameFieldWidth - m_LabelBet->GetWidth()) / 2);
 	m_LabelBet->SetY(g_GameMenuHeight - m_LabelBet->GetHeight());
 
@@ -380,19 +380,19 @@ void GamePanel::InitBet(int curX)
 	m_ButtonBetMinus->SetX(curX);
 	m_ButtonBetMinus->SetY(g_GameMenuHeight + g_GameFieldHeight);
 	m_ButtonBetMinus->SetFieldSize(g_GameFieldHeight, g_GameFieldWidth / 2);
-	m_ButtonBetMinus->SetText("-", m_FontBig, SDL_Color{0x00, 0x00, 0x00, 0xFF});
+	m_ButtonBetMinus->SetText("-", m_FontBig, g_ColorBlack);
 
 	m_ButtonBetPlus = new Button(m_Renderer);
 	m_ButtonBetPlus->SetX(curX + g_GameFieldWidth / 2);
 	m_ButtonBetPlus->SetY(g_GameMenuHeight + g_GameFieldHeight);
 	m_ButtonBetPlus->SetFieldSize(g_GameFieldHeight, g_GameFieldWidth / 2);
-	m_ButtonBetPlus->SetText("+", m_FontBig, SDL_Color{0x00, 0x00, 0x00, 0xFF});
+	m_ButtonBetPlus->SetText("+", m_FontBig, g_ColorBlack);
 }
 
 void GamePanel::InitLines(int curX)
 {
 	m_LabelLines = new Label(m_Renderer);
-	m_LabelLines->SetText(g_GameLabelLines, m_FontSmall, SDL_Color{0x00, 0x00, 0x00, 0xFF});
+	m_LabelLines->SetText(g_GameLabelLines, m_FontSmall, g_ColorBlack);
 	m_LabelLines->SetX(curX + (g_GameFieldWidth - m_LabelLines->GetWidth()) / 2);
 	m_LabelLines->SetY(g_GameMenuHeight - m_LabelLines->GetHeight());
 
@@ -406,13 +406,13 @@ void GamePanel::InitLines(int curX)
 	m_ButtonLinesMinus->SetX(curX);
 	m_ButtonLinesMinus->SetY(g_GameMenuHeight + g_GameFieldHeight);
 	m_ButtonLinesMinus->SetFieldSize(g_GameFieldHeight, g_GameFieldWidth / 2);
-	m_ButtonLinesMinus->SetText("-", m_FontBig, SDL_Color{0x00, 0x00, 0x00, 0xFF});
+	m_ButtonLinesMinus->SetText("-", m_FontBig, g_ColorBlack);
 
 	m_ButtonLinesPlus = new Button(m_Renderer);
 	m_ButtonLinesPlus->SetX(curX + g_GameFieldWidth / 2);
 	m_ButtonLinesPlus->SetY(g_GameMenuHeight + g_GameFieldHeight);
 	m_ButtonLinesPlus->SetFieldSize(g_GameFieldHeight, g_GameFieldWidth / 2);
-	m_ButtonLinesPlus->SetText("+", m_FontBig, SDL_Color{0x00, 0x00, 0x00, 0xFF});
+	m_ButtonLinesPlus->SetText("+", m_FontBig, g_ColorBlack);
 }
 
 void GamePanel::InitMaxBet(int curX)
@@ -421,13 +421,13 @@ void GamePanel::InitMaxBet(int curX)
 	m_ButtonMaxBet->SetX(curX);
 	m_ButtonMaxBet->SetY(g_GameMenuHeight);
 	m_ButtonMaxBet->SetFieldSize(g_GameMaxBetHeight, g_GameMaxBetWidth);
-	m_ButtonMaxBet->SetText(g_GameButtonMaxBet, m_FontBig, SDL_Color{0x00, 0x00, 0x00, 0xFF});
+	m_ButtonMaxBet->SetText(g_GameButtonMaxBet, m_FontBig, g_ColorBlack);
 }
 
 void GamePanel::InitCurCredits(int curX)
 {
 	m_LabelCurCredits = new Label(m_Renderer);
-	m_LabelCurCredits->SetText(g_GameLabelCredits, m_FontSmall, SDL_Color{0x00, 0x00, 0x00, 0xFF});
+	m_LabelCurCredits->SetText(g_GameLabelCredits, m_FontSmall, g_ColorBlack);
 	m_LabelCurCredits->SetX(curX + (g_GameFieldWidth - m_LabelCurCredits->GetWidth()) / 2);
 	m_LabelCurCredits->SetY(g_GameMenuHeight + g_GameFieldHeight - m_LabelCurCredits->GetHeight());
 
@@ -441,7 +441,7 @@ void GamePanel::InitCurCredits(int curX)
 void GamePanel::InitTotalBet(int curX)
 {
 	m_LabelTotalBet = new Label(m_Renderer);
-	m_LabelTotalBet->SetText(g_GameLabelTotalBet, m_FontSmall, SDL_Color{0x00, 0x00, 0x00, 0xFF});
+	m_LabelTotalBet->SetText(g_GameLabelTotalBet, m_FontSmall, g_ColorBlack);
 	m_LabelTotalBet->SetX(curX + (g_GameFieldWidth - m_LabelTotalBet->GetWidth()) / 2);
 	m_LabelTotalBet->SetY(g_GameMenuHeight + g_GameFieldHeight - m_LabelTotalBet->GetHeight());
 
@@ -455,7 +455,7 @@ void GamePanel::InitTotalBet(int curX)
 void GamePanel::InitPaid(int curX)
 {
 	m_LabelPaid = new Label(m_Renderer);
-	m_LabelPaid->SetText(g_GameLabelPaid, m_FontSmall, SDL_Color{0x00, 0x00, 0x00, 0xFF});
+	m_LabelPaid->SetText(g_GameLabelPaid, m_FontSmall, g_ColorBlack);
 	m_LabelPaid->SetX(curX + (g_GameFieldWidth - m_LabelPaid->GetWidth()) / 2);
 	m_LabelPaid->SetY(g_GameMenuHeight + g_GameFieldHeight - m_LabelPaid->GetHeight());
 
@@ -472,7 +472,7 @@ void GamePanel::InitPlay(int curX)
 	m_ButtonPlay->SetX(curX);
 	m_ButtonPlay->SetY(g_GameMenuHeight);
 	m_ButtonPlay->SetFieldSize(g_GamePlayHeight, g_GamePlayWidth);
-	m_ButtonPlay->SetText(g_GameButtonPlay, m_FontBig, SDL_Color{0x00, 0x00, 0x00, 0xFF});
+	m_ButtonPlay->SetText(g_GameButtonPlay, m_FontBig, g_ColorBlack);
 }
 
 void GamePanel::InitCashOut(int curX)
@@ -481,7 +481,7 @@ void GamePanel::InitCashOut(int curX)
 	m_ButtonCashOut->SetX(curX);
 	m_ButtonCashOut->SetY(g_GameMenuHeight);
 	m_ButtonCashOut->SetFieldSize(g_GameCashOutHeight, g_GameCashOutWidth);
-	m_ButtonCashOut->SetText(g_GameButtonCashOut, m_FontBig, SDL_Color{0x00, 0x00, 0x00, 0xFF});
+	m_ButtonCashOut->SetText(g_GameButtonCashOut, m_FontBig, g_ColorBlack);
 }
 
 void GamePanel::UpdateBet()
@@ -492,7 +492,7 @@ void GamePanel::UpdateBet()
 	ss << m_uiBet;
 	tempStr = ss.str();
 
-	m_TextFieldBet->SetText(tempStr, m_FontSmall, SDL_Color{0xFF, 0xFF, 0xFF, 0xFF});
+	m_TextFieldBet->SetText(tempStr, m_FontSmall, g_ColorWhite);
 }
 
 void GamePanel::UpdateLines()
@@ -503,7 +503,7 @@ void GamePanel::UpdateLines()
 	ss << m_uiLines;
 	tempStr = ss.str();
 
-	m_TextFieldLines->SetText(tempStr, m_FontSmall, SDL_Color{0xFF, 0xFF, 0xFF, 0xFF});
+	m_TextFieldLines->SetText(tempStr, m_FontSmall, g_ColorWhite);
 }
 
 void GamePanel::UpdateCurCredits()
@@ -514,7 +514,7 @@ void GamePanel::UpdateCurCredits()
 	ss << m_uiCurCredits;
 	tempStr = ss.str();
 
-	m_TextFieldCurCredits->SetText(tempStr, m_FontSmall, SDL_Color{0xFF, 0xFF, 0xFF, 0xFF});
+	m_TextFieldCurCredits->SetText(tempStr, m_FontSmall, g_ColorWhite);
 }
 
 void GamePanel::UpdateTotalBet()
@@ -527,7 +527,7 @@ void GamePanel::UpdateTotalBet()
 	ss << m_uiTotalBet;
 	tempStr = ss.str();
 
-	m_TextFieldTotalBet->SetText(tempStr, m_FontSmall, SDL_Color{0xFF, 0xFF, 0xFF, 0xFF});
+	m_TextFieldTotalBet->SetText(tempStr, m_FontSmall, g_ColorWhite);
 }
 
 void GamePanel::UpdatePaid()
@@ -538,7 +538,7 @@ void GamePanel::UpdatePaid()
 	ss << m_uiPaid;
 	tempStr = ss.str();
 
-	m_TextFieldPaid->SetText(tempStr, m_FontSmall, SDL_Color{0xFF, 0xFF, 0xFF, 0xFF});
+	m_TextFieldPaid->SetText(tempStr, m_FontSmall, g_ColorWhite);
 }
 
 void GamePanel::ReleaseAll()

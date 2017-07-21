@@ -88,7 +88,7 @@ void Button::SetText(std::string newText, TTF_Font* font, SDL_Color color)
 
 	SDL_DestroyTexture(m_TextureTextPressed);
 
-	SDL_Surface* tempSurface = TTF_RenderText_Blended(font, newText.c_str(), SDL_Color{0xFF, 0xFF, 0xFF, 0xFF});
+	SDL_Surface* tempSurface = TTF_RenderText_Blended(font, newText.c_str(), g_ColorWhite);
 
 	m_TextureTextPressed = SDL_CreateTextureFromSurface(m_Renderer, tempSurface);
 

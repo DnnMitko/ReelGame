@@ -239,7 +239,7 @@ void Intro::InitStartGame()
 	m_ButtonStart->SetX((g_ScreenWidth - g_IntroButtonWidth) / 2);
 	m_ButtonStart->SetY(g_IntroFirstButtonY);
 	m_ButtonStart->SetFieldSize(g_IntroButtonHeight, g_IntroButtonWidth);
-	m_ButtonStart->SetText(g_IntroButtonNewGame, m_Font, SDL_Color{0x00, 0x00, 0x00, 0xFF});
+	m_ButtonStart->SetText(g_IntroButtonNewGame, m_Font, g_ColorBlack);
 }
 
 void Intro::InitResumeGame()
@@ -248,7 +248,7 @@ void Intro::InitResumeGame()
 	m_ButtonResume->SetX((g_ScreenWidth - g_IntroButtonWidth) / 2);
 	m_ButtonResume->SetY(g_IntroFirstButtonY + g_IntroButtonHeight + 10);
 	m_ButtonResume->SetFieldSize(g_IntroButtonHeight, g_IntroButtonWidth);
-	m_ButtonResume->SetText(g_IntroButtonResumeGame, m_Font, SDL_Color{0x00, 0x00, 0x00, 0xFF});
+	m_ButtonResume->SetText(g_IntroButtonResumeGame, m_Font, g_ColorBlack);
 }
 
 void Intro::InitInsertCredit()
@@ -257,16 +257,16 @@ void Intro::InitInsertCredit()
 	m_ButtonCreditMinus->SetX((g_ScreenWidth - g_IntroButtonWidth) / 2);
 	m_ButtonCreditMinus->SetY(g_IntroFirstButtonY + 2* (g_IntroButtonHeight + 10));
 	m_ButtonCreditMinus->SetFieldSize(g_IntroButtonHeight, g_IntroButtonWidth / 4);
-	m_ButtonCreditMinus->SetText(g_IntroButtonMinus, m_Font, SDL_Color{0x00, 0x00, 0x00, 0xFF});
+	m_ButtonCreditMinus->SetText(g_IntroButtonMinus, m_Font, g_ColorBlack);
 
 	m_ButtonCreditPlus = new Button(m_Renderer);
 	m_ButtonCreditPlus->SetX(g_IntroButtonVolumePlusX);
 	m_ButtonCreditPlus->SetY(g_IntroFirstButtonY + 2* (g_IntroButtonHeight + 10));
 	m_ButtonCreditPlus->SetFieldSize(g_IntroButtonHeight, g_IntroButtonWidth / 4);
-	m_ButtonCreditPlus->SetText(g_IntroButtonPlus, m_Font, SDL_Color{0x00, 0x00, 0x00, 0xFF});
+	m_ButtonCreditPlus->SetText(g_IntroButtonPlus, m_Font, g_ColorBlack);
 
 	m_LabelCredit = new Label(m_Renderer);
-	m_LabelCredit->SetText(g_IntroLabelInsertCredit, m_Font, SDL_Color{0x00, 0x00, 0x00, 0xFF});
+	m_LabelCredit->SetText(g_IntroLabelInsertCredit, m_Font, g_ColorBlack);
 	m_LabelCredit->SetX(g_IntroLabelCreditX);
 	m_LabelCredit->SetY(g_IntroLabelCreditY);
 }
@@ -277,7 +277,7 @@ void Intro::InitInfo()
 	m_ButtonInfo->SetX((g_ScreenWidth - g_IntroButtonWidth) / 2);
 	m_ButtonInfo->SetY(g_IntroFirstButtonY + 3* (g_IntroButtonHeight + 10));
 	m_ButtonInfo->SetFieldSize(g_IntroButtonHeight, g_IntroButtonWidth);
-	m_ButtonInfo->SetText(g_IntroButtonInfo, m_Font, SDL_Color{0x00, 0x00, 0x00, 0xFF});
+	m_ButtonInfo->SetText(g_IntroButtonInfo, m_Font, g_ColorBlack);
 
 	m_Info = new Info(m_Renderer);
 }
@@ -299,16 +299,16 @@ void Intro::InitVolume()
 	m_ButtonVolumePlus->SetX(g_IntroButtonVolumePlusX);
 	m_ButtonVolumePlus->SetY(g_IntroFirstButtonY + 4* (g_IntroButtonHeight + 10));
 	m_ButtonVolumePlus->SetFieldSize(g_IntroButtonHeight, g_IntroButtonWidth / 4);
-	m_ButtonVolumePlus->SetText(g_IntroButtonPlus, m_Font, SDL_Color{0x00, 0x00, 0x00, 0xFF});
+	m_ButtonVolumePlus->SetText(g_IntroButtonPlus, m_Font, g_ColorBlack);
 
 	m_ButtonVolumeMinus = new Button(m_Renderer);
 	m_ButtonVolumeMinus->SetX((g_ScreenWidth - g_IntroButtonWidth) / 2);
 	m_ButtonVolumeMinus->SetY(g_IntroFirstButtonY + 4* (g_IntroButtonHeight + 10));
 	m_ButtonVolumeMinus->SetFieldSize(g_IntroButtonHeight, g_IntroButtonWidth / 4);
-	m_ButtonVolumeMinus->SetText(g_IntroButtonMinus, m_Font, SDL_Color{0x00, 0x00, 0x00, 0xFF});
+	m_ButtonVolumeMinus->SetText(g_IntroButtonMinus, m_Font, g_ColorBlack);
 
 	m_LabelVolume = new Label(m_Renderer);
-	m_LabelVolume->SetText(g_IntroLabelVolume, m_Font, SDL_Color{0x00, 0x00, 0x00, 0xFF});
+	m_LabelVolume->SetText(g_IntroLabelVolume, m_Font, g_ColorBlack);
 	m_LabelVolume->SetX(g_IntroLabelButtonX);
 	m_LabelVolume->SetY(g_IntroLabelButtonY);
 }
@@ -316,7 +316,7 @@ void Intro::InitVolume()
 void Intro::InitCredits()
 {
 	m_LabelCredits = new Label(m_Renderer);
-	m_LabelCredits->SetText(g_IntroLabelCredits, m_Font, SDL_Color{0x00, 0x00, 0x00, 0xFF});
+	m_LabelCredits->SetText(g_IntroLabelCredits, m_Font, g_ColorBlack);
 	m_LabelCredits->SetX(g_ScreenWidth - g_IntroCreditsWidth + (g_IntroCreditsWidth - m_LabelCredits->GetWidth()) / 2);
 	m_LabelCredits->SetY(g_ScreenHeight - g_IntroCreditsHeight - m_LabelCredits->GetHeight());
 
@@ -335,7 +335,7 @@ void Intro::UpdateCredits()
 	ss << m_uiCredit;
 	tempStr = ss.str();
 
-	m_TextFieldCredits->SetText(tempStr, m_Font, SDL_Color{0xFF, 0xFF, 0xFF, 0xFF});
+	m_TextFieldCredits->SetText(tempStr, m_Font, g_ColorWhite);
 }
 
 
