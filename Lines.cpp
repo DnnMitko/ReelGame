@@ -27,14 +27,14 @@ Lines::~Lines()
 	// TODO Auto-generated destructor stub
 }
 
-void Lines::SetResult(std::string resutl)
+void Lines::SetResult(std::string result)
 {
-	m_strResult = resutl;
+	m_strResult = result;
 }
 
 void Lines::GenLines()
 {
-	for ( int i = 0 ; i < 15 ; i ++)
+	for(int i = 0 ; i < g_LinesMax ; i ++)
 	{
 		m_strLine[i] = m_strResult[m_Line[i].num1]
 					 + m_strResult[m_Line[i].num2]
@@ -52,352 +52,33 @@ float Lines::GetTotalWin() const
 void Lines::Calculate()
 {
 	m_fTotalWin = 0;
-	float fMax = 0;
-	int iMaxLine = -1;
-	char cMax = '0';
+	m_fMax = 0;
+	m_iMaxLine = -1;
+	m_cMax = '0';
 
-	for ( int i = 0 ; i < g_LinesMax ; i ++)
+	for(int i = 0 ; i < g_LinesMax ; i ++)
 	{
-		if (m_strLine[i][0] == m_strLine[i][1] && m_strLine[i][1] == m_strLine[i][2])
-
+		if(m_strLine[i][0] == m_strLine[i][1] && m_strLine[i][1] == m_strLine[i][2])
+		{
+			if(m_strLine[i][2] == m_strLine[i][3])
 			{
-				if (m_strLine[i][2] == m_strLine[i][3])
-				{
-					if (m_strLine[i][3] == m_strLine[i][4])
-					{
-						switch(m_strLine[i][0])
-						{
-						case '1' :
-							m_fTotalWin += g_LinesFigure1x5;
-							if (fMax < g_LinesFigure1x5)
-							{
-								fMax = g_LinesFigure1x5;
-								iMaxLine = i;
-								cMax = '1';
-							}
-							break;
-
-						case '2' :
-							m_fTotalWin += g_LinesFigure2x5;
-							if  (fMax < g_LinesFigure2x5)
-							{
-								fMax = g_LinesFigure2x5;
-								iMaxLine = i;
-								cMax = '2';
-							}
-							break;
-
-						case '3' :
-							m_fTotalWin += g_LinesFigure3x5;
-							if (fMax < g_LinesFigure3x5)
-							{
-								fMax = g_LinesFigure3x5;
-								iMaxLine = i;
-								cMax = '3';
-							}
-							break;
-
-						case '4' :
-							m_fTotalWin += g_LinesFigure4x5;
-							if ( fMax < g_LinesFigure4x5)
-							{
-								fMax = g_LinesFigure4x5;
-								iMaxLine = i;
-								cMax = '4';
-							}
-							break;
-
-						case '5' :
-							m_fTotalWin += g_LinesFigure5x5;
-							if (fMax < g_LinesFigure5x5)
-							{
-								fMax = g_LinesFigure5x5;
-								iMaxLine = i;
-								cMax = '5';
-							}
-							break;
-						}
-					}
-					else
-					{
-						switch(m_strLine[i][0])
-						{
-						case '1' :
-							m_fTotalWin += g_LinesFigure1x4;
-							if (fMax < g_LinesFigure1x4)
-							{
-								fMax = g_LinesFigure1x4;
-								iMaxLine = i;
-								cMax = '1';
-							}
-							break;
-
-						case '2' :
-							m_fTotalWin += g_LinesFigure2x4;
-							if (fMax < g_LinesFigure2x4)
-							{
-								fMax = g_LinesFigure2x4;
-								iMaxLine = i;
-								cMax = '2';
-							}
-							break;
-
-						case '3' :
-							m_fTotalWin += g_LinesFigure3x4;
-							if (fMax < g_LinesFigure3x4)
-							{
-								fMax = g_LinesFigure3x4;
-								iMaxLine = i;
-								cMax = '3';
-							}
-							break;
-
-						case '4' :
-							m_fTotalWin += g_LinesFigure4x4;
-							if (fMax < g_LinesFigure4x4)
-							{
-								fMax = g_LinesFigure4x4;
-								iMaxLine = i;
-								cMax = '4';
-							}
-							break;
-
-						case '5' :
-							m_fTotalWin += g_LinesFigure5x4;
-							if (fMax < g_LinesFigure5x4)
-							{
-								fMax = g_LinesFigure5x4;
-								iMaxLine = i;
-								cMax = '5';
-							}
-							break;
-						}
-					}
-				}
+				if(m_strLine[i][3] == m_strLine[i][4])
+					Process5(i);
 				else
-				{
-					switch(m_strLine[i][0])
-					{
-					case '1' :
-						m_fTotalWin += g_LinesFigure1x3;
-						if (fMax < g_LinesFigure1x3)
-						{
-							fMax = g_LinesFigure1x3;
-							iMaxLine = i;
-							cMax = '1';
-						}
-						break;
-
-					case '2' :
-						m_fTotalWin += g_LinesFigure2x3;
-						if (fMax < g_LinesFigure2x3)
-						{
-							fMax = g_LinesFigure2x3;
-							iMaxLine = i;
-							cMax = '2';
-						}
-						break;
-
-					case '3' :
-						m_fTotalWin += g_LinesFigure3x3;
-						if (fMax < g_LinesFigure3x3)
-						{
-							fMax = g_LinesFigure3x3;
-							iMaxLine = i;
-							cMax = '3';
-						}
-						break;
-
-					case '4' :
-						m_fTotalWin += g_LinesFigure4x3;
-						if (fMax < g_LinesFigure4x3)
-						{
-							fMax = g_LinesFigure4x3;
-							iMaxLine = i;
-							cMax = '4';
-						}
-						break;
-
-					case '5' :
-						m_fTotalWin += g_LinesFigure5x3;
-						if (fMax < g_LinesFigure5x3)
-						{
-							fMax = g_LinesFigure5x3;
-							iMaxLine = i;
-							cMax = '5';
-						}
-						break;
-					}
-				}
+					Process4(i, 0);
 			}
-			else if (m_strLine[i][1] == m_strLine[i][2] && m_strLine[i][2] == m_strLine[i][3])
-			{
-				if (m_strLine[i][3] == m_strLine[i][4])
-				{
-					switch(m_strLine[i][1])
-					{
-					case '1' :
-						m_fTotalWin += g_LinesFigure1x4;
-						if (fMax < g_LinesFigure1x4)
-						{
-							fMax = g_LinesFigure1x4;
-							iMaxLine = i;
-							cMax = '1';
-						}
-						break;
-
-					case '2' :
-						m_fTotalWin += g_LinesFigure2x4;
-						if (fMax < g_LinesFigure2x4)
-						{
-							fMax = g_LinesFigure2x4;
-							iMaxLine = i;
-							cMax = '2';
-						}
-						break;
-
-					case '3' :
-						m_fTotalWin += g_LinesFigure3x4;
-						if (fMax < g_LinesFigure3x4)
-						{
-							fMax = g_LinesFigure3x4;
-							iMaxLine = i;
-							cMax = '3';
-						}
-						break;
-
-					case '4' :
-						m_fTotalWin += g_LinesFigure4x4;
-						if (fMax < g_LinesFigure4x4)
-						{
-							fMax = g_LinesFigure4x4;
-							iMaxLine = i;
-							cMax = '4';
-						}
-						break;
-
-					case '5' :
-						m_fTotalWin += g_LinesFigure5x4;
-						if (fMax < g_LinesFigure5x4)
-						{
-							fMax = g_LinesFigure5x4;
-							iMaxLine = i;
-							cMax = '5';
-						}
-						break;
-					}
-				}
-				else
-				{
-					switch(m_strLine[i][1])
-					{
-					case '1' :
-						m_fTotalWin += g_LinesFigure1x3;
-						if (fMax < g_LinesFigure1x3)
-						{
-							fMax = g_LinesFigure1x3;
-							iMaxLine = i;
-							cMax = '1';
-						}
-						break;
-
-					case '2' :
-						m_fTotalWin += g_LinesFigure2x3;
-						if (fMax < g_LinesFigure2x3)
-						{
-							fMax = g_LinesFigure2x3;
-							iMaxLine = i;
-							cMax = '2';
-						}
-						break;
-
-					case '3' :
-						m_fTotalWin += g_LinesFigure3x3;
-						if (fMax < g_LinesFigure3x3)
-						{
-							fMax = g_LinesFigure3x3;
-							iMaxLine = i;
-							cMax = '3';
-						}
-						break;
-
-					case '4' :
-						m_fTotalWin += g_LinesFigure4x3;
-						if (fMax < g_LinesFigure4x3)
-						{
-							fMax = g_LinesFigure4x3;
-							iMaxLine = i;
-							cMax = '4';
-						}
-						break;
-
-					case '5' :
-						m_fTotalWin += g_LinesFigure5x3;
-						if (fMax < g_LinesFigure5x3)
-						{
-							fMax = g_LinesFigure5x3;
-							iMaxLine = i;
-							cMax = '5';
-						}
-						break;
-					}
-				}
-			}
-			else if (m_strLine[i][2] == m_strLine[i][3] && m_strLine[i][3]== m_strLine[i][4])
-			{
-				switch(m_strLine[i][2])
-				{
-				case '1' :
-					m_fTotalWin += g_LinesFigure1x3;
-					if (fMax < g_LinesFigure1x3)
-					{
-						fMax = g_LinesFigure1x3;
-						iMaxLine = i;
-						cMax = '1';
-					}
-					break;
-
-				case '2' :
-					m_fTotalWin += g_LinesFigure2x3;
-					if (fMax < g_LinesFigure2x3)
-					{
-						fMax = g_LinesFigure2x3;
-						iMaxLine = i;
-						cMax = '2';
-					}
-					break;
-
-				case '3' :
-					m_fTotalWin += g_LinesFigure3x3;
-					if (fMax < g_LinesFigure3x3)
-					{
-						fMax = g_LinesFigure3x3;
-						iMaxLine = i;
-						cMax = '3';
-					}
-					break;
-
-				case '4' :
-					m_fTotalWin += g_LinesFigure4x3;
-					if (fMax < g_LinesFigure4x3)
-					{
-						fMax = g_LinesFigure4x3;
-						iMaxLine = i;
-						cMax = '4';
-					}
-					break;
-
-				case '5' :
-					m_fTotalWin += g_LinesFigure5x3;
-					if (fMax < g_LinesFigure5x3)
-					{
-						fMax = g_LinesFigure5x3;
-						iMaxLine = i;
-						cMax = '5';
-					}
-					break;
-				}
-			}
+			else
+				Process3(i, 0);
+		}
+		else if (m_strLine[i][1] == m_strLine[i][2] && m_strLine[i][2] == m_strLine[i][3])
+		{
+			if (m_strLine[i][3] == m_strLine[i][4])
+				Process4(i, 1);
+			else
+				Process3(i, 1);
+		}
+		else if (m_strLine[i][2] == m_strLine[i][3] && m_strLine[i][3]== m_strLine[i][4])
+			Process3(i, 2);
 	}
 }
 
@@ -411,29 +92,132 @@ bool Lines::HasSpecial()
 	return false;
 }
 
-void Lines::GenAnimate(int iMaxLine, char cMax)
+void Lines::GenAnimate(int m_iMaxLine, char m_cMax)
 {
 	m_strAnimate = "000000000000000";
 
-	if (m_Line[iMaxLine].num1 == cMax)
+	if (m_Line[m_iMaxLine].num1 == m_cMax)
 	{
-		m_strAnimate[m_Line[iMaxLine].num1] = '1';
+		m_strAnimate[m_Line[m_iMaxLine].num1] = '1';
 	}
-	if (m_Line[iMaxLine].num2 == cMax)
+	if (m_Line[m_iMaxLine].num2 == m_cMax)
 	{
-		m_strAnimate[m_Line[iMaxLine].num2] = '1';
+		m_strAnimate[m_Line[m_iMaxLine].num2] = '1';
 	}
-	if (m_Line[iMaxLine].num3 == cMax)
+	if (m_Line[m_iMaxLine].num3 == m_cMax)
 	{
-		m_strAnimate[m_Line[iMaxLine].num3] = '1';
+		m_strAnimate[m_Line[m_iMaxLine].num3] = '1';
 	}
-	if (m_Line[iMaxLine].num4 == cMax)
+	if (m_Line[m_iMaxLine].num4 == m_cMax)
 	{
-		m_strAnimate[m_Line[iMaxLine].num4] = '1';
+		m_strAnimate[m_Line[m_iMaxLine].num4] = '1';
 	}
-	if (m_Line[iMaxLine].num5 == cMax)
+	if (m_Line[m_iMaxLine].num5 == m_cMax)
 	{
-		m_strAnimate[m_Line[iMaxLine].num5] = '1';
+		m_strAnimate[m_Line[m_iMaxLine].num5] = '1';
+	}
+}
+
+void Lines::Process3(int iLine, int iPos)
+{
+	switch(m_strLine[iLine][iPos])
+	{
+	case '1' :
+		m_fTotalWin += g_LinesFigure1x3;
+		CheckMax(g_LinesFigure1x3, '1', iLine);
+		break;
+
+	case '2' :
+		m_fTotalWin += g_LinesFigure2x3;
+		CheckMax(g_LinesFigure2x3, '2', iLine);
+		break;
+
+	case '3' :
+		m_fTotalWin += g_LinesFigure3x3;
+		CheckMax(g_LinesFigure3x3, '3', iLine);
+		break;
+
+	case '4' :
+		m_fTotalWin += g_LinesFigure4x3;
+		CheckMax(g_LinesFigure4x3, '4', iLine);
+		break;
+
+	case '5' :
+		m_fTotalWin += g_LinesFigure5x3;
+		CheckMax(g_LinesFigure5x3, '5', iLine);
+		break;
+	}
+}
+
+void Lines::Process4(int iLine, int iPos)
+{
+	switch(m_strLine[iLine][iPos])
+	{
+	case '1' :
+		m_fTotalWin += g_LinesFigure1x4;
+		CheckMax(g_LinesFigure1x4, '1', iLine);
+		break;
+
+	case '2' :
+		m_fTotalWin += g_LinesFigure2x4;
+		CheckMax(g_LinesFigure2x4, '2', iLine);
+		break;
+
+	case '3' :
+		m_fTotalWin += g_LinesFigure3x4;
+		CheckMax(g_LinesFigure3x4, '3', iLine);
+		break;
+
+	case '4' :
+		m_fTotalWin += g_LinesFigure4x4;
+		CheckMax(g_LinesFigure4x4, '4', iLine);
+		break;
+
+	case '5' :
+		m_fTotalWin += g_LinesFigure5x4;
+		CheckMax(g_LinesFigure5x4, '5', iLine);
+		break;
+	}
+}
+
+void Lines::Process5(int iLine)
+{
+	switch(m_strLine[iLine][0])
+	{
+	case '1' :
+		m_fTotalWin += g_LinesFigure1x5;
+		CheckMax(g_LinesFigure1x5, '1', iLine);
+		break;
+
+	case '2' :
+		m_fTotalWin += g_LinesFigure2x5;
+		CheckMax(g_LinesFigure2x5, '2', iLine);
+		break;
+
+	case '3' :
+		m_fTotalWin += g_LinesFigure3x5;
+		CheckMax(g_LinesFigure3x5, '3', iLine);
+		break;
+
+	case '4' :
+		m_fTotalWin += g_LinesFigure4x5;
+		CheckMax(g_LinesFigure4x5, '4', iLine);
+		break;
+
+	case '5' :
+		m_fTotalWin += g_LinesFigure5x5;
+		CheckMax(g_LinesFigure5x5, '5', iLine);
+		break;
+	}
+}
+
+void Lines::CheckMax(float fMultiplier, char cFigure, int iLine)
+{
+	if (m_fMax < fMultiplier)
+	{
+		m_fMax = fMultiplier;
+		m_iMaxLine = iLine;
+		m_cMax = cFigure;
 	}
 }
 

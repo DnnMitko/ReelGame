@@ -20,18 +20,28 @@ public:
 
 private:
 	void GenLines();
+
 	void Calculate();
+
 	void GenAnimate(int, char);
+
+	void Process3(int, int);
+	void Process4(int, int);
+	void Process5(int);
+	void CheckMax(float, char, int);
 private:
 	std::string m_strAnimate;
-	std::string m_strResult;
-	Line m_Line[15];
 
+	std::string m_strResult;
+
+	Line m_Line[15];
 	std::string m_strLine[15];
 
 	float m_fTotalWin;
 
-
+	float m_fMax;
+	int m_iMaxLine;
+	char m_cMax;
 };
 
 #endif /* LINES_H_ */
