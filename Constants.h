@@ -170,7 +170,7 @@ const float g_LinesFigure5x5 = 4.0;
 const int g_LinesMax = 15;
 
 const char g_Figure[] = "images/Figures.png";
-const int g_FigureSize = 185;
+const int g_FigureSize = 150;
 const char g_FigureID_1 = '1';
 const char g_FigureID_2 = '2';
 const char g_FigureID_3 = '3';
