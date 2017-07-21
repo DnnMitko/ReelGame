@@ -103,6 +103,11 @@ private:
 	TTF_Font* m_FontTitle;
 
 	/**
+	 * Holds sound effect
+	 */
+	Mix_Chunk* m_Sound;
+
+	/**
 	 * Holds the numerical value of the cashed out amount.
 	 */
 	float m_fCashOutAmmount;

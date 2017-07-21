@@ -29,12 +29,17 @@ Outro::Outro(SDL_Renderer* newRenderer) : State(newRenderer)
 	// Load font for the textfield and check if successful
 	m_FontLabel = TTF_OpenFont(g_FontLabel, g_OutroFontSizeMoney);
 	if(m_FontLabel == NULL)
-			std::cerr << "Failed to load Label Font! SDL Error: " << TTF_GetError() << std::endl;
+		std::cerr << "Failed to load Label Font! SDL Error: " << TTF_GetError() << std::endl;
 
 	// Load font for the title and check if successful
 	m_FontTitle = TTF_OpenFont(g_FontTitle, g_OutroFontSizeWin);
 	if(m_FontTitle == NULL)
-			std::cerr << "Failed to load Win Font! SDL Error: " << TTF_GetError() << std::endl;
+		std::cerr << "Failed to load Win Font! SDL Error: " << TTF_GetError() << std::endl;
+
+	// Loads sound effect and checks if successful
+	m_Sound = Mix_LoadWAV(g_OutroSound);
+	if(m_Sound == NULL)
+		std::cerr << "Failed to load sound effect! SDL Error: " << Mix_GetError() << std::endl;
 
 	// NULL the rest of the members (just in case)
 	m_fCashOutAmmount = 0;
@@ -51,6 +56,8 @@ Outro::~Outro()
 
 	TTF_CloseFont(m_FontLabel);
 	TTF_CloseFont(m_FontTitle);
+
+	Mix_FreeChunk(m_Sound);
 
 	// NULL all members
 	NullAll();
@@ -171,6 +178,8 @@ void Outro::NullAll()
 	m_FontLabel = NULL;
 	m_FontTitle = NULL;
 
+	m_Sound = NULL;
+
 	m_fCashOutAmmount = 0;
 
 	m_uiTimer = 0;
@@ -186,6 +195,9 @@ void Outro::TransitionIn()
 	{
 		// Drop the TransitionIN flag
 		m_bTransitionIn = false;
+
+		// Play sound effect
+		Mix_PlayChannel(-1, m_Sound, 0);
 
 		// Save current time
 		m_uiTimer = SDL_GetTicks();
