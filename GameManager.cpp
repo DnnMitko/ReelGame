@@ -50,7 +50,6 @@ void GameManager::EventHandler(SDL_Event& e)
 	{
 		m_bQuit = true;
 		// TODO Recovery
-		m_Game->GetGamePanel()->Recovery();
 	}
 	else
 	{
@@ -295,3 +294,32 @@ void GameManager::RenderOutro()
 		m_Outro->Render(true);
 	}
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
