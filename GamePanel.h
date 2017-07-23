@@ -39,7 +39,7 @@ public:
 	void ResetBonus();
 
 	void Clear();
-	string Convert(unsigned int);
+	const char * Convert(unsigned int);
 	void Recovery();
 private:
 	void NullAll();
