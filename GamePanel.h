@@ -2,16 +2,9 @@
 #define GAMEPANEL_H_
 
 #include <SDL2/SDL.h>
-#include <iostream>
 #include <string>
 #include <sstream>
 #include "Button.h"
-#include "pugixml.hpp"
-#include <sstream>
-#include <string>
-#include <cstring>
-
-using namespace std;
 
 class GamePanel
 {
@@ -20,29 +13,32 @@ public:
 	GamePanel(SDL_Renderer*);
 	~GamePanel();
 public:
-	void Render(bool = true);
-	void EventHandler(SDL_Event&, bool&);
+	void Render(bool);
+	void EventHandler(SDL_Event&, bool&, bool&);
+
+	void PrepTransitionIn();
+	bool InTransition();
+	void Hide();
 
 	void SetCredits(unsigned int);
 	unsigned int GetCredits() const;
 
-	unsigned int GetTotalBet() const;
+	unsigned int GetBet() const;
+	unsigned int GetLines() const;
 
 	unsigned int GetPaid() const;
 
+	unsigned int GetTotalBet() const;
+
 	void CalcWinning(unsigned int);
 
-	bool GetWin() const;
-	void ResetWin();
-
-	bool GetBonus() const;
-	void ResetBonus();
-
 	void Clear();
-	const char * Convert(unsigned int);
-	void Recovery();
 private:
 	void NullAll();
+
+	void TransitionIn();
+	void TransitionOut();
+	void Reposition();
 
 	void InitPayTable(int);
 	void InitBet(int);
@@ -64,8 +60,10 @@ private:
 private:
 	SDL_Renderer* m_Renderer;
 
-	bool m_bWin;
-	bool m_bBonus;
+	bool m_bTransitionIn;
+	bool m_bTransitionOut;
+
+	int m_iY;
 
 	unsigned int m_uiCurCredits;
 	unsigned int m_uiBet;

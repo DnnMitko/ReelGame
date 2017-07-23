@@ -9,6 +9,11 @@ GamePanel::GamePanel(SDL_Renderer* newRenderer)
 {
 	m_Renderer = newRenderer;
 
+	m_bTransitionIn = false;
+	m_bTransitionOut = false;
+
+	m_iY = g_GameMenuHeight;
+
 	m_uiCurCredits = 0;
 	m_uiBet = 0;
 	m_uiLines = 1;
@@ -91,6 +96,11 @@ void GamePanel::Render(bool UpdateOnly)
 	if(!m_Renderer || !m_FontBig || !m_FontSmall)
 		return;
 
+	if(m_bTransitionIn)
+		TransitionIn();
+	else if(m_bTransitionOut)
+		TransitionOut();
+
 	m_ButtonPayTable->Render(UpdateOnly);
 
 	m_LabelBet->Render(UpdateOnly);
@@ -119,7 +129,7 @@ void GamePanel::Render(bool UpdateOnly)
 	m_ButtonCashOut->Render(UpdateOnly);
 }
 
-void GamePanel::EventHandler(SDL_Event& e, bool& bSwitch)
+void GamePanel::EventHandler(SDL_Event& e, bool& bPlay, bool& bCashOut)
 {
 	int x, y;
 	if(e.type == SDL_MOUSEBUTTONDOWN)
@@ -155,8 +165,6 @@ void GamePanel::EventHandler(SDL_Event& e, bool& bSwitch)
 		if(m_ButtonPayTable->IsIn(x, y) && m_ButtonPayTable->IsPressed())
 		{
 			//TODO
-			bSwitch = true;
-			m_bBonus = true;
 		}
 		else if(m_ButtonBetMinus->IsIn(x, y) && m_ButtonBetMinus->IsPressed())
 		{
@@ -200,7 +208,7 @@ void GamePanel::EventHandler(SDL_Event& e, bool& bSwitch)
 		}
 		else if(m_ButtonMaxBet->IsIn(x, y) && m_ButtonMaxBet->IsPressed())
 		{
-			for(unsigned int testLines = g_GameMaxLines; testLines >= 0; testLines -= 1)
+			for(unsigned int testLines = g_GameMaxLines; testLines >= 1; testLines -= 1)
 			{
 				for(unsigned int testBet = g_GameMaxBetAmmount; testBet >= 0; testBet -= g_GameBetIncriment)
 				{
@@ -223,24 +231,50 @@ void GamePanel::EventHandler(SDL_Event& e, bool& bSwitch)
 		}
 		else if(m_ButtonPlay->IsIn(x, y) && m_ButtonPlay->IsPressed())
 		{
-			//TODO
-			m_bWin = true;
-			bSwitch = true;
+			if(!m_uiTotalBet == 0)
+			{
+				m_uiPaid = 0;
+				UpdatePaid();
+
+				m_uiCurCredits -= m_uiTotalBet;
+				UpdateCurCredits();
+
+				bPlay = true;
+			}
 		}
 		else if(m_ButtonCashOut->IsIn(x, y) && m_ButtonCashOut->IsPressed())
 		{
-			//TODO
-			bSwitch = true;
+			bCashOut = true;
 		}
 
 		ReleaseAll();
 	}
 }
 
+void GamePanel::PrepTransitionIn()
+{
+	m_bTransitionIn = true;
+
+	m_iY = g_ScreenHeight;
+	Reposition();
+}
+
+bool GamePanel::InTransition()
+{
+	if(m_bTransitionIn || m_bTransitionOut)
+		return true;
+
+	return false;
+}
+
+void GamePanel::Hide()
+{
+	m_bTransitionOut = true;
+}
+
 void GamePanel::SetCredits(unsigned int newCredits)
 {
 	m_uiCurCredits = newCredits;
-
 	UpdateCurCredits();
 }
 
@@ -249,9 +283,14 @@ unsigned int GamePanel::GetCredits() const
 	return m_uiCurCredits;
 }
 
-unsigned int GamePanel::GetTotalBet() const
+unsigned int GamePanel::GetBet() const
 {
-	return m_uiTotalBet;
+	return m_uiBet;
+}
+
+unsigned int GamePanel::GetLines() const
+{
+	return m_uiLines;
 }
 
 unsigned int GamePanel::GetPaid() const
@@ -259,43 +298,20 @@ unsigned int GamePanel::GetPaid() const
 	return m_uiPaid;
 }
 
+unsigned int GamePanel::GetTotalBet() const
+{
+	return m_uiTotalBet;
+}
+
 void GamePanel::CalcWinning(unsigned int uiPaid)
 {
+	Clear();
+
 	m_uiPaid = uiPaid;
 	UpdatePaid();
 
-	m_uiCurCredits -= m_uiTotalBet;
-
-	if(m_uiPaid == 0)
-	{
-		UpdateCurCredits();
-		Clear();
-	}
-	else
-	{
-		m_uiCurCredits += m_uiPaid;
-		UpdateCurCredits();
-	}
-}
-
-bool GamePanel::GetWin() const
-{
-	return m_bWin;
-}
-
-void GamePanel::ResetWin()
-{
-	m_bWin = false;
-}
-
-bool GamePanel::GetBonus() const
-{
-	return m_bBonus;
-}
-
-void GamePanel::ResetBonus()
-{
-	m_bBonus = false;
+	m_uiCurCredits += m_uiPaid;
+	UpdateCurCredits();
 }
 
 void GamePanel::Clear()
@@ -315,8 +331,8 @@ void GamePanel::Clear()
 
 void GamePanel::NullAll()
 {
-	m_bBonus = false;
-	m_bWin = false;
+	m_bTransitionIn = false;
+	m_bTransitionOut = false;
 
 	m_uiCurCredits = 0;
 	m_uiBet = 0;
@@ -355,11 +371,63 @@ void GamePanel::NullAll()
 	m_FontSmall = NULL;
 }
 
+void GamePanel::TransitionIn()
+{
+	if(m_iY == g_GameMenuHeight)
+		m_bTransitionIn = false;
+	else
+	{
+		m_iY -= g_TransitionStep;
+		Reposition();
+	}
+}
+
+void GamePanel::TransitionOut()
+{
+	if(m_iY >= g_ScreenHeight)
+		m_bTransitionOut = false;
+	else
+	{
+		m_iY += g_TransitionStep;
+		Reposition();
+	}
+}
+
+void GamePanel::Reposition()
+{
+	m_ButtonPayTable->SetY(m_iY);
+
+	m_LabelBet->SetY(m_iY - m_LabelBet->GetHeight());
+	m_TextFieldBet->SetY(m_iY);
+	m_ButtonBetMinus->SetY(m_iY + g_GameFieldHeight);
+	m_ButtonBetPlus->SetY(m_iY + g_GameFieldHeight);
+
+	m_LabelLines->SetY(m_iY - m_LabelLines->GetHeight());
+	m_TextFieldLines->SetY(m_iY);
+	m_ButtonLinesMinus->SetY(m_iY + g_GameFieldHeight);
+	m_ButtonLinesPlus->SetY(m_iY + g_GameFieldHeight);
+
+	m_ButtonMaxBet->SetY(m_iY);
+
+	m_LabelCurCredits->SetY(m_iY + g_GameFieldHeight - m_LabelCurCredits->GetHeight());
+	m_TextFieldCurCredits->SetY(m_iY + g_GameFieldHeight);
+
+	m_LabelTotalBet->SetY(m_iY + g_GameFieldHeight - m_LabelTotalBet->GetHeight());
+	m_TextFieldTotalBet->SetY(m_iY + g_GameFieldHeight);
+
+	m_LabelPaid->SetY(m_iY + g_GameFieldHeight - m_LabelPaid->GetHeight());
+	m_TextFieldPaid->SetY(m_iY + g_GameFieldHeight);
+
+	m_ButtonPlay->SetY(m_iY);
+
+	m_ButtonCashOut->SetY(m_iY);
+}
+
 void GamePanel::InitPayTable(int curX)
 {
 	m_ButtonPayTable = new Button(m_Renderer);
 	m_ButtonPayTable->SetX(curX);
-	m_ButtonPayTable->SetY(g_GameMenuHeight);
+	m_ButtonPayTable->SetY(m_iY);
 	m_ButtonPayTable->SetText("Pay Table", m_FontBig, g_ColorBlack);
 	m_ButtonPayTable->SetFieldSize(g_GamePayTableHeight, g_GamePayTableWidth);
 }
@@ -369,23 +437,23 @@ void GamePanel::InitBet(int curX)
 	m_LabelBet = new Label(m_Renderer);
 	m_LabelBet->SetText(g_GameLabelBet, m_FontSmall, g_ColorBlack);
 	m_LabelBet->SetX(curX + (g_GameFieldWidth - m_LabelBet->GetWidth()) / 2);
-	m_LabelBet->SetY(g_GameMenuHeight - m_LabelBet->GetHeight());
+	m_LabelBet->SetY(m_iY - m_LabelBet->GetHeight());
 
 	m_TextFieldBet = new TextField(m_Renderer);
 	m_TextFieldBet->SetX(curX);
-	m_TextFieldBet->SetY(g_GameMenuHeight);
+	m_TextFieldBet->SetY(m_iY);
 	m_TextFieldBet->SetFieldSize(g_GameFieldHeight, g_GameFieldWidth);
 	UpdateBet();
 
 	m_ButtonBetMinus = new Button(m_Renderer);
 	m_ButtonBetMinus->SetX(curX);
-	m_ButtonBetMinus->SetY(g_GameMenuHeight + g_GameFieldHeight);
+	m_ButtonBetMinus->SetY(m_iY + g_GameFieldHeight);
 	m_ButtonBetMinus->SetFieldSize(g_GameFieldHeight, g_GameFieldWidth / 2);
 	m_ButtonBetMinus->SetText("-", m_FontBig, g_ColorBlack);
 
 	m_ButtonBetPlus = new Button(m_Renderer);
 	m_ButtonBetPlus->SetX(curX + g_GameFieldWidth / 2);
-	m_ButtonBetPlus->SetY(g_GameMenuHeight + g_GameFieldHeight);
+	m_ButtonBetPlus->SetY(m_iY + g_GameFieldHeight);
 	m_ButtonBetPlus->SetFieldSize(g_GameFieldHeight, g_GameFieldWidth / 2);
 	m_ButtonBetPlus->SetText("+", m_FontBig, g_ColorBlack);
 }
@@ -395,23 +463,23 @@ void GamePanel::InitLines(int curX)
 	m_LabelLines = new Label(m_Renderer);
 	m_LabelLines->SetText(g_GameLabelLines, m_FontSmall, g_ColorBlack);
 	m_LabelLines->SetX(curX + (g_GameFieldWidth - m_LabelLines->GetWidth()) / 2);
-	m_LabelLines->SetY(g_GameMenuHeight - m_LabelLines->GetHeight());
+	m_LabelLines->SetY(m_iY - m_LabelLines->GetHeight());
 
 	m_TextFieldLines = new TextField(m_Renderer);
 	m_TextFieldLines->SetX(curX);
-	m_TextFieldLines->SetY(g_GameMenuHeight);
+	m_TextFieldLines->SetY(m_iY);
 	m_TextFieldLines->SetFieldSize(g_GameFieldHeight, g_GameFieldWidth);
 	UpdateLines();
 
 	m_ButtonLinesMinus = new Button(m_Renderer);
 	m_ButtonLinesMinus->SetX(curX);
-	m_ButtonLinesMinus->SetY(g_GameMenuHeight + g_GameFieldHeight);
+	m_ButtonLinesMinus->SetY(m_iY + g_GameFieldHeight);
 	m_ButtonLinesMinus->SetFieldSize(g_GameFieldHeight, g_GameFieldWidth / 2);
 	m_ButtonLinesMinus->SetText("-", m_FontBig, g_ColorBlack);
 
 	m_ButtonLinesPlus = new Button(m_Renderer);
 	m_ButtonLinesPlus->SetX(curX + g_GameFieldWidth / 2);
-	m_ButtonLinesPlus->SetY(g_GameMenuHeight + g_GameFieldHeight);
+	m_ButtonLinesPlus->SetY(m_iY + g_GameFieldHeight);
 	m_ButtonLinesPlus->SetFieldSize(g_GameFieldHeight, g_GameFieldWidth / 2);
 	m_ButtonLinesPlus->SetText("+", m_FontBig, g_ColorBlack);
 }
@@ -420,7 +488,7 @@ void GamePanel::InitMaxBet(int curX)
 {
 	m_ButtonMaxBet = new Button(m_Renderer);
 	m_ButtonMaxBet->SetX(curX);
-	m_ButtonMaxBet->SetY(g_GameMenuHeight);
+	m_ButtonMaxBet->SetY(m_iY);
 	m_ButtonMaxBet->SetFieldSize(g_GameMaxBetHeight, g_GameMaxBetWidth);
 	m_ButtonMaxBet->SetText(g_GameButtonMaxBet, m_FontBig, g_ColorBlack);
 }
@@ -430,11 +498,11 @@ void GamePanel::InitCurCredits(int curX)
 	m_LabelCurCredits = new Label(m_Renderer);
 	m_LabelCurCredits->SetText(g_GameLabelCredits, m_FontSmall, g_ColorBlack);
 	m_LabelCurCredits->SetX(curX + (g_GameFieldWidth - m_LabelCurCredits->GetWidth()) / 2);
-	m_LabelCurCredits->SetY(g_GameMenuHeight + g_GameFieldHeight - m_LabelCurCredits->GetHeight());
+	m_LabelCurCredits->SetY(m_iY + g_GameFieldHeight - m_LabelCurCredits->GetHeight());
 
 	m_TextFieldCurCredits = new TextField(m_Renderer);
 	m_TextFieldCurCredits->SetX(curX);
-	m_TextFieldCurCredits->SetY(g_GameMenuHeight + g_GameFieldHeight);
+	m_TextFieldCurCredits->SetY(m_iY + g_GameFieldHeight);
 	m_TextFieldCurCredits->SetFieldSize(g_GameFieldHeight, g_GameFieldWidth);
 	UpdateCurCredits();
 }
@@ -444,11 +512,11 @@ void GamePanel::InitTotalBet(int curX)
 	m_LabelTotalBet = new Label(m_Renderer);
 	m_LabelTotalBet->SetText(g_GameLabelTotalBet, m_FontSmall, g_ColorBlack);
 	m_LabelTotalBet->SetX(curX + (g_GameFieldWidth - m_LabelTotalBet->GetWidth()) / 2);
-	m_LabelTotalBet->SetY(g_GameMenuHeight + g_GameFieldHeight - m_LabelTotalBet->GetHeight());
+	m_LabelTotalBet->SetY(m_iY + g_GameFieldHeight - m_LabelTotalBet->GetHeight());
 
 	m_TextFieldTotalBet = new TextField(m_Renderer);
 	m_TextFieldTotalBet->SetX(curX);
-	m_TextFieldTotalBet->SetY(g_GameMenuHeight + g_GameFieldHeight);
+	m_TextFieldTotalBet->SetY(m_iY + g_GameFieldHeight);
 	m_TextFieldTotalBet->SetFieldSize(g_GameFieldHeight, g_GameFieldWidth);
 	UpdateTotalBet();
 }
@@ -458,11 +526,11 @@ void GamePanel::InitPaid(int curX)
 	m_LabelPaid = new Label(m_Renderer);
 	m_LabelPaid->SetText(g_GameLabelPaid, m_FontSmall, g_ColorBlack);
 	m_LabelPaid->SetX(curX + (g_GameFieldWidth - m_LabelPaid->GetWidth()) / 2);
-	m_LabelPaid->SetY(g_GameMenuHeight + g_GameFieldHeight - m_LabelPaid->GetHeight());
+	m_LabelPaid->SetY(m_iY + g_GameFieldHeight - m_LabelPaid->GetHeight());
 
 	m_TextFieldPaid = new TextField(m_Renderer);
 	m_TextFieldPaid->SetX(curX);
-	m_TextFieldPaid->SetY(g_GameMenuHeight + g_GameFieldHeight);
+	m_TextFieldPaid->SetY(m_iY + g_GameFieldHeight);
 	m_TextFieldPaid->SetFieldSize(g_GameFieldHeight, g_GameFieldWidth);
 	UpdatePaid();
 }
@@ -471,7 +539,7 @@ void GamePanel::InitPlay(int curX)
 {
 	m_ButtonPlay = new Button(m_Renderer);
 	m_ButtonPlay->SetX(curX);
-	m_ButtonPlay->SetY(g_GameMenuHeight);
+	m_ButtonPlay->SetY(m_iY);
 	m_ButtonPlay->SetFieldSize(g_GamePlayHeight, g_GamePlayWidth);
 	m_ButtonPlay->SetText(g_GameButtonPlay, m_FontBig, g_ColorBlack);
 }
@@ -480,7 +548,7 @@ void GamePanel::InitCashOut(int curX)
 {
 	m_ButtonCashOut = new Button(m_Renderer);
 	m_ButtonCashOut->SetX(curX);
-	m_ButtonCashOut->SetY(g_GameMenuHeight);
+	m_ButtonCashOut->SetY(m_iY);
 	m_ButtonCashOut->SetFieldSize(g_GameCashOutHeight, g_GameCashOutWidth);
 	m_ButtonCashOut->SetText(g_GameButtonCashOut, m_FontBig, g_ColorBlack);
 }
@@ -542,14 +610,6 @@ void GamePanel::UpdatePaid()
 	m_TextFieldPaid->SetText(tempStr, m_FontSmall, g_ColorWhite);
 }
 
-const char * GamePanel::Convert(unsigned int unsignedInt)
-{
-	std::stringstream ss;
-	ss << unsignedInt;
-
-	return strdup(ss.str().c_str());
-}
-
 void GamePanel::ReleaseAll()
 {
 	m_ButtonPayTable->Release();
@@ -565,29 +625,4 @@ void GamePanel::ReleaseAll()
 	m_ButtonPlay->Release();
 
 	m_ButtonCashOut->Release();
-}
-
-void GamePanel::Recovery()
-{
-	pugi::xml_document doc;
-
-	pugi::xml_node Rec = doc.append_child("Recovery");
-
-	pugi::xml_node CurrentCredits = Rec.append_child("CurrentCredits");
-	CurrentCredits.append_child(pugi::node_pcdata).set_value(Convert(m_uiCurCredits));
-
-	pugi::xml_node BetCredits = Rec.append_child("BetCredits");
-	BetCredits.append_child(pugi::node_pcdata).set_value(Convert(m_uiBet));
-
-	pugi::xml_node Lines = Rec.append_child("Lines");
-	Lines.append_child(pugi::node_pcdata).set_value(Convert(m_uiLines));
-
-	pugi::xml_node TotalBetCredits = Rec.append_child("TotalBetCredits");
-	TotalBetCredits.append_child(pugi::node_pcdata).set_value(Convert(m_uiTotalBet));
-
-	pugi::xml_node PaidCredits = Rec.append_child("PaidCredits");
-	PaidCredits.append_child(pugi::node_pcdata).set_value(Convert(m_uiPaid));
-
-	doc.save_file("recovery/Recovery.xml");
-//	doc.print(std::cout);
 }
