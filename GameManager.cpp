@@ -50,6 +50,7 @@ void GameManager::EventHandler(SDL_Event& e)
 	{
 		m_bQuit = true;
 		// TODO Recovery
+		GamePanel::Recovery();
 	}
 	else
 	{

@@ -1,0 +1,8 @@
+<?xml version="1.0"?>
+<Recovery>
+	<CurrentCredits>Current Credits</CurrentCredits>
+	<BetCredits>Bet Credits</BetCredits>
+	<Lines>Lines</Lines>
+	<TotalBetCredits>Total Bet Credits</TotalBetCredits>
+	<PaidCredits>Paid Credits</PaidCredits>
+</Recovery>

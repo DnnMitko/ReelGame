@@ -557,3 +557,28 @@ void GamePanel::ReleaseAll()
 
 	m_ButtonCashOut->Release();
 }
+
+void GamePanel::Recovery()
+{
+	pugi::xml_document doc;
+
+	pugi::xml_node Rec = doc.append_child("Recovery");
+
+	pugi::xml_node CurrentCredits = Rec.append_child("CurrentCredits");
+	CurrentCredits.append_child(pugi::node_pcdata).set_value("Current Credits");
+
+	pugi::xml_node BetCredits = Rec.append_child("BetCredits");
+	BetCredits.append_child(pugi::node_pcdata).set_value("Bet Credits");
+
+	pugi::xml_node Lines = Rec.append_child("Lines");
+	Lines.append_child(pugi::node_pcdata).set_value("Lines");
+
+	pugi::xml_node TotalBetCredits = Rec.append_child("TotalBetCredits");
+	TotalBetCredits.append_child(pugi::node_pcdata).set_value("Total Bet Credits");
+
+	pugi::xml_node PaidCredits = Rec.append_child("PaidCredits");
+	PaidCredits.append_child(pugi::node_pcdata).set_value("Paid Credits");
+
+	doc.save_file("recovery/Recovery.xml");
+	doc.print(std::cout);
+}

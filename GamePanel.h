@@ -5,6 +5,7 @@
 #include <string>
 #include <sstream>
 #include "Button.h"
+#include "pugixml.hpp"
 
 class GamePanel
 {
@@ -32,6 +33,7 @@ public:
 	void ResetBonus();
 
 	void Clear();
+	static void Recovery();
 private:
 	void NullAll();
 
