@@ -144,6 +144,8 @@ void Info::Reset()
 	m_bHide = false;
 	m_bShowFirst = true;
 	m_bHasChanged = true;
+
+	m_ButtonNext->SetText(g_InforButtonNext[m_bShowFirst], m_Font, g_ColorBlack);
 }
 
 

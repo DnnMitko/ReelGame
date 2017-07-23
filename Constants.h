@@ -179,7 +179,7 @@ const char g_FigureID_4 = '4';
 const char g_FigureID_5 = '5';
 const char g_FigureID_6 = '6';
 
-const int g_SlotSpecialPercent = 2;
+const int g_SlotSpecialPercent = 3;
 const int g_SlotSpeed = 15;
 const int g_SlotAnimationDelay = 200;
 const int g_SlotRollTime = 3000;
