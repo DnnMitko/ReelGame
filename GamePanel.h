@@ -2,10 +2,16 @@
 #define GAMEPANEL_H_
 
 #include <SDL2/SDL.h>
+#include <iostream>
 #include <string>
 #include <sstream>
 #include "Button.h"
 #include "pugixml.hpp"
+#include <sstream>
+#include <string>
+#include <cstring>
+
+using namespace std;
 
 class GamePanel
 {
@@ -33,7 +39,8 @@ public:
 	void ResetBonus();
 
 	void Clear();
-	static void Recovery();
+	string Convert(unsigned int);
+	void Recovery();
 private:
 	void NullAll();
 

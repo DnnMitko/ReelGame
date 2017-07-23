@@ -33,6 +33,8 @@ public:
 	bool GetBonus() const;
 	void ResetBonus();
 
+	GamePanel* GetGamePanel() { return m_Panel; }
+
 	void Clear();
 private:
 	SDL_Texture* m_TextureBackground;

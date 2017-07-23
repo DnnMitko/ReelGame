@@ -240,6 +240,7 @@ void GamePanel::EventHandler(SDL_Event& e, bool& bSwitch)
 void GamePanel::SetCredits(unsigned int newCredits)
 {
 	m_uiCurCredits = newCredits;
+
 	UpdateCurCredits();
 }
 
@@ -541,6 +542,14 @@ void GamePanel::UpdatePaid()
 	m_TextFieldPaid->SetText(tempStr, m_FontSmall, g_ColorWhite);
 }
 
+string GamePanel::Convert(unsigned int unsignedInt)
+{
+	std::stringstream ss;
+	ss << unsignedInt;
+
+	return ss.str();
+}
+
 void GamePanel::ReleaseAll()
 {
 	m_ButtonPayTable->Release();
@@ -565,20 +574,20 @@ void GamePanel::Recovery()
 	pugi::xml_node Rec = doc.append_child("Recovery");
 
 	pugi::xml_node CurrentCredits = Rec.append_child("CurrentCredits");
-	CurrentCredits.append_child(pugi::node_pcdata).set_value("Current Credits");
+	CurrentCredits.append_child(pugi::node_pcdata).set_value(Convert(m_uiCurCredits).c_str());
 
 	pugi::xml_node BetCredits = Rec.append_child("BetCredits");
-	BetCredits.append_child(pugi::node_pcdata).set_value("Bet Credits");
+	BetCredits.append_child(pugi::node_pcdata).set_value(Convert(m_uiBet).c_str());
 
 	pugi::xml_node Lines = Rec.append_child("Lines");
-	Lines.append_child(pugi::node_pcdata).set_value("Lines");
+	Lines.append_child(pugi::node_pcdata).set_value(Convert(m_uiLines).c_str());
 
 	pugi::xml_node TotalBetCredits = Rec.append_child("TotalBetCredits");
-	TotalBetCredits.append_child(pugi::node_pcdata).set_value("Total Bet Credits");
+	TotalBetCredits.append_child(pugi::node_pcdata).set_value(Convert(m_uiTotalBet).c_str());
 
 	pugi::xml_node PaidCredits = Rec.append_child("PaidCredits");
-	PaidCredits.append_child(pugi::node_pcdata).set_value("Paid Credits");
+	PaidCredits.append_child(pugi::node_pcdata).set_value(Convert(m_uiPaid).c_str());
 
 	doc.save_file("recovery/Recovery.xml");
-	doc.print(std::cout);
+//	doc.print(std::cout);
 }
