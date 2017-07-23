@@ -5,8 +5,10 @@ Game::Game() : State()
 	m_TextureBackground = NULL;
 
 	m_bIsSpinning = false;
+
 	m_bWin = false;
 	m_bBonus = false;
+	m_bCashOut = false;
 
 	m_Panel = NULL;
 	m_Reel = NULL;
@@ -16,8 +18,10 @@ Game::Game() : State()
 Game::Game(SDL_Renderer* newRenderer) : State(newRenderer)
 {
 	m_bIsSpinning = false;
+
 	m_bWin = false;
 	m_bBonus = false;
+	m_bCashOut = false;
 
 	m_TextureBackground = IMG_LoadTexture(m_Renderer, g_GameBackground);
 	if(m_TextureBackground == NULL)
@@ -79,6 +83,15 @@ void Game::Render(bool UpdateOnly)
 				m_bWin = true;
 				m_bSwitch = true;
 			}
+
+			if(m_Lines->GetTotalWin() == 0 && m_Panel->GetCredits() == 0)
+			{
+				SDL_Delay(g_GameLoseDelay);
+				m_bTransitionOut = true;
+
+				m_Panel->Hide();
+				m_Reel->Hide();
+			}
 		}
 
 		m_Reel->Animate(m_Lines->GetAnimate());
@@ -112,6 +125,7 @@ void Game::EventHandler(SDL_Event& e)
 	}
 	else if(bCashOut)
 	{
+		m_bCashOut = true;
 		m_bTransitionOut = true;
 
 		m_Panel->Hide();
@@ -170,6 +184,16 @@ bool Game::GetBonus() const
 void Game::ResetBonus()
 {
 	m_bBonus = false;
+}
+
+bool Game::GetCashOut() const
+{
+	return m_bCashOut;
+}
+
+void Game::ResetCashOut()
+{
+	m_bCashOut = false;
 }
 
 void Game::Clear()

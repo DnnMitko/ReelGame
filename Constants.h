@@ -82,6 +82,7 @@ const int g_GameFieldHeight = 30;
 const int g_GameBetIncriment = 25;
 const int g_GameMaxBetAmmount = 500;
 const int g_GameMaxLines = 15;
+const int g_GameLoseDelay = 2000;
 
 const int g_BonusWidth = 598;
 const int g_BonusHeight = 334;

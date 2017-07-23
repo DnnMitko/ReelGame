@@ -35,6 +35,9 @@ public:
 	bool GetBonus() const;
 	void ResetBonus();
 
+	bool GetCashOut() const;
+	void ResetCashOut();
+
 	void Clear();
 private:
 	void TransitionIn();
@@ -46,6 +49,7 @@ private:
 
 	bool m_bWin;
 	bool m_bBonus;
+	bool m_bCashOut;
 
 	GamePanel* m_Panel;
 	Lines* m_Lines;

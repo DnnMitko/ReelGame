@@ -230,8 +230,10 @@ void GameManager::RenderGame()
 			m_BonusGame->PrepTransitionIn();
 			m_BonusGame->Render(false);
 		}
-		else
+		else if(m_Game->GetCashOut())
 		{
+			m_Game->ResetCashOut();
+
 			m_Outro->SetCredits(m_Game->GetCredits());
 
 			m_Game->Render(true);
@@ -240,6 +242,13 @@ void GameManager::RenderGame()
 
 			m_Outro->PrepTransitionIn();
 			m_Outro->Render(false);
+		}
+		else
+		{
+			m_CurrentState = INTRO;
+
+			m_Intro->PrepTransitionIn();
+			m_Intro->Render(false);
 		}
 	}
 	else
