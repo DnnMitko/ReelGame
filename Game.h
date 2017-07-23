@@ -6,6 +6,8 @@
 #include "State.h"
 #include "Button.h"
 #include "GamePanel.h"
+#include "Reel.h"
+#include "Lines.h"
 
 class Game : public State
 {
@@ -14,16 +16,16 @@ public:
 	Game(SDL_Renderer*);
 	virtual ~Game();
 public:
-	void Render(bool = true);
+	void Render(bool);
 	void EventHandler(SDL_Event&);
 	void PrepTransitionIn();
 
 	void SetCredits(unsigned int);
 	unsigned int GetCredits() const;
 
-	unsigned int GetTotalBet() const;
-
 	unsigned int GetPaid() const;
+
+	unsigned int GetTotalBet() const;
 
 	void CalcWinning(unsigned int);
 
@@ -33,13 +35,21 @@ public:
 	bool GetBonus() const;
 	void ResetBonus();
 
-	GamePanel* GetGamePanel() { return m_Panel; }
-
 	void Clear();
+private:
+	void TransitionIn();
+	void TransitionOut();
 private:
 	SDL_Texture* m_TextureBackground;
 
+	bool m_bIsSpinning;
+
+	bool m_bWin;
+	bool m_bBonus;
+
 	GamePanel* m_Panel;
+	Lines* m_Lines;
+	Reel* m_Reel;
 };
 
 #endif /* GAME_H_ */
