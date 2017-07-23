@@ -152,21 +152,21 @@ const int g_ButtonSpriteWidth = 296;
 const int g_ButtonSpriteHeight = 174;
 const char g_ButtonSound[] = "sounds/ButtonClick.wav";
 
-const float g_LinesFigure1x3 = 1.2;
-const float g_LinesFigure2x3 = 1.4;
-const float g_LinesFigure3x3 = 1.5;
-const float g_LinesFigure4x3 = 1.8;
-const float g_LinesFigure5x3 = 2.0;
-const float g_LinesFigure1x4 = 2.2;
-const float g_LinesFigure2x4 = 2.4;
-const float g_LinesFigure3x4 = 2.5;
-const float g_LinesFigure4x4 = 2.8;
-const float g_LinesFigure5x4 = 3.0;
-const float g_LinesFigure1x5 = 3.2;
-const float g_LinesFigure2x5 = 3.4;
-const float g_LinesFigure3x5 = 3.5;
-const float g_LinesFigure4x5 = 3.8;
-const float g_LinesFigure5x5 = 4.0;
+const int g_LinesFigure1x3 = 12;
+const int g_LinesFigure2x3 = 14;
+const int g_LinesFigure3x3 = 15;
+const int g_LinesFigure4x3 = 18;
+const int g_LinesFigure5x3 = 20;
+const int g_LinesFigure1x4 = 22;
+const int g_LinesFigure2x4 = 24;
+const int g_LinesFigure3x4 = 25;
+const int g_LinesFigure4x4 = 28;
+const int g_LinesFigure5x4 = 30;
+const int g_LinesFigure1x5 = 32;
+const int g_LinesFigure2x5 = 34;
+const int g_LinesFigure3x5 = 35;
+const int g_LinesFigure4x5 = 38;
+const int g_LinesFigure5x5 = 40;
 const int g_LinesMax = 15;
 
 const char g_Figure[] = "images/Figures.png";
@@ -178,7 +178,16 @@ const char g_FigureID_4 = '4';
 const char g_FigureID_5 = '5';
 const char g_FigureID_6 = '6';
 
+const int g_SlotSpecialPercent = 2;
+const int g_SlotSpeed = 15;
+const int g_SlotAnimationDelay = 200;
+const int g_SlotRollTime = 3000;
 
+const char g_ReelFrame[] = "images/Frame.png";
+const int g_ReelSlotY = 68;
+const int g_ReelSlotX = 175;
+const int g_ReelSlotMargin = 45;
+const char g_ReelSound[] = "sounds/Slots.wav";
 
 
 
