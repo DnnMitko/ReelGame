@@ -5,10 +5,17 @@ SDL_Texture* Figure::m_TextureBackground = NULL;
 
 Figure::Figure()
 {
-	m_bIsAnimated = false;
 	m_Renderer = NULL;
+
 	m_TextureFigures = NULL;
 	m_TextureBackground = NULL;
+
+	m_bIsAnimated = false;
+
+	m_uiTimer = 0;
+
+	m_iX = 0;
+	m_iY = 0;
 }
 
 Figure::Figure(SDL_Renderer* newRenderer)
@@ -58,36 +65,36 @@ void Figure::Render(bool UpdateOnly)
 	}
 	else
 	{
-		Clear();
 		if(m_bIsAnimated)
 		{
-			if ( SDL_GetTicks() - m_uiTimer >= 200)
+			if ( SDL_GetTicks() - m_uiTimer >= g_SlotAnimationDelay)
 			{
 				m_uiTimer = SDL_GetTicks();
+				Clear();
 				m_RectFigure.y += g_FigureSize;
 				if ( m_RectFigure.y >= 3 * g_FigureSize)
 					m_RectFigure.y = 0;
 			}
+			Draw();
 		}
-		SDL_Rect tempRect;
-		tempRect.x = m_iX;
-		tempRect.y = m_iY;
-		tempRect.w = g_FigureSize;
-		tempRect.h = g_FigureSize;
-		SDL_RenderCopy(m_Renderer, m_TextureFigures, &m_RectFigure, &tempRect);
+		else
+			Draw();
 	}
 }
 
 void Figure::SetX(int NewX)
 {
-	Clear();
 	m_iX = NewX;
 }
 
 void Figure::SetY(int NewY)
 {
-	Clear();
 	m_iY = NewY;
+}
+
+int Figure::GetY() const
+{
+	return m_iY;
 }
 
 void Figure::Play()
@@ -100,6 +107,7 @@ void Figure::Pause()
 {
 	m_RectFigure.y = 0;
 	m_bIsAnimated = false;
+	Clear();
 	Render(false);
 }
 
@@ -108,22 +116,19 @@ void Figure::Rand()
 	int iNum;
 	iNum = rand() % 5;
 	m_RectFigure.x = iNum * g_FigureSize;
-	switch(iNum)
-	{
-		case '0' : m_cCurFigure = g_FigureID_1; break;
-		case '1' : m_cCurFigure = g_FigureID_2; break;
-		case '2' : m_cCurFigure = g_FigureID_3; break;
-		case '3' : m_cCurFigure = g_FigureID_4; break;
-		case '4' : m_cCurFigure = g_FigureID_5; break;
-	}
-	Render(false);
 }
 
-void Figure::MakeSpacial()
+void Figure::SetFigure(char cNewFigure)
 {
-	m_RectFigure.x = g_FigureSize * 5;
-	m_cCurFigure = g_FigureID_6;
-	Render(false);
+	switch(cNewFigure)
+	{
+		case g_FigureID_1 : m_RectFigure.x = 0; break;
+		case g_FigureID_2 : m_RectFigure.x = g_FigureSize; break;
+		case g_FigureID_3 : m_RectFigure.x = 2 * g_FigureSize; break;
+		case g_FigureID_4 :	m_RectFigure.x = 3 * g_FigureSize; break;
+		case g_FigureID_5 :	m_RectFigure.x = 4 * g_FigureSize; break;
+		case g_FigureID_6 :	m_RectFigure.x = 5 * g_FigureSize; break;
+	}
 }
 
 void Figure::Clear()
@@ -133,14 +138,32 @@ void Figure::Clear()
 	tempRect.y = m_iY;
 	tempRect.w = g_FigureSize;
 	tempRect.h = g_FigureSize;
-	SDL_RenderCopy(m_Renderer,m_TextureBackground, &tempRect, &tempRect);
+	SDL_RenderCopy(m_Renderer, m_TextureBackground, &tempRect, &tempRect);
 }
 
-char Figure::GetCurFigure() const
+void Figure::Draw()
 {
-	return m_cCurFigure;
+	SDL_Rect tempRect;
+	tempRect.x = m_iX;
+	tempRect.y = m_iY;
+	tempRect.w = g_FigureSize;
+	tempRect.h = g_FigureSize;
+	SDL_RenderCopy(m_Renderer, m_TextureFigures, &m_RectFigure, &tempRect);
+
+	if(m_bIsAnimated)
+	{
+		SDL_SetRenderDrawColor(m_Renderer, 0xF0, 0xF0, 0xF0, 0xFF);
+		SDL_RenderDrawRect(m_Renderer, &tempRect);
+	}
 }
 
+void Figure::Copy(Figure* other)
+{
+	this->m_RectFigure = other->m_RectFigure;
+
+	this->m_iX = other->m_iX;
+	this->m_iY = other->m_iY;
+}
 
 
 

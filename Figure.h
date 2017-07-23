@@ -17,24 +17,30 @@ public:
 public:
 	void SetX(int);
 	void SetY(int);
+
+	int GetY() const;
+
 	void Render(bool);
+
 	void Play();
 	void Pause();
+
 	void Rand();
-	void MakeSpacial();
-	char GetCurFigure() const;
-private:
+	void SetFigure(char);
+	void Copy(Figure*);
 	void Clear();
 private:
+	void Draw();
+private:
 	SDL_Renderer* m_Renderer;
+
 	static SDL_Texture* m_TextureFigures;
 	static SDL_Texture* m_TextureBackground;
+
 	SDL_Rect m_RectFigure;
 
 	int m_iX;
 	int m_iY;
-
-	char m_cCurFigure;
 
 	bool m_bIsAnimated;
 
