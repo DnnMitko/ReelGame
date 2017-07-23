@@ -198,6 +198,7 @@ void Game::ResetCashOut()
 
 void Game::Clear()
 {
+	m_Reel->Pause();
 	m_Panel->Clear();
 }
 
