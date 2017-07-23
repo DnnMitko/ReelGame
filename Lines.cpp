@@ -1,24 +1,25 @@
 #include "Lines.h"
 
+int Lines::m_Lines[15][5] = { {1, 4, 7, 10, 13},
+							  {0, 3, 6, 9, 12},
+							  {2, 5, 8, 11, 14},
+							  {1, 4, 6, 10, 13},
+							  {1, 4, 8, 10, 13},
+							  {1, 3, 6, 9, 13},
+							  {1, 5, 8, 11, 13},
+							  {0, 3, 7, 11, 14},
+							  {2, 5, 7, 9, 12},
+							  {0, 3, 7, 9, 12},
+							  {2, 5, 7, 11, 14},
+							  {0, 4, 7, 10, 12},
+							  {2, 4, 7, 10, 14},
+							  {0, 4, 8, 10, 12},
+							  {2, 4, 6, 10, 14}
+							};
+
 Lines::Lines()
 {
-	m_fTotalWin = 0;
-
-	m_Line[0] = (Line){1, 4, 7, 10, 13};
-	m_Line[1] = (Line){0, 3, 6, 9, 12};
-	m_Line[2] = (Line){2, 5, 8, 11, 14};
-	m_Line[3] = (Line){1, 4, 6, 10, 13};
-	m_Line[4] = (Line){1, 4, 8, 10, 13};
-	m_Line[5] = (Line){1, 3, 6, 9, 13};
-	m_Line[6] = (Line){1, 5, 8, 11, 13};
-	m_Line[7] = (Line){0, 3, 7, 11, 14};
-	m_Line[8] = (Line){2, 5, 7, 9, 12};
-	m_Line[9] = (Line){0, 3, 7, 9, 12};
-	m_Line[10] = (Line){2, 5, 7, 11, 14};
-	m_Line[11] = (Line){0, 4, 7, 10, 12};
-	m_Line[12] = (Line){2, 4, 7, 10, 14};
-	m_Line[13] = (Line){0, 4, 8, 10, 12};
-	m_Line[14] = (Line){2, 4, 6, 10, 14};
+	m_iLinesPlayed = 0;
 
 	m_fTotalWin = 0;
 	m_fMax = 0;
@@ -28,11 +29,12 @@ Lines::Lines()
 
 Lines::~Lines()
 {
-	// TODO Auto-generated destructor stub
 }
 
-void Lines::SetResult(std::string result)
+void Lines::SetResult(std::string result, int iLines)
 {
+	m_iLinesPlayed = iLines;
+
 	m_strResult = result;
 	GenLines();
 
@@ -42,17 +44,16 @@ void Lines::SetResult(std::string result)
 
 void Lines::GenLines()
 {
-	for(int i = 0 ; i < g_LinesMax ; i ++)
+	for(int iLine = 0; iLine < m_iLinesPlayed; iLine++)
 	{
-		m_strLine[i] = m_strResult[m_Line[i].num1]
-					 + m_strResult[m_Line[i].num2]
-					 + m_strResult[m_Line[i].num3]
-					 + m_strResult[m_Line[i].num4]
-					 + m_strResult[m_Line[i].num5];
+		m_strLines[iLine] = "";
+
+		for(int iPos = 0; iPos < 5; iPos++)
+			m_strLines[iLine] += m_strResult[m_Lines[iLine][iPos]];
 	}
 }
 
-float Lines::GetTotalWin() const
+int Lines::GetTotalWin() const
 {
 	return m_fTotalWin;
 }
@@ -64,13 +65,13 @@ void Lines::Calculate()
 	m_iMaxLine = -1;
 	m_cMax = '0';
 
-	for(int i = 0 ; i < g_LinesMax ; i ++)
+	for(int i = 0 ; i < m_iLinesPlayed ; i ++)
 	{
-		if(m_strLine[i][0] == m_strLine[i][1] && m_strLine[i][1] == m_strLine[i][2])
+		if(m_strLines[i][0] == m_strLines[i][1] && m_strLines[i][1] == m_strLines[i][2])
 		{
-			if(m_strLine[i][2] == m_strLine[i][3])
+			if(m_strLines[i][2] == m_strLines[i][3])
 			{
-				if(m_strLine[i][3] == m_strLine[i][4])
+				if(m_strLines[i][3] == m_strLines[i][4])
 					Process5(i);
 				else
 					Process4(i, 0);
@@ -78,14 +79,14 @@ void Lines::Calculate()
 			else
 				Process3(i, 0);
 		}
-		else if (m_strLine[i][1] == m_strLine[i][2] && m_strLine[i][2] == m_strLine[i][3])
+		else if (m_strLines[i][1] == m_strLines[i][2] && m_strLines[i][2] == m_strLines[i][3])
 		{
-			if (m_strLine[i][3] == m_strLine[i][4])
+			if (m_strLines[i][3] == m_strLines[i][4])
 				Process4(i, 1);
 			else
 				Process3(i, 1);
 		}
-		else if (m_strLine[i][2] == m_strLine[i][3] && m_strLine[i][3]== m_strLine[i][4])
+		else if (m_strLines[i][2] == m_strLines[i][3] && m_strLines[i][3]== m_strLines[i][4])
 			Process3(i, 2);
 	}
 }
@@ -104,31 +105,26 @@ void Lines::GenAnimate()
 {
 	m_strAnimate = "000000000000000";
 
-	if (m_Line[m_iMaxLine].num1 == m_cMax)
+	if(HasSpecial())
 	{
-		m_strAnimate[m_Line[m_iMaxLine].num1] = '1';
+		for(int i = 0; i < 15; i++)
+			if(m_strResult[i] == g_FigureID_6)
+				m_strAnimate[i] = '1';
 	}
-	if (m_Line[m_iMaxLine].num2 == m_cMax)
+	else if(m_fTotalWin == 0)
+		return;
+	else
 	{
-		m_strAnimate[m_Line[m_iMaxLine].num2] = '1';
-	}
-	if (m_Line[m_iMaxLine].num3 == m_cMax)
-	{
-		m_strAnimate[m_Line[m_iMaxLine].num3] = '1';
-	}
-	if (m_Line[m_iMaxLine].num4 == m_cMax)
-	{
-		m_strAnimate[m_Line[m_iMaxLine].num4] = '1';
-	}
-	if (m_Line[m_iMaxLine].num5 == m_cMax)
-	{
-		m_strAnimate[m_Line[m_iMaxLine].num5] = '1';
+		//TODO
+		for(int i = 0; i < 5; i++)
+			if (m_strLines[m_iMaxLine][i] == m_cMax)
+				m_strAnimate[m_Lines[m_iMaxLine][i]] = '1';
 	}
 }
 
 void Lines::Process3(int iLine, int iPos)
 {
-	switch(m_strLine[iLine][iPos])
+	switch(m_strLines[iLine][iPos])
 	{
 	case g_FigureID_1 :
 		m_fTotalWin += g_LinesFigure1x3;
@@ -159,7 +155,7 @@ void Lines::Process3(int iLine, int iPos)
 
 void Lines::Process4(int iLine, int iPos)
 {
-	switch(m_strLine[iLine][iPos])
+	switch(m_strLines[iLine][iPos])
 	{
 	case g_FigureID_1 :
 		m_fTotalWin += g_LinesFigure1x4;
@@ -190,7 +186,7 @@ void Lines::Process4(int iLine, int iPos)
 
 void Lines::Process5(int iLine)
 {
-	switch(m_strLine[iLine][0])
+	switch(m_strLines[iLine][0])
 	{
 	case g_FigureID_1 :
 		m_fTotalWin += g_LinesFigure1x5;
@@ -219,7 +215,7 @@ void Lines::Process5(int iLine)
 	}
 }
 
-void Lines::CheckMax(float fMultiplier, char cFigure, int iLine)
+void Lines::CheckMax(int fMultiplier, char cFigure, int iLine)
 {
 	if (m_fMax < fMultiplier)
 	{

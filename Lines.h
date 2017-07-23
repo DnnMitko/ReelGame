@@ -1,23 +1,19 @@
 #ifndef LINES_H_
 #define LINES_H_
+
 #include "Constants.h"
 #include<string>
 
 class Lines
 {
-struct Line
-{
-	int num1, num2, num3, num4, num5;
-};
-
 public:
 	Lines();
-	virtual ~Lines();
-	void SetResult(std::string);
-	float GetTotalWin() const;
+	~Lines();
+public:
+	void SetResult(std::string, int);
+	int GetTotalWin() const;
 	bool HasSpecial();
 	std::string GetAnimate() const;
-
 private:
 	void GenLines();
 
@@ -28,16 +24,17 @@ private:
 	void Process3(int, int);
 	void Process4(int, int);
 	void Process5(int);
-	void CheckMax(float, char, int);
+	void CheckMax(int, char, int);
 private:
+	std::string m_strResult;
+	int m_iLinesPlayed;
+
 	std::string m_strAnimate;
 
-	std::string m_strResult;
+	static int m_Lines[15][5];
+	std::string m_strLines[15];
 
-	Line m_Line[15];
-	std::string m_strLine[15];
-
-	float m_fTotalWin;
+	int m_fTotalWin;
 
 	float m_fMax;
 	int m_iMaxLine;
