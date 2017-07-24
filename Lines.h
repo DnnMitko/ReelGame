@@ -11,8 +11,12 @@ public:
 	~Lines();
 public:
 	void SetResult(std::string, int);
+
 	int GetTotalWin() const;
+
 	bool HasSpecial();
+
+	void SetAnimate(std::string);
 	std::string GetAnimate() const;
 private:
 	void GenLines();

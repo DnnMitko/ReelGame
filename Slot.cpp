@@ -119,6 +119,14 @@ void Slot::Stop()
 		m_Figures[i]->Pause();
 }
 
+void Slot::SetResult(std::string newResult)
+{
+	m_strResult = newResult;
+
+	for(int i = 1; i < 4; i++)
+		m_Figures[i]->SetFigure(m_strResult[i - 1]);
+}
+
 std::string Slot::GetResult() const
 {
 	return m_strResult;

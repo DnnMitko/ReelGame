@@ -9,7 +9,9 @@ Intro::Intro(SDL_Renderer* newRenderer) : State(newRenderer)
 {
 	m_uiCredit = 0;
 	m_uiCounterVolume = 0;
+
 	m_bShowInfo = false;
+	m_bResume = false;
 
 	m_TextureBackground = NULL;
 	m_TextureBackground = IMG_LoadTexture(m_Renderer, "images/TitleScreen.png");
@@ -146,7 +148,8 @@ void Intro::EventHandler(SDL_Event& e)
 
 		else if(m_ButtonResume->IsIn(x, y) && m_ButtonResume->IsPressed())
 		{
-			//TODO
+			m_bTransitionOut = true;
+			m_bResume = true;
 		}
 
 		else if(m_ButtonCreditPlus->IsIn(x, y) && m_ButtonCreditPlus->IsPressed())
@@ -193,6 +196,8 @@ void Intro::PrepTransitionIn()
 {
 	m_bTransitionIn = true;
 
+	m_bResume = false;
+
 	m_iY = g_ScreenWidth;
 	Reposition();
 
@@ -203,6 +208,16 @@ void Intro::PrepTransitionIn()
 unsigned int Intro::GetCredits() const
 {
 	return m_uiCredit;
+}
+
+bool Intro::GetResume() const
+{
+	return m_bResume;
+}
+
+void Intro::ResetResume()
+{
+	m_bResume = false;
 }
 
 void Intro::ReleaseAll()
@@ -219,6 +234,8 @@ void Intro::ReleaseAll()
 void Intro::NullAll()
 {
 	m_uiCredit = 0;
+
+	m_bResume = false;
 
 	m_TextureBackground = NULL;
 

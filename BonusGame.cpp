@@ -173,6 +173,11 @@ unsigned int BonusGame::GetCredits() const
 	return m_uiCredits;
 }
 
+bool BonusGame::GetHasChosen() const
+{
+	return m_bHasChosen;
+}
+
 void BonusGame::NullAll()
 {
 	m_TextureBackgroundGame = NULL;

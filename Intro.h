@@ -1,10 +1,10 @@
 #ifndef INTRO_H_
 #define INTRO_H_
 
-#include <SDL.h>
-#include <SDL_image.h>
-#include <SDL_ttf.h>
-#include <SDL_mixer.h>
+#include <SDL2/SDL.h>
+#include <SDL2/SDL_image.h>
+#include <SDL2/SDL_ttf.h>
+#include <SDL2/SDL_mixer.h>
 #include <iostream>
 #include <sstream>
 #include "State.h"
@@ -23,6 +23,9 @@ public:
 	void PrepTransitionIn();
 
 	unsigned int GetCredits() const;
+
+	bool GetResume() const;
+	void ResetResume();
 private:
 	void ReleaseAll();
 
@@ -43,6 +46,8 @@ private:
 private:
 	int m_uiCredit;
 	int m_uiCounterVolume;
+
+	bool m_bResume;
 
 	SDL_Texture* m_TextureBackground;
 

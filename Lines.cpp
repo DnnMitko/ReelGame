@@ -101,6 +101,11 @@ bool Lines::HasSpecial()
 	return false;
 }
 
+void Lines::SetAnimate(std::string newAnimate)
+{
+	m_strAnimate = newAnimate;
+}
+
 void Lines::GenAnimate()
 {
 	m_strAnimate = "000000000000000";

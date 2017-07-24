@@ -23,6 +23,7 @@ public:
 	void Animate(std::string);
 	void Stop();
 
+	void SetResult(std::string);
 	std::string GetResult() const;
 private:
 	void GenNext(bool);

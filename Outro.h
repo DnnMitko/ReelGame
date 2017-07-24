@@ -1,8 +1,8 @@
 #ifndef OUTRO_H_
 #define OUTRO_H_
 
-#include <SDL.h>
-#include <SDL_ttf.h>
+#include <SDL2/SDL.h>
+#include <SDL2/SDL_ttf.h>
 #include <string>
 #include <sstream>
 #include "State.h"

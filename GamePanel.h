@@ -24,7 +24,10 @@ public:
 	unsigned int GetCredits() const;
 
 	unsigned int GetBet() const;
+	void SetBet(unsigned int);
+
 	unsigned int GetLines() const;
+	void SetLines(unsigned int);
 
 	unsigned int GetPaid() const;
 

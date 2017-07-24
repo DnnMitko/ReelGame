@@ -1,8 +1,8 @@
 #ifndef REEL_H_
 #define REEL_H_
 
-#include <SDL.h>
-#include <SDL_mixer.h>
+#include <SDL2/SDL.h>
+#include <SDL2/SDL_mixer.h>
 #include "Slot.h"
 
 class Reel
@@ -18,6 +18,7 @@ public:
 	bool InTransition();
 	void Hide();
 
+	void SetResult(std::string);
 	std::string GetResult();
 
 	void Spin();

@@ -116,6 +116,12 @@ void Reel::Hide()
 	m_bTransitionOut = true;
 }
 
+void Reel::SetResult(std::string newResult)
+{
+	for(int i = 0; i < 5; i++)
+		m_Slots[i]->SetResult(newResult.substr(i * 3, 3));
+}
+
 std::string Reel::GetResult()
 {
 	std::string strResult = "";
