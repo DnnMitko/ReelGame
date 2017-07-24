@@ -28,7 +28,6 @@ GameManager::GameManager()
 
 GameManager::~GameManager()
 {
-	m_SaveXML->save_file(g_SaveXML);
 	delete m_SaveXML;
 	m_SaveXML = NULL;
 
@@ -60,7 +59,7 @@ void GameManager::EventHandler(SDL_Event& e)
 	if( e.type == SDL_QUIT )
 	{
 		m_bQuit = true;
-		SaveGame();
+		Save();
 	}
 	else
 	{
@@ -200,20 +199,76 @@ void GameManager::Save()
 		SaveWin();
 		break;
 	case BONUSGAME:
-		// if chosen game else bonus game
 		SaveBonusGame();
 		break;
 	case OUTRO:
 		SaveOutro();
 		break;
 	}
+
+	m_SaveXML->save_file(g_SaveXML);
+}
+
+void GameManager::Load()
+{
+	pugi::xml_node curSave = m_SaveXML->first_child().first_child();
+	std::string strState = curSave.child("State").text().as_string();
+
+	if(strState == "Deleted")
+	{
+		m_Intro->PrepTransitionIn();
+	}
+	else if(strState == "Intro")
+	{
+		m_Game->SetCredits(curSave.child("Credits").text().as_uint());
+
+		m_Game->PrepTransitionIn();
+
+		m_CurrentState = GAME;
+		m_Game->Render(false);
+	}
+	else if(strState == "Game")
+	{
+		m_Game->SetCredits(curSave.child("Credits").text().as_uint());
+		m_Game->SetReel(curSave.child("Reel").text().as_string(),
+						curSave.child("Animate").text().as_string());
+
+		m_Game->PrepTransitionIn();
+
+		m_CurrentState = GAME;
+		m_Game->Render(false);
+	}
+	else if(strState == "Bonus")
+	{
+		m_Game->SetCredits(curSave.child("Credits").text().as_uint());
+		m_Game->SetReel(curSave.child("Reel").text().as_string(),
+						curSave.child("Animate").text().as_string());
+
+		m_Game->SetBet(curSave.child("Bet").text().as_uint());
+		m_Game->SetLines(curSave.child("Lines").text().as_uint());
+
+		m_BonusGame->ResetGame();
+		m_BonusGame->SetCredits(m_Game->GetTotalBet());
+
+		m_Game->Render(false);
+		m_CurrentState = BONUSGAME;
+		m_BonusGame->PrepTransitionIn();
+		m_BonusGame->Render(false);
+	}
+}
+
+void GameManager::DeleteSave()
+{
+	m_SaveXML->first_child().first_child().child("State").text().set("Deleted");
+
+	m_SaveXML->save_file(g_SaveXML);
 }
 
 void GameManager::SaveIntro()
 {
 	pugi::xml_node curSave = m_SaveXML->first_child().first_child();
-	curSave.child("State").text().set("Intro");
 
+	curSave.child("State").text().set("Intro");
 	curSave.child("Credits").text().set(m_Intro->GetCredits());
 }
 
@@ -242,6 +297,7 @@ void GameManager::SaveGame()
 void GameManager::SaveWin()
 {
 	pugi::xml_node curSave = m_SaveXML->first_child().first_child();
+
 	curSave.child("State").text().set("Game");
 	curSave.child("Credits").text().set(m_Game->GetCredits());
 	curSave.child("Reel").text().set(m_Game->GetReel().c_str());
@@ -251,11 +307,24 @@ void GameManager::SaveWin()
 void GameManager::SaveBonusGame()
 {
 	pugi::xml_node curSave = m_SaveXML->first_child().first_child();
+
+	if(m_BonusGame->GetHasChosen())
+	{
+		m_Game->CalcWinning(m_BonusGame->GetCredits());
+
+		curSave.child("State").text().set("Game");
+		curSave.child("Credits").text().set(m_Game->GetCredits());
+		curSave.child("Reel").text().set(m_Game->GetReel().c_str());
+		curSave.child("Animate").text().set(m_Game->GetAnimate().c_str());
+	}
+	else
+		SaveGame();
 }
 
 void GameManager::SaveOutro()
 {
 	pugi::xml_node curSave = m_SaveXML->first_child().first_child();
+
 	curSave.child("Credits").text().set(0);
 }
 
@@ -265,7 +334,12 @@ void GameManager::RenderIntro()
 	{
 		m_Intro->ResetSwitch();
 
-		if(m_Intro->GetCredits() > 0)
+		if(m_Intro->GetResume())
+		{
+			m_Intro->ResetResume();
+			Load();
+		}
+		else if(m_Intro->GetCredits() > 0)
 		{
 			m_Game->SetCredits(m_Intro->GetCredits());
 
@@ -318,9 +392,12 @@ void GameManager::RenderGame()
 		{
 			m_Game->ResetCashOut();
 
+			DeleteSave();
+
 			m_Outro->SetCredits(m_Game->GetCredits());
 
 			m_Game->Render(true);
+
 
 			m_CurrentState = OUTRO;
 
@@ -329,6 +406,8 @@ void GameManager::RenderGame()
 		}
 		else
 		{
+			DeleteSave();
+
 			m_CurrentState = INTRO;
 
 			m_Intro->PrepTransitionIn();
