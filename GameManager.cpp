@@ -15,6 +15,7 @@ GameManager::GameManager()
 		Create();
 
 		m_CurrentState = INTRO;
+		m_Intro->PrepTransitionIn();
 		m_Intro->Render(false);
 	}
 }
@@ -295,6 +296,8 @@ void GameManager::RenderOutro()
 		m_Outro->ResetSwitch();
 
 		m_CurrentState = INTRO;
+
+		m_Intro->PrepTransitionIn();
 		m_Intro->Render(false);
 	}
 	else

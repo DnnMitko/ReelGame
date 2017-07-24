@@ -20,6 +20,8 @@ Intro::Intro(SDL_Renderer* newRenderer) : State(newRenderer)
 	if( m_Font == NULL )
 		std::cerr << "Failed to load Label Font! SDL Error: " << IMG_GetError() << std::endl;
 
+	m_iY = g_IntroFirstButtonY;
+
 	InitStartGame();
 	InitResumeGame();
 	InitInsertCredit();
@@ -62,13 +64,16 @@ void Intro::Render(bool UpdateOnly)
 	if(!m_Renderer || !m_TextureBackground || !m_Font)
 		return;
 
-	if(!UpdateOnly)
-	{
-		m_uiCredit = 0;
-		UpdateCredits();
+	if(m_bTransitionIn)
+		TransitionIn();
+	else if(m_bTransitionOut)
+		TransitionOut();
 
+	if(m_bTransitionIn || m_bTransitionOut)
+		UpdateOnly = false;
+
+	if(!UpdateOnly)
 		SDL_RenderCopy(m_Renderer, m_TextureBackground, NULL, NULL);
-	}
 
 	m_ButtonStart->Render(UpdateOnly);
 	m_ButtonResume->Render(UpdateOnly);
@@ -92,6 +97,9 @@ void Intro::Render(bool UpdateOnly)
 
 void Intro::EventHandler(SDL_Event& e)
 {
+	if(m_bTransitionIn || m_bTransitionOut)
+		return;
+
 	int x;
 	int y;
 
@@ -133,7 +141,7 @@ void Intro::EventHandler(SDL_Event& e)
 
 		if(m_ButtonStart->IsIn(x, y) && m_ButtonStart->IsPressed())
 		{
-			m_bSwitch = true;
+			m_bTransitionOut = true;
 		}
 
 		else if(m_ButtonResume->IsIn(x, y) && m_ButtonResume->IsPressed())
@@ -183,7 +191,13 @@ void Intro::EventHandler(SDL_Event& e)
 
 void Intro::PrepTransitionIn()
 {
-	//TODO
+	m_bTransitionIn = true;
+
+	m_iY = g_ScreenWidth;
+	Reposition();
+
+	m_uiCredit = 0;
+	UpdateCredits();
 }
 
 unsigned int Intro::GetCredits() const
@@ -237,7 +251,7 @@ void Intro::InitStartGame()
 {
 	m_ButtonStart = new Button(m_Renderer);
 	m_ButtonStart->SetX((g_ScreenWidth - g_IntroButtonWidth) / 2);
-	m_ButtonStart->SetY(g_IntroFirstButtonY);
+	m_ButtonStart->SetY(m_iY);
 	m_ButtonStart->SetFieldSize(g_IntroButtonHeight, g_IntroButtonWidth);
 	m_ButtonStart->SetText(g_IntroButtonNewGame, m_Font, g_ColorBlack);
 }
@@ -246,7 +260,7 @@ void Intro::InitResumeGame()
 {
 	m_ButtonResume = new Button(m_Renderer);
 	m_ButtonResume->SetX((g_ScreenWidth - g_IntroButtonWidth) / 2);
-	m_ButtonResume->SetY(g_IntroFirstButtonY + g_IntroButtonHeight + 10);
+	m_ButtonResume->SetY(m_iY + g_IntroButtonHeight + 10);
 	m_ButtonResume->SetFieldSize(g_IntroButtonHeight, g_IntroButtonWidth);
 	m_ButtonResume->SetText(g_IntroButtonResumeGame, m_Font, g_ColorBlack);
 }
@@ -255,13 +269,13 @@ void Intro::InitInsertCredit()
 {
 	m_ButtonCreditMinus = new Button(m_Renderer);
 	m_ButtonCreditMinus->SetX((g_ScreenWidth - g_IntroButtonWidth) / 2);
-	m_ButtonCreditMinus->SetY(g_IntroFirstButtonY + 2* (g_IntroButtonHeight + 10));
+	m_ButtonCreditMinus->SetY(m_iY + 2* (g_IntroButtonHeight + 10));
 	m_ButtonCreditMinus->SetFieldSize(g_IntroButtonHeight, g_IntroButtonWidth / 4);
 	m_ButtonCreditMinus->SetText(g_IntroButtonMinus, m_Font, g_ColorBlack);
 
 	m_ButtonCreditPlus = new Button(m_Renderer);
 	m_ButtonCreditPlus->SetX(g_IntroButtonVolumePlusX);
-	m_ButtonCreditPlus->SetY(g_IntroFirstButtonY + 2* (g_IntroButtonHeight + 10));
+	m_ButtonCreditPlus->SetY(m_iY + 2* (g_IntroButtonHeight + 10));
 	m_ButtonCreditPlus->SetFieldSize(g_IntroButtonHeight, g_IntroButtonWidth / 4);
 	m_ButtonCreditPlus->SetText(g_IntroButtonPlus, m_Font, g_ColorBlack);
 
@@ -275,7 +289,7 @@ void Intro::InitInfo()
 {
 	m_ButtonInfo = new Button(m_Renderer);
 	m_ButtonInfo->SetX((g_ScreenWidth - g_IntroButtonWidth) / 2);
-	m_ButtonInfo->SetY(g_IntroFirstButtonY + 3* (g_IntroButtonHeight + 10));
+	m_ButtonInfo->SetY(m_iY + 3* (g_IntroButtonHeight + 10));
 	m_ButtonInfo->SetFieldSize(g_IntroButtonHeight, g_IntroButtonWidth);
 	m_ButtonInfo->SetText(g_IntroButtonInfo, m_Font, g_ColorBlack);
 
@@ -297,13 +311,13 @@ void Intro::InitVolume()
 
 	m_ButtonVolumePlus = new Button(m_Renderer);
 	m_ButtonVolumePlus->SetX(g_IntroButtonVolumePlusX);
-	m_ButtonVolumePlus->SetY(g_IntroFirstButtonY + 4* (g_IntroButtonHeight + 10));
+	m_ButtonVolumePlus->SetY(m_iY + 4* (g_IntroButtonHeight + 10));
 	m_ButtonVolumePlus->SetFieldSize(g_IntroButtonHeight, g_IntroButtonWidth / 4);
 	m_ButtonVolumePlus->SetText(g_IntroButtonPlus, m_Font, g_ColorBlack);
 
 	m_ButtonVolumeMinus = new Button(m_Renderer);
 	m_ButtonVolumeMinus->SetX((g_ScreenWidth - g_IntroButtonWidth) / 2);
-	m_ButtonVolumeMinus->SetY(g_IntroFirstButtonY + 4* (g_IntroButtonHeight + 10));
+	m_ButtonVolumeMinus->SetY(m_iY + 4* (g_IntroButtonHeight + 10));
 	m_ButtonVolumeMinus->SetFieldSize(g_IntroButtonHeight, g_IntroButtonWidth / 4);
 	m_ButtonVolumeMinus->SetText(g_IntroButtonMinus, m_Font, g_ColorBlack);
 
@@ -338,6 +352,49 @@ void Intro::UpdateCredits()
 	m_TextFieldCredits->SetText(tempStr, m_Font, g_ColorWhite);
 }
 
+void Intro::TransitionIn()
+{
+	if(m_iY == g_IntroFirstButtonY)
+		m_bTransitionIn = false;
+	else
+	{
+		m_iY -= g_TransitionStep;
+
+		Reposition();
+	}
+}
+
+void Intro::TransitionOut()
+{
+	if(m_iY >= g_ScreenHeight)
+	{
+		m_bTransitionOut = false;
+		m_bSwitch = true;
+	}
+	else
+	{
+		m_iY += g_TransitionStep;
+
+		Reposition();
+	}
+}
+
+void Intro::Reposition()
+{
+	m_ButtonStart->SetY(m_iY);
+
+	m_ButtonResume->SetY(m_iY + g_IntroButtonHeight + 10);
+
+	m_ButtonCreditMinus->SetY(m_iY + 2* (g_IntroButtonHeight + 10));
+	m_ButtonCreditPlus->SetY(m_iY + 2* (g_IntroButtonHeight + 10));
+	//TODO m_LabelCredit->SetY(g_IntroLabelCreditY);
+
+	m_ButtonInfo->SetY(m_iY + 3* (g_IntroButtonHeight + 10));
+
+	m_ButtonVolumePlus->SetY(m_iY + 4* (g_IntroButtonHeight + 10));
+	m_ButtonVolumeMinus->SetY(m_iY + 4* (g_IntroButtonHeight + 10));
+	//TODO m_LabelVolume->SetY(g_IntroLabelButtonY);
+}
 
 
 

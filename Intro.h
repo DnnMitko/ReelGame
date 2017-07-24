@@ -37,6 +37,9 @@ private:
 	void InitCredits();
 	void UpdateCredits();
 
+	void TransitionIn();
+	void TransitionOut();
+	void Reposition();
 private:
 	int m_uiCredit;
 	int m_uiCounterVolume;
@@ -66,6 +69,8 @@ private:
 
 	Info* m_Info;
 	bool m_bShowInfo;
+
+	int m_iY;
 };
 
 #endif /* INTRO_H_ */
