@@ -144,6 +144,7 @@ void Game::PrepTransitionIn()
 void Game::SetCredits(unsigned int newCredits)
 {
 	m_Panel->SetCredits(newCredits);
+	m_Panel->Clear();
 }
 
 unsigned int Game::GetCredits() const
@@ -161,6 +162,14 @@ unsigned int Game::GetTotalBet() const
 	return m_Panel->GetTotalBet();
 }
 
+void Game::SetReel(std::string newResult, std::string newAnimate)
+{
+	m_Reel->SetResult(newResult);
+
+	m_Lines->SetAnimate(newAnimate);
+	m_Reel->Animate(newAnimate);
+}
+
 std::string Game::GetReel()
 {
 	return m_Reel->GetResult();
@@ -171,14 +180,24 @@ std::string Game::GetAnimate()
 	return m_Lines->GetAnimate();
 }
 
-unsigned int Game::GetBet()
+unsigned int Game::GetBet() const
 {
 	return m_Panel->GetBet();
 }
 
-unsigned int Game::GetLines()
+void Game::SetBet(unsigned int newBet)
+{
+	m_Panel->SetBet(newBet);
+}
+
+unsigned int Game::GetLines() const
 {
 	return m_Panel->GetLines();
+}
+
+void Game::SetLines(unsigned int newLines)
+{
+	m_Panel->SetLines(newLines);
 }
 
 void Game::CalcWinning(unsigned int Paid)
