@@ -298,8 +298,7 @@ void Intro::InitInsertCredit()
 
 	m_LabelCredit = new Label(m_Renderer);
 	m_LabelCredit->SetText(g_IntroLabelInsertCredit, m_Font, g_ColorBlack);
-	m_LabelCredit->SetX((g_ScreenWidth - g_IntroButtonWidth) / 2 + g_IntroButtonWidth / 4
-						+ (g_IntroButtonWidth / 2 - m_LabelCredit->GetWidth()) / 2);
+	m_LabelCredit->SetX((g_ScreenWidth - m_LabelCredit->GetWidth()) / 2);
 	m_LabelCredit->SetY(m_iY + 2 * (g_IntroButtonHeight + g_IntroButtonMargin)
 						+ (g_IntroButtonHeight - m_LabelCredit->GetHeight()) / 2);
 }
@@ -342,8 +341,7 @@ void Intro::InitVolume()
 
 	m_LabelVolume = new Label(m_Renderer);
 	m_LabelVolume->SetText(g_IntroLabelVolume, m_Font, g_ColorBlack);
-	m_LabelVolume->SetX((g_ScreenWidth - g_IntroButtonWidth) / 2 + g_IntroButtonWidth / 4
-						+ (g_IntroButtonWidth / 2 - m_LabelVolume->GetWidth()) / 2);
+	m_LabelVolume->SetX((g_ScreenWidth - m_LabelVolume->GetWidth()) / 2);
 	m_LabelVolume->SetY(m_iY + 4 * (g_IntroButtonHeight + g_IntroButtonMargin)
 						+ (g_IntroButtonHeight - m_LabelCredit->GetHeight()) / 2);
 }
