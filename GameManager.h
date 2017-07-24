@@ -1,13 +1,14 @@
 #ifndef GAMEMANAGER_H_
 #define GAMEMANAGER_H_
 
-#include <SDL2/SDL.h>
-#include <SDL2/SDL_image.h>
-#include <SDL2/SDL_ttf.h>
-#include <SDL2/SDL_mixer.h>
+#include <SDL.h>
+#include <SDL_image.h>
+#include <SDL_ttf.h>
+#include <SDL_mixer.h>
 #include <iostream>
 #include <cstdlib>
 #include <ctime>
+#include <sstream>
 #include "Constants.h"
 #include "Button.h"
 #include "Intro.h"
@@ -15,6 +16,7 @@
 #include "Win.h"
 #include "Game.h"
 #include "BonusGame.h"
+#include "pugixml.hpp"
 
 
 class GameManager
@@ -32,6 +34,13 @@ private:
 	bool InitSDL();
 	void Create();
 
+	void Save();
+	void SaveIntro();
+	void SaveGame();
+	void SaveWin();
+	void SaveBonusGame();
+	void SaveOutro();
+
 	void RenderIntro();
 	void RenderGame();
 	void RenderWin();
@@ -40,6 +49,8 @@ private:
 private:
 	SDL_Window* m_Window;
 	SDL_Renderer* m_Renderer;
+
+	pugi::xml_document* m_SaveXML;
 
 	bool m_bQuit;
 

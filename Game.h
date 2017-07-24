@@ -27,7 +27,13 @@ public:
 
 	unsigned int GetTotalBet() const;
 
+	std::string GetReel();
+	std::string GetAnimate();
+	unsigned int GetBet();
+	unsigned int GetLines();
+
 	void CalcWinning(unsigned int);
+	bool CalcWinningForce();
 
 	bool GetWin() const;
 	void ResetWin();

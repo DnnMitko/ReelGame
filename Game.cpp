@@ -161,9 +161,48 @@ unsigned int Game::GetTotalBet() const
 	return m_Panel->GetTotalBet();
 }
 
+std::string Game::GetReel()
+{
+	return m_Reel->GetResult();
+}
+
+std::string Game::GetAnimate()
+{
+	return m_Lines->GetAnimate();
+}
+
+unsigned int Game::GetBet()
+{
+	return m_Panel->GetBet();
+}
+
+unsigned int Game::GetLines()
+{
+	return m_Panel->GetLines();
+}
+
 void Game::CalcWinning(unsigned int Paid)
 {
 	m_Panel->CalcWinning(Paid);
+}
+
+bool Game::CalcWinningForce()
+{
+	bool bResult = false;
+
+	if(m_bIsSpinning)
+	{
+		m_Lines->SetResult(m_Reel->GetResult(), m_Panel->GetLines());
+
+		if(m_Lines->HasSpecial())
+			bResult = true;
+		else
+			m_Panel->CalcWinning(m_Lines->GetTotalWin()  * m_Panel->GetBet());
+	}
+	else if(m_Lines->HasSpecial())
+		bResult = true;
+
+	return bResult;
 }
 
 bool Game::GetWin() const

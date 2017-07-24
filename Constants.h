@@ -8,6 +8,8 @@
 const int g_ScreenWidth = 1280;
 const int g_ScreenHeight = 720;
 
+const char g_SaveXML[] = "save/Recovery.xml";
+
 const char g_FontLabel[] = "fonts/Roboto-Medium.ttf";
 const char g_FontTitle[] = "fonts/Digitalt.ttf";
 

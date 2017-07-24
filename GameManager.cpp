@@ -4,24 +4,34 @@ GameManager::GameManager()
 {
 	srand(time(NULL));
 
-	m_Window = NULL;
-	m_Renderer = NULL;
-	if(!InitSDL())
+	m_SaveXML = new pugi::xml_document();
+	if(!m_SaveXML->load_file(g_SaveXML))
 		m_bQuit = true;
 	else
 	{
-		m_bQuit = false;
+		m_Window = NULL;
+		m_Renderer = NULL;
+		if(!InitSDL())
+			m_bQuit = true;
+		else
+		{
+			m_bQuit = false;
 
-		Create();
+			Create();
 
-		m_CurrentState = INTRO;
-		m_Intro->PrepTransitionIn();
-		m_Intro->Render(false);
+			m_CurrentState = INTRO;
+			m_Intro->PrepTransitionIn();
+			m_Intro->Render(false);
+		}
 	}
 }
 
 GameManager::~GameManager()
 {
+	m_SaveXML->save_file(g_SaveXML);
+	delete m_SaveXML;
+	m_SaveXML = NULL;
+
 	delete m_Intro;
 	delete m_Game;
 	delete m_Win;
@@ -50,7 +60,7 @@ void GameManager::EventHandler(SDL_Event& e)
 	if( e.type == SDL_QUIT )
 	{
 		m_bQuit = true;
-		// TODO Recovery
+		SaveGame();
 	}
 	else
 	{
@@ -174,6 +184,79 @@ void GameManager::Create()
 	m_Win = new Win(m_Renderer);
 	m_BonusGame = new BonusGame(m_Renderer);
 	m_Outro = new Outro(m_Renderer);
+}
+
+void GameManager::Save()
+{
+	switch(m_CurrentState)
+	{
+	case INTRO:
+		SaveIntro();
+		break;
+	case GAME:
+		SaveGame();
+		break;
+	case WIN:
+		SaveWin();
+		break;
+	case BONUSGAME:
+		// if chosen game else bonus game
+		SaveBonusGame();
+		break;
+	case OUTRO:
+		SaveOutro();
+		break;
+	}
+}
+
+void GameManager::SaveIntro()
+{
+	pugi::xml_node curSave = m_SaveXML->first_child().first_child();
+	curSave.child("State").text().set("Intro");
+
+	curSave.child("Credits").text().set(m_Intro->GetCredits());
+}
+
+void GameManager::SaveGame()
+{
+	pugi::xml_node curSave = m_SaveXML->first_child().first_child();
+
+	if(m_Game->CalcWinningForce())
+	{
+		curSave.child("State").text().set("Bonus");
+		curSave.child("Credits").text().set(m_Game->GetCredits());
+		curSave.child("Reel").text().set(m_Game->GetReel().c_str());
+		curSave.child("Animate").text().set(m_Game->GetAnimate().c_str());
+		curSave.child("Bet").text().set(m_Game->GetBet());
+		curSave.child("Lines").text().set(m_Game->GetLines());
+	}
+	else
+	{
+		curSave.child("State").text().set("Game");
+		curSave.child("Credits").text().set(m_Game->GetCredits());
+		curSave.child("Reel").text().set(m_Game->GetReel().c_str());
+		curSave.child("Animate").text().set(m_Game->GetAnimate().c_str());
+	}
+}
+
+void GameManager::SaveWin()
+{
+	pugi::xml_node curSave = m_SaveXML->first_child().first_child();
+	curSave.child("State").text().set("Game");
+	curSave.child("Credits").text().set(m_Game->GetCredits());
+	curSave.child("Reel").text().set(m_Game->GetReel().c_str());
+	curSave.child("Animate").text().set(m_Game->GetAnimate().c_str());
+}
+
+void GameManager::SaveBonusGame()
+{
+	pugi::xml_node curSave = m_SaveXML->first_child().first_child();
+}
+
+void GameManager::SaveOutro()
+{
+	pugi::xml_node curSave = m_SaveXML->first_child().first_child();
+	curSave.child("Credits").text().set(0);
 }
 
 void GameManager::RenderIntro()
