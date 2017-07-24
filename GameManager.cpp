@@ -268,8 +268,15 @@ void GameManager::SaveIntro()
 {
 	pugi::xml_node curSave = m_SaveXML->first_child().first_child();
 
-	curSave.child("State").text().set("Intro");
-	curSave.child("Credits").text().set(m_Intro->GetCredits());
+	if(m_Intro->GetCredits() == 0)
+	{
+		DeleteSave();
+	}
+	else
+	{
+		curSave.child("State").text().set("Intro");
+		curSave.child("Credits").text().set(m_Intro->GetCredits());
+	}
 }
 
 void GameManager::SaveGame()
