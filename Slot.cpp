@@ -4,6 +4,8 @@ Slot::Slot()
 {
 	m_Renderer = NULL;
 
+	m_strResult = "";
+
 	m_TextureBackground = NULL;
 
 	for(int i = 0; i < 4; i++)
@@ -21,6 +23,8 @@ Slot::Slot()
 Slot::Slot(SDL_Renderer* newRenderer)
 {
 	m_Renderer = newRenderer;
+
+	m_strResult = "";
 
 	m_bIsRolling = false;
 	m_bPutInPlace = false;

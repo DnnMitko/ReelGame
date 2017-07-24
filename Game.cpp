@@ -164,10 +164,13 @@ unsigned int Game::GetTotalBet() const
 
 void Game::SetReel(std::string newResult, std::string newAnimate)
 {
-	m_Reel->SetResult(newResult);
+	if(newResult != "")
+	{
+		m_Reel->SetResult(newResult);
 
-	m_Lines->SetAnimate(newAnimate);
-	m_Reel->Animate(newAnimate);
+		m_Lines->SetAnimate(newAnimate);
+		m_Reel->Animate(newAnimate);
+	}
 }
 
 std::string Game::GetReel()

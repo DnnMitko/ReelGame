@@ -21,6 +21,8 @@ Lines::Lines()
 {
 	m_iLinesPlayed = 0;
 
+	m_strAnimate = "000000000000000";
+
 	m_fTotalWin = 0;
 	m_fMax = 0;
 	m_iMaxLine = -1;

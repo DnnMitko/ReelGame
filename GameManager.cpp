@@ -303,12 +303,7 @@ void GameManager::SaveGame()
 
 void GameManager::SaveWin()
 {
-	pugi::xml_node curSave = m_SaveXML->first_child().first_child();
-
-	curSave.child("State").text().set("Game");
-	curSave.child("Credits").text().set(m_Game->GetCredits());
-	curSave.child("Reel").text().set(m_Game->GetReel().c_str());
-	curSave.child("Animate").text().set(m_Game->GetAnimate().c_str());
+	SaveGame();
 }
 
 void GameManager::SaveBonusGame()

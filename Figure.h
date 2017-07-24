@@ -26,8 +26,11 @@ public:
 	void Pause();
 
 	void Rand();
+
 	void SetFigure(char);
+
 	void Copy(Figure*);
+
 	void Clear();
 private:
 	void Draw();
