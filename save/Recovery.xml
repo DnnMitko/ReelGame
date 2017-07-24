@@ -1,0 +1,11 @@
+<?xml version="1.0"?>
+<Recovery>
+	<Save>
+		<State>Intro</State>
+		<Credits>0</Credits>
+		<Reel>Reel</Reel>
+		<Animate>Animate</Animate>
+		<Bet>0</Bet>
+		<Lines>0</Lines>
+	</Save>
+</Recovery>
