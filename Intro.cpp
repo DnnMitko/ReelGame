@@ -277,7 +277,7 @@ void Intro::InitResumeGame()
 {
 	m_ButtonResume = new Button(m_Renderer);
 	m_ButtonResume->SetX((g_ScreenWidth - g_IntroButtonWidth) / 2);
-	m_ButtonResume->SetY(m_iY + g_IntroButtonHeight + 10);
+	m_ButtonResume->SetY(m_iY + g_IntroButtonHeight + g_IntroButtonMargin);
 	m_ButtonResume->SetFieldSize(g_IntroButtonHeight, g_IntroButtonWidth);
 	m_ButtonResume->SetText(g_IntroButtonResumeGame, m_Font, g_ColorBlack);
 }
@@ -286,27 +286,29 @@ void Intro::InitInsertCredit()
 {
 	m_ButtonCreditMinus = new Button(m_Renderer);
 	m_ButtonCreditMinus->SetX((g_ScreenWidth - g_IntroButtonWidth) / 2);
-	m_ButtonCreditMinus->SetY(m_iY + 2* (g_IntroButtonHeight + 10));
+	m_ButtonCreditMinus->SetY(m_iY + 2 * (g_IntroButtonHeight + g_IntroButtonMargin));
 	m_ButtonCreditMinus->SetFieldSize(g_IntroButtonHeight, g_IntroButtonWidth / 4);
 	m_ButtonCreditMinus->SetText(g_IntroButtonMinus, m_Font, g_ColorBlack);
 
 	m_ButtonCreditPlus = new Button(m_Renderer);
-	m_ButtonCreditPlus->SetX(g_IntroButtonVolumePlusX);
-	m_ButtonCreditPlus->SetY(m_iY + 2* (g_IntroButtonHeight + 10));
+	m_ButtonCreditPlus->SetX((g_ScreenWidth - g_IntroButtonWidth) / 2 + g_IntroButtonWidth - g_IntroButtonWidth / 4);
+	m_ButtonCreditPlus->SetY(m_iY + 2 * (g_IntroButtonHeight + g_IntroButtonMargin));
 	m_ButtonCreditPlus->SetFieldSize(g_IntroButtonHeight, g_IntroButtonWidth / 4);
 	m_ButtonCreditPlus->SetText(g_IntroButtonPlus, m_Font, g_ColorBlack);
 
 	m_LabelCredit = new Label(m_Renderer);
 	m_LabelCredit->SetText(g_IntroLabelInsertCredit, m_Font, g_ColorBlack);
-	m_LabelCredit->SetX(g_IntroLabelCreditX);
-	m_LabelCredit->SetY(g_IntroLabelCreditY);
+	m_LabelCredit->SetX((g_ScreenWidth - g_IntroButtonWidth) / 2 + g_IntroButtonWidth / 4
+						+ (g_IntroButtonWidth / 2 - m_LabelCredit->GetWidth()) / 2);
+	m_LabelCredit->SetY(m_iY + 2 * (g_IntroButtonHeight + g_IntroButtonMargin)
+						+ (g_IntroButtonHeight - m_LabelCredit->GetHeight()) / 2);
 }
 
 void Intro::InitInfo()
 {
 	m_ButtonInfo = new Button(m_Renderer);
 	m_ButtonInfo->SetX((g_ScreenWidth - g_IntroButtonWidth) / 2);
-	m_ButtonInfo->SetY(m_iY + 3* (g_IntroButtonHeight + 10));
+	m_ButtonInfo->SetY(m_iY + 3* (g_IntroButtonHeight + g_IntroButtonMargin));
 	m_ButtonInfo->SetFieldSize(g_IntroButtonHeight, g_IntroButtonWidth);
 	m_ButtonInfo->SetText(g_IntroButtonInfo, m_Font, g_ColorBlack);
 
@@ -327,21 +329,23 @@ void Intro::InitVolume()
 	}
 
 	m_ButtonVolumePlus = new Button(m_Renderer);
-	m_ButtonVolumePlus->SetX(g_IntroButtonVolumePlusX);
-	m_ButtonVolumePlus->SetY(m_iY + 4* (g_IntroButtonHeight + 10));
+	m_ButtonVolumePlus->SetX((g_ScreenWidth - g_IntroButtonWidth) / 2 + g_IntroButtonWidth - g_IntroButtonWidth / 4);
+	m_ButtonVolumePlus->SetY(m_iY + 4 * (g_IntroButtonHeight + g_IntroButtonMargin));
 	m_ButtonVolumePlus->SetFieldSize(g_IntroButtonHeight, g_IntroButtonWidth / 4);
 	m_ButtonVolumePlus->SetText(g_IntroButtonPlus, m_Font, g_ColorBlack);
 
 	m_ButtonVolumeMinus = new Button(m_Renderer);
 	m_ButtonVolumeMinus->SetX((g_ScreenWidth - g_IntroButtonWidth) / 2);
-	m_ButtonVolumeMinus->SetY(m_iY + 4* (g_IntroButtonHeight + 10));
+	m_ButtonVolumeMinus->SetY(m_iY + 4 * (g_IntroButtonHeight + g_IntroButtonMargin));
 	m_ButtonVolumeMinus->SetFieldSize(g_IntroButtonHeight, g_IntroButtonWidth / 4);
 	m_ButtonVolumeMinus->SetText(g_IntroButtonMinus, m_Font, g_ColorBlack);
 
 	m_LabelVolume = new Label(m_Renderer);
 	m_LabelVolume->SetText(g_IntroLabelVolume, m_Font, g_ColorBlack);
-	m_LabelVolume->SetX(g_IntroLabelButtonX);
-	m_LabelVolume->SetY(g_IntroLabelButtonY);
+	m_LabelVolume->SetX((g_ScreenWidth - g_IntroButtonWidth) / 2 + g_IntroButtonWidth / 4
+						+ (g_IntroButtonWidth / 2 - m_LabelVolume->GetWidth()) / 2);
+	m_LabelVolume->SetY(m_iY + 4 * (g_IntroButtonHeight + g_IntroButtonMargin)
+						+ (g_IntroButtonHeight - m_LabelCredit->GetHeight()) / 2);
 }
 
 void Intro::InitCredits()
@@ -400,17 +404,19 @@ void Intro::Reposition()
 {
 	m_ButtonStart->SetY(m_iY);
 
-	m_ButtonResume->SetY(m_iY + g_IntroButtonHeight + 10);
+	m_ButtonResume->SetY(m_iY + g_IntroButtonHeight + g_IntroButtonMargin);
 
-	m_ButtonCreditMinus->SetY(m_iY + 2* (g_IntroButtonHeight + 10));
-	m_ButtonCreditPlus->SetY(m_iY + 2* (g_IntroButtonHeight + 10));
-	//TODO m_LabelCredit->SetY(g_IntroLabelCreditY);
+	m_ButtonCreditMinus->SetY(m_iY + 2* (g_IntroButtonHeight + g_IntroButtonMargin));
+	m_ButtonCreditPlus->SetY(m_iY + 2* (g_IntroButtonHeight + g_IntroButtonMargin));
+	m_LabelCredit->SetY(m_iY + 2 * (g_IntroButtonHeight + g_IntroButtonMargin)
+						+ (g_IntroButtonHeight - m_LabelCredit->GetHeight()) / 2);
 
-	m_ButtonInfo->SetY(m_iY + 3* (g_IntroButtonHeight + 10));
+	m_ButtonInfo->SetY(m_iY + 3* (g_IntroButtonHeight + g_IntroButtonMargin));
 
-	m_ButtonVolumePlus->SetY(m_iY + 4* (g_IntroButtonHeight + 10));
-	m_ButtonVolumeMinus->SetY(m_iY + 4* (g_IntroButtonHeight + 10));
-	//TODO m_LabelVolume->SetY(g_IntroLabelButtonY);
+	m_ButtonVolumePlus->SetY(m_iY + 4* (g_IntroButtonHeight + g_IntroButtonMargin));
+	m_ButtonVolumeMinus->SetY(m_iY + 4* (g_IntroButtonHeight + g_IntroButtonMargin));
+	m_LabelVolume->SetY(m_iY + 4 * (g_IntroButtonHeight + g_IntroButtonMargin)
+						+ (g_IntroButtonHeight - m_LabelCredit->GetHeight()) / 2);
 }
 
 
