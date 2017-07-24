@@ -288,9 +288,25 @@ unsigned int GamePanel::GetBet() const
 	return m_uiBet;
 }
 
+void GamePanel::SetBet(unsigned int newBet)
+{
+	m_uiBet = newBet;
+	UpdateBet();
+
+	UpdateTotalBet();
+}
+
 unsigned int GamePanel::GetLines() const
 {
 	return m_uiLines;
+}
+
+void GamePanel::SetLines(unsigned int newLines)
+{
+	m_uiLines = newLines;
+	UpdateLines();
+
+	UpdateTotalBet();
 }
 
 unsigned int GamePanel::GetPaid() const
