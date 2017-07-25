@@ -24,7 +24,7 @@ Lines::Lines()
 	m_strAnimate = "000000000000000";
 
 	m_fTotalWin = 0;
-	m_fMax = 0;
+	m_iMax = 0;
 	m_iMaxLine = -1;
 	m_cMax = '0';
 }
@@ -63,7 +63,7 @@ int Lines::GetTotalWin() const
 void Lines::Calculate()
 {
 	m_fTotalWin = 0;
-	m_fMax = 0;
+	m_iMax = 0;
 	m_iMaxLine = -1;
 	m_cMax = '0';
 
@@ -128,10 +128,8 @@ void Lines::GenAnimate()
 		return;
 	else
 	{
-		//TODO
 		for(int i = 0; i < 5; i++)
-			if (m_strLines[m_iMaxLine][i] == m_cMax)
-				m_strAnimate[m_Lines[m_iMaxLine][i]] = '1';
+			m_strAnimate[m_Lines[m_iMaxLine][i]] = '1';
 	}
 }
 
@@ -228,11 +226,11 @@ void Lines::Process5(int iLine)
 	}
 }
 
-void Lines::CheckMax(int fMultiplier, char cFigure, int iLine)
+void Lines::CheckMax(int iMultiplier, char cFigure, int iLine)
 {
-	if (m_fMax < fMultiplier)
+	if (m_iMax < iMultiplier)
 	{
-		m_fMax = fMultiplier;
+		m_iMax = iMultiplier;
 		m_iMaxLine = iLine;
 		m_cMax = cFigure;
 	}

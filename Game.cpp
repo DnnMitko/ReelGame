@@ -90,34 +90,7 @@ void Game::Render(bool UpdateOnly)
 	{
 		m_bIsSpinning = false;
 
-		m_Lines->SetResult(m_Reel->GetResult(), m_Panel->GetLines());
-
-		if(m_Lines->HasSpecial())
-		{
-			m_bBonus = true;
-			m_bSwitch = true;
-		}
-		else
-		{
-			m_Panel->CalcWinning(m_Lines->GetTotalWin()  * m_Panel->GetBet());
-
-			if(m_Lines->GetTotalWin() != 0)
-			{
-				m_bWin = true;
-				m_bSwitch = true;
-			}
-
-			if(m_Lines->GetTotalWin() == 0 && m_Panel->GetCredits() == 0)
-			{
-				SDL_Delay(g_GameLoseDelay);
-				m_bTransitionOut = true;
-
-				m_Panel->Hide();
-				m_Reel->Hide();
-			}
-		}
-
-		m_Reel->Animate(m_Lines->GetAnimate());
+		ProcessResult();
 	}
 
 	if(!m_Panel->InTransition() && !m_Reel->InTransition())
@@ -296,6 +269,37 @@ void Game::Clear()
 	m_Panel->Clear();
 }
 
+void Game::ProcessResult()
+{
+	m_Lines->SetResult(m_Reel->GetResult(), m_Panel->GetLines());
+
+	if(m_Lines->HasSpecial())
+	{
+		m_bBonus = true;
+		m_bSwitch = true;
+	}
+	else
+	{
+		m_Panel->CalcWinning(m_Lines->GetTotalWin()  * m_Panel->GetBet());
+
+		if(m_Lines->GetTotalWin() != 0)
+		{
+			m_bWin = true;
+			m_bSwitch = true;
+		}
+
+		if(m_Lines->GetTotalWin() == 0 && m_Panel->GetCredits() == 0)
+		{
+			SDL_Delay(g_GameLoseDelay);
+			m_bTransitionOut = true;
+
+			m_Panel->Hide();
+			m_Reel->Hide();
+		}
+	}
+
+	m_Reel->Animate(m_Lines->GetAnimate());
+}
 
 
 

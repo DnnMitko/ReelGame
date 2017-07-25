@@ -22,7 +22,10 @@ Figure::Figure(SDL_Renderer* newRenderer)
 {
 	m_bIsAnimated = false;
 
+	// Set renderer.
 	m_Renderer = newRenderer;
+
+	// If textures were not loaded, load it.
 	if(!m_TextureFigures)
 	{
 		m_TextureFigures = IMG_LoadTexture(m_Renderer,g_Figure);
@@ -35,6 +38,8 @@ Figure::Figure(SDL_Renderer* newRenderer)
 		if (m_TextureBackground == NULL)
 			std::cerr << "Failed to load texture Background!! SDL ERROR: " << IMG_GetError() << std::endl;
 	}
+
+	// Make source rectangle and generate a random figure.
 	m_RectFigure.w = g_FigureSize;
 	m_RectFigure.h = g_FigureSize;
 	m_RectFigure.y = 0;
@@ -58,23 +63,32 @@ void Figure::Render(bool UpdateOnly)
 	if (!m_TextureFigures || !m_Renderer || !m_TextureBackground)
 		return;
 
+	// If we're looking for updates only.
 	if(UpdateOnly)
 	{
+		// If it's animated, draw the figure.
 		if(m_bIsAnimated)
 			Render(false);
 	}
 	else
 	{
+		// If it's animated, check if it's time to change animation frame.
 		if(m_bIsAnimated)
 		{
 			if ( SDL_GetTicks() - m_uiTimer >= g_SlotAnimationDelay)
 			{
+				// Reset timer.
 				m_uiTimer = SDL_GetTicks();
+
+				// Clear the image.
 				Clear();
+
+				// Move to next frame of animation.
 				m_RectFigure.y += g_FigureSize;
 				if ( m_RectFigure.y >= 3 * g_FigureSize)
 					m_RectFigure.y = 0;
 			}
+			// Draw figure.
 			Draw();
 		}
 		else
@@ -99,20 +113,29 @@ int Figure::GetY() const
 
 void Figure::Play()
 {
+	// Start timer.
 	m_uiTimer = SDL_GetTicks();
+
+	// Raise animated flag.
 	m_bIsAnimated = true;
 }
 
 void Figure::Pause()
 {
+	// Set to default frame.
 	m_RectFigure.y = 0;
+
+	// Lower animation flag.
 	m_bIsAnimated = false;
+
+	// Redraw the figure to show the default frame.
 	Clear();
 	Render(false);
 }
 
 void Figure::Rand()
 {
+	// Generate a figure and set the source rectangle to it.
 	int iNum;
 	iNum = rand() % 5;
 	m_RectFigure.x = iNum * g_FigureSize;
@@ -120,6 +143,7 @@ void Figure::Rand()
 
 void Figure::SetFigure(char cNewFigure)
 {
+	// Set source rectangle to the appropriate figure.
 	switch(cNewFigure)
 	{
 		case g_FigureID_1 : m_RectFigure.x = 0; break;
@@ -133,6 +157,7 @@ void Figure::SetFigure(char cNewFigure)
 
 void Figure::Clear()
 {
+	// Cut a rectangle from the game background and cover the figure.
 	SDL_Rect tempRect;
 	tempRect.x = m_iX;
 	tempRect.y = m_iY;
@@ -150,6 +175,7 @@ void Figure::Draw()
 	tempRect.h = g_FigureSize;
 	SDL_RenderCopy(m_Renderer, m_TextureFigures, &m_RectFigure, &tempRect);
 
+	// If it's animated, draw an outline.
 	if(m_bIsAnimated)
 	{
 		SDL_SetRenderDrawColor(m_Renderer, 0xF0, 0xF0, 0xF0, 0xFF);
@@ -159,6 +185,7 @@ void Figure::Draw()
 
 void Figure::Copy(Figure* other)
 {
+	// Copy the position and figure choice of another object.
 	this->m_RectFigure = other->m_RectFigure;
 
 	this->m_iX = other->m_iX;

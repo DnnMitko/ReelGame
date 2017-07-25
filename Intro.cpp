@@ -8,7 +8,6 @@ Intro::Intro() : State()
 Intro::Intro(SDL_Renderer* newRenderer) : State(newRenderer)
 {
 	m_uiCredit = 0;
-	m_uiCounterVolume = 0;
 
 	m_bShowInfo = false;
 	m_bResume = false;
@@ -138,7 +137,6 @@ void Intro::EventHandler(SDL_Event& e)
 	}
 	else if (e.type == SDL_MOUSEBUTTONUP)
 	{
-		m_uiCounterVolume = 0;
 		SDL_GetMouseState(&x, &y);
 
 		if(m_ButtonStart->IsIn(x, y) && m_ButtonStart->IsPressed())
@@ -195,8 +193,6 @@ void Intro::EventHandler(SDL_Event& e)
 void Intro::PrepTransitionIn()
 {
 	m_bTransitionIn = true;
-
-	m_bResume = false;
 
 	m_iY = g_ScreenWidth;
 	Reposition();
