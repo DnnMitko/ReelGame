@@ -40,7 +40,7 @@ private:
 
 	int m_fTotalWin;
 
-	float m_fMax;
+	int m_fMax;
 	int m_iMaxLine;
 	char m_cMax;
 };

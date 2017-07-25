@@ -95,12 +95,18 @@ void Lines::Calculate()
 
 bool Lines::HasSpecial()
 {
+	int iCounter = 0;
+
 	for ( int i = 0 ; i < 15 ; i ++)
 	{
 		if ( m_strResult[i] == g_FigureID_6)
-			return true;
+			iCounter++;
 	}
-	return false;
+
+	if(iCounter == 3)
+		return true;
+	else
+		return false;
 }
 
 void Lines::SetAnimate(std::string newAnimate)
