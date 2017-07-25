@@ -1,0 +1,12 @@
+<map id="GamePanel::InitCurCredits" name="GamePanel::InitCurCredits">
+<area shape="rect" id="node2" href="$class_label.html#af4d107e89fa1b9b2c39c78efdf0d2e81" title="Label::SetText" alt="" coords="653,109,760,136"/>
+<area shape="rect" id="node3" href="$class_label.html#acadd8404f62e45f64bd264ca644f3752" title="Label::SetX" alt="" coords="285,45,373,72"/>
+<area shape="rect" id="node4" href="$class_label.html#a42362aa1ad8727ab34c3ee2814eac32f" title="Label::GetWidth" alt="" coords="271,96,387,122"/>
+<area shape="rect" id="node5" href="$class_label.html#a00861884ca0d984f812ca99d5075b57e" title="Label::SetY" alt="" coords="284,146,375,173"/>
+<area shape="rect" id="node6" href="$class_label.html#a10170f7a5bb9147243218dc88dd7abe1" title="Label::GetHeight" alt="" coords="270,197,389,224"/>
+<area shape="rect" id="node7" href="$class_text_field.html#ae7de76802cd68fc8ba9173527c648edc" title="TextField::SetX" alt="" coords="274,248,385,274"/>
+<area shape="rect" id="node8" href="$class_text_field.html#af0a3f6aae190de343a268808cc59374c" title="TextField::SetY" alt="" coords="273,298,385,325"/>
+<area shape="rect" id="node9" href="$class_text_field.html#a194b803e48fb8b328b9d4d55be3b47ac" title="TextField::SetFieldSize" alt="" coords="251,349,408,376"/>
+<area shape="rect" id="node10" href="$class_game_panel.html#ad9b3965308cceafd10c30891d5de6f57" title="GamePanel::UpdateCurCredits" alt="" coords="229,400,429,426"/>
+<area shape="rect" id="node11" href="$class_text_field.html#ae32a3521d1b38a107502f92400461f59" title="TextField::SetText" alt="" coords="477,222,605,249"/>
+</map>

@@ -1,0 +1,5 @@
+<map id="Outro" name="Outro">
+<area shape="rect" id="node2" href="$class_state.html" title="{State\n|# m_Renderer\l# m_bSwitch\l# m_bTransitionIn\l# m_bTransitionOut\l|+ State()\l+ State()\l+ ~State()\l+ GetSwitch()\l+ ResetSwitch()\l+ PrepTransitionIn()\l+ Render()\l+ EventHandler()\l}" alt="" coords="5,293,140,517"/>
+<area shape="rect" id="node3" href="$class_text_field.html" title="{TextField\n|# m_FieldRect\l|+ TextField()\l+ TextField()\l+ ~TextField()\l+ GetWidth()\l+ GetHeight()\l+ SetX()\l+ SetY()\l+ Render()\l+ SetText()\l+ SetFieldSize()\l}" alt="" coords="320,301,436,510"/>
+<area shape="rect" id="node4" href="$class_label.html" title="{Label\n|# m_Renderer\l# m_TextRect\l# m_TextureText\l# m_bHasChanged\l|+ Label()\l+ Label()\l+ ~Label()\l+ GetWidth()\l+ GetHeight()\l+ SetX()\l+ SetY()\l+ Render()\l+ SetText()\l}" alt="" coords="177,5,309,244"/>
+</map>

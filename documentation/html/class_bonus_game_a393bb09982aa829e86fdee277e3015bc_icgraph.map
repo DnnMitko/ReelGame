@@ -1,0 +1,11 @@
+<map id="BonusGame::TransitionIn" name="BonusGame::TransitionIn">
+<area shape="rect" id="node2" href="$class_bonus_game.html#a4d877c2d0186d550311275ba1ba0ba62" title="BonusGame::Render" alt="" coords="221,81,364,108"/>
+<area shape="rect" id="node3" href="$class_bonus_game.html#a7cc80c1bae4f992084a80f28e150c5f5" title="BonusGame::EventHandler" alt="" coords="412,5,591,32"/>
+<area shape="rect" id="node6" href="$class_game_manager.html#a2abb5a2b0f073738f409875513484dc7" title="GameManager::Load" alt="" coords="430,56,573,83"/>
+<area shape="rect" id="node9" href="$class_game_manager.html#ac5b6af794b0da1323ae3a878b62a296b" title="GameManager::RenderGame" alt="" coords="657,107,848,133"/>
+<area shape="rect" id="node10" href="$class_game_manager.html#a8a7ef6bcf820bbb9589497371fb01ba8" title="GameManager::RenderBonusGame" alt="" coords="639,157,867,184"/>
+<area shape="rect" id="node4" href="$class_game_manager.html#a9cbffdeede49308ecfb272a03fda1a76" title="GameManager::EventHandler" alt="" coords="915,19,1105,45"/>
+<area shape="rect" id="node5" href="$main_8cpp.html#a700a0caa5b70a06d1064e576f9f3cf65" title="main" alt="" coords="1153,57,1204,84"/>
+<area shape="rect" id="node7" href="$class_game_manager.html#af86cede7eac8686a463f330c6c09ba5f" title="GameManager::RenderIntro" alt="" coords="662,56,843,83"/>
+<area shape="rect" id="node8" href="$class_game_manager.html#ac1bd6de1844831d097b24a13a0e6a5a5" title="GameManager::Render" alt="" coords="932,95,1088,121"/>
+</map>

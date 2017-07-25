@@ -1,0 +1,7 @@
+<map id="Slot::ProcessPuttingInPlace" name="Slot::ProcessPuttingInPlace">
+<area shape="rect" id="node2" href="$class_slot.html#a6e6ffdefae9cb6f85e7f3c75346ab45d" title="Slot::CopyUp" alt="" coords="251,5,349,32"/>
+<area shape="rect" id="node4" href="$class_figure.html#a55b86b0c941ca2a85d255273c9e3a5b3" title="Figure::SetY" alt="" coords="410,56,505,83"/>
+<area shape="rect" id="node5" href="$class_figure.html#a156a7b81fc91665ba06936ec121e5697" title="Figure::SetFigure" alt="" coords="239,107,361,133"/>
+<area shape="rect" id="node6" href="$class_figure.html#a73528eaae55c1e5bb13c333414ee13f0" title="Figure::Clear" alt="" coords="252,157,348,184"/>
+<area shape="rect" id="node3" href="$class_figure.html#a3fdefb2062db49e6ff43527b784694fc" title="Figure::Copy" alt="" coords="409,5,505,32"/>
+</map>

@@ -1,0 +1,9 @@
+<map id="Button::Press" name="Button::Press">
+<area shape="rect" id="node2" href="$class_bonus_game.html#a7cc80c1bae4f992084a80f28e150c5f5" title="BonusGame::EventHandler" alt="" coords="379,5,557,32"/>
+<area shape="rect" id="node5" href="$class_game_panel.html#ab92ae74fb5cabab81721b23f5352257e" title="GamePanel::EventHandler" alt="" coords="156,56,331,83"/>
+<area shape="rect" id="node7" href="$class_info.html#a60bd2f1f7b5fd9ea1cfff08a36653e48" title="Info::EventHandler" alt="" coords="180,107,307,133"/>
+<area shape="rect" id="node8" href="$class_intro.html#af16805e8b52b09dec6910cf5b5297371" title="Intro::EventHandler" alt="" coords="403,107,533,133"/>
+<area shape="rect" id="node3" href="$class_game_manager.html#a9cbffdeede49308ecfb272a03fda1a76" title="GameManager::EventHandler" alt="" coords="605,56,796,83"/>
+<area shape="rect" id="node4" href="$main_8cpp.html#a700a0caa5b70a06d1064e576f9f3cf65" title="main" alt="" coords="844,56,895,83"/>
+<area shape="rect" id="node6" href="$class_game.html#a955db66677648789ce6c47b48ec0267c" title="Game::EventHandler" alt="" coords="397,56,539,83"/>
+</map>

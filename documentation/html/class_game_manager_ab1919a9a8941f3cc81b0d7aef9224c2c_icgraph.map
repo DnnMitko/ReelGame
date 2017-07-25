@@ -1,0 +1,7 @@
+<map id="GameManager::SaveGame" name="GameManager::SaveGame">
+<area shape="rect" id="node2" href="$class_game_manager.html#ae9e5359f02acdca5c1ad0206121a4897" title="GameManager::Save" alt="" coords="495,25,637,51"/>
+<area shape="rect" id="node5" href="$class_game_manager.html#af6562ecf11a799db28da02300f4c2828" title="GameManager::SaveWin" alt="" coords="256,25,423,51"/>
+<area shape="rect" id="node6" href="$class_game_manager.html#acc9d3bdfd8cda094c655e628f7ce0ede" title="GameManager::SaveBonusGame" alt="" coords="232,75,447,102"/>
+<area shape="rect" id="node3" href="$class_game_manager.html#a9cbffdeede49308ecfb272a03fda1a76" title="GameManager::EventHandler" alt="" coords="685,25,876,51"/>
+<area shape="rect" id="node4" href="$main_8cpp.html#a700a0caa5b70a06d1064e576f9f3cf65" title="main" alt="" coords="924,25,975,51"/>
+</map>

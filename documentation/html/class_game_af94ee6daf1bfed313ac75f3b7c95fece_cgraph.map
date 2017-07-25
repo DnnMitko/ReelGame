@@ -1,0 +1,16 @@
+<map id="Game::SetReel" name="Game::SetReel">
+<area shape="rect" id="node2" href="$class_reel.html#a09967999f275c3206333c53a44a9d485" title="Reel::SetResult" alt="" coords="172,5,285,32"/>
+<area shape="rect" id="node3" href="$class_reel.html#a53d81cb853b2bdf3c1f1fa1ba1b9e8bb" title="Reel::Animate" alt="" coords="177,56,281,83"/>
+<area shape="rect" id="node6" href="$class_lines.html#a55e94851c60b9a30a6f01780c79721a1" title="Lines::SetResult" alt="" coords="169,107,288,133"/>
+<area shape="rect" id="node15" href="$class_lines.html#a472640cd23ecdeb43364ef29da5f20a8" title="Lines::SetAnimate" alt="" coords="164,157,293,184"/>
+<area shape="rect" id="node4" href="$class_slot.html#a5cc9985cc34d0a98d3df506d4b8350b8" title="Slot::Animate" alt="" coords="357,31,459,57"/>
+<area shape="rect" id="node5" href="$class_figure.html#a701118ead696bf724817b92f90086b7a" title="Figure::Play" alt="" coords="540,31,632,57"/>
+<area shape="rect" id="node7" href="$class_lines.html#add3555e8319f9f5783f59095bf6120fd" title="Lines::GenLines" alt="" coords="350,81,466,108"/>
+<area shape="rect" id="node8" href="$class_lines.html#a3a965a0110a44912b20d63bf2b094756" title="Lines::Calculate" alt="" coords="351,132,465,159"/>
+<area shape="rect" id="node13" href="$class_lines.html#a5e5acdea0ff23f565cd6235f6b4a5af7" title="Lines::GenAnimate" alt="" coords="341,208,475,235"/>
+<area shape="rect" id="node9" href="$class_lines.html#ae1d83d7941190205f2ab451e85ff22b6" title="Lines::Process5" alt="" coords="528,81,644,108"/>
+<area shape="rect" id="node11" href="$class_lines.html#a0be5a86e0685a46c5cd4f06be51d1b14" title="Lines::Process4" alt="" coords="528,132,644,159"/>
+<area shape="rect" id="node12" href="$class_lines.html#adc2ebaa3f7ee7a6e6f1a59eda1121eda" title="Lines::Process3" alt="" coords="528,183,644,209"/>
+<area shape="rect" id="node10" href="$class_lines.html#a0e9e2729ae65cbbd5ab2c92246020659" title="Lines::CheckMax" alt="" coords="697,132,820,159"/>
+<area shape="rect" id="node14" href="$class_lines.html#acb2032554033659053fe09926bc6d954" title="Lines::HasSpecial" alt="" coords="523,233,649,260"/>
+</map>

@@ -1,0 +1,5 @@
+<map id="BonusGame::SetCredits" name="BonusGame::SetCredits">
+<area shape="rect" id="node2" href="$class_bonus_game.html#a0fb72a8da6c41a2c2da09c40a5eca2ae" title="BonusGame::UpdateCurWin" alt="" coords="216,5,403,32"/>
+<area shape="rect" id="node3" href="$class_text_field.html#ae32a3521d1b38a107502f92400461f59" title="TextField::SetText" alt="" coords="451,5,579,32"/>
+<area shape="rect" id="node4" href="$class_label.html#af4d107e89fa1b9b2c39c78efdf0d2e81" title="Label::SetText" alt="" coords="627,5,733,32"/>
+</map>

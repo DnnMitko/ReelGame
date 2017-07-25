@@ -1,0 +1,5 @@
+<map id="GamePanel::SetCredits" name="GamePanel::SetCredits">
+<area shape="rect" id="node2" href="$class_game_panel.html#ad9b3965308cceafd10c30891d5de6f57" title="GamePanel::UpdateCurCredits" alt="" coords="212,5,412,32"/>
+<area shape="rect" id="node3" href="$class_text_field.html#ae32a3521d1b38a107502f92400461f59" title="TextField::SetText" alt="" coords="460,5,588,32"/>
+<area shape="rect" id="node4" href="$class_label.html#af4d107e89fa1b9b2c39c78efdf0d2e81" title="Label::SetText" alt="" coords="636,5,743,32"/>
+</map>

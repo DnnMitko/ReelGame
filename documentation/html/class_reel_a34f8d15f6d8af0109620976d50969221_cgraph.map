@@ -1,0 +1,5 @@
+<map id="Reel::Spin" name="Reel::Spin">
+<area shape="rect" id="node2" href="$class_slot.html#a5599455e5ca2c65e429e48b6058cf103" title="Slot::Stop" alt="" coords="136,5,216,32"/>
+<area shape="rect" id="node3" href="$class_slot.html#ac0feddd77627bc1f453a52461c8b28af" title="Slot::Spin" alt="" coords="137,56,215,83"/>
+<area shape="rect" id="node4" href="$class_slot.html#a1d51d07f12b3153fe5f91fe33e81f5ea" title="Slot::GenNext" alt="" coords="264,56,368,83"/>
+</map>

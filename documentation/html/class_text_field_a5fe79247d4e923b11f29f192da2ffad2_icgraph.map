@@ -1,0 +1,6 @@
+<map id="TextField::GetWidth" name="TextField::GetWidth">
+<area shape="rect" id="node2" href="$class_bonus_game.html#a50a34b3b50a24a268365c78df362f373" title="BonusGame::InitGame" alt="" coords="192,5,347,32"/>
+<area shape="rect" id="node4" href="$class_outro.html#a81fdbdecefaee14121634cc56aa47a7a" title="Outro::Outro" alt="" coords="222,56,317,83"/>
+<area shape="rect" id="node5" href="$class_win.html#a85beedf0d50fca1c08446900c47730d1" title="Win::Win" alt="" coords="231,107,307,133"/>
+<area shape="rect" id="node3" href="$class_bonus_game.html#a6a6e31d24d55070a46e6078e2c2f9675" title="BonusGame::BonusGame" alt="" coords="395,5,569,32"/>
+</map>

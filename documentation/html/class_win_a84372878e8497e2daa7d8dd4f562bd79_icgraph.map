@@ -1,0 +1,6 @@
+<map id="Win::Render" name="Win::Render">
+<area shape="rect" id="node2" href="$class_game_manager.html#ac5b6af794b0da1323ae3a878b62a296b" title="GameManager::RenderGame" alt="" coords="148,5,339,32"/>
+<area shape="rect" id="node5" href="$class_game_manager.html#aa26d2f9f44fe03c3a685bfc6add12c97" title="GameManager::RenderWin" alt="" coords="154,56,333,83"/>
+<area shape="rect" id="node3" href="$class_game_manager.html#ac1bd6de1844831d097b24a13a0e6a5a5" title="GameManager::Render" alt="" coords="387,31,543,57"/>
+<area shape="rect" id="node4" href="$main_8cpp.html#a700a0caa5b70a06d1064e576f9f3cf65" title="main" alt="" coords="591,31,641,57"/>
+</map>

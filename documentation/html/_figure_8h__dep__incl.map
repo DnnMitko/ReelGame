@@ -1,0 +1,12 @@
+<map id="Figure.h" name="Figure.h">
+<area shape="rect" id="node2" href="$_figure_8cpp.html" title="Figure.cpp" alt="" coords="67,80,149,107"/>
+<area shape="rect" id="node3" href="$_slot_8h.html" title="Slot.h" alt="" coords="173,80,229,107"/>
+<area shape="rect" id="node4" href="$_reel_8h.html" title="Reel.h" alt="" coords="127,155,185,181"/>
+<area shape="rect" id="node11" href="$_slot_8cpp.html" title="Slot.cpp" alt="" coords="210,155,281,181"/>
+<area shape="rect" id="node5" href="$_game_8h.html" title="Game.h" alt="" coords="75,229,143,256"/>
+<area shape="rect" id="node10" href="$_reel_8cpp.html" title="Reel.cpp" alt="" coords="167,229,241,256"/>
+<area shape="rect" id="node6" href="$_game_8cpp.html" title="Game.cpp" alt="" coords="5,304,88,331"/>
+<area shape="rect" id="node7" href="$_game_manager_8h.html" title="GameManager.h" alt="" coords="113,304,231,331"/>
+<area shape="rect" id="node8" href="$_game_manager_8cpp.html" title="GameManager.cpp" alt="" coords="42,379,174,405"/>
+<area shape="rect" id="node9" href="$main_8cpp.html" title="main.cpp" alt="" coords="199,379,273,405"/>
+</map>

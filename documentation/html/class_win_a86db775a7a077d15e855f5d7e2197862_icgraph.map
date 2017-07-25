@@ -1,0 +1,7 @@
+<map id="Win::TransitionOut" name="Win::TransitionOut">
+<area shape="rect" id="node2" href="$class_win.html#a84372878e8497e2daa7d8dd4f562bd79" title="Win::Render" alt="" coords="184,31,279,57"/>
+<area shape="rect" id="node3" href="$class_game_manager.html#ac5b6af794b0da1323ae3a878b62a296b" title="GameManager::RenderGame" alt="" coords="327,5,517,32"/>
+<area shape="rect" id="node6" href="$class_game_manager.html#aa26d2f9f44fe03c3a685bfc6add12c97" title="GameManager::RenderWin" alt="" coords="333,56,511,83"/>
+<area shape="rect" id="node4" href="$class_game_manager.html#ac1bd6de1844831d097b24a13a0e6a5a5" title="GameManager::Render" alt="" coords="565,31,721,57"/>
+<area shape="rect" id="node5" href="$main_8cpp.html#a700a0caa5b70a06d1064e576f9f3cf65" title="main" alt="" coords="769,31,820,57"/>
+</map>

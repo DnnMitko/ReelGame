@@ -1,0 +1,9 @@
+<map id="BonusGame::InitGame" name="BonusGame::InitGame">
+<area shape="rect" id="node2" href="$class_text_field.html#a194b803e48fb8b328b9d4d55be3b47ac" title="TextField::SetFieldSize" alt="" coords="208,5,365,32"/>
+<area shape="rect" id="node3" href="$class_text_field.html#ae7de76802cd68fc8ba9173527c648edc" title="TextField::SetX" alt="" coords="231,56,342,83"/>
+<area shape="rect" id="node4" href="$class_text_field.html#a5fe79247d4e923b11f29f192da2ffad2" title="TextField::GetWidth" alt="" coords="217,107,356,133"/>
+<area shape="rect" id="node5" href="$class_text_field.html#af0a3f6aae190de343a268808cc59374c" title="TextField::SetY" alt="" coords="231,157,343,184"/>
+<area shape="rect" id="node6" href="$class_text_field.html#a52843a1ed29745ba4f2fe9c23f0b5609" title="TextField::GetHeight" alt="" coords="216,208,357,235"/>
+<area shape="rect" id="node7" href="$class_text_field.html#ae32a3521d1b38a107502f92400461f59" title="TextField::SetText" alt="" coords="223,259,351,285"/>
+<area shape="rect" id="node8" href="$class_label.html#af4d107e89fa1b9b2c39c78efdf0d2e81" title="Label::SetText" alt="" coords="413,259,520,285"/>
+</map>

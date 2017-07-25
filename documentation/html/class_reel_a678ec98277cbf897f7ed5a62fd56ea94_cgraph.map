@@ -1,0 +1,5 @@
+<map id="Reel::Render" name="Reel::Render">
+<area shape="rect" id="node2" href="$class_reel.html#ac80530493945eb1707f2eae8085a1ade" title="Reel::TransitionIn" alt="" coords="156,5,279,32"/>
+<area shape="rect" id="node3" href="$class_reel.html#ae8ef359698f6734cc6788bf54013385c" title="Reel::TransitionOut" alt="" coords="151,56,284,83"/>
+<area shape="rect" id="node4" href="$class_reel.html#af711364bb2d4d259612e5cca7cd38203" title="Reel::HasStopped" alt="" coords="154,107,281,133"/>
+</map>

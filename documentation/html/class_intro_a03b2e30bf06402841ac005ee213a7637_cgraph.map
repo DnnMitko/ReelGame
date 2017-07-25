@@ -1,0 +1,6 @@
+<map id="Intro::TransitionOut" name="Intro::TransitionOut">
+<area shape="rect" id="node2" href="$class_intro.html#a7e873aac7a236054f0d52da251d693fe" title="Intro::Reposition" alt="" coords="185,56,301,83"/>
+<area shape="rect" id="node3" href="$class_text_field.html#af0a3f6aae190de343a268808cc59374c" title="TextField::SetY" alt="" coords="353,5,465,32"/>
+<area shape="rect" id="node4" href="$class_label.html#a00861884ca0d984f812ca99d5075b57e" title="Label::SetY" alt="" coords="363,56,454,83"/>
+<area shape="rect" id="node5" href="$class_label.html#a10170f7a5bb9147243218dc88dd7abe1" title="Label::GetHeight" alt="" coords="349,107,468,133"/>
+</map>

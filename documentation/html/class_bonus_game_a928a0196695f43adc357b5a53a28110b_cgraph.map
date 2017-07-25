@@ -1,0 +1,10 @@
+<map id="BonusGame::ResetGame" name="BonusGame::ResetGame">
+<area shape="rect" id="node2" href="$class_chest.html#ac2eba30d145280afe87f65542d94cefd" title="Chest::Close" alt="" coords="246,5,343,32"/>
+<area shape="rect" id="node3" href="$class_text_field.html#ae32a3521d1b38a107502f92400461f59" title="TextField::SetText" alt="" coords="231,56,359,83"/>
+<area shape="rect" id="node5" href="$class_label.html#a00861884ca0d984f812ca99d5075b57e" title="Label::SetY" alt="" coords="249,107,340,133"/>
+<area shape="rect" id="node6" href="$class_label.html#a10170f7a5bb9147243218dc88dd7abe1" title="Label::GetHeight" alt="" coords="235,157,354,184"/>
+<area shape="rect" id="node7" href="$class_chest.html#a71c77ad28b2fff80bd173b7acc0f06f9" title="Chest::SetY" alt="" coords="248,208,341,235"/>
+<area shape="rect" id="node8" href="$class_text_field.html#af0a3f6aae190de343a268808cc59374c" title="TextField::SetY" alt="" coords="239,259,351,285"/>
+<area shape="rect" id="node9" href="$class_text_field.html#a52843a1ed29745ba4f2fe9c23f0b5609" title="TextField::GetHeight" alt="" coords="224,309,365,336"/>
+<area shape="rect" id="node4" href="$class_label.html#af4d107e89fa1b9b2c39c78efdf0d2e81" title="Label::SetText" alt="" coords="413,56,520,83"/>
+</map>

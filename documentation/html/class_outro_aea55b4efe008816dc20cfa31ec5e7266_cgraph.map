@@ -1,0 +1,8 @@
+<map id="Outro::SetCredits" name="Outro::SetCredits">
+<area shape="rect" id="node2" href="$class_text_field.html#ae32a3521d1b38a107502f92400461f59" title="TextField::SetText" alt="" coords="176,5,304,32"/>
+<area shape="rect" id="node3" href="$class_label.html#af4d107e89fa1b9b2c39c78efdf0d2e81" title="Label::SetText" alt="" coords="352,31,459,57"/>
+<area shape="rect" id="node4" href="$class_label.html#acadd8404f62e45f64bd264ca644f3752" title="Label::SetX" alt="" coords="196,107,284,133"/>
+<area shape="rect" id="node5" href="$class_label.html#a42362aa1ad8727ab34c3ee2814eac32f" title="Label::GetWidth" alt="" coords="182,157,298,184"/>
+<area shape="rect" id="node6" href="$class_label.html#a00861884ca0d984f812ca99d5075b57e" title="Label::SetY" alt="" coords="195,208,285,235"/>
+<area shape="rect" id="node7" href="$class_label.html#a10170f7a5bb9147243218dc88dd7abe1" title="Label::GetHeight" alt="" coords="181,259,299,285"/>
+</map>

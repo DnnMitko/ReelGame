@@ -1,0 +1,7 @@
+<map id="Figure::Clear" name="Figure::Clear">
+<area shape="rect" id="node2" href="$class_figure.html#a6050ef265dbcc040da5a036a1c8939c1" title="Figure::Render" alt="" coords="189,5,295,32"/>
+<area shape="rect" id="node3" href="$class_figure.html#ab6519d4892d34ae13b3c41dadcd896d8" title="Figure::Pause" alt="" coords="383,44,485,71"/>
+<area shape="rect" id="node4" href="$class_slot.html#a4cbb6470690ce592aabf5a38e35557ee" title="Slot::ProcessRolling" alt="" coords="172,107,312,133"/>
+<area shape="rect" id="node6" href="$class_slot.html#a13139b2a43344a38b4d0e926eeb7d1f9" title="Slot::ProcessPuttingInPlace" alt="" coords="149,157,335,184"/>
+<area shape="rect" id="node5" href="$class_slot.html#af6accb4439945f41ae4d4de04f2b846a" title="Slot::Render" alt="" coords="387,120,481,147"/>
+</map>

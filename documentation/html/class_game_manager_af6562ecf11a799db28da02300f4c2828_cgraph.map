@@ -1,0 +1,33 @@
+<map id="GameManager::SaveWin" name="GameManager::SaveWin">
+<area shape="rect" id="node2" href="$class_game_manager.html#ab1919a9a8941f3cc81b0d7aef9224c2c" title="GameManager::SaveGame" alt="" coords="220,436,399,463"/>
+<area shape="rect" id="node3" href="$class_game.html#ab205739c8958e8f08362bbd65cfaface" title="Game::CalcWinningForce" alt="" coords="447,335,617,361"/>
+<area shape="rect" id="node26" href="$class_game.html#a9ecae59097086560b855784f53b5c9e5" title="Game::GetCredits" alt="" coords="469,512,595,539"/>
+<area shape="rect" id="node28" href="$class_game.html#ab27fb491baafa46ee27e1e8fe173dc15" title="Game::GetReel" alt="" coords="476,208,588,235"/>
+<area shape="rect" id="node29" href="$class_game.html#a4d6c531fba31bb196004204d99c2b409" title="Game::GetAnimate" alt="" coords="465,563,599,589"/>
+<area shape="rect" id="node31" href="$class_game.html#a20eb526034d8acaca8e7b347007529d5" title="Game::GetBet" alt="" coords="479,461,585,488"/>
+<area shape="rect" id="node32" href="$class_game.html#ab8bd3889e768cc27570e0abbf33c0794" title="Game::GetLines" alt="" coords="473,411,591,437"/>
+<area shape="rect" id="node4" href="$class_lines.html#a55e94851c60b9a30a6f01780c79721a1" title="Lines::SetResult" alt="" coords="691,360,810,387"/>
+<area shape="rect" id="node12" href="$class_lines.html#acb2032554033659053fe09926bc6d954" title="Lines::HasSpecial" alt="" coords="1162,259,1289,285"/>
+<area shape="rect" id="node13" href="$class_reel.html#a91d141187036b229b4e75bebb276756f" title="Reel::GetResult" alt="" coords="693,157,808,184"/>
+<area shape="rect" id="node14" href="$class_game_panel.html#a02859f98ce4d5f30ab0ea1f301af3984" title="GamePanel::GetLines" alt="" coords="675,411,826,437"/>
+<area shape="rect" id="node15" href="$class_game_panel.html#a498cd20a47c058f8ccde4648473f02bd" title="GamePanel::CalcWinning" alt="" coords="665,208,836,235"/>
+<area shape="rect" id="node24" href="$class_lines.html#a94b2669d32221e15fb0d16da3c2b153f" title="Lines::GetTotalWin" alt="" coords="684,309,817,336"/>
+<area shape="rect" id="node25" href="$class_game_panel.html#a4dd94194cd0fd18fed62ae3b539a5763" title="GamePanel::GetBet" alt="" coords="681,461,820,488"/>
+<area shape="rect" id="node5" href="$class_lines.html#add3555e8319f9f5783f59095bf6120fd" title="Lines::GenLines" alt="" coords="926,411,1042,437"/>
+<area shape="rect" id="node6" href="$class_lines.html#a3a965a0110a44912b20d63bf2b094756" title="Lines::Calculate" alt="" coords="927,360,1041,387"/>
+<area shape="rect" id="node11" href="$class_lines.html#a5e5acdea0ff23f565cd6235f6b4a5af7" title="Lines::GenAnimate" alt="" coords="917,309,1051,336"/>
+<area shape="rect" id="node7" href="$class_lines.html#ae1d83d7941190205f2ab451e85ff22b6" title="Lines::Process5" alt="" coords="1167,411,1283,437"/>
+<area shape="rect" id="node9" href="$class_lines.html#a0be5a86e0685a46c5cd4f06be51d1b14" title="Lines::Process4" alt="" coords="1167,309,1283,336"/>
+<area shape="rect" id="node10" href="$class_lines.html#adc2ebaa3f7ee7a6e6f1a59eda1121eda" title="Lines::Process3" alt="" coords="1167,360,1283,387"/>
+<area shape="rect" id="node8" href="$class_lines.html#a0e9e2729ae65cbbd5ab2c92246020659" title="Lines::CheckMax" alt="" coords="1369,360,1492,387"/>
+<area shape="rect" id="node16" href="$class_game_panel.html#a63fd5e2c51ba200d832368be59b76069" title="GamePanel::Clear" alt="" coords="920,107,1048,133"/>
+<area shape="rect" id="node22" href="$class_game_panel.html#a03682b0c6474d32224d93b584a9449b1" title="GamePanel::UpdatePaid" alt="" coords="1143,157,1308,184"/>
+<area shape="rect" id="node23" href="$class_game_panel.html#ad9b3965308cceafd10c30891d5de6f57" title="GamePanel::UpdateCurCredits" alt="" coords="884,208,1084,235"/>
+<area shape="rect" id="node17" href="$class_game_panel.html#a4216a640db3293e8d9ae6fcccfcce10d" title="GamePanel::UpdateBet" alt="" coords="1146,5,1305,32"/>
+<area shape="rect" id="node20" href="$class_game_panel.html#ac454582c7d48f3962d1ae252e9557c1f" title="GamePanel::UpdateLines" alt="" coords="1140,56,1311,83"/>
+<area shape="rect" id="node21" href="$class_game_panel.html#a53f4ee70210eb8b89caf18a336807271" title="GamePanel::UpdateTotalBet" alt="" coords="1132,107,1319,133"/>
+<area shape="rect" id="node18" href="$class_text_field.html#ae32a3521d1b38a107502f92400461f59" title="TextField::SetText" alt="" coords="1367,107,1495,133"/>
+<area shape="rect" id="node19" href="$class_label.html#af4d107e89fa1b9b2c39c78efdf0d2e81" title="Label::SetText" alt="" coords="1543,107,1649,133"/>
+<area shape="rect" id="node27" href="$class_game_panel.html#ad3b716dcdb23537d4fe100102851d2ba" title="GamePanel::GetCredits" alt="" coords="671,512,831,539"/>
+<area shape="rect" id="node30" href="$class_lines.html#ad1d2a3f9035e112532c48f6ec54d30b9" title="Lines::GetAnimate" alt="" coords="685,563,816,589"/>
+</map>

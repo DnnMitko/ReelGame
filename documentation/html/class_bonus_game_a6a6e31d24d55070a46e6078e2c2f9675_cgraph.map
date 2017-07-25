@@ -1,0 +1,22 @@
+<map id="BonusGame::BonusGame" name="BonusGame::BonusGame">
+<area shape="rect" id="node2" href="$class_bonus_game.html#a6f40fe1b75f6900d63a0ede6a49c62b1" title="BonusGame::InitFonts" alt="" coords="244,132,396,159"/>
+<area shape="rect" id="node3" href="$class_bonus_game.html#abede88d7e6244e0d539f817707af29af" title="BonusGame::InitTitleScreen" alt="" coords="228,385,412,412"/>
+<area shape="rect" id="node15" href="$class_bonus_game.html#a50a34b3b50a24a268365c78df362f373" title="BonusGame::InitGame" alt="" coords="243,183,397,209"/>
+<area shape="rect" id="node18" href="$class_bonus_game.html#a8242d1e0bcf61defb9cc219c11b56fe0" title="BonusGame::InitChests" alt="" coords="240,537,400,564"/>
+<area shape="rect" id="node21" href="$class_bonus_game.html#a2b9dca8bbc20be3a32250b674d427bca" title="BonusGame::InitSound" alt="" coords="242,588,398,615"/>
+<area shape="rect" id="node4" href="$class_label.html#af4d107e89fa1b9b2c39c78efdf0d2e81" title="Label::SetText" alt="" coords="871,563,977,589"/>
+<area shape="rect" id="node5" href="$class_label.html#acadd8404f62e45f64bd264ca644f3752" title="Label::SetX" alt="" coords="509,360,597,387"/>
+<area shape="rect" id="node6" href="$class_label.html#a42362aa1ad8727ab34c3ee2814eac32f" title="Label::GetWidth" alt="" coords="495,411,611,437"/>
+<area shape="rect" id="node7" href="$class_label.html#a00861884ca0d984f812ca99d5075b57e" title="Label::SetY" alt="" coords="508,461,599,488"/>
+<area shape="rect" id="node8" href="$class_label.html#a10170f7a5bb9147243218dc88dd7abe1" title="Label::GetHeight" alt="" coords="494,512,613,539"/>
+<area shape="rect" id="node9" href="$class_text_field.html#ae7de76802cd68fc8ba9173527c648edc" title="TextField::SetX" alt="" coords="498,157,609,184"/>
+<area shape="rect" id="node10" href="$class_text_field.html#af0a3f6aae190de343a268808cc59374c" title="TextField::SetY" alt="" coords="497,208,609,235"/>
+<area shape="rect" id="node11" href="$class_text_field.html#a194b803e48fb8b328b9d4d55be3b47ac" title="TextField::SetFieldSize" alt="" coords="475,259,632,285"/>
+<area shape="rect" id="node12" href="$class_bonus_game.html#a0fb72a8da6c41a2c2da09c40a5eca2ae" title="BonusGame::UpdateCurWin" alt="" coords="460,309,647,336"/>
+<area shape="rect" id="node14" href="$class_button.html#a6e0b5f6255126b4c5b40194e455dca47" title="Button::SetText" alt="" coords="702,613,815,640"/>
+<area shape="rect" id="node13" href="$class_text_field.html#ae32a3521d1b38a107502f92400461f59" title="TextField::SetText" alt="" coords="695,309,823,336"/>
+<area shape="rect" id="node16" href="$class_text_field.html#a5fe79247d4e923b11f29f192da2ffad2" title="TextField::GetWidth" alt="" coords="484,5,623,32"/>
+<area shape="rect" id="node17" href="$class_text_field.html#a52843a1ed29745ba4f2fe9c23f0b5609" title="TextField::GetHeight" alt="" coords="483,56,624,83"/>
+<area shape="rect" id="node19" href="$class_chest.html#ac6aedfba98aa5a605574b2159d1776b7" title="Chest::SetX" alt="" coords="508,715,599,741"/>
+<area shape="rect" id="node20" href="$class_chest.html#a71c77ad28b2fff80bd173b7acc0f06f9" title="Chest::SetY" alt="" coords="507,664,600,691"/>
+</map>

@@ -1,0 +1,5 @@
+<map id="BonusGame::TransitionIn" name="BonusGame::TransitionIn">
+<area shape="rect" id="node2" href="$class_label.html#a00861884ca0d984f812ca99d5075b57e" title="Label::SetY" alt="" coords="235,5,326,32"/>
+<area shape="rect" id="node3" href="$class_label.html#a10170f7a5bb9147243218dc88dd7abe1" title="Label::GetHeight" alt="" coords="221,56,340,83"/>
+<area shape="rect" id="node4" href="$class_text_field.html#af0a3f6aae190de343a268808cc59374c" title="TextField::SetY" alt="" coords="225,107,337,133"/>
+</map>

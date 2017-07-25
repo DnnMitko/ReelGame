@@ -1,0 +1,7 @@
+<map id="Game::SetBet" name="Game::SetBet">
+<area shape="rect" id="node2" href="$class_game_panel.html#a8beba21f382981bd63e95b9616dd25d6" title="GamePanel::SetBet" alt="" coords="159,31,297,57"/>
+<area shape="rect" id="node3" href="$class_game_panel.html#a4216a640db3293e8d9ae6fcccfcce10d" title="GamePanel::UpdateBet" alt="" coords="359,5,518,32"/>
+<area shape="rect" id="node6" href="$class_game_panel.html#a53f4ee70210eb8b89caf18a336807271" title="GamePanel::UpdateTotalBet" alt="" coords="345,56,532,83"/>
+<area shape="rect" id="node4" href="$class_text_field.html#ae32a3521d1b38a107502f92400461f59" title="TextField::SetText" alt="" coords="580,31,708,57"/>
+<area shape="rect" id="node5" href="$class_label.html#af4d107e89fa1b9b2c39c78efdf0d2e81" title="Label::SetText" alt="" coords="756,31,863,57"/>
+</map>

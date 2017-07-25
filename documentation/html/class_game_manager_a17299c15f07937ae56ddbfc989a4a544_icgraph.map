@@ -1,0 +1,9 @@
+<map id="GameManager::DeleteSave" name="GameManager::DeleteSave">
+<area shape="rect" id="node2" href="$class_game_manager.html#a76c57730fe6a3da49a091c088a90b43f" title="GameManager::SaveIntro" alt="" coords="237,5,405,32"/>
+<area shape="rect" id="node6" href="$class_game_manager.html#ae8edc1f9563af53b0ebe741f618f53e3" title="GameManager::SaveOutro" alt="" coords="233,56,408,83"/>
+<area shape="rect" id="node7" href="$class_game_manager.html#ac5b6af794b0da1323ae3a878b62a296b" title="GameManager::RenderGame" alt="" coords="456,107,647,133"/>
+<area shape="rect" id="node3" href="$class_game_manager.html#ae9e5359f02acdca5c1ad0206121a4897" title="GameManager::Save" alt="" coords="480,56,623,83"/>
+<area shape="rect" id="node4" href="$class_game_manager.html#a9cbffdeede49308ecfb272a03fda1a76" title="GameManager::EventHandler" alt="" coords="695,56,885,83"/>
+<area shape="rect" id="node5" href="$main_8cpp.html#a700a0caa5b70a06d1064e576f9f3cf65" title="main" alt="" coords="933,81,984,108"/>
+<area shape="rect" id="node8" href="$class_game_manager.html#ac1bd6de1844831d097b24a13a0e6a5a5" title="GameManager::Render" alt="" coords="712,107,868,133"/>
+</map>

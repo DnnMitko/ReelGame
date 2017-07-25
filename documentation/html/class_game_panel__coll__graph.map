@@ -1,0 +1,5 @@
+<map id="GamePanel" name="GamePanel">
+<area shape="rect" id="node2" href="$class_text_field.html" title="{TextField\n|# m_FieldRect\l|+ TextField()\l+ TextField()\l+ ~TextField()\l+ GetWidth()\l+ GetHeight()\l+ SetX()\l+ SetY()\l+ Render()\l+ SetText()\l+ SetFieldSize()\l}" alt="" coords="109,293,225,503"/>
+<area shape="rect" id="node4" href="$class_button.html" title="{Button\n|&#45; m_bIsPressed\l&#45; m_TextureTextPressed\l&#45; m_TextureButton\l&#45; m_SfxClick\l|+ Button()\l+ Button()\l+ ~Button()\l+ Render()\l+ SetText()\l+ IsIn()\l+ Press()\l+ Release()\l+ IsPressed()\l}" alt="" coords="333,624,497,863"/>
+<area shape="rect" id="node3" href="$class_label.html" title="{Label\n|# m_Renderer\l# m_TextRect\l# m_TextureText\l# m_bHasChanged\l|+ Label()\l+ Label()\l+ ~Label()\l+ GetWidth()\l+ GetHeight()\l+ SetX()\l+ SetY()\l+ Render()\l+ SetText()\l}" alt="" coords="5,5,137,244"/>
+</map>

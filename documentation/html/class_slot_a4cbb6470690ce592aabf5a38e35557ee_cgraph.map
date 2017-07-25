@@ -1,0 +1,7 @@
+<map id="Slot::ProcessRolling" name="Slot::ProcessRolling">
+<area shape="rect" id="node2" href="$class_slot.html#a6e6ffdefae9cb6f85e7f3c75346ab45d" title="Slot::CopyUp" alt="" coords="193,5,292,32"/>
+<area shape="rect" id="node4" href="$class_figure.html#a55b86b0c941ca2a85d255273c9e3a5b3" title="Figure::SetY" alt="" coords="341,56,435,83"/>
+<area shape="rect" id="node5" href="$class_figure.html#aa3a808cf93dd7ed543b08325194ed3a7" title="Figure::Rand" alt="" coords="195,107,291,133"/>
+<area shape="rect" id="node6" href="$class_figure.html#a73528eaae55c1e5bb13c333414ee13f0" title="Figure::Clear" alt="" coords="195,157,291,184"/>
+<area shape="rect" id="node3" href="$class_figure.html#a3fdefb2062db49e6ff43527b784694fc" title="Figure::Copy" alt="" coords="340,5,436,32"/>
+</map>

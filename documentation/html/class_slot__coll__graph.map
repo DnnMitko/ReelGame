@@ -1,0 +1,3 @@
+<map id="Slot" name="Slot">
+<area shape="rect" id="node2" href="$class_figure.html" title="{Figure\n|&#45; m_Renderer\l&#45; m_RectFigure\l&#45; m_iX\l&#45; m_iY\l&#45; m_bIsAnimated\l&#45; m_uiTimer\l&#45; m_TextureFigures\l&#45; m_TextureBackground\l|+ Figure()\l+ Figure()\l+ ~Figure()\l+ SetX()\l+ SetY()\l+ GetY()\l+ Render()\l+ Play()\l+ Pause()\l+ Rand()\l+ SetFigure()\l+ Copy()\l+ Clear()\l&#45; Draw()\l}" alt="" coords="11,5,171,376"/>
+</map>

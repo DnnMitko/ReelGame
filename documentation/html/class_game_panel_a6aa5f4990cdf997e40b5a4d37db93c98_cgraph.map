@@ -1,0 +1,12 @@
+<map id="GamePanel::InitTotalBet" name="GamePanel::InitTotalBet">
+<area shape="rect" id="node2" href="$class_label.html#af4d107e89fa1b9b2c39c78efdf0d2e81" title="Label::SetText" alt="" coords="627,109,733,136"/>
+<area shape="rect" id="node3" href="$class_label.html#acadd8404f62e45f64bd264ca644f3752" title="Label::SetX" alt="" coords="265,45,353,72"/>
+<area shape="rect" id="node4" href="$class_label.html#a42362aa1ad8727ab34c3ee2814eac32f" title="Label::GetWidth" alt="" coords="251,96,367,122"/>
+<area shape="rect" id="node5" href="$class_label.html#a00861884ca0d984f812ca99d5075b57e" title="Label::SetY" alt="" coords="264,146,355,173"/>
+<area shape="rect" id="node6" href="$class_label.html#a10170f7a5bb9147243218dc88dd7abe1" title="Label::GetHeight" alt="" coords="250,197,369,224"/>
+<area shape="rect" id="node7" href="$class_text_field.html#ae7de76802cd68fc8ba9173527c648edc" title="TextField::SetX" alt="" coords="254,248,365,274"/>
+<area shape="rect" id="node8" href="$class_text_field.html#af0a3f6aae190de343a268808cc59374c" title="TextField::SetY" alt="" coords="253,298,365,325"/>
+<area shape="rect" id="node9" href="$class_text_field.html#a194b803e48fb8b328b9d4d55be3b47ac" title="TextField::SetFieldSize" alt="" coords="231,349,388,376"/>
+<area shape="rect" id="node10" href="$class_game_panel.html#a53f4ee70210eb8b89caf18a336807271" title="GamePanel::UpdateTotalBet" alt="" coords="216,400,403,426"/>
+<area shape="rect" id="node11" href="$class_text_field.html#ae32a3521d1b38a107502f92400461f59" title="TextField::SetText" alt="" coords="451,222,579,249"/>
+</map>

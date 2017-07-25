@@ -1,0 +1,4 @@
+<map id="Reel" name="Reel">
+<area shape="rect" id="node2" href="$class_slot.html" title="{Slot\n|&#45; m_Renderer\l&#45; m_TextureBackground\l&#45; m_strResult\l&#45; m_iPos\l&#45; m_bIsRolling\l&#45; m_bPutInPlace\l&#45; m_iX\l&#45; m_iY\l&#45; m_uiTimer\l|+ Slot()\l+ Slot()\l+ ~Slot()\l+ Render()\l+ SetX()\l+ SetY()\l+ Spin()\l+ HasStopped()\l+ Animate()\l+ Stop()\l+ SetResult()\l+ GetResult()\l&#45; GenNext()\l&#45; ProcessRolling()\l&#45; ProcessPuttingInPlace()\l&#45; CoverUp()\l&#45; CopyUp()\l}" alt="" coords="5,439,176,868"/>
+<area shape="rect" id="node3" href="$class_figure.html" title="{Figure\n|&#45; m_Renderer\l&#45; m_RectFigure\l&#45; m_iX\l&#45; m_iY\l&#45; m_bIsAnimated\l&#45; m_uiTimer\l&#45; m_TextureFigures\l&#45; m_TextureBackground\l|+ Figure()\l+ Figure()\l+ ~Figure()\l+ SetX()\l+ SetY()\l+ GetY()\l+ Render()\l+ Play()\l+ Pause()\l+ Rand()\l+ SetFigure()\l+ Copy()\l+ Clear()\l&#45; Draw()\l}" alt="" coords="11,5,171,376"/>
+</map>

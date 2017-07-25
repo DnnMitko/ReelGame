@@ -1,0 +1,13 @@
+<map id="Game.cpp" name="Game.cpp">
+<area shape="rect" id="node2" href="$_game_8h.html" title="Game.h" alt="" coords="411,80,479,107"/>
+<area shape="rect" id="node5" href="$_state_8h.html" title="State.h" alt="" coords="785,155,849,181"/>
+<area shape="rect" id="node7" href="$_button_8h.html" title="Button.h" alt="" coords="322,229,393,256"/>
+<area shape="rect" id="node15" href="$_game_panel_8h.html" title="GamePanel.h" alt="" coords="395,155,496,181"/>
+<area shape="rect" id="node16" href="$_reel_8h.html" title="Reel.h" alt="" coords="608,155,667,181"/>
+<area shape="rect" id="node20" href="$_lines_8h.html" title="Lines.h" alt="" coords="43,304,107,331"/>
+<area shape="rect" id="node10" href="$_text_field_8h.html" title="TextField.h" alt="" coords="182,304,269,331"/>
+<area shape="rect" id="node14" href="$_constants_8h.html" title="Constants.h" alt="" coords="251,379,343,405"/>
+<area shape="rect" id="node11" href="$_label_8h.html" title="Label.h" alt="" coords="163,379,227,405"/>
+<area shape="rect" id="node17" href="$_slot_8h.html" title="Slot.h" alt="" coords="643,229,699,256"/>
+<area shape="rect" id="node18" href="$_figure_8h.html" title="Figure.h" alt="" coords="603,304,672,331"/>
+</map>

@@ -1,0 +1,7 @@
+<map id="GamePanel::InitPayTable" name="GamePanel::InitPayTable">
+<area shape="rect" id="node2" href="$class_text_field.html#ae7de76802cd68fc8ba9173527c648edc" title="TextField::SetX" alt="" coords="246,5,357,32"/>
+<area shape="rect" id="node3" href="$class_text_field.html#af0a3f6aae190de343a268808cc59374c" title="TextField::SetY" alt="" coords="245,56,357,83"/>
+<area shape="rect" id="node4" href="$class_button.html#a6e0b5f6255126b4c5b40194e455dca47" title="Button::SetText" alt="" coords="245,107,358,133"/>
+<area shape="rect" id="node6" href="$class_text_field.html#a194b803e48fb8b328b9d4d55be3b47ac" title="TextField::SetFieldSize" alt="" coords="223,157,380,184"/>
+<area shape="rect" id="node5" href="$class_label.html#af4d107e89fa1b9b2c39c78efdf0d2e81" title="Label::SetText" alt="" coords="428,107,535,133"/>
+</map>

@@ -1,0 +1,4 @@
+<map id="Chest::SetX" name="Chest::SetX">
+<area shape="rect" id="node2" href="$class_bonus_game.html#a8242d1e0bcf61defb9cc219c11b56fe0" title="BonusGame::InitChests" alt="" coords="144,5,304,32"/>
+<area shape="rect" id="node3" href="$class_bonus_game.html#a6a6e31d24d55070a46e6078e2c2f9675" title="BonusGame::BonusGame" alt="" coords="352,5,527,32"/>
+</map>

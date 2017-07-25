@@ -1,0 +1,4 @@
+<map id="Button" name="Button">
+<area shape="rect" id="node2" href="$class_text_field.html" title="{TextField\n|# m_FieldRect\l|+ TextField()\l+ TextField()\l+ ~TextField()\l+ GetWidth()\l+ GetHeight()\l+ SetX()\l+ SetY()\l+ Render()\l+ SetText()\l+ SetFieldSize()\l}" alt="" coords="29,292,145,501"/>
+<area shape="rect" id="node3" href="$class_label.html" title="{Label\n|# m_Renderer\l# m_TextRect\l# m_TextureText\l# m_bHasChanged\l|+ Label()\l+ Label()\l+ ~Label()\l+ GetWidth()\l+ GetHeight()\l+ SetX()\l+ SetY()\l+ Render()\l+ SetText()\l}" alt="" coords="21,5,153,244"/>
+</map>

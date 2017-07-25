@@ -1,0 +1,6 @@
+<map id="GamePanel::SetLines" name="GamePanel::SetLines">
+<area shape="rect" id="node2" href="$class_game_panel.html#ac454582c7d48f3962d1ae252e9557c1f" title="GamePanel::UpdateLines" alt="" coords="211,5,381,32"/>
+<area shape="rect" id="node5" href="$class_game_panel.html#a53f4ee70210eb8b89caf18a336807271" title="GamePanel::UpdateTotalBet" alt="" coords="203,56,389,83"/>
+<area shape="rect" id="node3" href="$class_text_field.html#ae32a3521d1b38a107502f92400461f59" title="TextField::SetText" alt="" coords="437,31,565,57"/>
+<area shape="rect" id="node4" href="$class_label.html#af4d107e89fa1b9b2c39c78efdf0d2e81" title="Label::SetText" alt="" coords="613,31,720,57"/>
+</map>

@@ -1,0 +1,11 @@
+<map id="Intro::TransitionOut" name="Intro::TransitionOut">
+<area shape="rect" id="node2" href="$class_intro.html#a59ba1af8ce49341c6a0af4cdf823372a" title="Intro::Render" alt="" coords="185,107,281,133"/>
+<area shape="rect" id="node3" href="$class_game_manager.html#aa0e2424dc1a39d380e5b6605b179bf05" title="GameManager::GameManager" alt="" coords="329,5,529,32"/>
+<area shape="rect" id="node4" href="$class_game_manager.html#af86cede7eac8686a463f330c6c09ba5f" title="GameManager::RenderIntro" alt="" coords="339,56,520,83"/>
+<area shape="rect" id="node7" href="$class_game_manager.html#ac5b6af794b0da1323ae3a878b62a296b" title="GameManager::RenderGame" alt="" coords="334,107,525,133"/>
+<area shape="rect" id="node8" href="$class_game_manager.html#af62163915b95d7e822abf20f4796cddd" title="GameManager::RenderOutro" alt="" coords="335,157,523,184"/>
+<area shape="rect" id="node9" href="$class_intro.html#af16805e8b52b09dec6910cf5b5297371" title="Intro::EventHandler" alt="" coords="364,208,495,235"/>
+<area shape="rect" id="node5" href="$class_game_manager.html#ac1bd6de1844831d097b24a13a0e6a5a5" title="GameManager::Render" alt="" coords="595,120,751,147"/>
+<area shape="rect" id="node6" href="$main_8cpp.html#a700a0caa5b70a06d1064e576f9f3cf65" title="main" alt="" coords="816,152,867,179"/>
+<area shape="rect" id="node10" href="$class_game_manager.html#a9cbffdeede49308ecfb272a03fda1a76" title="GameManager::EventHandler" alt="" coords="577,183,768,209"/>
+</map>

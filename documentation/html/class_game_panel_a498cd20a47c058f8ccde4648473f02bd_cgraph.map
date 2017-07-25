@@ -1,0 +1,10 @@
+<map id="GamePanel::CalcWinning" name="GamePanel::CalcWinning">
+<area shape="rect" id="node2" href="$class_game_panel.html#a63fd5e2c51ba200d832368be59b76069" title="GamePanel::Clear" alt="" coords="260,107,388,133"/>
+<area shape="rect" id="node8" href="$class_game_panel.html#a03682b0c6474d32224d93b584a9449b1" title="GamePanel::UpdatePaid" alt="" coords="483,157,648,184"/>
+<area shape="rect" id="node9" href="$class_game_panel.html#ad9b3965308cceafd10c30891d5de6f57" title="GamePanel::UpdateCurCredits" alt="" coords="224,208,424,235"/>
+<area shape="rect" id="node3" href="$class_game_panel.html#a4216a640db3293e8d9ae6fcccfcce10d" title="GamePanel::UpdateBet" alt="" coords="486,5,645,32"/>
+<area shape="rect" id="node6" href="$class_game_panel.html#ac454582c7d48f3962d1ae252e9557c1f" title="GamePanel::UpdateLines" alt="" coords="480,56,651,83"/>
+<area shape="rect" id="node7" href="$class_game_panel.html#a53f4ee70210eb8b89caf18a336807271" title="GamePanel::UpdateTotalBet" alt="" coords="472,107,659,133"/>
+<area shape="rect" id="node4" href="$class_text_field.html#ae32a3521d1b38a107502f92400461f59" title="TextField::SetText" alt="" coords="707,107,835,133"/>
+<area shape="rect" id="node5" href="$class_label.html#af4d107e89fa1b9b2c39c78efdf0d2e81" title="Label::SetText" alt="" coords="883,107,989,133"/>
+</map>

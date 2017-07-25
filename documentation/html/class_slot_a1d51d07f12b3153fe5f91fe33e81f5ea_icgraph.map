@@ -1,0 +1,7 @@
+<map id="Slot::GenNext" name="Slot::GenNext">
+<area shape="rect" id="node2" href="$class_slot.html#ac0feddd77627bc1f453a52461c8b28af" title="Slot::Spin" alt="" coords="157,5,236,32"/>
+<area shape="rect" id="node3" href="$class_reel.html#a34f8d15f6d8af0109620976d50969221" title="Reel::Spin" alt="" coords="284,5,367,32"/>
+<area shape="rect" id="node4" href="$class_game.html#a955db66677648789ce6c47b48ec0267c" title="Game::EventHandler" alt="" coords="415,5,556,32"/>
+<area shape="rect" id="node5" href="$class_game_manager.html#a9cbffdeede49308ecfb272a03fda1a76" title="GameManager::EventHandler" alt="" coords="604,5,795,32"/>
+<area shape="rect" id="node6" href="$main_8cpp.html#a700a0caa5b70a06d1064e576f9f3cf65" title="main" alt="" coords="843,5,893,32"/>
+</map>

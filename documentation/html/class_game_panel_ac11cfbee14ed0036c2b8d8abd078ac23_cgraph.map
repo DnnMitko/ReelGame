@@ -1,0 +1,11 @@
+<map id="GamePanel::Render" name="GamePanel::Render">
+<area shape="rect" id="node2" href="$class_game_panel.html#a63c280353aa5d422947dc8db5c0607d0" title="GamePanel::TransitionIn" alt="" coords="197,31,361,57"/>
+<area shape="rect" id="node7" href="$class_game_panel.html#a64e9baaffa4aa18ac2a40bed39f5da5b" title="GamePanel::TransitionOut" alt="" coords="192,81,367,108"/>
+<area shape="rect" id="node8" href="$class_button.html#a3dfc1665a8485faa13b666676a63e933" title="Button::Render" alt="" coords="225,132,334,159"/>
+<area shape="rect" id="node9" href="$class_label.html#aa6e25ad4f93bff94482ef85860795170" title="Label::Render" alt="" coords="228,183,331,209"/>
+<area shape="rect" id="node10" href="$class_text_field.html#afcb055949152013d313d654cc92ea029" title="TextField::Render" alt="" coords="217,233,341,260"/>
+<area shape="rect" id="node3" href="$class_game_panel.html#a615412d3822e4d378e4540a5196dba26" title="GamePanel::Reposition" alt="" coords="415,56,573,83"/>
+<area shape="rect" id="node4" href="$class_text_field.html#af0a3f6aae190de343a268808cc59374c" title="TextField::SetY" alt="" coords="625,5,737,32"/>
+<area shape="rect" id="node5" href="$class_label.html#a00861884ca0d984f812ca99d5075b57e" title="Label::SetY" alt="" coords="635,56,726,83"/>
+<area shape="rect" id="node6" href="$class_label.html#a10170f7a5bb9147243218dc88dd7abe1" title="Label::GetHeight" alt="" coords="621,107,740,133"/>
+</map>

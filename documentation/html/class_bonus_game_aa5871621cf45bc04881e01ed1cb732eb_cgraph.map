@@ -1,0 +1,5 @@
+<map id="BonusGame::GenPrize" name="BonusGame::GenPrize">
+<area shape="rect" id="node2" href="$class_bonus_game.html#abf619b5c0556267e43d01cfddc6c6c66" title="BonusGame::UpdateChestWin" alt="" coords="209,5,409,32"/>
+<area shape="rect" id="node3" href="$class_text_field.html#ae32a3521d1b38a107502f92400461f59" title="TextField::SetText" alt="" coords="457,5,585,32"/>
+<area shape="rect" id="node4" href="$class_label.html#af4d107e89fa1b9b2c39c78efdf0d2e81" title="Label::SetText" alt="" coords="633,5,740,32"/>
+</map>

@@ -1,0 +1,7 @@
+<map id="BonusGame" name="BonusGame">
+<area shape="rect" id="node2" href="$class_state.html" title="{State\n|# m_Renderer\l# m_bSwitch\l# m_bTransitionIn\l# m_bTransitionOut\l|+ State()\l+ State()\l+ ~State()\l+ GetSwitch()\l+ ResetSwitch()\l+ PrepTransitionIn()\l+ Render()\l+ EventHandler()\l}" alt="" coords="5,602,140,826"/>
+<area shape="rect" id="node3" href="$class_text_field.html" title="{TextField\n|# m_FieldRect\l|+ TextField()\l+ TextField()\l+ ~TextField()\l+ GetWidth()\l+ GetHeight()\l+ SetX()\l+ SetY()\l+ Render()\l+ SetText()\l+ SetFieldSize()\l}" alt="" coords="244,293,360,503"/>
+<area shape="rect" id="node6" href="$class_button.html" title="{Button\n|&#45; m_bIsPressed\l&#45; m_TextureTextPressed\l&#45; m_TextureButton\l&#45; m_SfxClick\l|+ Button()\l+ Button()\l+ ~Button()\l+ Render()\l+ SetText()\l+ IsIn()\l+ Press()\l+ Release()\l+ IsPressed()\l}" alt="" coords="449,595,613,833"/>
+<area shape="rect" id="node4" href="$class_label.html" title="{Label\n|# m_Renderer\l# m_TextRect\l# m_TextureText\l# m_bHasChanged\l|+ Label()\l+ Label()\l+ ~Label()\l+ GetWidth()\l+ GetHeight()\l+ SetX()\l+ SetY()\l+ Render()\l+ SetText()\l}" alt="" coords="151,5,283,244"/>
+<area shape="rect" id="node5" href="$class_chest.html" title="{Chest\n|&#45; m_Renderer\l&#45; m_FieldRect\l&#45; m_bHasChanged\l&#45; m_bIsOpened\l&#45; m_TextureChestClosed\l&#45; m_TextureChestOpen\l|+ Chest()\l+ Chest()\l+ ~Chest()\l+ SetX()\l+ SetY()\l+ Render()\l+ IsIn()\l+ Open()\l+ Close()\l}" alt="" coords="638,580,803,848"/>
+</map>

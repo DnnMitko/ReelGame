@@ -1,0 +1,26 @@
+<map id="Label.h" name="Label.h">
+<area shape="rect" id="node2" href="$_text_field_8h.html" title="TextField.h" alt="" coords="535,80,621,107"/>
+<area shape="rect" id="node25" href="$_label_8cpp.html" title="Label.cpp" alt="" coords="645,80,724,107"/>
+<area shape="rect" id="node3" href="$_button_8h.html" title="Button.h" alt="" coords="488,155,559,181"/>
+<area shape="rect" id="node24" href="$_text_field_8cpp.html" title="TextField.cpp" alt="" coords="583,155,683,181"/>
+<area shape="rect" id="node4" href="$_bonus_game_8h.html" title="BonusGame.h" alt="" coords="12,304,117,331"/>
+<area shape="rect" id="node6" href="$_game_manager_8h.html" title="GameManager.h" alt="" coords="457,379,576,405"/>
+<area shape="rect" id="node9" href="$_chest_8h.html" title="Chest.h" alt="" coords="149,229,215,256"/>
+<area shape="rect" id="node11" href="$_button_8cpp.html" title="Button.cpp" alt="" coords="931,229,1017,256"/>
+<area shape="rect" id="node12" href="$_game_8h.html" title="Game.h" alt="" coords="247,304,315,331"/>
+<area shape="rect" id="node14" href="$_game_panel_8h.html" title="GamePanel.h" alt="" coords="346,229,447,256"/>
+<area shape="rect" id="node16" href="$_intro_8h.html" title="Intro.h" alt="" coords="919,304,978,331"/>
+<area shape="rect" id="node18" href="$_info_8h.html" title="Info.h" alt="" coords="803,229,857,256"/>
+<area shape="rect" id="node20" href="$_outro_8h.html" title="Outro.h" alt="" coords="681,229,747,256"/>
+<area shape="rect" id="node22" href="$_win_8h.html" title="Win.h" alt="" coords="529,229,585,256"/>
+<area shape="rect" id="node5" href="$_bonus_game_8cpp.html" title="BonusGame.cpp" alt="" coords="5,379,124,405"/>
+<area shape="rect" id="node7" href="$_game_manager_8cpp.html" title="GameManager.cpp" alt="" coords="387,453,519,480"/>
+<area shape="rect" id="node8" href="$main_8cpp.html" title="main.cpp" alt="" coords="543,453,618,480"/>
+<area shape="rect" id="node10" href="$_chest_8cpp.html" title="Chest.cpp" alt="" coords="141,304,223,331"/>
+<area shape="rect" id="node13" href="$_game_8cpp.html" title="Game.cpp" alt="" coords="239,379,322,405"/>
+<area shape="rect" id="node15" href="$_game_panel_8cpp.html" title="GamePanel.cpp" alt="" coords="339,304,454,331"/>
+<area shape="rect" id="node17" href="$_intro_8cpp.html" title="Intro.cpp" alt="" coords="913,379,985,405"/>
+<area shape="rect" id="node19" href="$_info_8cpp.html" title="Info.cpp" alt="" coords="829,304,895,331"/>
+<area shape="rect" id="node21" href="$_outro_8cpp.html" title="Outro.cpp" alt="" coords="675,304,753,331"/>
+<area shape="rect" id="node23" href="$_win_8cpp.html" title="Win.cpp" alt="" coords="580,304,651,331"/>
+</map>

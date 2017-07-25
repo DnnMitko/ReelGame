@@ -1,0 +1,10 @@
+<map id="Lines::SetResult" name="Lines::SetResult">
+<area shape="rect" id="node2" href="$class_lines.html#add3555e8319f9f5783f59095bf6120fd" title="Lines::GenLines" alt="" coords="181,19,297,45"/>
+<area shape="rect" id="node3" href="$class_lines.html#a3a965a0110a44912b20d63bf2b094756" title="Lines::Calculate" alt="" coords="181,69,296,96"/>
+<area shape="rect" id="node8" href="$class_lines.html#a5e5acdea0ff23f565cd6235f6b4a5af7" title="Lines::GenAnimate" alt="" coords="172,132,305,159"/>
+<area shape="rect" id="node4" href="$class_lines.html#ae1d83d7941190205f2ab451e85ff22b6" title="Lines::Process5" alt="" coords="359,5,475,32"/>
+<area shape="rect" id="node6" href="$class_lines.html#a0be5a86e0685a46c5cd4f06be51d1b14" title="Lines::Process4" alt="" coords="359,56,475,83"/>
+<area shape="rect" id="node7" href="$class_lines.html#adc2ebaa3f7ee7a6e6f1a59eda1121eda" title="Lines::Process3" alt="" coords="359,107,475,133"/>
+<area shape="rect" id="node5" href="$class_lines.html#a0e9e2729ae65cbbd5ab2c92246020659" title="Lines::CheckMax" alt="" coords="528,56,651,83"/>
+<area shape="rect" id="node9" href="$class_lines.html#acb2032554033659053fe09926bc6d954" title="Lines::HasSpecial" alt="" coords="353,157,480,184"/>
+</map>

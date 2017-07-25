@@ -1,0 +1,6 @@
+<map id="GamePanel::GetPaid" name="GamePanel::GetPaid">
+<area shape="rect" id="node2" href="$class_game.html#a34fdd049392033237440a70994a86f8d" title="Game::GetPaid" alt="" coords="199,5,311,32"/>
+<area shape="rect" id="node3" href="$class_game_manager.html#ac5b6af794b0da1323ae3a878b62a296b" title="GameManager::RenderGame" alt="" coords="359,5,549,32"/>
+<area shape="rect" id="node4" href="$class_game_manager.html#ac1bd6de1844831d097b24a13a0e6a5a5" title="GameManager::Render" alt="" coords="597,5,753,32"/>
+<area shape="rect" id="node5" href="$main_8cpp.html#a700a0caa5b70a06d1064e576f9f3cf65" title="main" alt="" coords="801,5,852,32"/>
+</map>

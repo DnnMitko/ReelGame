@@ -1,0 +1,10 @@
+<map id="Win::Render" name="Win::Render">
+<area shape="rect" id="node2" href="$class_win.html#aed20c600aa0ac598e9801cc1f8a34776" title="Win::TransitionIn" alt="" coords="154,56,273,83"/>
+<area shape="rect" id="node7" href="$class_win.html#a86db775a7a077d15e855f5d7e2197862" title="Win::TransitionOut" alt="" coords="148,107,279,133"/>
+<area shape="rect" id="node8" href="$class_label.html#aa6e25ad4f93bff94482ef85860795170" title="Label::Render" alt="" coords="162,157,265,184"/>
+<area shape="rect" id="node9" href="$class_text_field.html#afcb055949152013d313d654cc92ea029" title="TextField::Render" alt="" coords="151,208,275,235"/>
+<area shape="rect" id="node3" href="$class_label.html#a00861884ca0d984f812ca99d5075b57e" title="Label::SetY" alt="" coords="352,107,443,133"/>
+<area shape="rect" id="node4" href="$class_label.html#a10170f7a5bb9147243218dc88dd7abe1" title="Label::GetHeight" alt="" coords="338,157,457,184"/>
+<area shape="rect" id="node5" href="$class_text_field.html#af0a3f6aae190de343a268808cc59374c" title="TextField::SetY" alt="" coords="341,5,453,32"/>
+<area shape="rect" id="node6" href="$class_text_field.html#a52843a1ed29745ba4f2fe9c23f0b5609" title="TextField::GetHeight" alt="" coords="327,56,468,83"/>
+</map>

@@ -1,0 +1,25 @@
+<map id="Intro::EventHandler" name="Intro::EventHandler">
+<area shape="rect" id="node2" href="$class_info.html#a60bd2f1f7b5fd9ea1cfff08a36653e48" title="Info::EventHandler" alt="" coords="189,157,316,184"/>
+<area shape="rect" id="node3" href="$class_button.html#a92ed575160d83702ce709b304e2ca0ca" title="Button::IsIn" alt="" coords="391,5,479,32"/>
+<area shape="rect" id="node4" href="$class_button.html#a6b5f9eb35a0ef5b35637d5cf558542e0" title="Button::Press" alt="" coords="384,56,487,83"/>
+<area shape="rect" id="node5" href="$class_button.html#a295d822d9c16d3e42d53ce2773bf17dd" title="Button::IsPressed" alt="" coords="372,119,499,145"/>
+<area shape="rect" id="node9" href="$class_info.html#ac5fc9776ed64a20017e65c7b8dd47924" title="Info::GetHide" alt="" coords="204,360,301,387"/>
+<area shape="rect" id="node10" href="$class_info.html#a512dff71a80de5e0bb55505e89f4c692" title="Info::Reset" alt="" coords="211,208,295,235"/>
+<area shape="rect" id="node11" href="$class_intro.html#a59ba1af8ce49341c6a0af4cdf823372a" title="Intro::Render" alt="" coords="205,448,301,475"/>
+<area shape="rect" id="node22" href="$class_intro.html#af5062960f5db251888f2a89af8543167" title="Intro::UpdateCredits" alt="" coords="184,309,321,336"/>
+<area shape="rect" id="node24" href="$class_intro.html#a805c38cb87aed5203348c62c61388fa9" title="Intro::ReleaseAll" alt="" coords="194,259,311,285"/>
+<area shape="rect" id="node6" href="$class_button.html#a6e0b5f6255126b4c5b40194e455dca47" title="Button::SetText" alt="" coords="379,195,492,221"/>
+<area shape="rect" id="node8" href="$class_button.html#a39c2d3d10fac1a07171040268cbc90ae" title="Button::Release" alt="" coords="378,245,493,272"/>
+<area shape="rect" id="node7" href="$class_label.html#af4d107e89fa1b9b2c39c78efdf0d2e81" title="Label::SetText" alt="" coords="554,245,661,272"/>
+<area shape="rect" id="node12" href="$class_intro.html#ad4737915d663d494896d4e3a9967bb1d" title="Intro::TransitionIn" alt="" coords="375,347,496,373"/>
+<area shape="rect" id="node17" href="$class_intro.html#a03b2e30bf06402841ac005ee213a7637" title="Intro::TransitionOut" alt="" coords="369,397,501,424"/>
+<area shape="rect" id="node18" href="$class_button.html#a3dfc1665a8485faa13b666676a63e933" title="Button::Render" alt="" coords="553,461,662,488"/>
+<area shape="rect" id="node19" href="$class_label.html#aa6e25ad4f93bff94482ef85860795170" title="Label::Render" alt="" coords="384,549,487,576"/>
+<area shape="rect" id="node20" href="$class_text_field.html#afcb055949152013d313d654cc92ea029" title="TextField::Render" alt="" coords="373,600,497,627"/>
+<area shape="rect" id="node21" href="$class_info.html#a3608a733404fbb90a999426685517789" title="Info::Render" alt="" coords="390,499,481,525"/>
+<area shape="rect" id="node13" href="$class_intro.html#a7e873aac7a236054f0d52da251d693fe" title="Intro::Reposition" alt="" coords="549,385,665,412"/>
+<area shape="rect" id="node14" href="$class_text_field.html#af0a3f6aae190de343a268808cc59374c" title="TextField::SetY" alt="" coords="717,335,829,361"/>
+<area shape="rect" id="node15" href="$class_label.html#a00861884ca0d984f812ca99d5075b57e" title="Label::SetY" alt="" coords="727,385,818,412"/>
+<area shape="rect" id="node16" href="$class_label.html#a10170f7a5bb9147243218dc88dd7abe1" title="Label::GetHeight" alt="" coords="713,436,832,463"/>
+<area shape="rect" id="node23" href="$class_text_field.html#ae32a3521d1b38a107502f92400461f59" title="TextField::SetText" alt="" coords="371,296,499,323"/>
+</map>

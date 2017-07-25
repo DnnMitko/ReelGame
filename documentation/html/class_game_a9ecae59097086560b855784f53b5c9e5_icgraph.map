@@ -1,0 +1,10 @@
+<map id="Game::GetCredits" name="Game::GetCredits">
+<area shape="rect" id="node2" href="$class_game_manager.html#ab1919a9a8941f3cc81b0d7aef9224c2c" title="GameManager::SaveGame" alt="" coords="186,27,365,54"/>
+<area shape="rect" id="node7" href="$class_game_manager.html#acc9d3bdfd8cda094c655e628f7ce0ede" title="GameManager::SaveBonusGame" alt="" coords="419,78,633,104"/>
+<area shape="rect" id="node8" href="$class_game_manager.html#ac5b6af794b0da1323ae3a878b62a296b" title="GameManager::RenderGame" alt="" coords="180,128,371,155"/>
+<area shape="rect" id="node3" href="$class_game_manager.html#ae9e5359f02acdca5c1ad0206121a4897" title="GameManager::Save" alt="" coords="688,52,831,79"/>
+<area shape="rect" id="node6" href="$class_game_manager.html#af6562ecf11a799db28da02300f4c2828" title="GameManager::SaveWin" alt="" coords="443,27,609,54"/>
+<area shape="rect" id="node4" href="$class_game_manager.html#a9cbffdeede49308ecfb272a03fda1a76" title="GameManager::EventHandler" alt="" coords="885,52,1076,79"/>
+<area shape="rect" id="node5" href="$main_8cpp.html#a700a0caa5b70a06d1064e576f9f3cf65" title="main" alt="" coords="1124,78,1175,104"/>
+<area shape="rect" id="node9" href="$class_game_manager.html#ac1bd6de1844831d097b24a13a0e6a5a5" title="GameManager::Render" alt="" coords="681,103,837,130"/>
+</map>

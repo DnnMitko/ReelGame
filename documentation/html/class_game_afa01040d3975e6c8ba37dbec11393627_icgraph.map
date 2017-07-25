@@ -1,0 +1,6 @@
+<map id="Game::SetLines" name="Game::SetLines">
+<area shape="rect" id="node2" href="$class_game_manager.html#a2abb5a2b0f073738f409875513484dc7" title="GameManager::Load" alt="" coords="169,5,312,32"/>
+<area shape="rect" id="node3" href="$class_game_manager.html#af86cede7eac8686a463f330c6c09ba5f" title="GameManager::RenderIntro" alt="" coords="360,5,541,32"/>
+<area shape="rect" id="node4" href="$class_game_manager.html#ac1bd6de1844831d097b24a13a0e6a5a5" title="GameManager::Render" alt="" coords="589,5,745,32"/>
+<area shape="rect" id="node5" href="$main_8cpp.html#a700a0caa5b70a06d1064e576f9f3cf65" title="main" alt="" coords="793,5,844,32"/>
+</map>

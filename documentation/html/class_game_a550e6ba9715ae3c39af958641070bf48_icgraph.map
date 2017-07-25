@@ -1,0 +1,5 @@
+<map id="Game::Clear" name="Game::Clear">
+<area shape="rect" id="node2" href="$class_game_manager.html#af86cede7eac8686a463f330c6c09ba5f" title="GameManager::RenderIntro" alt="" coords="148,5,329,32"/>
+<area shape="rect" id="node3" href="$class_game_manager.html#ac1bd6de1844831d097b24a13a0e6a5a5" title="GameManager::Render" alt="" coords="377,5,533,32"/>
+<area shape="rect" id="node4" href="$main_8cpp.html#a700a0caa5b70a06d1064e576f9f3cf65" title="main" alt="" coords="581,5,632,32"/>
+</map>

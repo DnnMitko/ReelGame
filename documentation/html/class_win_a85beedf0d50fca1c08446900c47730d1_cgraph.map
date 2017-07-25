@@ -1,0 +1,12 @@
+<map id="Win::Win" name="Win::Win">
+<area shape="rect" id="node2" href="$class_label.html#af4d107e89fa1b9b2c39c78efdf0d2e81" title="Label::SetText" alt="" coords="155,5,261,32"/>
+<area shape="rect" id="node3" href="$class_label.html#acadd8404f62e45f64bd264ca644f3752" title="Label::SetX" alt="" coords="164,56,252,83"/>
+<area shape="rect" id="node4" href="$class_label.html#a42362aa1ad8727ab34c3ee2814eac32f" title="Label::GetWidth" alt="" coords="150,107,266,133"/>
+<area shape="rect" id="node5" href="$class_label.html#a00861884ca0d984f812ca99d5075b57e" title="Label::SetY" alt="" coords="163,157,253,184"/>
+<area shape="rect" id="node6" href="$class_label.html#a10170f7a5bb9147243218dc88dd7abe1" title="Label::GetHeight" alt="" coords="149,208,267,235"/>
+<area shape="rect" id="node7" href="$class_text_field.html#a194b803e48fb8b328b9d4d55be3b47ac" title="TextField::SetFieldSize" alt="" coords="129,259,287,285"/>
+<area shape="rect" id="node8" href="$class_text_field.html#ae7de76802cd68fc8ba9173527c648edc" title="TextField::SetX" alt="" coords="153,309,263,336"/>
+<area shape="rect" id="node9" href="$class_text_field.html#a5fe79247d4e923b11f29f192da2ffad2" title="TextField::GetWidth" alt="" coords="139,360,277,387"/>
+<area shape="rect" id="node10" href="$class_text_field.html#af0a3f6aae190de343a268808cc59374c" title="TextField::SetY" alt="" coords="152,411,264,437"/>
+<area shape="rect" id="node11" href="$class_text_field.html#a52843a1ed29745ba4f2fe9c23f0b5609" title="TextField::GetHeight" alt="" coords="137,461,279,488"/>
+</map>

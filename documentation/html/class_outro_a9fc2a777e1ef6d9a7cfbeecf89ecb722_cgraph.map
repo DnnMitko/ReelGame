@@ -1,0 +1,6 @@
+<map id="Outro::TransitionOut" name="Outro::TransitionOut">
+<area shape="rect" id="node2" href="$class_label.html#a00861884ca0d984f812ca99d5075b57e" title="Label::SetY" alt="" coords="217,5,308,32"/>
+<area shape="rect" id="node3" href="$class_label.html#a10170f7a5bb9147243218dc88dd7abe1" title="Label::GetHeight" alt="" coords="203,56,322,83"/>
+<area shape="rect" id="node4" href="$class_text_field.html#af0a3f6aae190de343a268808cc59374c" title="TextField::SetY" alt="" coords="207,107,319,133"/>
+<area shape="rect" id="node5" href="$class_text_field.html#a52843a1ed29745ba4f2fe9c23f0b5609" title="TextField::GetHeight" alt="" coords="192,157,333,184"/>
+</map>

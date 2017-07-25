@@ -1,0 +1,5 @@
+<map id="Figure::Pause" name="Figure::Pause">
+<area shape="rect" id="node2" href="$class_figure.html#a73528eaae55c1e5bb13c333414ee13f0" title="Figure::Clear" alt="" coords="311,5,407,32"/>
+<area shape="rect" id="node3" href="$class_figure.html#a6050ef265dbcc040da5a036a1c8939c1" title="Figure::Render" alt="" coords="156,56,263,83"/>
+<area shape="rect" id="node4" href="$class_figure.html#aab8c24aa137a373d5599eb727c0beea2" title="Figure::Draw" alt="" coords="311,56,406,83"/>
+</map>

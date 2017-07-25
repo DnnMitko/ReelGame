@@ -1,0 +1,11 @@
+<map id="Button::Release" name="Button::Release">
+<area shape="rect" id="node2" href="$class_bonus_game.html#a7cc80c1bae4f992084a80f28e150c5f5" title="BonusGame::EventHandler" alt="" coords="599,5,777,32"/>
+<area shape="rect" id="node5" href="$class_game_panel.html#a0acba29a9416988fc15d044eaa301c94" title="GamePanel::ReleaseAll" alt="" coords="168,56,328,83"/>
+<area shape="rect" id="node8" href="$class_info.html#a60bd2f1f7b5fd9ea1cfff08a36653e48" title="Info::EventHandler" alt="" coords="185,107,311,133"/>
+<area shape="rect" id="node10" href="$class_intro.html#a805c38cb87aed5203348c62c61388fa9" title="Intro::ReleaseAll" alt="" coords="189,157,307,184"/>
+<area shape="rect" id="node3" href="$class_game_manager.html#a9cbffdeede49308ecfb272a03fda1a76" title="GameManager::EventHandler" alt="" coords="825,56,1016,83"/>
+<area shape="rect" id="node4" href="$main_8cpp.html#a700a0caa5b70a06d1064e576f9f3cf65" title="main" alt="" coords="1064,56,1115,83"/>
+<area shape="rect" id="node6" href="$class_game_panel.html#ab92ae74fb5cabab81721b23f5352257e" title="GamePanel::EventHandler" alt="" coords="376,56,551,83"/>
+<area shape="rect" id="node7" href="$class_game.html#a955db66677648789ce6c47b48ec0267c" title="Game::EventHandler" alt="" coords="617,56,759,83"/>
+<area shape="rect" id="node9" href="$class_intro.html#af16805e8b52b09dec6910cf5b5297371" title="Intro::EventHandler" alt="" coords="398,107,529,133"/>
+</map>

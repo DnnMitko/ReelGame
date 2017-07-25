@@ -1,0 +1,6 @@
+<map id="Slot::Spin" name="Slot::Spin">
+<area shape="rect" id="node2" href="$class_reel.html#a34f8d15f6d8af0109620976d50969221" title="Reel::Spin" alt="" coords="132,5,215,32"/>
+<area shape="rect" id="node3" href="$class_game.html#a955db66677648789ce6c47b48ec0267c" title="Game::EventHandler" alt="" coords="263,5,404,32"/>
+<area shape="rect" id="node4" href="$class_game_manager.html#a9cbffdeede49308ecfb272a03fda1a76" title="GameManager::EventHandler" alt="" coords="452,5,643,32"/>
+<area shape="rect" id="node5" href="$main_8cpp.html#a700a0caa5b70a06d1064e576f9f3cf65" title="main" alt="" coords="691,5,741,32"/>
+</map>

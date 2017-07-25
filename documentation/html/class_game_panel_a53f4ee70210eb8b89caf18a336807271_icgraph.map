@@ -1,0 +1,31 @@
+<map id="GamePanel::UpdateTotalBet" name="GamePanel::UpdateTotalBet">
+<area shape="rect" id="node2" href="$class_game_panel.html#ab92ae74fb5cabab81721b23f5352257e" title="GamePanel::EventHandler" alt="" coords="669,132,844,159"/>
+<area shape="rect" id="node6" href="$class_game_panel.html#a8beba21f382981bd63e95b9616dd25d6" title="GamePanel::SetBet" alt="" coords="252,588,391,615"/>
+<area shape="rect" id="node11" href="$class_game_panel.html#a6c69b1b66e911b9f5942f880b69e5bd3" title="GamePanel::SetLines" alt="" coords="247,537,396,564"/>
+<area shape="rect" id="node13" href="$class_game_panel.html#a63fd5e2c51ba200d832368be59b76069" title="GamePanel::Clear" alt="" coords="257,461,385,488"/>
+<area shape="rect" id="node29" href="$class_game_panel.html#a6aa5f4990cdf997e40b5a4d37db93c98" title="GamePanel::InitTotalBet" alt="" coords="240,639,403,665"/>
+<area shape="rect" id="node3" href="$class_game.html#a955db66677648789ce6c47b48ec0267c" title="Game::EventHandler" alt="" coords="1162,132,1303,159"/>
+<area shape="rect" id="node4" href="$class_game_manager.html#a9cbffdeede49308ecfb272a03fda1a76" title="GameManager::EventHandler" alt="" coords="1633,132,1824,159"/>
+<area shape="rect" id="node5" href="$main_8cpp.html#a700a0caa5b70a06d1064e576f9f3cf65" title="main" alt="" coords="1872,183,1923,209"/>
+<area shape="rect" id="node7" href="$class_game.html#ab6868cbd8070001820dc2b360a3e1b21" title="Game::SetBet" alt="" coords="704,588,809,615"/>
+<area shape="rect" id="node8" href="$class_game_manager.html#a2abb5a2b0f073738f409875513484dc7" title="GameManager::Load" alt="" coords="1161,537,1304,564"/>
+<area shape="rect" id="node9" href="$class_game_manager.html#af86cede7eac8686a463f330c6c09ba5f" title="GameManager::RenderIntro" alt="" coords="1399,436,1581,463"/>
+<area shape="rect" id="node10" href="$class_game_manager.html#ac1bd6de1844831d097b24a13a0e6a5a5" title="GameManager::Render" alt="" coords="1651,259,1807,285"/>
+<area shape="rect" id="node12" href="$class_game.html#afa01040d3975e6c8ba37dbec11393627" title="Game::SetLines" alt="" coords="478,537,594,564"/>
+<area shape="rect" id="node14" href="$class_game.html#acbd990cddf3dd606a829955d66e56500" title="Game::SetCredits" alt="" coords="918,487,1045,513"/>
+<area shape="rect" id="node15" href="$class_game.html#a550e6ba9715ae3c39af958641070bf48" title="Game::Clear" alt="" coords="489,436,583,463"/>
+<area shape="rect" id="node16" href="$class_game_panel.html#a498cd20a47c058f8ccde4648473f02bd" title="GamePanel::CalcWinning" alt="" coords="451,259,621,285"/>
+<area shape="rect" id="node17" href="$class_game.html#ae2a8b165fce45312f7d0f3e0e11fcac9" title="Game::CalcWinning" alt="" coords="912,183,1051,209"/>
+<area shape="rect" id="node21" href="$class_game.html#ab205739c8958e8f08362bbd65cfaface" title="Game::CalcWinningForce" alt="" coords="671,183,842,209"/>
+<area shape="rect" id="node24" href="$class_game.html#ace7a60a673c2d7c470bc05268beffce3" title="Game::ProcessResult" alt="" coords="681,284,832,311"/>
+<area shape="rect" id="node18" href="$class_game_manager.html#acc9d3bdfd8cda094c655e628f7ce0ede" title="GameManager::SaveBonusGame" alt="" coords="1125,81,1340,108"/>
+<area shape="rect" id="node20" href="$class_game_manager.html#a8a7ef6bcf820bbb9589497371fb01ba8" title="GameManager::RenderBonusGame" alt="" coords="1119,183,1347,209"/>
+<area shape="rect" id="node19" href="$class_game_manager.html#ae9e5359f02acdca5c1ad0206121a4897" title="GameManager::Save" alt="" coords="1419,56,1561,83"/>
+<area shape="rect" id="node22" href="$class_game_manager.html#ab1919a9a8941f3cc81b0d7aef9224c2c" title="GameManager::SaveGame" alt="" coords="892,56,1071,83"/>
+<area shape="rect" id="node23" href="$class_game_manager.html#af6562ecf11a799db28da02300f4c2828" title="GameManager::SaveWin" alt="" coords="1149,31,1316,57"/>
+<area shape="rect" id="node25" href="$class_game.html#abc9c01d9908468316bf7dd404bfb74e6" title="Game::Render" alt="" coords="928,284,1035,311"/>
+<area shape="rect" id="node26" href="$class_game_manager.html#ac5b6af794b0da1323ae3a878b62a296b" title="GameManager::RenderGame" alt="" coords="1395,233,1585,260"/>
+<area shape="rect" id="node27" href="$class_game_manager.html#aa26d2f9f44fe03c3a685bfc6add12c97" title="GameManager::RenderWin" alt="" coords="1401,284,1579,311"/>
+<area shape="rect" id="node28" href="$class_game_manager.html#af62163915b95d7e822abf20f4796cddd" title="GameManager::RenderOutro" alt="" coords="1396,335,1584,361"/>
+<area shape="rect" id="node30" href="$class_game_panel.html#ad528ffc228e4c484abbd3e337b9928cb" title="GamePanel::GamePanel" alt="" coords="453,639,619,665"/>
+</map>

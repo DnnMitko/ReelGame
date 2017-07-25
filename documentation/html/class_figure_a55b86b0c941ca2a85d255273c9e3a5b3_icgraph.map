@@ -1,0 +1,8 @@
+<map id="Figure::SetY" name="Figure::SetY">
+<area shape="rect" id="node2" href="$class_slot.html#a4a9f5ce15cfa16c5c884bcbd61405952" title="Slot::SetY" alt="" coords="156,5,239,32"/>
+<area shape="rect" id="node4" href="$class_slot.html#a4cbb6470690ce592aabf5a38e35557ee" title="Slot::ProcessRolling" alt="" coords="317,81,457,108"/>
+<area shape="rect" id="node6" href="$class_slot.html#a13139b2a43344a38b4d0e926eeb7d1f9" title="Slot::ProcessPuttingInPlace" alt="" coords="295,132,480,159"/>
+<area shape="rect" id="node7" href="$class_slot.html#a6e6ffdefae9cb6f85e7f3c75346ab45d" title="Slot::CopyUp" alt="" coords="148,107,247,133"/>
+<area shape="rect" id="node3" href="$class_reel.html#a974b631779ff7234aec065214628d13c" title="Reel::Reel" alt="" coords="346,5,429,32"/>
+<area shape="rect" id="node5" href="$class_slot.html#af6accb4439945f41ae4d4de04f2b846a" title="Slot::Render" alt="" coords="528,107,623,133"/>
+</map>

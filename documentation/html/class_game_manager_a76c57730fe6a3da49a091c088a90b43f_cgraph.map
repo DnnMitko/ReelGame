@@ -1,0 +1,4 @@
+<map id="GameManager::SaveIntro" name="GameManager::SaveIntro">
+<area shape="rect" id="node2" href="$class_intro.html#ae5548f3beb7e2780e096250337de5cc9" title="Intro::GetCredits" alt="" coords="253,5,370,32"/>
+<area shape="rect" id="node3" href="$class_game_manager.html#a17299c15f07937ae56ddbfc989a4a544" title="GameManager::DeleteSave" alt="" coords="221,56,401,83"/>
+</map>

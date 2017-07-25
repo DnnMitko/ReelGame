@@ -1,0 +1,31 @@
+<map id="Game::ProcessResult" name="Game::ProcessResult">
+<area shape="rect" id="node2" href="$class_lines.html#a55e94851c60b9a30a6f01780c79721a1" title="Lines::SetResult" alt="" coords="230,107,349,133"/>
+<area shape="rect" id="node10" href="$class_lines.html#acb2032554033659053fe09926bc6d954" title="Lines::HasSpecial" alt="" coords="701,157,827,184"/>
+<area shape="rect" id="node11" href="$class_reel.html#a91d141187036b229b4e75bebb276756f" title="Reel::GetResult" alt="" coords="232,233,347,260"/>
+<area shape="rect" id="node12" href="$class_game_panel.html#a02859f98ce4d5f30ab0ea1f301af3984" title="GamePanel::GetLines" alt="" coords="214,284,365,311"/>
+<area shape="rect" id="node13" href="$class_game_panel.html#a498cd20a47c058f8ccde4648473f02bd" title="GamePanel::CalcWinning" alt="" coords="204,335,375,361"/>
+<area shape="rect" id="node22" href="$class_lines.html#a94b2669d32221e15fb0d16da3c2b153f" title="Lines::GetTotalWin" alt="" coords="223,385,356,412"/>
+<area shape="rect" id="node23" href="$class_game_panel.html#a4dd94194cd0fd18fed62ae3b539a5763" title="GamePanel::GetBet" alt="" coords="220,436,359,463"/>
+<area shape="rect" id="node24" href="$class_game_panel.html#ad3b716dcdb23537d4fe100102851d2ba" title="GamePanel::GetCredits" alt="" coords="209,487,369,513"/>
+<area shape="rect" id="node25" href="$class_game_panel.html#a9144e73d1381e796d8287cc165bea5e5" title="GamePanel::Hide" alt="" coords="227,537,351,564"/>
+<area shape="rect" id="node26" href="$class_reel.html#a279a9875764e842d9409c24cea69b56d" title="Reel::Hide" alt="" coords="248,588,331,615"/>
+<area shape="rect" id="node27" href="$class_reel.html#a53d81cb853b2bdf3c1f1fa1ba1b9e8bb" title="Reel::Animate" alt="" coords="237,639,341,665"/>
+<area shape="rect" id="node30" href="$class_lines.html#ad1d2a3f9035e112532c48f6ec54d30b9" title="Lines::GetAnimate" alt="" coords="224,689,355,716"/>
+<area shape="rect" id="node3" href="$class_lines.html#add3555e8319f9f5783f59095bf6120fd" title="Lines::GenLines" alt="" coords="465,31,581,57"/>
+<area shape="rect" id="node4" href="$class_lines.html#a3a965a0110a44912b20d63bf2b094756" title="Lines::Calculate" alt="" coords="465,81,580,108"/>
+<area shape="rect" id="node9" href="$class_lines.html#a5e5acdea0ff23f565cd6235f6b4a5af7" title="Lines::GenAnimate" alt="" coords="456,132,589,159"/>
+<area shape="rect" id="node5" href="$class_lines.html#ae1d83d7941190205f2ab451e85ff22b6" title="Lines::Process5" alt="" coords="706,5,822,32"/>
+<area shape="rect" id="node7" href="$class_lines.html#a0be5a86e0685a46c5cd4f06be51d1b14" title="Lines::Process4" alt="" coords="706,56,822,83"/>
+<area shape="rect" id="node8" href="$class_lines.html#adc2ebaa3f7ee7a6e6f1a59eda1121eda" title="Lines::Process3" alt="" coords="706,107,822,133"/>
+<area shape="rect" id="node6" href="$class_lines.html#a0e9e2729ae65cbbd5ab2c92246020659" title="Lines::CheckMax" alt="" coords="908,56,1031,83"/>
+<area shape="rect" id="node14" href="$class_game_panel.html#a63fd5e2c51ba200d832368be59b76069" title="GamePanel::Clear" alt="" coords="459,309,587,336"/>
+<area shape="rect" id="node20" href="$class_game_panel.html#a03682b0c6474d32224d93b584a9449b1" title="GamePanel::UpdatePaid" alt="" coords="681,360,847,387"/>
+<area shape="rect" id="node21" href="$class_game_panel.html#ad9b3965308cceafd10c30891d5de6f57" title="GamePanel::UpdateCurCredits" alt="" coords="423,411,623,437"/>
+<area shape="rect" id="node15" href="$class_game_panel.html#a4216a640db3293e8d9ae6fcccfcce10d" title="GamePanel::UpdateBet" alt="" coords="685,208,843,235"/>
+<area shape="rect" id="node18" href="$class_game_panel.html#ac454582c7d48f3962d1ae252e9557c1f" title="GamePanel::UpdateLines" alt="" coords="679,259,849,285"/>
+<area shape="rect" id="node19" href="$class_game_panel.html#a53f4ee70210eb8b89caf18a336807271" title="GamePanel::UpdateTotalBet" alt="" coords="671,309,857,336"/>
+<area shape="rect" id="node16" href="$class_text_field.html#ae32a3521d1b38a107502f92400461f59" title="TextField::SetText" alt="" coords="905,309,1033,336"/>
+<area shape="rect" id="node17" href="$class_label.html#af4d107e89fa1b9b2c39c78efdf0d2e81" title="Label::SetText" alt="" coords="1081,309,1188,336"/>
+<area shape="rect" id="node28" href="$class_slot.html#a5cc9985cc34d0a98d3df506d4b8350b8" title="Slot::Animate" alt="" coords="472,639,573,665"/>
+<area shape="rect" id="node29" href="$class_figure.html#a701118ead696bf724817b92f90086b7a" title="Figure::Play" alt="" coords="718,639,810,665"/>
+</map>

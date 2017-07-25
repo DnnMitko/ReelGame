@@ -1,0 +1,4 @@
+<map id="GamePanel::UpdateBet" name="GamePanel::UpdateBet">
+<area shape="rect" id="node2" href="$class_text_field.html#ae32a3521d1b38a107502f92400461f59" title="TextField::SetText" alt="" coords="212,5,340,32"/>
+<area shape="rect" id="node3" href="$class_label.html#af4d107e89fa1b9b2c39c78efdf0d2e81" title="Label::SetText" alt="" coords="388,5,495,32"/>
+</map>

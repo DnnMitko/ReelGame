@@ -1,0 +1,6 @@
+<map id="BonusGame::GetHasChosen" name="BonusGame::GetHasChosen">
+<area shape="rect" id="node2" href="$class_game_manager.html#acc9d3bdfd8cda094c655e628f7ce0ede" title="GameManager::SaveBonusGame" alt="" coords="244,5,459,32"/>
+<area shape="rect" id="node3" href="$class_game_manager.html#ae9e5359f02acdca5c1ad0206121a4897" title="GameManager::Save" alt="" coords="507,5,649,32"/>
+<area shape="rect" id="node4" href="$class_game_manager.html#a9cbffdeede49308ecfb272a03fda1a76" title="GameManager::EventHandler" alt="" coords="697,5,888,32"/>
+<area shape="rect" id="node5" href="$main_8cpp.html#a700a0caa5b70a06d1064e576f9f3cf65" title="main" alt="" coords="936,5,987,32"/>
+</map>

@@ -1,0 +1,6 @@
+<map id="BonusGame::UpdateChestWin" name="BonusGame::UpdateChestWin">
+<area shape="rect" id="node2" href="$class_bonus_game.html#aa5871621cf45bc04881e01ed1cb732eb" title="BonusGame::GenPrize" alt="" coords="253,5,409,32"/>
+<area shape="rect" id="node3" href="$class_bonus_game.html#a7cc80c1bae4f992084a80f28e150c5f5" title="BonusGame::EventHandler" alt="" coords="457,5,636,32"/>
+<area shape="rect" id="node4" href="$class_game_manager.html#a9cbffdeede49308ecfb272a03fda1a76" title="GameManager::EventHandler" alt="" coords="684,5,875,32"/>
+<area shape="rect" id="node5" href="$main_8cpp.html#a700a0caa5b70a06d1064e576f9f3cf65" title="main" alt="" coords="923,5,973,32"/>
+</map>

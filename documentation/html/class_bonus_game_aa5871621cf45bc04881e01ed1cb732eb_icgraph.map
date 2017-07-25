@@ -1,0 +1,5 @@
+<map id="BonusGame::GenPrize" name="BonusGame::GenPrize">
+<area shape="rect" id="node2" href="$class_bonus_game.html#a7cc80c1bae4f992084a80f28e150c5f5" title="BonusGame::EventHandler" alt="" coords="209,5,388,32"/>
+<area shape="rect" id="node3" href="$class_game_manager.html#a9cbffdeede49308ecfb272a03fda1a76" title="GameManager::EventHandler" alt="" coords="436,5,627,32"/>
+<area shape="rect" id="node4" href="$main_8cpp.html#a700a0caa5b70a06d1064e576f9f3cf65" title="main" alt="" coords="675,5,725,32"/>
+</map>
