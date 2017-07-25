@@ -4,6 +4,9 @@ Game::Game() : State()
 {
 	m_TextureBackground = NULL;
 
+	m_TexturePayTable = NULL;
+	m_bShowPayTable = false;
+
 	m_bIsSpinning = false;
 
 	m_bWin = false;
@@ -17,6 +20,7 @@ Game::Game() : State()
 
 Game::Game(SDL_Renderer* newRenderer) : State(newRenderer)
 {
+	m_bShowPayTable = false;
 	m_bIsSpinning = false;
 
 	m_bWin = false;
@@ -26,6 +30,10 @@ Game::Game(SDL_Renderer* newRenderer) : State(newRenderer)
 	m_TextureBackground = IMG_LoadTexture(m_Renderer, g_GameBackground);
 	if(m_TextureBackground == NULL)
 		std::cerr << "Failed to load TextureBackground! SDL Error: " << IMG_GetError() << std::endl;
+
+	m_TexturePayTable = IMG_LoadTexture(newRenderer, g_GamePayTable);
+	if(m_TexturePayTable == NULL)
+		std::cerr << "Couldn't load PayTable! SDL Error: " << IMG_GetError() << std::endl;
 
 	m_Panel = new GamePanel(m_Renderer);
 
@@ -47,6 +55,9 @@ Game::~Game()
 
 	SDL_DestroyTexture(m_TextureBackground);
 	m_TextureBackground = NULL;
+
+	SDL_DestroyTexture(m_TexturePayTable);
+	m_TexturePayTable = NULL;
 }
 
 void Game::Render(bool UpdateOnly)
@@ -62,6 +73,18 @@ void Game::Render(bool UpdateOnly)
 
 	m_Reel->Render(UpdateOnly);
 	m_Panel->Render(UpdateOnly);
+
+	if(m_bShowPayTable)
+	{
+		SDL_Rect tempRect;
+		tempRect.x = (g_ScreenWidth - g_GamePayTableWindowWidth) / 2;
+		tempRect.y = (g_ScreenHeight - g_GamePayTableWindowHeight) / 2;
+		tempRect.w = g_GamePayTableWindowWidth;
+		tempRect.h = g_GamePayTableWindowHeight;
+
+		SDL_RenderCopy(m_Renderer, m_TexturePayTable, NULL, &tempRect);
+		SDL_RenderDrawRect(m_Renderer, &tempRect);
+	}
 
 	if(m_bIsSpinning && m_Reel->HasStopped())
 	{
@@ -114,9 +137,16 @@ void Game::EventHandler(SDL_Event& e)
 	if(m_Panel->InTransition() || m_Reel->InTransition() || m_bIsSpinning)
 		return;
 
+	bool bShowPayTable = false;
 	bool bPlay = false;
 	bool bCashOut = false;
-	m_Panel->EventHandler(e, bPlay, bCashOut);
+	m_Panel->EventHandler(e, bShowPayTable, bPlay, bCashOut);
+
+	if(m_bShowPayTable != bShowPayTable)
+	{
+		m_bShowPayTable = bShowPayTable;
+		Render(false);
+	}
 
 	if(bPlay)
 	{
@@ -162,14 +192,17 @@ unsigned int Game::GetTotalBet() const
 	return m_Panel->GetTotalBet();
 }
 
-void Game::SetReel(std::string newResult, std::string newAnimate)
+void Game::SetReel(std::string newResult, std::string newAnimate, unsigned int iLines)
 {
 	if(newResult != "")
 	{
 		m_Reel->SetResult(newResult);
-
-		m_Lines->SetAnimate(newAnimate);
 		m_Reel->Animate(newAnimate);
+
+		if(iLines != 0)
+			m_Lines->SetResult(newResult, iLines);
+		else
+			m_Lines->SetAnimate(newAnimate);
 	}
 }
 

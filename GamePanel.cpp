@@ -129,8 +129,10 @@ void GamePanel::Render(bool UpdateOnly)
 	m_ButtonCashOut->Render(UpdateOnly);
 }
 
-void GamePanel::EventHandler(SDL_Event& e, bool& bPlay, bool& bCashOut)
+void GamePanel::EventHandler(SDL_Event& e, bool& bShowPayTable, bool& bPlay, bool& bCashOut)
 {
+	static bool bPayTableState = false;
+
 	int x, y;
 	if(e.type == SDL_MOUSEBUTTONDOWN)
 	{
@@ -164,7 +166,7 @@ void GamePanel::EventHandler(SDL_Event& e, bool& bPlay, bool& bCashOut)
 
 		if(m_ButtonPayTable->IsIn(x, y) && m_ButtonPayTable->IsPressed())
 		{
-			//TODO
+			bPayTableState = !bPayTableState;
 		}
 		else if(m_ButtonBetMinus->IsIn(x, y) && m_ButtonBetMinus->IsPressed())
 		{
@@ -231,6 +233,8 @@ void GamePanel::EventHandler(SDL_Event& e, bool& bPlay, bool& bCashOut)
 		}
 		else if(m_ButtonPlay->IsIn(x, y) && m_ButtonPlay->IsPressed())
 		{
+			bPayTableState = false;
+
 			if(!m_uiTotalBet == 0)
 			{
 				m_uiPaid = 0;
@@ -244,11 +248,15 @@ void GamePanel::EventHandler(SDL_Event& e, bool& bPlay, bool& bCashOut)
 		}
 		else if(m_ButtonCashOut->IsIn(x, y) && m_ButtonCashOut->IsPressed())
 		{
+			bPayTableState = false;
+
 			bCashOut = true;
 		}
 
 		ReleaseAll();
 	}
+
+	bShowPayTable = bPayTableState;
 }
 
 void GamePanel::PrepTransitionIn()

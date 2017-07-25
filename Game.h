@@ -27,7 +27,7 @@ public:
 
 	unsigned int GetTotalBet() const;
 
-	void SetReel(std::string, std::string);
+	void SetReel(std::string, std::string, unsigned int = 0);
 	std::string GetReel();
 	std::string GetAnimate();
 
@@ -55,6 +55,9 @@ private:
 	void TransitionOut();
 private:
 	SDL_Texture* m_TextureBackground;
+
+	SDL_Texture* m_TexturePayTable;
+	bool m_bShowPayTable;
 
 	bool m_bIsSpinning;
 

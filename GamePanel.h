@@ -14,7 +14,7 @@ public:
 	~GamePanel();
 public:
 	void Render(bool);
-	void EventHandler(SDL_Event&, bool&, bool&);
+	void EventHandler(SDL_Event&, bool&, bool&, bool&);
 
 	void PrepTransitionIn();
 	bool InTransition();
