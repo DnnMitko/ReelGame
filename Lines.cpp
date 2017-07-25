@@ -128,9 +128,7 @@ void Lines::GenAnimate()
 		return;
 	else
 	{
-		//TODO
 		for(int i = 0; i < 5; i++)
-			if (m_strLines[m_iMaxLine][i] == m_cMax)
 				m_strAnimate[m_Lines[m_iMaxLine][i]] = '1';
 	}
 }
