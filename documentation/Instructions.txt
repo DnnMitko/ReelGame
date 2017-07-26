@@ -1,0 +1,5 @@
+Build instructions:
+1. Add all .cpp and .h files to a project.
+2. Add the images, fonts, sounds and save folders to the project directory.
+3. Link external dependencies (make SDL and it's subsystems available to the project).
+4. Compile with mingw, 32-bit application.
