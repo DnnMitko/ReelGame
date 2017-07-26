@@ -111,6 +111,7 @@ public:
 	/**
 	 * Force calculate the winnings
 	 * regardless if the roll was over.
+	 * Returns true if bonus game should be triggered.
 	 */
 	bool CalcWinningForce();
 

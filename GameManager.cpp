@@ -284,7 +284,7 @@ void GameManager::SaveGame()
 {
 	pugi::xml_node curSave = m_SaveXML->first_child().first_child();
 
-	if(m_Game->CalcWinningForce())
+	if(m_Game->CalcWinningForce() && m_BonusGame->GetHasChosen() == false)
 	{
 		curSave.child("State").text().set("Bonus");
 		curSave.child("Credits").text().set(m_Game->GetCredits());
