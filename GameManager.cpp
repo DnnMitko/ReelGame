@@ -293,13 +293,15 @@ void GameManager::SaveGame()
 		curSave.child("Bet").text().set(m_Game->GetBet());
 		curSave.child("Lines").text().set(m_Game->GetLines());
 	}
-	else
+	else if(m_Game->GetCredits() != 0)
 	{
 		curSave.child("State").text().set("Game");
 		curSave.child("Credits").text().set(m_Game->GetCredits());
 		curSave.child("Reel").text().set(m_Game->GetReel().c_str());
 		curSave.child("Animate").text().set(m_Game->GetAnimate().c_str());
 	}
+	else
+		DeleteSave();
 }
 
 void GameManager::SaveWin()
