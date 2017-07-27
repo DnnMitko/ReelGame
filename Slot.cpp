@@ -6,6 +6,8 @@ Slot::Slot()
 
 	m_strResult = "";
 
+	m_Delay = g_SlotRollTime;
+
 	m_TextureBackground = NULL;
 
 	for(int i = 0; i < 4; i++)
@@ -25,6 +27,8 @@ Slot::Slot(SDL_Renderer* newRenderer)
 	m_Renderer = newRenderer;
 
 	m_strResult = "";
+
+	m_Delay = g_SlotRollTime;
 
 	m_bIsRolling = false;
 	m_bPutInPlace = false;
@@ -136,6 +140,11 @@ std::string Slot::GetResult() const
 	return m_strResult;
 }
 
+void Slot::SetDelay(unsigned int iNewDelay)
+{
+	m_Delay = iNewDelay;
+}
+
 void Slot::GenNext(bool bGenSpecial)
 {
 	m_strResult = "";
@@ -170,7 +179,7 @@ void Slot::GenNext(bool bGenSpecial)
 
 void Slot::ProcessRolling(bool& UpdateOnly)
 {
-	if(SDL_GetTicks() - m_uiTimer >= g_SlotRollTime)
+	if(SDL_GetTicks() - m_uiTimer >= m_Delay)
 	{
 		m_bIsRolling = false;
 		m_bPutInPlace = true;

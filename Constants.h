@@ -189,6 +189,7 @@ const char g_ReelFrame[] = "images/Frame.png";
 const int g_ReelSlotY = 68;
 const int g_ReelSlotX = 175;
 const int g_ReelSlotMargin = 45;
+const unsigned int g_ReelDelayDiff = 500;
 const char g_ReelSound[] = "sounds/Slots.wav";
 
 

@@ -79,6 +79,11 @@ public:
 	 * Gets the current figures as a string.
 	 */
 	std::string GetResult() const;
+
+	/**
+	 * Sets spin time.
+	 */
+	void SetDelay(unsigned int);
 private:
 	/**
 	 * Generates the next figures to stop on.
@@ -165,9 +170,14 @@ private:
 	int m_iY;
 
 	/**
-	 * Timer variable for trackign time intervals.
+	 * Timer variable for tracking time intervals.
 	 */
 	Uint32 m_uiTimer;
+
+	/**
+	 * Holds how long slot will spin.
+	 */
+	unsigned int m_Delay;
 };
 
 #endif /* SLOT_H_ */

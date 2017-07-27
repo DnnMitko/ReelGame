@@ -48,6 +48,7 @@ Reel::Reel(SDL_Renderer* newRenderer)
 		m_Slots[i] = new Slot(m_Renderer);
 		m_Slots[i]->SetX(g_ReelSlotX + i * (g_FigureSize + g_ReelSlotMargin));
 		m_Slots[i]->SetY(m_iY + g_ReelSlotY);
+		m_Slots[i]->SetDelay(i * g_ReelDelayDiff + g_SlotRollTime);
 	}
 }
 
