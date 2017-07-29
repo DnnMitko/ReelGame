@@ -145,7 +145,7 @@ void Outro::SetCredits(unsigned int newCredits)
 	std::stringstream ss;
 
 	// Convert the money into a string
-	ss << "BGN " << m_fCashOutAmmount;
+	ss << std::fixed << std::setprecision(2) << "BGN " << m_fCashOutAmmount;
 	strMoney = ss.str();
 
 	// Set that string to show on the textfield

@@ -5,6 +5,7 @@
 #include <SDL2/SDL_ttf.h>
 #include <string>
 #include <sstream>
+#include <iomanip>
 #include "State.h"
 #include "Button.h"
 #include "Constants.h"
