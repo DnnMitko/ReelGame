@@ -126,13 +126,13 @@ void Intro::EventHandler(SDL_Event& e)
 			m_ButtonResume->Press();
 		else if (m_ButtonCreditPlus->IsIn(x, y))
 			m_ButtonCreditPlus->Press();
-		else if (m_ButtonCreditMinus->IsIn(x,y))
+		else if (m_ButtonCreditMinus->IsIn(x,y) && m_uiCredit != 0)
 			m_ButtonCreditMinus->Press();
 		else if (m_ButtonInfo->IsIn(x, y))
 			m_ButtonInfo->Press();
 		else if (m_ButtonVolumePlus->IsIn(x, y))
 			m_ButtonVolumePlus->Press();
-		else if (m_ButtonVolumeMinus->IsIn(x,y))
+		else if (m_ButtonVolumeMinus->IsIn(x,y)&& m_iVolume != 0)
 			m_ButtonVolumeMinus->Press();
 	}
 	else if (e.type == SDL_MOUSEBUTTONUP)
