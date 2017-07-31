@@ -120,7 +120,7 @@ void Intro::EventHandler(SDL_Event& e)
 	{
 		SDL_GetMouseState(&x, &y);
 
-		if (m_ButtonStart->IsIn(x, y))
+		if (m_ButtonStart->IsIn(x, y) && m_uiCredit > 0)
 			m_ButtonStart->Press();
 		else if (m_ButtonResume->IsIn(x, y))
 			m_ButtonResume->Press();
