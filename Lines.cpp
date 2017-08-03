@@ -97,6 +97,9 @@ bool Lines::HasSpecial()
 {
 	int iCounter = 0;
 
+	if (m_strResult.length() < 15)
+		return false;
+
 	for ( int i = 0 ; i < 15 ; i ++)
 	{
 		if ( m_strResult[i] == g_FigureID_6)
