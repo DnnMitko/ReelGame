@@ -340,11 +340,9 @@ void GamePanel::CalcWinning(unsigned int uiPaid)
 
 void GamePanel::Clear()
 {
-	if (m_uiCurCredits < m_uiTotalBet)
 	m_uiBet = 0;
 	UpdateBet();
 
-	if (m_uiCurCredits < m_uiTotalBet)
 	m_uiLines = 1;
 	UpdateLines();
 
