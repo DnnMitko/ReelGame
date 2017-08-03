@@ -120,7 +120,7 @@ void Intro::EventHandler(SDL_Event& e)
 	{
 		SDL_GetMouseState(&x, &y);
 
-		if (m_ButtonStart->IsIn(x, y) && m_uiCredit > 0)
+		if (m_ButtonStart->IsIn(x, y))
 			m_ButtonStart->Press();
 		else if (m_ButtonResume->IsIn(x, y))
 			m_ButtonResume->Press();
@@ -155,6 +155,7 @@ void Intro::EventHandler(SDL_Event& e)
 			m_uiCredit += g_IntroCreditIncrement;
 			UpdateCredits();
 			m_ButtonCreditMinus->Enable();
+			m_ButtonStart->Enable();
 		}
 		else if(m_ButtonCreditMinus->IsIn(x,y) && m_ButtonCreditMinus->IsPressed())
 		{
@@ -166,6 +167,8 @@ void Intro::EventHandler(SDL_Event& e)
 				{
 					m_ButtonCreditMinus->Release();
 					m_ButtonCreditMinus->Disable();
+
+					m_ButtonStart->Disable();
 				}
 			}
 		}
@@ -218,6 +221,7 @@ void Intro::PrepTransitionIn()
 	m_uiCredit = 0;
 	UpdateCredits();
 
+	m_ButtonStart->Disable();
 	m_ButtonCreditMinus->Disable();
 }
 
