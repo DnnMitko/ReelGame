@@ -126,13 +126,13 @@ void Intro::EventHandler(SDL_Event& e)
 			m_ButtonResume->Press();
 		else if (m_ButtonCreditPlus->IsIn(x, y))
 			m_ButtonCreditPlus->Press();
-		else if (m_ButtonCreditMinus->IsIn(x,y) && m_uiCredit != 0)
+		else if (m_ButtonCreditMinus->IsIn(x,y))
 			m_ButtonCreditMinus->Press();
 		else if (m_ButtonInfo->IsIn(x, y))
 			m_ButtonInfo->Press();
 		else if (m_ButtonVolumePlus->IsIn(x, y))
 			m_ButtonVolumePlus->Press();
-		else if (m_ButtonVolumeMinus->IsIn(x,y)&& m_iVolume != 0)
+		else if (m_ButtonVolumeMinus->IsIn(x,y))
 			m_ButtonVolumeMinus->Press();
 	}
 	else if (e.type == SDL_MOUSEBUTTONUP)
@@ -154,6 +154,7 @@ void Intro::EventHandler(SDL_Event& e)
 		{
 			m_uiCredit += g_IntroCreditIncrement;
 			UpdateCredits();
+			m_ButtonCreditMinus->Enable();
 		}
 		else if(m_ButtonCreditMinus->IsIn(x,y) && m_ButtonCreditMinus->IsPressed())
 		{
@@ -161,6 +162,11 @@ void Intro::EventHandler(SDL_Event& e)
 			{
 				m_uiCredit -= g_IntroCreditIncrement;
 				UpdateCredits();
+				if (m_uiCredit == 0)
+				{
+					m_ButtonCreditMinus->Release();
+					m_ButtonCreditMinus->Disable();
+				}
 			}
 		}
 		else if(m_ButtonInfo->IsIn(x,y) && m_ButtonInfo->IsPressed())
@@ -171,18 +177,30 @@ void Intro::EventHandler(SDL_Event& e)
 		{
 			if(m_iVolume < 128)
 			{
+				m_ButtonVolumeMinus->Enable();
 				m_iVolume += g_IntroVolumeIncrement;
 				Mix_Volume(-1, m_iVolume);
 				Mix_VolumeMusic(m_iVolume);
+				if (m_iVolume == 128)
+				{
+					m_ButtonVolumePlus->Release();
+					m_ButtonVolumePlus->Disable();
+				}
 			}
 		}
 		else if (m_ButtonVolumeMinus->IsIn(x, y) && m_ButtonVolumeMinus->IsPressed())
 		{
 			if(m_iVolume > 0)
 			{
+				m_ButtonVolumePlus->Enable();
 				m_iVolume -= g_IntroVolumeIncrement;
 				Mix_Volume(-1, m_iVolume);
 				Mix_VolumeMusic(m_iVolume);
+				if (m_iVolume == 0)
+				{
+					m_ButtonVolumeMinus->Release();
+					m_ButtonVolumeMinus->Disable();
+				}
 			}
 		}
 
@@ -199,6 +217,8 @@ void Intro::PrepTransitionIn()
 
 	m_uiCredit = 0;
 	UpdateCredits();
+
+	m_ButtonCreditMinus->Disable();
 }
 
 unsigned int Intro::GetCredits() const
@@ -293,6 +313,7 @@ void Intro::InitInsertCredit()
 	m_ButtonCreditMinus->SetY(m_iY + 2 * (g_IntroButtonHeight + g_IntroButtonMargin));
 	m_ButtonCreditMinus->SetFieldSize(g_IntroButtonHeight, g_IntroButtonWidth / 4);
 	m_ButtonCreditMinus->SetText(g_IntroButtonMinus, m_Font, g_ColorBlack);
+	m_ButtonCreditMinus->Disable();
 
 	m_ButtonCreditPlus = new Button(m_Renderer);
 	m_ButtonCreditPlus->SetX((g_ScreenWidth - g_IntroButtonWidth) / 2 + g_IntroButtonWidth - g_IntroButtonWidth / 4);
