@@ -220,7 +220,8 @@ void GameManager::Load()
 	}
 	else if(strState == "Intro")
 	{
-		m_Game->SetCredits(curSave.child("Credits").text().as_uint());
+		m_Game->SetCredits(curSave.child("Credits").text().as_uint()
+						   + m_Intro->GetCredits());
 
 		m_Game->PrepTransitionIn();
 
@@ -229,7 +230,8 @@ void GameManager::Load()
 	}
 	else if(strState == "Game")
 	{
-		m_Game->SetCredits(curSave.child("Credits").text().as_uint());
+		m_Game->SetCredits(curSave.child("Credits").text().as_uint()
+						   + m_Intro->GetCredits());
 		m_Game->SetReel(curSave.child("Reel").text().as_string(),
 						curSave.child("Animate").text().as_string(),
 						curSave.child("Lines").text().as_uint());
@@ -243,7 +245,8 @@ void GameManager::Load()
 	}
 	else if(strState == "Bonus")
 	{
-		m_Game->SetCredits(curSave.child("Credits").text().as_uint());
+		m_Game->SetCredits(curSave.child("Credits").text().as_uint()
+						   + m_Intro->GetCredits());
 		m_Game->SetReel(curSave.child("Reel").text().as_string(),
 						curSave.child("Animate").text().as_string(),
 						curSave.child("Lines").text().as_uint());
