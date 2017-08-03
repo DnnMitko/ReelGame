@@ -1,7 +1,7 @@
 #ifndef STATE_H_
 #define STATE_H_
 
-#include <SDL2/SDL.h>
+#include <SDL.h>
 
 /**
  * Abstract class, used for defining the

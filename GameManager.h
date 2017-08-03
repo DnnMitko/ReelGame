@@ -1,7 +1,7 @@
 #ifndef GAMEMANAGER_H_
 #define GAMEMANAGER_H_
 
-#include <SDL2/SDL.h>
+#include <SDL.h>
 #include <iostream>
 #include <cstdlib>
 #include <ctime>

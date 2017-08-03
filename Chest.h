@@ -1,7 +1,7 @@
 #ifndef CHEST_H_
 #define CHEST_H_
 
-#include <SDL2/SDL.h>
+#include <SDL.h>
 #include "Button.h"
 
 /**

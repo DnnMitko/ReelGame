@@ -1,8 +1,8 @@
 #ifndef WIN_H_
 #define WIN_H_
 
-#include <SDL2/SDL.h>
-#include <SDL2/SDL_ttf.h>
+#include <SDL.h>
+#include <SDL_ttf.h>
 #include <string>
 #include <sstream>
 #include "State.h"

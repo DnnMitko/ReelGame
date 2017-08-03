@@ -1,7 +1,7 @@
 #ifndef INFO_H_
 #define INFO_H_
 
-#include <SDL2/SDL.h>
+#include <SDL.h>
 #include "Button.h"
 
 /**
