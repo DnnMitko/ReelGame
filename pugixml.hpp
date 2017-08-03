@@ -561,10 +561,10 @@ namespace pugi
 		// Find attribute using predicate. Returns first attribute for which predicate returned true.
 		template <typename Predicate> xml_attribute find_attribute(Predicate pred) const
 		{
-			if (!_root) return xml_attribute();
+			if(!_root) return xml_attribute();
 
 			for (xml_attribute attrib = first_attribute(); attrib; attrib = attrib.next_attribute())
-				if (pred(attrib))
+				if(pred(attrib))
 					return attrib;
 
 			return xml_attribute();
@@ -573,10 +573,10 @@ namespace pugi
 		// Find child node using predicate. Returns first child for which predicate returned true.
 		template <typename Predicate> xml_node find_child(Predicate pred) const
 		{
-			if (!_root) return xml_node();
+			if(!_root) return xml_node();
 
 			for (xml_node node = first_child(); node; node = node.next_sibling())
-				if (pred(node))
+				if(pred(node))
 					return node;
 
 			return xml_node();
@@ -585,21 +585,21 @@ namespace pugi
 		// Find node from subtree using predicate. Returns first node from subtree (depth-first), for which predicate returned true.
 		template <typename Predicate> xml_node find_node(Predicate pred) const
 		{
-			if (!_root) return xml_node();
+			if(!_root) return xml_node();
 
 			xml_node cur = first_child();
 
 			while (cur._root && cur._root != _root)
 			{
-				if (pred(cur)) return cur;
+				if(pred(cur)) return cur;
 
-				if (cur.first_child()) cur = cur.first_child();
-				else if (cur.next_sibling()) cur = cur.next_sibling();
+				if(cur.first_child()) cur = cur.first_child();
+				else if(cur.next_sibling()) cur = cur.next_sibling();
 				else
 				{
 					while (!cur.next_sibling() && cur._root != _root) cur = cur.parent();
 
-					if (cur._root != _root) cur = cur.next_sibling();
+					if(cur._root != _root) cur = cur.next_sibling();
 				}
 			}
 

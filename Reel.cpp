@@ -30,11 +30,11 @@ Reel::Reel(SDL_Renderer* newRenderer)
 	m_bIsAnimated = false;
 
 	m_TextureFrame = IMG_LoadTexture(m_Renderer, g_ReelFrame);
-		if (m_TextureFrame == NULL)
+		if(m_TextureFrame == NULL)
 			std::cerr << "Failed to load texture Background!! SDL ERROR: " << IMG_GetError() << std::endl;
 
 	m_TextureBackground = IMG_LoadTexture(m_Renderer, g_GameBackground);
-		if (m_TextureBackground == NULL)
+		if(m_TextureBackground == NULL)
 			std::cerr << "Failed to load texture Background!! SDL ERROR: " << IMG_GetError() << std::endl;
 
 	m_Sound = Mix_LoadWAV(g_ReelSound);

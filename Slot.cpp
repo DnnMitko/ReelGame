@@ -34,7 +34,7 @@ Slot::Slot(SDL_Renderer* newRenderer)
 	m_bPutInPlace = false;
 
 	m_TextureBackground = IMG_LoadTexture(m_Renderer, g_GameBackground);
-	if (m_TextureBackground == NULL)
+	if(m_TextureBackground == NULL)
 		std::cerr << "Failed to load texture Background!! SDL ERROR: " << IMG_GetError() << std::endl;
 
 	for(int i = 0; i < 4; i++)

@@ -67,7 +67,7 @@ void Button::Render(bool UpdateOnly)
 		tempRect.w = g_ButtonSpriteWidth;
 		tempRect.h = g_ButtonSpriteHeight;
 		tempRect.x = 0;
-		if (!m_bEnabled)
+		if(!m_bEnabled)
 			tempRect.y = g_ButtonSpriteHeight * 2;
 		else if(m_bIsPressed)
 			tempRect.y = g_ButtonSpriteHeight;
@@ -129,7 +129,7 @@ void Button::Disable()
 
 void Button::Press()
 {
-	if (m_bEnabled)
+	if(m_bEnabled)
 	{
 		m_bIsPressed = true;
 		m_bHasChanged =  true;
@@ -140,7 +140,7 @@ void Button::Press()
 
 void Button::Release()
 {
-	if (m_bEnabled)
+	if(m_bEnabled)
 	{
 		m_bIsPressed = false;
 		m_bHasChanged = true;

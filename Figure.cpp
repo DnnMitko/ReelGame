@@ -29,13 +29,13 @@ Figure::Figure(SDL_Renderer* newRenderer)
 	if(!m_TextureFigures)
 	{
 		m_TextureFigures = IMG_LoadTexture(m_Renderer,g_Figure);
-		if (m_TextureFigures == NULL)
+		if(m_TextureFigures == NULL)
 			std::cerr << "Failed to load texture Figures!!! SDL ERROR: " << IMG_GetError() << std::endl;
 	}
 	if(!m_TextureBackground)
 	{
 		m_TextureBackground = IMG_LoadTexture(m_Renderer, g_GameBackground);
-		if (m_TextureBackground == NULL)
+		if(m_TextureBackground == NULL)
 			std::cerr << "Failed to load texture Background!! SDL ERROR: " << IMG_GetError() << std::endl;
 	}
 
@@ -60,7 +60,7 @@ Figure::~Figure()
 
 void Figure::Render(bool UpdateOnly)
 {
-	if (!m_TextureFigures || !m_Renderer || !m_TextureBackground)
+	if(!m_TextureFigures || !m_Renderer || !m_TextureBackground)
 		return;
 
 	// If we're looking for updates only.
@@ -75,7 +75,7 @@ void Figure::Render(bool UpdateOnly)
 		// If it's animated, check if it's time to change animation frame.
 		if(m_bIsAnimated)
 		{
-			if ( SDL_GetTicks() - m_uiTimer >= g_SlotAnimationDelay)
+			if( SDL_GetTicks() - m_uiTimer >= g_SlotAnimationDelay)
 			{
 				// Reset timer.
 				m_uiTimer = SDL_GetTicks();
@@ -85,7 +85,7 @@ void Figure::Render(bool UpdateOnly)
 
 				// Move to next frame of animation.
 				m_RectFigure.y += g_FigureSize;
-				if ( m_RectFigure.y >= 3 * g_FigureSize)
+				if( m_RectFigure.y >= 3 * g_FigureSize)
 					m_RectFigure.y = 0;
 			}
 			// Draw figure.

@@ -120,22 +120,22 @@ void Intro::EventHandler(SDL_Event& e)
 	{
 		SDL_GetMouseState(&x, &y);
 
-		if (m_ButtonStart->IsIn(x, y))
+		if(m_ButtonStart->IsIn(x, y))
 			m_ButtonStart->Press();
-		else if (m_ButtonResume->IsIn(x, y))
+		else if(m_ButtonResume->IsIn(x, y))
 			m_ButtonResume->Press();
-		else if (m_ButtonCreditPlus->IsIn(x, y))
+		else if(m_ButtonCreditPlus->IsIn(x, y))
 			m_ButtonCreditPlus->Press();
-		else if (m_ButtonCreditMinus->IsIn(x,y))
+		else if(m_ButtonCreditMinus->IsIn(x,y))
 			m_ButtonCreditMinus->Press();
-		else if (m_ButtonInfo->IsIn(x, y))
+		else if(m_ButtonInfo->IsIn(x, y))
 			m_ButtonInfo->Press();
-		else if (m_ButtonVolumePlus->IsIn(x, y))
+		else if(m_ButtonVolumePlus->IsIn(x, y))
 			m_ButtonVolumePlus->Press();
-		else if (m_ButtonVolumeMinus->IsIn(x,y))
+		else if(m_ButtonVolumeMinus->IsIn(x,y))
 			m_ButtonVolumeMinus->Press();
 	}
-	else if (e.type == SDL_MOUSEBUTTONUP)
+	else if(e.type == SDL_MOUSEBUTTONUP)
 	{
 		SDL_GetMouseState(&x, &y);
 
@@ -163,7 +163,7 @@ void Intro::EventHandler(SDL_Event& e)
 			{
 				m_uiCredit -= g_IntroCreditIncrement;
 				UpdateCredits();
-				if (m_uiCredit == 0)
+				if(m_uiCredit == 0)
 				{
 					m_ButtonCreditMinus->Release();
 					m_ButtonCreditMinus->Disable();
@@ -176,7 +176,7 @@ void Intro::EventHandler(SDL_Event& e)
 		{
 			m_bShowInfo = true;
 		}
-		else if (m_ButtonVolumePlus->IsIn(x, y) && m_ButtonVolumePlus->IsPressed())
+		else if(m_ButtonVolumePlus->IsIn(x, y) && m_ButtonVolumePlus->IsPressed())
 		{
 			if(m_iVolume < 128)
 			{
@@ -184,14 +184,14 @@ void Intro::EventHandler(SDL_Event& e)
 				m_iVolume += g_IntroVolumeIncrement;
 				Mix_Volume(-1, m_iVolume);
 				Mix_VolumeMusic(m_iVolume);
-				if (m_iVolume == 128)
+				if(m_iVolume == 128)
 				{
 					m_ButtonVolumePlus->Release();
 					m_ButtonVolumePlus->Disable();
 				}
 			}
 		}
-		else if (m_ButtonVolumeMinus->IsIn(x, y) && m_ButtonVolumeMinus->IsPressed())
+		else if(m_ButtonVolumeMinus->IsIn(x, y) && m_ButtonVolumeMinus->IsPressed())
 		{
 			if(m_iVolume > 0)
 			{
@@ -199,7 +199,7 @@ void Intro::EventHandler(SDL_Event& e)
 				m_iVolume -= g_IntroVolumeIncrement;
 				Mix_Volume(-1, m_iVolume);
 				Mix_VolumeMusic(m_iVolume);
-				if (m_iVolume == 0)
+				if(m_iVolume == 0)
 				{
 					m_ButtonVolumeMinus->Release();
 					m_ButtonVolumeMinus->Disable();
@@ -242,7 +242,7 @@ void Intro::ResetResume()
 
 void Intro::CheckSave(bool bHasSave)
 {
-	if (!bHasSave)
+	if(!bHasSave)
 		m_ButtonResume->Disable();
 	else
 		m_ButtonResume->Enable();

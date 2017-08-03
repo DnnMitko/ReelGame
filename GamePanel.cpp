@@ -43,6 +43,8 @@ GamePanel::GamePanel(SDL_Renderer* newRenderer)
 	curX += g_GameMaxBetWidth + g_GameMarginX;
 	InitCurCredits(curX);
 
+	// Total bet disables/enables play button so we need it created here.
+	m_ButtonPlay = new Button(m_Renderer);
 	curX += g_GameFieldWidth + g_GameMarginX;
 	InitTotalBet(curX);
 
@@ -160,7 +162,7 @@ void GamePanel::EventHandler(SDL_Event& e, bool& bShowPayTable, bool& bPlay, boo
 		else if(m_ButtonCashOut->IsIn(x, y))
 			m_ButtonCashOut->Press();
 	}
-	else if (e.type == SDL_MOUSEBUTTONUP)
+	else if(e.type == SDL_MOUSEBUTTONUP)
 	{
 		SDL_GetMouseState(&x, &y);
 
@@ -178,13 +180,13 @@ void GamePanel::EventHandler(SDL_Event& e, bool& bShowPayTable, bool& bPlay, boo
 				UpdateBet();
 				UpdateTotalBet();
 
-				if (m_uiBet == 0)
+				if(m_uiBet == 0)
 				{
 					m_ButtonBetMinus->Release();
 					m_ButtonBetMinus->Disable();
 				}
 
-				if (m_uiLines < g_GameMaxLines && m_uiBet * (m_uiLines + 1) <= m_uiCurCredits)
+				if(m_uiLines < g_GameMaxLines && m_uiBet * (m_uiLines + 1) <= m_uiCurCredits)
 					m_ButtonLinesPlus->Enable();
 			}
 		}
@@ -198,13 +200,13 @@ void GamePanel::EventHandler(SDL_Event& e, bool& bShowPayTable, bool& bPlay, boo
 				UpdateBet();
 				UpdateTotalBet();
 
-				if (m_uiBet == g_GameMaxBetAmmount || (m_uiBet + g_GameBetIncriment) * m_uiLines > m_uiCurCredits)
+				if(m_uiBet == g_GameMaxBetAmmount || (m_uiBet + g_GameBetIncriment) * m_uiLines > m_uiCurCredits)
 				{
 					m_ButtonBetPlus->Release();
 					m_ButtonBetPlus->Disable();
 				}
 
-				if (m_uiBet * (m_uiLines + 1) > m_uiCurCredits)
+				if(m_uiBet * (m_uiLines + 1) > m_uiCurCredits)
 					m_ButtonLinesPlus->Disable();
 			}
 		}
@@ -218,13 +220,13 @@ void GamePanel::EventHandler(SDL_Event& e, bool& bShowPayTable, bool& bPlay, boo
 				UpdateLines();
 				UpdateTotalBet();
 
-				if (m_uiLines == 1)
+				if(m_uiLines == 1)
 				{
 					m_ButtonLinesMinus->Release();
 					m_ButtonLinesMinus->Disable();
 				}
 				
-				if (m_uiBet < g_GameMaxBetAmmount && m_uiLines * (m_uiBet + g_GameBetIncriment) <= m_uiCurCredits)
+				if(m_uiBet < g_GameMaxBetAmmount && m_uiLines * (m_uiBet + g_GameBetIncriment) <= m_uiCurCredits)
 					m_ButtonBetPlus->Enable();
 			}
 		}
@@ -238,13 +240,13 @@ void GamePanel::EventHandler(SDL_Event& e, bool& bShowPayTable, bool& bPlay, boo
 				UpdateLines();
 				UpdateTotalBet();
 				
-				if (m_uiLines == g_GameMaxLines || m_uiBet * (m_uiLines + 1) > m_uiCurCredits)
+				if(m_uiLines == g_GameMaxLines || m_uiBet * (m_uiLines + 1) > m_uiCurCredits)
 				{
 					m_ButtonLinesPlus->Release();
 					m_ButtonLinesPlus->Disable();
 				}
 
-				if (m_uiLines * (m_uiBet + g_GameBetIncriment) > m_uiCurCredits)
+				if(m_uiLines * (m_uiBet + g_GameBetIncriment) > m_uiCurCredits)
 					m_ButtonBetPlus->Disable();
 			}
 		}
@@ -271,7 +273,7 @@ void GamePanel::EventHandler(SDL_Event& e, bool& bShowPayTable, bool& bPlay, boo
 					break;
 			}
 
-			if (m_uiBet == 0)
+			if(m_uiBet == 0)
 			{
 				m_ButtonBetMinus->Disable();
 				m_ButtonBetPlus->Enable();
@@ -279,11 +281,11 @@ void GamePanel::EventHandler(SDL_Event& e, bool& bShowPayTable, bool& bPlay, boo
 			else
 			{
 				m_ButtonBetMinus->Enable();
-				if (m_uiBet == g_GameMaxBetAmmount || (m_uiBet + g_GameBetIncriment) * m_uiLines > m_uiCurCredits)
+				if(m_uiBet == g_GameMaxBetAmmount || (m_uiBet + g_GameBetIncriment) * m_uiLines > m_uiCurCredits)
 					m_ButtonBetPlus->Disable();
 			}
 
-			if (m_uiLines == 1)
+			if(m_uiLines == 1)
 			{
 				m_ButtonLinesMinus->Disable();
 				m_ButtonLinesPlus->Enable();
@@ -291,7 +293,7 @@ void GamePanel::EventHandler(SDL_Event& e, bool& bShowPayTable, bool& bPlay, boo
 			else
 			{
 				m_ButtonLinesMinus->Enable();
-				if (m_uiLines == g_GameMaxLines || m_uiBet * (m_uiLines + 1) > m_uiCurCredits)
+				if(m_uiLines == g_GameMaxLines || m_uiBet * (m_uiLines + 1) > m_uiCurCredits)
 					m_ButtonLinesPlus->Disable();
 			}
 
@@ -331,7 +333,7 @@ void GamePanel::PrepTransitionIn()
 	m_iY = g_ScreenHeight + g_GamePanelHideOffsetY;
 	Reposition();
 
-	if (m_uiBet == 0)
+	if(m_uiBet == 0)
 	{
 		m_ButtonBetMinus->Disable();
 		m_ButtonBetPlus->Enable();
@@ -339,11 +341,11 @@ void GamePanel::PrepTransitionIn()
 	else
 	{
 		m_ButtonBetMinus->Enable();
-		if (m_uiBet == g_GameMaxBetAmmount || (m_uiBet + g_GameBetIncriment) * m_uiLines > m_uiCurCredits)
+		if(m_uiBet == g_GameMaxBetAmmount || (m_uiBet + g_GameBetIncriment) * m_uiLines > m_uiCurCredits)
 			m_ButtonBetPlus->Disable();
 	}
 
-	if (m_uiLines == 1)
+	if(m_uiLines == 1)
 	{
 		m_ButtonLinesMinus->Disable();
 		m_ButtonLinesPlus->Enable();
@@ -351,7 +353,7 @@ void GamePanel::PrepTransitionIn()
 	else
 	{
 		m_ButtonLinesMinus->Enable();
-		if (m_uiLines == g_GameMaxLines || m_uiBet * (m_uiLines + 1) > m_uiCurCredits)
+		if(m_uiLines == g_GameMaxLines || m_uiBet * (m_uiLines + 1) > m_uiCurCredits)
 			m_ButtonLinesPlus->Disable();
 	}
 }
@@ -541,15 +543,15 @@ void GamePanel::Reposition()
 
 void GamePanel::RecalcBet()
 {
-	if (m_uiTotalBet <= m_uiCurCredits)
+	if(m_uiTotalBet <= m_uiCurCredits)
 		return;
 	else
 	{
 		while (m_uiBet * m_uiLines > m_uiCurCredits)
 		{
-			if (m_uiBet > g_GameBetIncriment)
+			if(m_uiBet > g_GameBetIncriment)
 				m_uiBet -= g_GameBetIncriment;
-			else if (m_uiLines > 1)
+			else if(m_uiLines > 1)
 				m_uiLines -= 1;
 			else
 			{
@@ -558,7 +560,7 @@ void GamePanel::RecalcBet()
 			}
 		}
 
-		if (m_uiBet == 0)
+		if(m_uiBet == 0)
 		{
 			m_ButtonBetMinus->Disable();
 			m_ButtonBetPlus->Enable();
@@ -566,11 +568,11 @@ void GamePanel::RecalcBet()
 		else
 		{
 			m_ButtonBetMinus->Enable();
-			if (m_uiBet == g_GameMaxBetAmmount)
+			if(m_uiBet == g_GameMaxBetAmmount)
 				m_ButtonBetPlus->Disable();
 		}
 
-		if (m_uiLines == 1)
+		if(m_uiLines == 1)
 		{
 			m_ButtonLinesMinus->Disable();
 			m_ButtonLinesPlus->Enable();
@@ -578,7 +580,7 @@ void GamePanel::RecalcBet()
 		else
 		{
 			m_ButtonLinesMinus->Enable();
-			if (m_uiLines == g_GameMaxLines)
+			if(m_uiLines == g_GameMaxLines)
 				m_ButtonLinesPlus->Disable();
 		}
 
@@ -702,7 +704,6 @@ void GamePanel::InitPaid(int curX)
 
 void GamePanel::InitPlay(int curX)
 {
-	m_ButtonPlay = new Button(m_Renderer);
 	m_ButtonPlay->SetX(curX);
 	m_ButtonPlay->SetY(m_iY);
 	m_ButtonPlay->SetFieldSize(g_GamePlayHeight, g_GamePlayWidth);
@@ -762,6 +763,11 @@ void GamePanel::UpdateTotalBet()
 	tempStr = ss.str();
 
 	m_TextFieldTotalBet->SetText(tempStr, m_FontSmall, g_ColorWhite);
+
+	if(m_uiTotalBet == 0)
+		m_ButtonPlay->Disable();
+	else
+		m_ButtonPlay->Enable();
 }
 
 void GamePanel::UpdatePaid()

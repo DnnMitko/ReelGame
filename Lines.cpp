@@ -81,14 +81,14 @@ void Lines::Calculate()
 			else
 				Process3(i, 0);
 		}
-		else if (m_strLines[i][1] == m_strLines[i][2] && m_strLines[i][2] == m_strLines[i][3])
+		else if(m_strLines[i][1] == m_strLines[i][2] && m_strLines[i][2] == m_strLines[i][3])
 		{
-			if (m_strLines[i][3] == m_strLines[i][4])
+			if(m_strLines[i][3] == m_strLines[i][4])
 				Process4(i, 1);
 			else
 				Process3(i, 1);
 		}
-		else if (m_strLines[i][2] == m_strLines[i][3] && m_strLines[i][3]== m_strLines[i][4])
+		else if(m_strLines[i][2] == m_strLines[i][3] && m_strLines[i][3]== m_strLines[i][4])
 			Process3(i, 2);
 	}
 }
@@ -97,12 +97,12 @@ bool Lines::HasSpecial()
 {
 	int iCounter = 0;
 
-	if (m_strResult.length() < 15)
+	if(m_strResult.length() < 15)
 		return false;
 
 	for ( int i = 0 ; i < 15 ; i ++)
 	{
-		if ( m_strResult[i] == g_FigureID_6)
+		if( m_strResult[i] == g_FigureID_6)
 			iCounter++;
 	}
 
@@ -231,7 +231,7 @@ void Lines::Process5(int iLine)
 
 void Lines::CheckMax(int iMultiplier, char cFigure, int iLine)
 {
-	if (m_iMax < iMultiplier)
+	if(m_iMax < iMultiplier)
 	{
 		m_iMax = iMultiplier;
 		m_iMaxLine = iLine;

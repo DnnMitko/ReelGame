@@ -283,7 +283,7 @@ void BonusGame::InitTitleScreen()
 {
 	// Load and check background texture.
 	m_TextureBackgroundInit = IMG_LoadTexture(m_Renderer, g_BonusGameBackgroundInit);
-	if (m_TextureBackgroundInit == NULL)
+	if(m_TextureBackgroundInit == NULL)
 		std::cerr << "Failed to load TextureBackgroundInit! SDL Error: " << IMG_GetError() << std::endl;
 
 	// Load title label.
@@ -329,7 +329,7 @@ void BonusGame::InitGame()
 {
 	// Load and check background texture.
 	m_TextureBackgroundGame = IMG_LoadTexture(m_Renderer, g_BonusGameBackground);
-	if (m_TextureBackgroundGame == NULL)
+	if(m_TextureBackgroundGame == NULL)
 		std::cerr << "Failed to load TextureBackground! SDL Error: " << IMG_GetError() << std::endl;
 
 	// Load chest winnings field.
