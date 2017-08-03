@@ -8,6 +8,7 @@ Button::Button() : TextField()
 	m_TextureTextPressed = NULL;
 
 	m_bIsPressed = false;
+	m_bEnabled = true;
 }
 
 Button::Button(SDL_Renderer* newRenderer) : TextField(newRenderer)
@@ -15,6 +16,7 @@ Button::Button(SDL_Renderer* newRenderer) : TextField(newRenderer)
 	m_TextureTextPressed = NULL;
 
 	m_bIsPressed = false;
+	m_bEnabled = true;
 
 	if(!m_TextureButton)
 	{
@@ -63,10 +65,12 @@ void Button::Render(bool UpdateOnly)
 
 		SDL_Rect tempRect;
 		tempRect.w = g_ButtonSpriteWidth;
-		tempRect.h = g_ButtonSpriteHeight / 2;
+		tempRect.h = g_ButtonSpriteHeight;
 		tempRect.x = 0;
-		if(m_bIsPressed)
-			tempRect.y = g_ButtonSpriteHeight / 2;
+		if (!m_bEnabled)
+			tempRect.y = g_ButtonSpriteHeight * 2;
+		else if(m_bIsPressed)
+			tempRect.y = g_ButtonSpriteHeight;
 		else
 			tempRect.y = 0;
 
@@ -111,18 +115,36 @@ bool Button::IsIn(int x, int y) const
 	return true;
 }
 
+void Button::Enable()
+{
+	m_bEnabled = true;
+	m_bHasChanged = true;
+}
+
+void Button::Disable()
+{
+	m_bEnabled = false;
+	m_bHasChanged = true;
+}
+
 void Button::Press()
 {
-	m_bIsPressed = true;
-	m_bHasChanged =  true;
+	if (m_bEnabled)
+	{
+		m_bIsPressed = true;
+		m_bHasChanged =  true;
 
-	Mix_PlayChannel(-1, m_SfxClick, 0);
+		Mix_PlayChannel(-1, m_SfxClick, 0);
+	}
 }
 
 void Button::Release()
 {
-	m_bIsPressed = false;
-	m_bHasChanged =  true;
+	if (m_bEnabled)
+	{
+		m_bIsPressed = false;
+		m_bHasChanged = true;
+	}
 }
 
 bool Button::IsPressed() const

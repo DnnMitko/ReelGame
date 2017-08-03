@@ -1,8 +1,8 @@
 #ifndef BUTTON_H_
 #define BUTTON_H_
 
-#include <SDL2/SDL_image.h>
-#include <SDL2/SDL_mixer.h>
+#include <SDL_image.h>
+#include <SDL_mixer.h>
 #include "TextField.h"
 #include "Constants.h"
 
@@ -46,6 +46,16 @@ public:
 	bool IsIn(int, int) const;
 
 	/**
+	* Marks button as enabled.
+	*/
+	void Enable();
+
+	/**
+	* Marks button as disabled.
+	*/
+	void Disable();
+
+	/**
 	 * Marks button as pressed.
 	 */
 	void Press();
@@ -64,6 +74,11 @@ private:
 	 * IsPressed flag for button state.
 	 */
 	bool m_bIsPressed;
+
+	/**
+	 * Flag for botton enabling.
+	 */
+	bool m_bEnabled;
 
 	/**
 	 * Copy of the text message on the button in white.

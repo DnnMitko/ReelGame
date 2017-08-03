@@ -2,7 +2,7 @@
 #define CONSTANTS_H_
 
 #include <string>
-#include <SDL2/SDL.h>
+#include <SDL.h>
 
 
 const int g_ScreenWidth = 1280;
@@ -151,7 +151,7 @@ const char g_WinSound[] = "sounds/Win.wav";
 
 const char g_ButtonSprite[] = "images/ButtonSprite.png";
 const int g_ButtonSpriteWidth = 296;
-const int g_ButtonSpriteHeight = 174;
+const int g_ButtonSpriteHeight = 87;
 const char g_ButtonSound[] = "sounds/ButtonClick.wav";
 
 const int g_LinesFigure1x3 = 12;
