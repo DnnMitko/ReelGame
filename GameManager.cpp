@@ -231,7 +231,10 @@ void GameManager::Load()
 	{
 		m_Game->SetCredits(curSave.child("Credits").text().as_uint());
 		m_Game->SetReel(curSave.child("Reel").text().as_string(),
-						curSave.child("Animate").text().as_string());
+						curSave.child("Animate").text().as_string(),
+						curSave.child("Lines").text().as_uint());
+		m_Game->SetBet(curSave.child("Bet").text().as_uint());
+		m_Game->SetLines(curSave.child("Lines").text().as_uint());
 
 		m_Game->PrepTransitionIn();
 
@@ -299,6 +302,8 @@ void GameManager::SaveGame()
 		curSave.child("Credits").text().set(m_Game->GetCredits());
 		curSave.child("Reel").text().set(m_Game->GetReel().c_str());
 		curSave.child("Animate").text().set(m_Game->GetAnimate().c_str());
+		curSave.child("Bet").text().set(m_Game->GetBet());
+		curSave.child("Lines").text().set(m_Game->GetLines());
 	}
 	else
 		DeleteSave();
@@ -321,6 +326,8 @@ void GameManager::SaveBonusGame()
 		curSave.child("Credits").text().set(m_Game->GetCredits());
 		curSave.child("Reel").text().set(m_Game->GetReel().c_str());
 		curSave.child("Animate").text().set(m_Game->GetAnimate().c_str());
+		curSave.child("Bet").text().set(m_Game->GetBet());
+		curSave.child("Lines").text().set(m_Game->GetLines());
 	}
 	else
 		SaveGame();
