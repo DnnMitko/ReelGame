@@ -172,47 +172,87 @@ void GamePanel::EventHandler(SDL_Event& e, bool& bShowPayTable, bool& bPlay, boo
 		{
 			if(m_uiBet > 0)
 			{
+				m_ButtonBetPlus->Enable();
+
 				m_uiBet -= g_GameBetIncriment;
 				UpdateBet();
-
 				UpdateTotalBet();
+
+				if (m_uiBet == 0)
+				{
+					m_ButtonBetMinus->Release();
+					m_ButtonBetMinus->Disable();
+				}
+
+				if (m_uiLines < g_GameMaxLines && m_uiBet * (m_uiLines + 1) <= m_uiCurCredits)
+					m_ButtonLinesPlus->Enable();
 			}
 		}
 		else if(m_ButtonBetPlus->IsIn(x, y) && m_ButtonBetPlus->IsPressed())
 		{
 			if(m_uiBet < g_GameMaxBetAmmount && (m_uiBet + g_GameBetIncriment) * m_uiLines <= m_uiCurCredits)
 			{
+				m_ButtonBetMinus->Enable();
+
 				m_uiBet += g_GameBetIncriment;
 				UpdateBet();
-
 				UpdateTotalBet();
+
+				if (m_uiBet == g_GameMaxBetAmmount || (m_uiBet + g_GameBetIncriment) * m_uiLines > m_uiCurCredits)
+				{
+					m_ButtonBetPlus->Release();
+					m_ButtonBetPlus->Disable();
+				}
+
+				if (m_uiBet * (m_uiLines + 1) > m_uiCurCredits)
+					m_ButtonLinesPlus->Disable();
 			}
 		}
 		else if(m_ButtonLinesMinus->IsIn(x, y) && m_ButtonLinesMinus->IsPressed())
 		{
 			if(m_uiLines > 1)
 			{
+				m_ButtonLinesPlus->Enable();
+
 				m_uiLines--;
 				UpdateLines();
-
 				UpdateTotalBet();
+
+				if (m_uiLines == 1)
+				{
+					m_ButtonLinesMinus->Release();
+					m_ButtonLinesMinus->Disable();
+				}
+				
+				if (m_uiBet < g_GameMaxBetAmmount && m_uiLines * (m_uiBet + g_GameBetIncriment) <= m_uiCurCredits)
+					m_ButtonBetPlus->Enable();
 			}
 		}
 		else if(m_ButtonLinesPlus->IsIn(x, y) && m_ButtonLinesPlus->IsPressed())
 		{
 			if(m_uiLines < g_GameMaxLines && m_uiBet * (m_uiLines + 1) <= m_uiCurCredits)
 			{
+				m_ButtonLinesMinus->Enable();
+
 				m_uiLines++;
 				UpdateLines();
-
 				UpdateTotalBet();
+				
+				if (m_uiLines == g_GameMaxLines || m_uiBet * (m_uiLines + 1) > m_uiCurCredits)
+				{
+					m_ButtonLinesPlus->Release();
+					m_ButtonLinesPlus->Disable();
+				}
+
+				if (m_uiLines * (m_uiBet + g_GameBetIncriment) > m_uiCurCredits)
+					m_ButtonBetPlus->Disable();
 			}
 		}
 		else if(m_ButtonMaxBet->IsIn(x, y) && m_ButtonMaxBet->IsPressed())
 		{
 			for(unsigned int testLines = g_GameMaxLines; testLines >= 1; testLines -= 1)
 			{
-				for(unsigned int testBet = g_GameMaxBetAmmount; testBet >= 0; testBet -= g_GameBetIncriment)
+				for(unsigned int testBet = g_GameMaxBetAmmount; testBet > 0; testBet -= g_GameBetIncriment)
 				{
 					if(testBet * testLines <= m_uiCurCredits)
 					{
@@ -230,6 +270,31 @@ void GamePanel::EventHandler(SDL_Event& e, bool& bShowPayTable, bool& bPlay, boo
 				if(m_uiTotalBet != 0)
 					break;
 			}
+
+			if (m_uiBet == 0)
+			{
+				m_ButtonBetMinus->Disable();
+				m_ButtonBetPlus->Enable();
+			}
+			else
+			{
+				m_ButtonBetMinus->Enable();
+				if (m_uiBet == g_GameMaxBetAmmount || (m_uiBet + g_GameBetIncriment) * m_uiLines > m_uiCurCredits)
+					m_ButtonBetPlus->Disable();
+			}
+
+			if (m_uiLines == 1)
+			{
+				m_ButtonLinesMinus->Disable();
+				m_ButtonLinesPlus->Enable();
+			}
+			else
+			{
+				m_ButtonLinesMinus->Enable();
+				if (m_uiLines == g_GameMaxLines || m_uiBet * (m_uiLines + 1) > m_uiCurCredits)
+					m_ButtonLinesPlus->Disable();
+			}
+
 		}
 		else if(m_ButtonPlay->IsIn(x, y) && m_ButtonPlay->IsPressed())
 		{
@@ -265,6 +330,30 @@ void GamePanel::PrepTransitionIn()
 
 	m_iY = g_ScreenHeight + g_GamePanelHideOffsetY;
 	Reposition();
+
+	if (m_uiBet == 0)
+	{
+		m_ButtonBetMinus->Disable();
+		m_ButtonBetPlus->Enable();
+	}
+	else
+	{
+		m_ButtonBetMinus->Enable();
+		if (m_uiBet == g_GameMaxBetAmmount || (m_uiBet + g_GameBetIncriment) * m_uiLines > m_uiCurCredits)
+			m_ButtonBetPlus->Disable();
+	}
+
+	if (m_uiLines == 1)
+	{
+		m_ButtonLinesMinus->Disable();
+		m_ButtonLinesPlus->Enable();
+	}
+	else
+	{
+		m_ButtonLinesMinus->Enable();
+		if (m_uiLines == g_GameMaxLines || m_uiBet * (m_uiLines + 1) > m_uiCurCredits)
+			m_ButtonLinesPlus->Disable();
+	}
 }
 
 bool GamePanel::InTransition()
@@ -329,24 +418,27 @@ unsigned int GamePanel::GetTotalBet() const
 
 void GamePanel::CalcWinning(unsigned int uiPaid)
 {
-	Clear();
-
 	m_uiPaid = uiPaid;
 	UpdatePaid();
 
 	m_uiCurCredits += m_uiPaid;
 	UpdateCurCredits();
+
+	RecalcBet();
 }
 
 void GamePanel::Clear()
 {
 	m_uiBet = 0;
 	UpdateBet();
+	m_ButtonBetMinus->Disable();
+	m_ButtonBetPlus->Enable();
 
 	m_uiLines = 1;
 	UpdateLines();
+	m_ButtonLinesMinus->Disable();
+	m_ButtonLinesPlus->Enable();
 
-	m_uiTotalBet = 0;
 	UpdateTotalBet();
 
 	m_uiPaid = 0;
@@ -445,6 +537,55 @@ void GamePanel::Reposition()
 	m_ButtonPlay->SetY(m_iY);
 
 	m_ButtonCashOut->SetY(m_iY);
+}
+
+void GamePanel::RecalcBet()
+{
+	if (m_uiTotalBet <= m_uiCurCredits)
+		return;
+	else
+	{
+		while (m_uiBet * m_uiLines > m_uiCurCredits)
+		{
+			if (m_uiBet > g_GameBetIncriment)
+				m_uiBet -= g_GameBetIncriment;
+			else if (m_uiLines > 1)
+				m_uiLines -= 1;
+			else
+			{
+				m_uiBet = 0;
+				break;
+			}
+		}
+
+		if (m_uiBet == 0)
+		{
+			m_ButtonBetMinus->Disable();
+			m_ButtonBetPlus->Enable();
+		}
+		else
+		{
+			m_ButtonBetMinus->Enable();
+			if (m_uiBet == g_GameMaxBetAmmount)
+				m_ButtonBetPlus->Disable();
+		}
+
+		if (m_uiLines == 1)
+		{
+			m_ButtonLinesMinus->Disable();
+			m_ButtonLinesPlus->Enable();
+		}
+		else
+		{
+			m_ButtonLinesMinus->Enable();
+			if (m_uiLines == g_GameMaxLines)
+				m_ButtonLinesPlus->Disable();
+		}
+
+		UpdateBet();
+		UpdateLines();
+		UpdateTotalBet();
+	}
 }
 
 void GamePanel::InitPayTable(int curX)

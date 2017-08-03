@@ -138,6 +138,11 @@ private:
 	void Reposition();
 
 	/**
+	 * Recalculates bet.
+	 */
+	void RecalcBet();
+
+	/**
 	 * Allocates memory for paytable button
 	 * and positions it.
 	 */
