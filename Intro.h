@@ -25,6 +25,7 @@ public:
 	/**
 	 * Second constructor, sets up SDL_Renderer* to use for future operations.
 	 * Allocates memory for all members and sets up their positions and content.
+	 * Sets status of the Resume button.
 	 */
 	Intro(SDL_Renderer*);
 
@@ -66,6 +67,11 @@ public:
 	 * Reset resume flag.
 	 */
 	void ResetResume();
+
+	/**
+	 * Check if resume should be enabled.
+	 */
+	void CheckSave(bool);
 private:
 	/**
 	 * Release all buttons.
@@ -84,6 +90,7 @@ private:
 
 	/**
 	 * Allocate and position Resume button.
+	 * Takes bool to know if the button should be accessable.
 	 */
 	void InitResumeGame();
 

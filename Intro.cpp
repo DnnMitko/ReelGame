@@ -216,6 +216,14 @@ void Intro::ResetResume()
 	m_bResume = false;
 }
 
+void Intro::CheckSave(bool bHasSave)
+{
+	if (!bHasSave)
+		m_ButtonResume->Disable();
+	else
+		m_ButtonResume->Enable();
+}
+
 void Intro::ReleaseAll()
 {
 	m_ButtonStart->Release();

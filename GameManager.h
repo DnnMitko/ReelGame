@@ -76,6 +76,11 @@ private:
 	void DeleteSave();
 
 	/**
+	 * Check if there's a save game.
+	 */
+	bool HasSave();
+
+	/**
 	 * Processes saving from the intro state.
 	 */
 	void SaveIntro();

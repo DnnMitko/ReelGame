@@ -21,6 +21,7 @@ GameManager::GameManager()
 
 			m_CurrentState = INTRO;
 			m_Intro->PrepTransitionIn();
+			m_Intro->CheckSave(HasSave());
 			m_Intro->Render(false);
 		}
 	}
@@ -217,6 +218,7 @@ void GameManager::Load()
 	if(strState == "Deleted")
 	{
 		m_Intro->PrepTransitionIn();
+		m_Intro->CheckSave(HasSave());
 	}
 	else if(strState == "Intro")
 	{
@@ -269,6 +271,17 @@ void GameManager::DeleteSave()
 	m_SaveXML->first_child().first_child().child("State").text().set("Deleted");
 
 	m_SaveXML->save_file(g_SaveXML);
+}
+
+bool GameManager::HasSave()
+{
+	pugi::xml_node curSave = m_SaveXML->first_child().first_child();
+	std::string strState = curSave.child("State").text().as_string();
+
+	if(strState == "Deleted")
+		return false;
+	else
+		return true;
 }
 
 void GameManager::SaveIntro()
@@ -365,6 +378,7 @@ void GameManager::RenderIntro()
 		else
 		{
 			m_Intro->PrepTransitionIn();
+			m_Intro->CheckSave(HasSave());
 		}
 	}
 	else
@@ -428,6 +442,7 @@ void GameManager::RenderGame()
 			m_CurrentState = INTRO;
 
 			m_Intro->PrepTransitionIn();
+			m_Intro->CheckSave(HasSave());
 			m_Intro->Render(false);
 		}
 	}
@@ -477,6 +492,7 @@ void GameManager::RenderOutro()
 		m_CurrentState = INTRO;
 
 		m_Intro->PrepTransitionIn();
+		m_Intro->CheckSave(HasSave());
 		m_Intro->Render(false);
 	}
 	else
