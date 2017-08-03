@@ -263,7 +263,7 @@ void GamePanel::PrepTransitionIn()
 {
 	m_bTransitionIn = true;
 
-	m_iY = g_ScreenHeight;
+	m_iY = g_ScreenHeight + g_GamePanelHideOffsetY;
 	Reposition();
 }
 
@@ -410,7 +410,7 @@ void GamePanel::TransitionIn()
 
 void GamePanel::TransitionOut()
 {
-	if(m_iY >= g_ScreenHeight)
+	if(m_iY >= g_ScreenHeight + g_GamePanelHideOffsetY)
 		m_bTransitionOut = false;
 	else
 	{

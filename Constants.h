@@ -84,6 +84,7 @@ const int g_GameLoseDelay = 2000;
 const char g_GamePayTable[] = "images/PayTable.png";
 const int g_GamePayTableWindowWidth = 788;
 const int g_GamePayTableWindowHeight = 450;
+const int g_GamePanelHideOffsetY = 40;
 
 const int g_BonusWidth = 598;
 const int g_BonusHeight = 334;
