@@ -104,6 +104,7 @@ void Slot::Spin(bool bGenSpecial)
 	GenNext(bGenSpecial);
 
 	m_uiTimer = SDL_GetTicks();
+	m_uiAnimation = SDL_GetTicks();
 }
 
 bool Slot::HasStopped() const
@@ -193,13 +194,18 @@ void Slot::ProcessRolling(bool& UpdateOnly)
 		}
 		else
 		{
-			for(int i = 3; i >= 0; i--)
+			if(SDL_GetTicks() - m_uiAnimation >= g_SlotRollDelay)
 			{
-				m_Figures[i]->Clear();
-				m_Figures[i]->SetY(m_Figures[i]->GetY() + g_SlotSpeed);
-			}
+				m_uiAnimation = SDL_GetTicks();
 
-			UpdateOnly = false;
+				for(int i = 3; i >= 0; i--)
+				{
+					m_Figures[i]->Clear();
+					m_Figures[i]->SetY(m_Figures[i]->GetY() + g_SlotSpeed);
+				}
+
+				UpdateOnly = false;
+			}
 		}
 	}
 }
@@ -225,13 +231,18 @@ void Slot::ProcessPuttingInPlace(bool& UpdateOnly)
 	}
 	else
 	{
-		for(int i = 3; i >= 0; i--)
+		if(SDL_GetTicks() - m_uiAnimation >= g_SlotRollDelay)
 		{
-			m_Figures[i]->Clear();
-			m_Figures[i]->SetY(m_Figures[i]->GetY() + g_SlotSpeed);
-		}
+			m_uiAnimation = SDL_GetTicks();
 
-		UpdateOnly = false;
+			for(int i = 3; i >= 0; i--)
+			{
+				m_Figures[i]->Clear();
+				m_Figures[i]->SetY(m_Figures[i]->GetY() + g_SlotSpeed);
+			}
+
+			UpdateOnly = false;
+		}
 	}
 }
 

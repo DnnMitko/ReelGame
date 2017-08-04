@@ -175,6 +175,11 @@ private:
 	Uint32 m_uiTimer;
 
 	/**
+	* Timer variable for tracking time intervals.
+	*/
+	Uint32 m_uiAnimation;
+
+	/**
 	 * Holds how long slot will spin.
 	 */
 	unsigned int m_Delay;

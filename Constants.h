@@ -183,6 +183,7 @@ const char g_FigureID_6 = '6';
 
 const int g_SlotSpecialPercent = 30;
 const int g_SlotSpeed = 15;
+const int g_SlotRollDelay = 10;
 const int g_SlotAnimationDelay = 200;
 const int g_SlotRollTime = 3000;
 
