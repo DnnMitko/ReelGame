@@ -1,8 +1,8 @@
 #ifndef BUTTON_H_
 #define BUTTON_H_
 
-#include <SDL_image.h>
-#include <SDL_mixer.h>
+#include <SDL2/SDL_image.h>
+#include <SDL2/SDL_mixer.h>
 #include "TextField.h"
 #include "Constants.h"
 

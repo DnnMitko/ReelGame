@@ -1,7 +1,7 @@
 #ifndef GAMEPANEL_H_
 #define GAMEPANEL_H_
 
-#include <SDL.h>
+#include <SDL2/SDL.h>
 #include <string>
 #include <sstream>
 #include "Button.h"

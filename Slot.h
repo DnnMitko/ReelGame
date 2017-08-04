@@ -1,7 +1,7 @@
 #ifndef SLOT_H_
 #define SLOT_H_
 
-#include <SDL.h>
+#include <SDL2/SDL.h>
 #include "Figure.h"
 #include "Constants.h"
 

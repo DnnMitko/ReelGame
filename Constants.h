@@ -2,7 +2,7 @@
 #define CONSTANTS_H_
 
 #include <string>
-#include <SDL.h>
+#include <SDL2/SDL.h>
 
 
 const int g_ScreenWidth = 1280;

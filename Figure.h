@@ -1,8 +1,8 @@
 #ifndef FIGURE_H_
 #define FIGURE_H_
 
-#include <SDL.h>
-#include <SDL_image.h>
+#include <SDL2/SDL.h>
+#include <SDL2/SDL_image.h>
 #include <iostream>
 #include <cstdlib>
 
